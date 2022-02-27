@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">ColockumHillsideFarmApp</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Colockum Hillside Farm</string>
+    <string name="nav_header_subtitle">suzanne@colockumhillsidefarm.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_about_us">About Us</string>
+    <string name="menu_contact_us">Contact Us</string>
+    <string name="menu_recipes">Recipes</string>
+    <string name="menu_store">Store</string>
+</resources>
