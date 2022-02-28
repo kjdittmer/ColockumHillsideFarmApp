@@ -11,4 +11,5 @@
     <string name="menu_contact_us">Contact Us</string>
     <string name="menu_recipes">Recipes</string>
     <string name="menu_store">Store</string>
+    <string name="menu_vendor">Vendor</string>
 </resources>
