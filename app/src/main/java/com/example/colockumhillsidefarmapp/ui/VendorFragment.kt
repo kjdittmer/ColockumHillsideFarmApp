@@ -12,7 +12,6 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import com.example.colockumhillsidefarmapp.R
-import com.example.colockumhillsidefarmapp.databinding.FragmentAboutUsBinding
 import com.example.colockumhillsidefarmapp.databinding.FragmentVendorBinding
 import com.example.colockumhillsidefarmapp.ui.about_us.AboutUsViewModel
 

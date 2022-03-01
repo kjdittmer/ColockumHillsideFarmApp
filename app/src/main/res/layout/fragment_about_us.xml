@@ -19,4 +19,38 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/poultryandeggs"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="112dp"
+        android:layout_marginTop="154dp"
+        android:layout_marginBottom="154dp"
+        android:text="Poultry and Eggs"
+        app:layout_constraintBottom_toTopOf="@+id/text_about_us"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <Button
+        android:id="@+id/pork"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Pork"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/text_about_us"
+        app:layout_constraintStart_toStartOf="@+id/text_about_us"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/vegetables"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="156dp"
+        android:text="Vegetables"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
