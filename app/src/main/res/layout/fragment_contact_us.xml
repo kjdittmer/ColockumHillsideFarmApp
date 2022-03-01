@@ -26,16 +26,22 @@
         android:layout_height="39dp"
         android:text="Contact Us!"
         android:textAlignment="center"
-        android:textSize="25"
-        tools:layout_editor_absoluteX="116dp"
-        tools:layout_editor_absoluteY="51dp" />
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/directMessage"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.301" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/directMessage"
-        android:layout_width="409dp"
-        android:layout_height="wrap_content"
-        tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="228dp">
+        android:layout_width="356dp"
+        android:layout_height="161dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
@@ -48,7 +54,11 @@
         android:layout_width="251dp"
         android:layout_height="23dp"
         android:text="suzanne@colockumhillsidefarm.com"
-        tools:layout_editor_absoluteX="92dp"
-        tools:layout_editor_absoluteY="665dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.593"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.935" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
