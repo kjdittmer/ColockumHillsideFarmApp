@@ -10,70 +10,68 @@
         android:id="@+id/poultryandeggs"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="30dp"
         android:text="@string/about_us_poultry"
         app:layout_constraintBottom_toTopOf="@+id/pig"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/chicken"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/chicken"
         app:layout_constraintTop_toBottomOf="@+id/chicken" />
 
     <Button
         android:id="@+id/pork"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:layout_marginBottom="37dp"
         android:text="@string/about_us_pork"
-        app:layout_constraintBottom_toTopOf="@+id/carrot"
-        app:layout_constraintStart_toStartOf="@+id/pig"
-        app:layout_constraintTop_toBottomOf="@+id/pig" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/vegetables"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="213dp"
         android:text="@string/about_us_vegetables"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/carrot" />
+        app:layout_constraintEnd_toEndOf="@+id/imageView6"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/imageView6"
+        app:layout_constraintTop_toBottomOf="@+id/imageView6" />
 
     <ImageView
         android:id="@+id/chicken"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="43dp"
-        android:layout_marginTop="73dp"
-        android:layout_marginBottom="35dp"
         android:contentDescription="@string/about_us_chicken"
         android:src="@drawable/chickenpic"
         app:layout_constraintBottom_toTopOf="@+id/poultryandeggs"
-        app:layout_constraintStart_toStartOf="@+id/poultryandeggs"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/pig"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="43dp"
-        android:layout_marginBottom="48dp"
         android:contentDescription="@string/about_us_pig"
         android:src="@drawable/pigpic"
         app:layout_constraintBottom_toTopOf="@+id/pork"
-        app:layout_constraintStart_toStartOf="@+id/poultryandeggs"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/poultryandeggs" />
 
     <ImageView
-        android:id="@+id/carrot"
-        android:layout_width="80dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="51dp"
-        android:contentDescription="@string/about_us_carrot"
-        android:src="@drawable/carrotpic"
+        android:id="@+id/imageView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/cornpic"
         app:layout_constraintBottom_toTopOf="@+id/vegetables"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/pig"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/pig"
         app:layout_constraintTop_toBottomOf="@+id/pork" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -9,49 +9,89 @@
         android:id="@+id/chicken"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="66dp"
+        android:layout_marginStart="56dp"
+        android:layout_marginBottom="58dp"
         android:text="Chicken"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toTopOf="@+id/imageView4"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/eggs"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="144dp"
-        android:layout_marginEnd="24dp"
+        android:layout_marginStart="68dp"
+        android:layout_marginBottom="197dp"
         android:text="Eggs"
-        app:layout_constraintEnd_toEndOf="@+id/chicken"
-        app:layout_constraintTop_toBottomOf="@+id/chicken" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/turkey"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="28dp"
-        android:layout_marginBottom="244dp"
+        android:layout_marginTop="31dp"
         android:text="Turkey"
-        app:layout_constraintBottom_toTopOf="@+id/practices"
-        app:layout_constraintEnd_toEndOf="@+id/practices" />
+        app:layout_constraintEnd_toEndOf="@+id/imageView3"
+        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
 
     <Button
         android:id="@+id/practices"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="152dp"
-        android:layout_marginBottom="264dp"
+        android:layout_marginEnd="44dp"
         android:text="Practices"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBaseline_toBaselineOf="@+id/eggs"
         app:layout_constraintEnd_toEndOf="parent" />
 
     <Button
         android:id="@+id/backbutton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="14dp"
-        android:layout_marginTop="67dp"
+        android:layout_marginBottom="51dp"
         android:text="Back"
-        app:layout_constraintStart_toStartOf="@+id/practices"
-        app:layout_constraintTop_toBottomOf="@+id/practices" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="9dp"
+        android:layout_marginBottom="41dp"
+        app:layout_constraintBottom_toTopOf="@+id/chicken"
+        app:layout_constraintStart_toStartOf="@+id/chicken"
+        app:srcCompat="@drawable/chickenpic" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="81dp"
+        android:layout_marginEnd="63dp"
+        android:layout_marginBottom="79dp"
+        app:layout_constraintBottom_toBottomOf="@+id/chicken"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/turkeypic" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="45dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/eggpic" />
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="80dp"
+        android:layout_marginEnd="12dp"
+        app:layout_constraintEnd_toEndOf="@+id/turkey"
+        app:layout_constraintTop_toBottomOf="@+id/turkey"
+        app:srcCompat="@drawable/practicespic" />
 </androidx.constraintlayout.widget.ConstraintLayout>
