@@ -29,7 +29,7 @@
         tools:layout="@layout/fragment_store" />
     <fragment
         android:id="@+id/nav_vendor"
-        android:name="com.example.colockumhillsidefarmapp.ui.VendorFragment"
+        android:name="com.example.colockumhillsidefarmapp.ui.vendor.VendorFragment"
         android:label="@string/menu_vendor"
         tools:layout="@layout/fragment_vendor" />
 </navigation>

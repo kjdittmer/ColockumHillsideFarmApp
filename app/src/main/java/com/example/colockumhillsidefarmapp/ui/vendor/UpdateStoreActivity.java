@@ -1,4 +1,4 @@
-package com.example.colockumhillsidefarmapp.ui;
+package com.example.colockumhillsidefarmapp.ui.vendor;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,7 +9,6 @@ import android.widget.Button;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
-import com.example.colockumhillsidefarmapp.MainActivity;
 import com.example.colockumhillsidefarmapp.R;
 
 public class UpdateStoreActivity extends AppCompatActivity {

@@ -1,4 +1,4 @@
-package com.example.colockumhillsidefarmapp.ui
+package com.example.colockumhillsidefarmapp.ui.vendor
 
 import android.content.Intent
 import androidx.lifecycle.ViewModelProvider
@@ -9,11 +9,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
-import android.widget.TextView
 import android.widget.Toast
 import com.example.colockumhillsidefarmapp.R
 import com.example.colockumhillsidefarmapp.databinding.FragmentVendorBinding
-import com.example.colockumhillsidefarmapp.ui.about_us.AboutUsViewModel
 
 class VendorFragment : Fragment() {
     private var _binding: FragmentVendorBinding? = null

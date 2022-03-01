@@ -1,4 +1,4 @@
-package com.example.colockumhillsidefarmapp.ui;
+package com.example.colockumhillsidefarmapp.ui.vendor;
 
 import androidx.appcompat.app.AppCompatActivity;
 
