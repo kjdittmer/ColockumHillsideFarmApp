@@ -20,4 +20,11 @@
 
     <string name="tab_text_1">Tab 1</string>
     <string name="tab_text_2">Tab 2</string>
+
+    <string name="about_us_poultry">Poultry and Eggs</string>
+    <string name="about_us_pork">Pork</string>
+    <string name="about_us_vegetables">Vegetables</string>
+    <string name="about_us_chicken">Chicken</string>
+    <string name="about_us_pig">Pig</string>
+    <string name="about_us_carrot">Carrot</string>
 </resources>
