@@ -10,43 +10,43 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Vigorous Veggie Starts"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView9"
+        app:layout_constraintBottom_toTopOf="@+id/imageView10"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/imageView9"
-        app:layout_constraintTop_toTopOf="@+id/imageView9" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView8" />
 
     <ImageView
         android:id="@+id/imageView9"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="24dp"
         app:layout_constraintBottom_toTopOf="@+id/veggiepractices"
         app:layout_constraintEnd_toStartOf="@+id/plantstarts"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/microgreens"
         app:srcCompat="@drawable/plantstart" />
 
     <Button
         android:id="@+id/back3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="50dp"
         android:text="Back"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/veggiepractices" />
 
     <ImageView
         android:id="@+id/imageView8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="@+id/microgreens"
+        app:layout_constraintBottom_toTopOf="@+id/plantstarts"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/microgreens"
-        app:layout_constraintTop_toTopOf="@+id/microgreens"
+        app:layout_constraintTop_toBottomOf="@+id/veggies"
         app:srcCompat="@drawable/microgreen" />
 
     <Button
@@ -57,49 +57,50 @@
         app:layout_constraintBottom_toTopOf="@+id/imageView9"
         app:layout_constraintEnd_toStartOf="@+id/imageView8"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView11" />
 
     <ImageView
         android:id="@+id/imageView10"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="42dp"
-        app:layout_constraintBottom_toBottomOf="@+id/back3"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/veggiepractices"
+        app:layout_constraintStart_toEndOf="@+id/back3"
+        app:layout_constraintTop_toBottomOf="@+id/plantstarts"
         app:srcCompat="@drawable/plantpractices" />
 
     <Button
         android:id="@+id/veggiepractices"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="115dp"
         android:text="Practices"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView10"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/imageView10"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imageView10" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/veggies"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Vibrant Veggies"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView11"
+        app:layout_constraintBottom_toTopOf="@+id/imageView8"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/imageView11"
-        app:layout_constraintTop_toTopOf="@+id/imageView11" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/imageView11"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="55dp"
         app:layout_constraintBottom_toTopOf="@+id/microgreens"
         app:layout_constraintEnd_toStartOf="@+id/veggies"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/carrotpic" />
 </androidx.constraintlayout.widget.ConstraintLayout>
