@@ -18,9 +18,14 @@
                     "This sought after breed takes about 7 months to grow to a compact 8-18 pounds, but rewards the chef with rich and juicy flavor. " +
                     "Watch our store for the opportunity to reserve your Thanksgiving bird!</string>
 
-    <string name="tab_text_1">Tab 1</string>
-    <string name="tab_text_2">Tab 2</string>
 
+
+    <string name="pork_string">We raise Berkshire pork, a heritage breed preferred by restaurants for its rich marbling and delicious flavor.
+        Customers often tell us that ours is the best pork they have ever eaten and our butchers often praise the quality of our pork and refer us to their own customers.</string>
+    <string name="pork_practices_string_p1">We generally house our pigs in a hub and spoke system, where their shelter, feeders and waterers are in a fixed location, around which we move their spacious fence enclosure every two weeks.
+        This allows the pigs to explore and forage in fresh areas and saves wear and tear on our land. In some cases, we intentionally move our pigs to flatter areas that we are converting into meat chicken pastures.
+        Pigs are amazing bulldozers, and we have used their services to clear more than one area of rocks! They are cheerful and willing workers. </string>
+    <string name="pork_practices_string_p2">We love Berkshire pigs’ easygoing, jolly personalities. They are curious and love to have their ears scratched. Our pigs enjoy locally sourced corn- and soy-free non-GMO feed and organic vegetable scraps from our own kitchen and garden. </string>
     <string name="about_us_poultry">Poultry and Eggs</string>
     <string name="about_us_pork">Pork</string>
     <string name="about_us_vegetables">Vegetables</string>

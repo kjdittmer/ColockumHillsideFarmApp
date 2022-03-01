@@ -50,6 +50,8 @@ class AboutUsFragment : Fragment() {
             startActivity(intent)
         }
         pork.setOnClickListener{
+            val intent = Intent(activity,PorkActivity::class.java)
+            startActivity(intent)
         }
 
         return root

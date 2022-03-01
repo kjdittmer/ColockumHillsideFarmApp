@@ -23,6 +23,9 @@
             android:exported="false" />
         <activity
             android:name=".ui.about_us.PoultryActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.about_us.PorkActivity"
             android:exported="true" />
         <activity
             android:name=".MainActivity"
