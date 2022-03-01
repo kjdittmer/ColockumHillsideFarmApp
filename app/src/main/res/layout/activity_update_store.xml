@@ -4,67 +4,71 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.VendorChoiceActivity">
+    tools:context=".ui.UpdateStoreActivity">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/rgVendorChoice"
+        android:layout_above="@+id/rgUpddateStoreChioce"
         android:text="What would you like to do?"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="20dp"
         android:textAllCaps="true"
         android:textStyle="bold"
         android:textSize="20dp"
-        android:id="@+id/txtPrompt"/>
+        android:id="@+id/txtPromptUpdateStore"/>
 
     <RadioGroup
-        android:id="@+id/rgVendorChoice"
+        android:id="@+id/rgUpddateStoreChioce"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true">
 
         <RadioButton
-            android:id="@+id/rbAnalytics"
+            android:id="@+id/rbAddItem"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="VIEW ANALYTICS"
+            android:text="Add item"
+            android:textAllCaps="true"
             android:checked="true"
             android:buttonTint="@color/red"/>
 
         <RadioButton
-            android:id="@+id/rbUpdateStore"
+            android:id="@+id/rbEditItem"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/rbAnalytics"
-            android:text="UPDATE STORE"
+            android:layout_below="@+id/rbAddItem"
+            android:text="Edit item"
+            android:textAllCaps="true"
             android:buttonTint="@color/red"/>
 
         <RadioButton
-            android:id="@+id/rbUpdateAboutUs"
+            android:id="@+id/rbRemoveItem"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/rbUpdateStore"
-            android:text="UPDATE ABOUT US"
+            android:layout_below="@+id/rbEditItem"
+            android:text="Remove item"
+            android:textAllCaps="true"
             android:buttonTint="@color/red"/>
 
         <RadioButton
-            android:id="@+id/rbMenuButton"
-            android:layout_width="185dp"
+            android:id="@+id/rbBackFromUpdateStore"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/rbUpdateStore"
-            android:buttonTint="@color/red"
-            android:text="Exit Vendor Mode"
-            android:textAllCaps="true" />
+            android:layout_below="@+id/rbRemoveItem"
+            android:text="Back"
+            android:textAllCaps="true"
+            android:buttonTint="@color/red"/>
+
 
     </RadioGroup>
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/rgVendorChoice"
+        android:layout_below="@+id/rgUpddateStoreChioce"
         android:layout_centerHorizontal="true"
-        android:id="@+id/btnGo"
+        android:id="@+id/btnGoUpdateStore"
         android:text="GO"
         android:layout_marginTop="10dp"/>
 

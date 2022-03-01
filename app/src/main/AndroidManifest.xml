@@ -10,6 +10,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ColockumHillsideFarmApp">
         <activity
+            android:name=".ui.UpdateAboutUsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.UpdateStoreActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.AnalyticsActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.VendorChoiceActivity"
             android:exported="false" />
         <activity

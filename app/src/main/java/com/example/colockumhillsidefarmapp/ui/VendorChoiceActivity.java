@@ -10,6 +10,7 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.colockumhillsidefarmapp.MainActivity;
 import com.example.colockumhillsidefarmapp.R;
 import com.example.colockumhillsidefarmapp.ui.about_us.AboutUsFragment;
 import com.example.colockumhillsidefarmapp.ui.about_us.AboutUsViewModel;
@@ -38,15 +39,21 @@ public class VendorChoiceActivity extends AppCompatActivity {
                 switch (radioButtonId) {
                     case R.id.rbAnalytics:
                         Toast.makeText(VendorChoiceActivity.this, "Go to analytics", Toast.LENGTH_SHORT).show();
+                        Intent intent1 = new Intent(VendorChoiceActivity.this, AnalyticsActivity.class);
+                        startActivity(intent1);
                         break;
                     case R.id.rbUpdateStore:
                         Toast.makeText(VendorChoiceActivity.this, "Go to update store", Toast.LENGTH_SHORT).show();
+                        Intent intent2 = new Intent(VendorChoiceActivity.this, UpdateStoreActivity.class);
+                        startActivity(intent2);
                         break;
                     case R.id.rbUpdateAboutUs:
                         Toast.makeText(VendorChoiceActivity.this, "Go to update about us", Toast.LENGTH_SHORT).show();
+                        Intent intent3 = new Intent(VendorChoiceActivity.this, UpdateAboutUsActivity.class);
+                        startActivity(intent3);
                         break;
                     case R.id.rbMenuButton:
-                        Toast.makeText(VendorChoiceActivity.this, "Go back to menu", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(VendorChoiceActivity.this, "Exit vendor mode", Toast.LENGTH_SHORT).show();
                         openMenuAct();
                         break;
                     default:
@@ -58,7 +65,7 @@ public class VendorChoiceActivity extends AppCompatActivity {
     }
 
     private void openMenuAct() {
-        Intent intent = new Intent(this, AboutUsViewModel.class);
+        Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
 }
