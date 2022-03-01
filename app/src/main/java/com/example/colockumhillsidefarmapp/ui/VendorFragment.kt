@@ -1,5 +1,6 @@
 package com.example.colockumhillsidefarmapp.ui
 
+import android.content.Intent
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -54,9 +55,13 @@ class VendorFragment : Fragment() {
 
         btnLogin.setOnClickListener {
             if(txtUsername.text.toString().equals("nicobradley") && txtUserID.text.toString().equals("1234")){
-                Toast.makeText(activity?.applicationContext ?: null, "Welcome nicobradley", Toast.LENGTH_LONG).show()
+                Toast.makeText(activity, "Welcome nicobradley", Toast.LENGTH_LONG).show()
+
+                val intent = Intent(activity, VendorChoiceActivity::class.java)
+                startActivity(intent)
+
             } else {
-                Toast.makeText(activity?.applicationContext ?: null, "Your credentials are INCORRECT", Toast.LENGTH_LONG).show()
+                Toast.makeText(activity, "Your credentials are INCORRECT", Toast.LENGTH_LONG).show()
             }
         }
 
