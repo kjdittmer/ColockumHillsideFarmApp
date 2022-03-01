@@ -48,6 +48,14 @@
             android:text="UPDATE ABOUT US"
             android:buttonTint="@color/red"/>
 
+        <RadioButton
+            android:id="@+id/rbMenuButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/rbUpdateStore"
+            android:buttonTint="@color/red"
+            android:text="Back to Menu" />
+
     </RadioGroup>
 
     <Button
