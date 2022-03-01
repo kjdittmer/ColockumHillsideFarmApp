@@ -1,6 +1,8 @@
 package com.example.colockumhillsidefarmapp.ui.contact_us
 
 import android.os.Bundle
+import android.text.Html
+import android.text.method.LinkMovementMethod
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,6 +10,7 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.colockumhillsidefarmapp.databinding.FragmentContactUsBinding
+import kotlinx.android.synthetic.main.fragment_contact_us.*
 
 class ContactUsFragment : Fragment() {
 
@@ -17,7 +20,16 @@ class ContactUsFragment : Fragment() {
     // onDestroyView.
     private val binding get() = _binding!!
 
-    override fun onCreateView(
+    /**
+     * When created, the hyperlink will be established
+     */
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setUpEmail()
+        }
+
+
+        override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -28,12 +40,19 @@ class ContactUsFragment : Fragment() {
         _binding = FragmentContactUsBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textContactUs
-        homeViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
-        }
         return root
     }
+
+    /**
+     * Will create the hyperlink that is used to email the vendor
+     */
+    fun setUpEmail()
+    {
+        //val feedback = findViewById<TextView>(R.id.FarmEmail)
+        FarmEmail.text = Html.fromHtml("<a href=\"mailto:suzanne@colockumhillsidefarm.com\">Email Us!</a>")
+        FarmEmail.movementMethod = LinkMovementMethod.getInstance()
+    }
+
 
     override fun onDestroyView() {
         super.onDestroyView()
