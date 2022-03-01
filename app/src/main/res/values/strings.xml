@@ -13,6 +13,11 @@
     <string name="menu_store">Store</string>
     <string name="menu_vendor">Vendor</string>
 
+    <string name="turkey_string">We raise specialty “Midget White” turkeys each year for Thanksgiving. " +
+                    "Midget Whites love to spend their day foraging, so on our farm they enjoy a diet of free range shrub steppe findings supplemented with locally sourced, non-GMO, corn- and soy-free feed. " +
+                    "This sought after breed takes about 7 months to grow to a compact 8-18 pounds, but rewards the chef with rich and juicy flavor. " +
+                    "Watch our store for the opportunity to reserve your Thanksgiving bird!</string>
+
     <string name="tab_text_1">Tab 1</string>
     <string name="tab_text_2">Tab 2</string>
 </resources>

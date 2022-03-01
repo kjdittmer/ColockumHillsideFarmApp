@@ -23,7 +23,7 @@ class RecipesFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         val homeViewModel =
-            ViewModelProvider(this).get(ContactUsViewModel::class.java)
+            ViewModelProvider(this).get(RecipesViewModel::class.java)
 
         _binding = FragmentRecipesBinding.inflate(inflater, container, false)
         val root: View = binding.root

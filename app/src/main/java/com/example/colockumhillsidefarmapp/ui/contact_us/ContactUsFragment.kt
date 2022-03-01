@@ -1,4 +1,4 @@
-package com.example.colockumhillsidefarmapp.ui.recipes
+package com.example.colockumhillsidefarmapp.ui.contact_us
 
 import android.os.Bundle
 import android.view.LayoutInflater

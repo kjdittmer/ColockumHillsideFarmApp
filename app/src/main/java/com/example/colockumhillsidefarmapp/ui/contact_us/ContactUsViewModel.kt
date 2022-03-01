@@ -1,4 +1,4 @@
-package com.example.colockumhillsidefarmapp.ui.recipes
+package com.example.colockumhillsidefarmapp.ui.contact_us
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
