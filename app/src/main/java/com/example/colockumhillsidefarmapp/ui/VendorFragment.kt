@@ -53,7 +53,7 @@ class VendorFragment : Fragment() {
         }
 
         btnLogin.setOnClickListener {
-            if(txtUserID.text.equals("1234")){
+            if(txtUsername.text.toString().equals("nicobradley") && txtUserID.text.toString().equals("1234")){
                 Toast.makeText(activity?.applicationContext ?: null, "Welcome nicobradley", Toast.LENGTH_LONG).show()
             } else {
                 Toast.makeText(activity?.applicationContext ?: null, "Your credentials are INCORRECT", Toast.LENGTH_LONG).show()
