@@ -46,7 +46,8 @@ class AboutUsFragment : Fragment() {
 
         }
         pork.setOnClickListener{
-            val intent = Intent(activity,PorkActivity::class.java)
+            val intent = Intent(activity,
+                PorkActivity::class.java)
             startActivity(intent)
         }
         vegetables.setOnClickListener{
