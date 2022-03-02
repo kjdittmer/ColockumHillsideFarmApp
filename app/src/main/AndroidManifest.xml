@@ -34,6 +34,9 @@
             android:name=".ui.about_us.VegetableActivity"
             android:exported="false" />
         <activity
+            android:name=".ui.about_us.VegtablePracticesActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.contact_us.FarmInfo"
             android:exported="false" />
         <activity

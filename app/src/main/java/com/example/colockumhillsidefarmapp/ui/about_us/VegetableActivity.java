@@ -48,6 +48,13 @@ public class VegetableActivity extends AppCompatActivity {
             }
 
         });
+        practices.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(VegetableActivity.this, VegtablePracticesActivity.class);
+                startActivity(intent);
+            }
+        });
         microgreens.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
