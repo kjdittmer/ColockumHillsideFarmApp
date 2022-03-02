@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.colockumhillsidefarmapp.databinding.FragmentContactUsBinding
 import kotlinx.android.synthetic.main.fragment_contact_us.*
+import com.example.colockumhillsidefarmapp.R
 
 class ContactUsFragment : Fragment() {
 
@@ -34,7 +35,7 @@ class ContactUsFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val homeViewModel =
+        val contactUsViewModel =
             ViewModelProvider(this).get(ContactUsViewModel::class.java)
 
         _binding = FragmentContactUsBinding.inflate(inflater, container, false)
@@ -48,9 +49,9 @@ class ContactUsFragment : Fragment() {
      */
     fun setUpEmail()
     {
-        //val feedback = findViewById<TextView>(R.id.FarmEmail)
-        FarmEmail.text = Html.fromHtml("<a href=\"mailto:suzanne@colockumhillsidefarm.com\">Email Us!</a>")
-        FarmEmail.movementMethod = LinkMovementMethod.getInstance()
+        //val feedback = root.findViewById<TextView>(R.id.FarmEmail)
+        //FarmEmail.text = Html.fromHtml("<a href=\"mailto:suzanne@colockumhillsidefarm.com\">Email Us!</a>")
+        //FarmEmail.movementMethod = LinkMovementMethod.getInstance()
     }
 
 
