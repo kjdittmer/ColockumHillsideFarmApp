@@ -21,15 +21,6 @@ class ContactUsFragment : Fragment() {
     // onDestroyView.
     private val binding get() = _binding!!
 
-    /**
-     * When created, the hyperlink will be established
-     */
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setUpEmail()
-        }
-
-
         override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -43,17 +34,6 @@ class ContactUsFragment : Fragment() {
 
         return root
     }
-
-    /**
-     * Will create the hyperlink that is used to email the vendor
-     */
-    fun setUpEmail()
-    {
-        //val feedback = root.findViewById<TextView>(R.id.FarmEmail)
-        //FarmEmail.text = Html.fromHtml("<a href=\"mailto:suzanne@colockumhillsidefarm.com\">Email Us!</a>")
-        //FarmEmail.movementMethod = LinkMovementMethod.getInstance()
-    }
-
 
     override fun onDestroyView() {
         super.onDestroyView()
