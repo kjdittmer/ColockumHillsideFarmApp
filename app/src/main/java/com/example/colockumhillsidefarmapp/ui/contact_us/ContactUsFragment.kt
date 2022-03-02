@@ -45,8 +45,10 @@ class ContactUsFragment : Fragment() {
                 if(input.contains("@")){
                     var message = "Added " + input + " to our list :)"
                     Toast.makeText(activity, message, Toast.LENGTH_SHORT).show()
+                    editTextTextEmailAddress.text.clear()
                 } else {
                     Toast.makeText(activity, "Please enter a valid email address :)", Toast.LENGTH_SHORT).show()
+                    editTextTextEmailAddress.text.clear()
                 }
             }
 
