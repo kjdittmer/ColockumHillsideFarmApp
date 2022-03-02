@@ -9,7 +9,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/rgUpddateStoreChioce"
+        android:layout_above="@+id/layoutUpdateStore"
         android:text="What would you like to do?"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="20dp"
@@ -18,58 +18,45 @@
         android:textSize="20dp"
         android:id="@+id/txtPromptUpdateStore"/>
 
-    <RadioGroup
-        android:id="@+id/rgUpddateStoreChioce"
+    <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:id="@+id/layoutUpdateStore"
         android:layout_centerInParent="true">
 
-        <RadioButton
-            android:id="@+id/rbAddItem"
+        <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Add item"
-            android:textAllCaps="true"
-            android:checked="true"
-            android:buttonTint="@color/red"/>
+            android:layout_centerHorizontal="true"
+            android:id="@+id/btnAddItem"
+            android:text="Add item"/>
 
-        <RadioButton
-            android:id="@+id/rbEditItem"
+        <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/rbAddItem"
+            android:layout_centerHorizontal="true"
+            android:id="@+id/btnEditItem"
             android:text="Edit item"
-            android:textAllCaps="true"
-            android:buttonTint="@color/red"/>
+            android:layout_below="@+id/btnAddItem"/>
 
-        <RadioButton
-            android:id="@+id/rbRemoveItem"
+        <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/rbEditItem"
+            android:layout_centerHorizontal="true"
+            android:id="@+id/btnRemoveItem"
             android:text="Remove item"
-            android:textAllCaps="true"
-            android:buttonTint="@color/red"/>
+            android:layout_below="@+id/btnEditItem"/>
 
-        <RadioButton
-            android:id="@+id/rbBackFromUpdateStore"
+        <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/rbRemoveItem"
+            android:layout_centerHorizontal="true"
+            android:id="@+id/btnBackFromUpdateStore"
             android:text="Back"
-            android:textAllCaps="true"
-            android:buttonTint="@color/red"/>
+            android:layout_below="@+id/btnRemoveItem"/>
+    </RelativeLayout>
 
 
-    </RadioGroup>
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/rgUpddateStoreChioce"
-        android:layout_centerHorizontal="true"
-        android:id="@+id/btnGoUpdateStore"
-        android:text="GO"
-        android:layout_marginTop="10dp"/>
 
 </RelativeLayout>
