@@ -44,7 +44,8 @@
         android:text="suzanne@colockumhillsidefarm.com"
         android:textSize="20sp"
         tools:layout_editor_absoluteX="90dp"
-        tools:layout_editor_absoluteY="592dp" />
+        tools:layout_editor_absoluteY="592dp"
+        android:autoLink="email" />
 
     <Button
         android:id="@+id/button"
