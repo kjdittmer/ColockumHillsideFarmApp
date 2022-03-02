@@ -13,7 +13,7 @@ import com.google.android.material.snackbar.Snackbar;
 public class ChickenPracticesActivity extends AppCompatActivity {
     private Button meatChickens;
     private Button layerHens;
-    private Button turkey;
+    private Button turkey2;
     private Button back;
 
     @Override
@@ -24,7 +24,7 @@ public class ChickenPracticesActivity extends AppCompatActivity {
         back = findViewById(R.id.back4);
         meatChickens = findViewById(R.id.meatChicken);
         layerHens = findViewById(R.id.layerHens);
-        turkey = findViewById(R.id.turkey2);
+        turkey2 = findViewById(R.id.turkey2);
 
         back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -65,10 +65,10 @@ public class ChickenPracticesActivity extends AppCompatActivity {
             }
 
         });
-        turkey.setOnClickListener(new View.OnClickListener(){
+        turkey2.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
-                Snackbar snack = Snackbar.make(findViewById(R.id.turkey),
+                Snackbar snack = Snackbar.make(findViewById(R.id.turkey2),
                        "We love our Midget White Turkeys! This is the only poultry that we have successfully bred on our farm. We keep a breeding flock of Midget Whites year round, and they are housed with the laying flock of chickens in our dormant garden over winter.\n" +
                                "\n" +
                                "Midget Whites are known for their excellent foraging skills and they cover an astonishing amount of ground daily. We are grateful for our watchful guardian dogs who keep a careful eye on the turkeys.  Midget Whites are definitely flock animals, and they make all decisions by committee with much (noisy) discussion! They are curious, friendly, and like to follow the farm humans around like dogs. They think that they are in heaven in the shrub steppe!\n" +
