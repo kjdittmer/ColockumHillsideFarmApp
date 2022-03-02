@@ -9,63 +9,53 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/rgVendorChoice"
+        android:layout_above="@+id/layoutVendorChoice"
         android:text="What would you like to do?"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="20dp"
         android:textAllCaps="true"
         android:textStyle="bold"
         android:textSize="20dp"
-        android:id="@+id/txtPrompt"/>
+        android:id="@+id/txtPromptVendorChoice"/>
 
-    <RadioGroup
-        android:id="@+id/rgVendorChoice"
+    <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true">
+        android:layout_centerInParent="true"
+        android:id="@+id/layoutVendorChoice">
 
-        <RadioButton
-            android:id="@+id/rbAnalytics"
+        <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="VIEW ANALYTICS"
-            android:checked="true"
-            android:buttonTint="@color/red"/>
+            android:id="@+id/btnGoToAnalytics"
+            android:text="View analytics"
+            android:layout_centerHorizontal="true"/>
 
-        <RadioButton
-            android:id="@+id/rbUpdateStore"
+        <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/rbAnalytics"
-            android:text="UPDATE STORE"
-            android:buttonTint="@color/red"/>
+            android:id="@+id/btnGoToUpdateStore"
+            android:text="Update store"
+            android:layout_below="@+id/btnGoToAnalytics"
+            android:layout_centerHorizontal="true"/>
 
-        <RadioButton
-            android:id="@+id/rbUpdateAboutUs"
+        <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/rbUpdateStore"
-            android:text="UPDATE ABOUT US"
-            android:buttonTint="@color/red"/>
+            android:id="@+id/btnGoToUpdateAboutUs"
+            android:text="Update About us"
+            android:layout_below="@+id/btnGoToUpdateStore"
+            android:layout_centerHorizontal="true"/>
 
-        <RadioButton
-            android:id="@+id/rbMenuButton"
-            android:layout_width="185dp"
+        <Button
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/rbUpdateStore"
-            android:buttonTint="@color/red"
-            android:text="Exit Vendor Mode"
-            android:textAllCaps="true" />
+            android:id="@+id/btnExitVendorMode"
+            android:text="Exit vendor mode"
+            android:layout_below="@+id/btnGoToUpdateAboutUs"
+            android:layout_centerHorizontal="true"/>
 
-    </RadioGroup>
+    </RelativeLayout>
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/rgVendorChoice"
-        android:layout_centerHorizontal="true"
-        android:id="@+id/btnGo"
-        android:text="GO"
-        android:layout_marginTop="10dp"/>
 
 </RelativeLayout>
