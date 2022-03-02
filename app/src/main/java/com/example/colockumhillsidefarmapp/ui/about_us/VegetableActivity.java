@@ -42,7 +42,7 @@ public class VegetableActivity extends AppCompatActivity {
             public void onClick(View view){
                 Snackbar snack = Snackbar.make(findViewById(R.id.veggies),
                         "You can taste the difference! We use organic practices to grow beautiful, nutrient-rich produce. Compost built on our farm nourishes the soil, and we employ crop rotation, interplanting and water-wise practices to conserve water and nurture our plants and growing beds.    ",
-                        Snackbar.LENGTH_INDEFINITE);
+                        Snackbar.LENGTH_LONG);
                 View snackView = snack.getView();
                 TextView tv = (TextView) snackView.findViewById(com.google.android.material.R.id.snackbar_text);
                 tv.setMaxLines(15);
@@ -55,7 +55,7 @@ public class VegetableActivity extends AppCompatActivity {
             public void onClick(View view){
                 Snackbar snack = Snackbar.make(findViewById(R.id.microgreens),
                         "Want a delicious boost to your nutrition? We offer a wide variety of microgreens, which pack a powerful antioxidant punch! Microgreens are rich in potassium, iron, zinc, magnesium, copper and polyphenols. We grow our microgreens in an organic soil mix fortified with organic compost and liquid kelp for maximum nutrition. Our microgreens are fresh, colorful and tasty.  Enjoy them in sandwiches, salads, pestos and wraps, or use them as a garnish on any savory dish!",
-                        Snackbar.LENGTH_INDEFINITE);
+                        Snackbar.LENGTH_LONG);
                 View snackView = snack.getView();
                 TextView tv = (TextView) snackView.findViewById(com.google.android.material.R.id.snackbar_text);
                 tv.setMaxLines(15);
@@ -68,7 +68,7 @@ public class VegetableActivity extends AppCompatActivity {
             public void onClick(View view){
                 Snackbar snack = Snackbar.make(findViewById(R.id.plantstarts),
                         "We sell a wide variety of vegetable starts that we have tested and grown successfully in our own garden beds. Our seeds come from reputable sellers and we make our own organic potting soil. Customers compliment us on the beauty, vigor, and success of our plant starts. ",
-                        Snackbar.LENGTH_INDEFINITE);
+                        Snackbar.LENGTH_LONG);
                 View snackView = snack.getView();
                 TextView tv = (TextView) snackView.findViewById(com.google.android.material.R.id.snackbar_text);
                 tv.setMaxLines(15);
