@@ -20,19 +20,20 @@ class VegetableActivity: AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?){
         super.onCreate(savedInstanceState)
         setContentView(R.layout.vegetable_activity)
+        binding = VegetableActivityBinding.inflate(layoutInflater)
         var root: View = binding.root
         veggies = root.findViewById(R.id.veggies)
         microgreens = root.findViewById(R.id.microgreens)
         plantstarts = root.findViewById(R.id.plantstarts)
         practices = root.findViewById(R.id.veggiepractices)
         back = root.findViewById(R.id.back3)
-        veggies.setOnClickListener {
-            this?.let {
-                    it1 -> Snackbar.make(it1.findViewById(R.id.veggies),
-              "You can taste the difference! We use organic practices to grow beautiful, nutrient-rich produce. Compost built on our farm nourishes the soil, and we employ crop rotation, interplanting and water-wise practices to conserve water and nurture our plants and growing beds.    ",
-               Snackbar.LENGTH_LONG).apply{view.findViewById<TextView>(com.google.android.material.R.id.snackbar_text).maxLines=15 }
-                .show()
-            }
+     veggies.setOnClickListener {
+        this?.let {
+               it1 -> Snackbar.make(it1.findViewById(R.id.veggies),
+        "You can taste the difference! We use organic practices to grow beautiful, nutrient-rich produce. Compost built on our farm nourishes the soil, and we employ crop rotation, interplanting and water-wise practices to conserve water and nurture our plants and growing beds.    ",
+        Snackbar.LENGTH_LONG).apply{view.findViewById<TextView>(com.google.android.material.R.id.snackbar_text).maxLines=15 }
+        .show()
+       }
         }
         microgreens.setOnClickListener{
             this?.let {
@@ -48,13 +49,9 @@ class VegetableActivity: AppCompatActivity() {
                "We sell a wide variety of vegetable starts that we have tested and grown successfully in our own garden beds. Our seeds come from reputable sellers and we make our own organic potting soil. Customers compliment us on the beauty, vigor, and success of our plant starts. ",
                 Snackbar.LENGTH_LONG).apply{view.findViewById<TextView>(com.google.android.material.R.id.snackbar_text).maxLines=15 }
                 .show()
-            }
-        }
-        practices.setOnClickListener{
-
-        }
-        back.setOnClickListener{
-
-        }
+           }
+      }
+        practices.setOnClickListener{}
+        back.setOnClickListener{}
     }
 }
