@@ -9,7 +9,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/rgUpdateAboutUsChoice"
+        android:layout_above="@+id/layoutAboutUs"
         android:text="What would you like to do?"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="20dp"
@@ -18,49 +18,37 @@
         android:textSize="20dp"
         android:id="@+id/txtPromptUpdateAboutUs"/>
 
-    <RadioGroup
-        android:id="@+id/rgUpdateAboutUsChoice"
+
+    <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:id="@+id/layoutAboutUs"
         android:layout_centerInParent="true">
 
-        <RadioButton
-            android:id="@+id/rbUpdateInfoAboutUs"
+        <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
             android:text="Update info"
-            android:textAllCaps="true"
-            android:checked="true"
-            android:buttonTint="@color/red"/>
+            android:id="@+id/btnUpdateInfoAboutUs"
+            />
 
-        <RadioButton
-            android:id="@+id/rbUpdatePicturesAboutUs"
+        <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/rbUpdateInfoAboutUs"
+            android:layout_centerHorizontal="true"
             android:text="Update pictures"
-            android:textAllCaps="true"
-            android:buttonTint="@color/red"/>
+            android:id="@+id/btnUpdatePicturesAboutUs"
+            android:layout_below="@+id/btnUpdateInfoAboutUs"/>
 
-        <RadioButton
-            android:id="@+id/rbBackFromUpdateAboutUs"
+        <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/rbUpdatePicturesAboutUs"
+            android:layout_centerHorizontal="true"
             android:text="Back"
-            android:textAllCaps="true"
-            android:buttonTint="@color/red"/>
+            android:id="@+id/btnBackFromUpdateAboutUs"
+            android:layout_below="@+id/btnUpdatePicturesAboutUs"/>
+    </RelativeLayout>
 
-
-    </RadioGroup>
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/rgUpdateAboutUsChoice"
-        android:layout_centerHorizontal="true"
-        android:id="@+id/btnGoUpdateAboutUs"
-        android:text="GO"
-        android:layout_marginTop="10dp"/>
 
 </RelativeLayout>
