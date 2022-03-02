@@ -28,6 +28,9 @@
             android:name=".ui.about_us.PorkActivity"
             android:exported="false" />
         <activity
+            android:name=".ui.contact_us.ContactUsActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.about_us.VegetableActivity"
             android:exported="false" />
         <activity
