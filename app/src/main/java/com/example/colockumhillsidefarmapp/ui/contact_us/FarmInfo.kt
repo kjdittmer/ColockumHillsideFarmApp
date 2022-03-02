@@ -1,4 +1,4 @@
-package com.example.colockumhillsidefarmapp.ui.about_us
+package com.example.colockumhillsidefarmapp.ui.contact_us
 
 import android.content.Intent
 import android.os.Bundle

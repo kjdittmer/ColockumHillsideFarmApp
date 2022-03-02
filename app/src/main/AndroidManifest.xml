@@ -25,13 +25,16 @@
             android:name=".ui.about_us.PoultryActivity"
             android:exported="false" />
         <activity
+            android:name=".ui.about_us.PoultryActivity2"
+            android:exported="false" />
+        <activity
             android:name=".ui.about_us.PorkActivity"
             android:exported="false" />
         <activity
             android:name=".ui.about_us.VegetableActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.about_us.FarmInfo"
+            android:name=".ui.contact_us.FarmInfo"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

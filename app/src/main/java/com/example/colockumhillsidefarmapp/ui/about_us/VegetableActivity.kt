@@ -52,6 +52,8 @@ class VegetableActivity: AppCompatActivity() {
            }
       }
         practices.setOnClickListener{}
-        back.setOnClickListener{}
+        back.setOnClickListener{
+
+        }
     }
 }

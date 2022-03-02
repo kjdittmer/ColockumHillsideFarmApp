@@ -46,7 +46,7 @@ class AboutUsFragment : Fragment() {
         pork = root.findViewById(R.id.pork)
         vegetables = root.findViewById(R.id.vegetables)
         poultryandeggs.setOnClickListener {
-           val intent = Intent(activity, PoultryActivity::class.java)
+           val intent = Intent(activity, PoultryActivity2::class.java)
             startActivity(intent)
 
         }
