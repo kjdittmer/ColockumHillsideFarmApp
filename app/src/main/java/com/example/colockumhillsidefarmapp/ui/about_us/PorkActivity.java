@@ -7,6 +7,7 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.colockumhillsidefarmapp.MainActivity;
 import com.example.colockumhillsidefarmapp.R;
 
 public class PorkActivity extends AppCompatActivity {
@@ -24,7 +25,7 @@ public class PorkActivity extends AppCompatActivity {
         backbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(PorkActivity.this, AboutUsFragment.class);
+                Intent intent = new Intent(PorkActivity.this, MainActivity.class);
                 startActivity(intent);
             }
         });
