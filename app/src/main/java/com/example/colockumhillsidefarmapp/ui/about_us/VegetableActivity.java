@@ -7,6 +7,8 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.colockumhillsidefarmapp.MainActivity;
 import com.example.colockumhillsidefarmapp.R;
 import com.google.android.material.snackbar.Snackbar;
 
@@ -31,7 +33,7 @@ public class VegetableActivity extends AppCompatActivity {
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(VegetableActivity.this, AboutUsFragment.class);
+                Intent intent = new Intent(VegetableActivity.this, MainActivity.class);
                 startActivity(intent);
             }
         });
