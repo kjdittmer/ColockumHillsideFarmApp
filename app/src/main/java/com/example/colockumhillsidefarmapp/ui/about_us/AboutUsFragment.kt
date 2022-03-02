@@ -6,15 +6,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import android.widget.TextView
-import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.colockumhillsidefarmapp.databinding.FragmentAboutUsBinding
-import com.example.colockumhillsidefarmapp.ui.about_us.AboutUsViewModel
 import com.example.colockumhillsidefarmapp.R
-import com.google.android.material.snackbar.Snackbar
 
 
 /**
@@ -46,7 +41,7 @@ class AboutUsFragment : Fragment() {
         pork = root.findViewById(R.id.pork)
         vegetables = root.findViewById(R.id.vegetables)
         poultryandeggs.setOnClickListener {
-           val intent = Intent(activity, PoultryActivity2::class.java)
+           val intent = Intent(activity, PoultryActivity::class.java)
             startActivity(intent)
 
         }
