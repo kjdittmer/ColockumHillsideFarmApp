@@ -51,27 +51,39 @@ public class PoultryActivity2 extends AppCompatActivity {
             }
 
         });
+        chicken.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                Snackbar snack = Snackbar.make(findViewById(R.id.chicken),
+                        "What makes our Shrub Steppe eggs special? Our hens enjoy the freedom to forage on our 80 acres of pristine shrub steppe land. They spend their days scratching for shoots, leaves and insects. When you crack the eggs open, the benefits of their footloose and fancy-free lifestyle is obvious: the eggs’ yolks are a deep golden orange, and the whites are firm, not runny.",
+                        Snackbar.LENGTH_INDEFINITE);
+                View snackView = snack.getView();
+                TextView tv = (TextView) snackView.findViewById(com.google.android.material.R.id.snackbar_text);
+                tv.setMaxLines(15);
+                snack.show();
+            }
 
-       // btnGoUpdateStore.setOnClickListener(new View.OnClickListener() {
-        //    @Override
-        //   public void onClick(View view) {
-        //      switch (rgUpdateStoreChioce.getCheckedRadioButtonId()) {
-        //          case R.id.rbAddItem:
-        //                Toast.makeText(PoultryActivity2.this, "Adding item...", Toast.LENGTH_SHORT).show();
-        //                break;
-        //            case R.id.rbEditItem:
-        //                Toast.makeText(PoultryActivity2.this, "Editing item...", Toast.LENGTH_SHORT).show();
-        //                break;
-        //            case R.id.rbRemoveItem:
-        //                Toast.makeText(PoultryActivity2.this, "Removing item...", Toast.LENGTH_SHORT).show();
-        //            case R.id.rbBackFromUpdateStore:
-        //                Intent intent = new Intent(PoultryActivity2.this, VendorChoiceActivity.class);
-        //                startActivity(intent);
-        //            default:
-        //                break;
-        //       }
-        //    }
-        //});
+        });
+        eggs.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                Snackbar snack = Snackbar.make(findViewById(R.id.eggs),
+                        "Our Freedom Ranger chickens are raised on pasture and fed locally-sourced corn-, soy-, and GMO-free feed. This breed is said to have been preferred by Julia Child, and we agree with Julia! Freedom Rangers have a natural balance between white and dark meat and a deep, rich chicken flavor. The meat is juicy and firm–but not the least bit tough",
+                        Snackbar.LENGTH_INDEFINITE);
+                View snackView = snack.getView();
+                TextView tv = (TextView) snackView.findViewById(com.google.android.material.R.id.snackbar_text);
+                tv.setMaxLines(15);
+                snack.show();
+            }
+
+        });
+        practices.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(PoultryActivity2.this, ChickenPracticesActivity.class);
+                startActivity(intent);
+            }
+        });
 
     }
 
