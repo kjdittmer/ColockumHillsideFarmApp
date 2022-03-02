@@ -50,7 +50,7 @@ class AboutUsFragment : Fragment() {
             startActivity(intent)
         }
         vegetables.setOnClickListener{
-            val intent = Intent(activity, VegetableActivity2::class.java)
+            val intent = Intent(activity, VegetableActivity::class.java)
             startActivity(intent)
         }
 
