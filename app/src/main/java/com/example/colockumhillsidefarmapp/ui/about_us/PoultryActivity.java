@@ -4,16 +4,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.RadioGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.colockumhillsidefarmapp.R;
-import com.example.colockumhillsidefarmapp.ui.vendor.VendorChoiceActivity;
 import com.google.android.material.snackbar.Snackbar;
 
-public class PoultryActivity2 extends AppCompatActivity {
+public class PoultryActivity extends AppCompatActivity {
     private Button backbutton;
     private Button turkey;
     private Button chicken;
@@ -34,7 +31,7 @@ public class PoultryActivity2 extends AppCompatActivity {
         backbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(PoultryActivity2.this, AboutUsFragment.class);
+                Intent intent = new Intent(PoultryActivity.this, AboutUsFragment.class);
                 startActivity(intent);
             }
         });
@@ -80,7 +77,7 @@ public class PoultryActivity2 extends AppCompatActivity {
         practices.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(PoultryActivity2.this, ChickenPracticesActivity.class);
+                Intent intent = new Intent(PoultryActivity.this, ChickenPracticesActivity.class);
                 startActivity(intent);
             }
         });
