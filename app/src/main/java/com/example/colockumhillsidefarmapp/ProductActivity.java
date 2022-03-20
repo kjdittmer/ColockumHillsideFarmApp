@@ -63,6 +63,9 @@ public class ProductActivity extends AppCompatActivity {
 
                 System.out.println(ShoppingCart.getInstance().getCart());
 
+                Intent intent = new Intent(view.getContext(), ShoppingCartActivity.class);
+                startActivity(intent);
+
             }
         });
 
@@ -88,7 +91,11 @@ public class ProductActivity extends AppCompatActivity {
     private void setData(Product product){
         txtProductNameProdAct.setText(product.getName());
         txtShortDescProdAct.setText(product.getShortDesc());
-        txtProductPriceProdAct.setText("$" + product.getPrice());
+        String amount = "/lb";
+        if(product.getName().equals("Eggs")){
+            amount = "/dozen";
+        }
+        txtProductPriceProdAct.setText("$" + product.getPrice() + amount);
         txtProductQuantityLeftProdAct.setText("Quantity Left: " + product.getQuantity());
         txtLongDescProdAct.setText(product.getLongDesc());
 

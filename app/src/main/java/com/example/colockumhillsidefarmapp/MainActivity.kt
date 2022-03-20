@@ -49,7 +49,7 @@ class MainActivity : AppCompatActivity() {
         navView.setupWithNavController(navController)
 
 
-
+        ShoppingCart.getInstance()
 
 
 

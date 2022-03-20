@@ -4,14 +4,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.colockumhillsidefarmapp.Product
-import com.example.colockumhillsidefarmapp.ProductRecViewAdapter
+import com.example.colockumhillsidefarmapp.StoreProductRecViewAdapter
 import com.example.colockumhillsidefarmapp.R
 import com.example.colockumhillsidefarmapp.ShoppingCart
 import com.example.colockumhillsidefarmapp.databinding.FragmentStoreBinding
@@ -20,7 +17,7 @@ class StoreFragment : Fragment() {
 
     private var _binding: FragmentStoreBinding? = null
     private lateinit var productRecView: RecyclerView
-    private lateinit var adapter: ProductRecViewAdapter
+    private lateinit var adapter: StoreProductRecViewAdapter
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -42,7 +39,9 @@ class StoreFragment : Fragment() {
         //    textView.text = it
         //}
 
-        adapter = ProductRecViewAdapter(activity)
+        adapter = StoreProductRecViewAdapter(
+            activity
+        )
         productRecView = root.findViewById(R.id.productRecView)
 
         productRecView.adapter = adapter

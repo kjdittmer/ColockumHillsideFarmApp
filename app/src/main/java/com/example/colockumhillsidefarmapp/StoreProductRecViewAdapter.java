@@ -8,7 +8,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
@@ -16,47 +15,46 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 
-import org.w3c.dom.Text;
-
 import java.util.ArrayList;
 
-public class ProductRecViewAdapter extends RecyclerView.Adapter<ProductRecViewAdapter.ViewHolder> {
+public class StoreProductRecViewAdapter extends RecyclerView.Adapter<StoreProductRecViewAdapter.ViewHolder> {
     private static final String PRODUCT_ID = "productId";
     private static final String TAG = "ProductRecViewAdapter";
 
     private ArrayList<Product> products = new ArrayList<>();
     private Context mContext;
 
-    public ProductRecViewAdapter(Context mContext) {
+    public StoreProductRecViewAdapter(Context mContext) {
         this.mContext = mContext;
     }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_product, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_store_product, parent, false);
         return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        Log.d(TAG, "onBindViewHolder: Called");
-        holder.txtProductName.setText(products.get(holder.getAdapterPosition()).getName());
+        //TODO create local Product variable
+        Product product = products.get(holder.getAdapterPosition());
+        holder.txtProductName.setText(product.getName());
         String amount = "/lb";
-        if(products.get(holder.getAdapterPosition()).getName().equals("Eggs")){
+        if(product.getName().equals("Eggs")){
             amount = "/dozen";
         }
-        holder.txtPrice.setText("$" + products.get(holder.getAdapterPosition()).getPrice() + amount);
+        holder.txtPrice.setText("$" + product.getPrice() + amount);
         Glide.with(mContext)
                 .asBitmap()
-                .load(products.get(holder.getAdapterPosition()).getImageUrl())
+                .load(product.getImageUrl())
                 .into(holder.imgProduct);
 
         holder.parent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(mContext, ProductActivity.class);
-                intent.putExtra(PRODUCT_ID, products.get(holder.getAdapterPosition()).getId());
+                intent.putExtra(PRODUCT_ID, product.getId());
                 mContext.startActivity(intent);
             }
         });

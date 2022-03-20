@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+ <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+     android:layout_width="wrap_content"
+     android:layout_height="wrap_content"
+     xmlns:app="http://schemas.android.com/apk/res-auto"
+     android:id="@+id/parentCartItem"
+     app:cardCornerRadius="10dp"
+     app:cardElevation="10dp"
+     android:layout_margin="5dp"
+     android:layout_centerHorizontal="true"
+    >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:id="@+id/imgProductCartItem"
+            android:src="@mipmap/ic_launcher_tractor"
+            android:layout_margin="3dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Product Name"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:layout_below="@+id/imgProductCartItem"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="5dp"
+            android:id="@+id/txtProductNameCartItem"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Quanity"
+            android:textSize="12sp"
+            android:layout_below="@+id/txtProductNameCartItem"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="5dp"
+            android:id="@+id/txtQuantityCartItem"/>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Price"
+            android:textSize="12sp"
+            android:layout_below="@+id/txtQuantityCartItem"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="5dp"
+            android:id="@+id/txtPriceCartItem"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Subtotal"
+            android:textSize="12sp"
+            android:layout_below="@+id/txtPriceCartItem"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="5dp"
+            android:id="@+id/txtSubtotalCartItem"/>
+
+    </RelativeLayout>
+
+</com.google.android.material.card.MaterialCardView>
