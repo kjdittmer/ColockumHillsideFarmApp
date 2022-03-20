@@ -8,12 +8,10 @@ import android.text.method.LinkMovementMethod
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.colockumhillsidefarmapp.MainActivity
 import com.example.colockumhillsidefarmapp.R
 import com.example.colockumhillsidefarmapp.databinding.FragmentContactUsBinding
-import kotlinx.android.synthetic.main.fragment_contact_us.*
 
 class ContactUsActivity: AppCompatActivity() {
     private lateinit var binding: FragmentContactUsBinding
@@ -22,7 +20,7 @@ class ContactUsActivity: AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?){
         super.onCreate(savedInstanceState)
         setUpEmail()
-        setContentView(R.layout.pork_activity)
+        setContentView(R.layout.activity_pork)
         binding = FragmentContactUsBinding.inflate(layoutInflater)
         val root: View = binding.root
         back = root.findViewById(R.id.backbutton2)

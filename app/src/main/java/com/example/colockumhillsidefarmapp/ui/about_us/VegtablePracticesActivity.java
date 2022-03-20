@@ -8,7 +8,6 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.colockumhillsidefarmapp.MainActivity;
 import com.example.colockumhillsidefarmapp.R;
 import com.google.android.material.snackbar.Snackbar;
 
@@ -21,7 +20,7 @@ public class VegtablePracticesActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.vegtable_practices_activity);
+        setContentView(R.layout.activity_vegetable_practices);
 
         backbutton = findViewById(R.id.backbutton5);
         water = findViewById(R.id.button_water);

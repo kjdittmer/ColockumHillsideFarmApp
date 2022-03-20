@@ -14,7 +14,7 @@ class FarmInfo: AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?){
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.pork_activity)
+        setContentView(R.layout.activity_pork)
         binding = FarmInfoBinding.inflate(layoutInflater)
         val root: View = binding.root
         back = root.findViewById(R.id.backbutton2)

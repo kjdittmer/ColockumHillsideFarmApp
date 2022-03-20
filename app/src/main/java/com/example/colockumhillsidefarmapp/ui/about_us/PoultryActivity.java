@@ -22,7 +22,7 @@ public class PoultryActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.poultry_activity);
+        setContentView(R.layout.activity_poultry);
 
         backbutton = findViewById(R.id.backbutton);
         turkey = findViewById(R.id.turkey);
