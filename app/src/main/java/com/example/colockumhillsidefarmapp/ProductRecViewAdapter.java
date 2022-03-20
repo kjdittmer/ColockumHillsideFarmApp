@@ -1,6 +1,7 @@
 package com.example.colockumhillsidefarmapp;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -53,7 +54,8 @@ public class ProductRecViewAdapter extends RecyclerView.Adapter<ProductRecViewAd
         holder.parent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(mContext, products.get(holder.getAdapterPosition()).getName() + " Selected", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(mContext, ProductActivity.class);
+                mContext.startActivity(intent);
             }
         });
     }

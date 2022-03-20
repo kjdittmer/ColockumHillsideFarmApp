@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ProductActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Product Name"
+            android:id="@+id/txtProductNameProdAct"
+            android:layout_margin="10dp"
+            android:layout_centerHorizontal="true"
+            android:textStyle="bold"
+            android:textSize="30dp"/>
+
+        <ImageView
+            android:layout_width="250dp"
+            android:layout_height="250dp"
+            android:layout_centerHorizontal="true"
+            android:src="@mipmap/ic_launcher_tractor"
+            android:layout_marginTop="20dp"
+            android:id="@+id/imgProductProdAct"
+            android:layout_below="@+id/txtProductNameProdAct"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Short Desc"
+            android:id="@+id/txtShortDescProdAct"
+            android:layout_below="@+id/imgProductProdAct"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="5dp"/>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/priceAndQuantityLayoutProdAct"
+            android:layout_below="@+id/txtShortDescProdAct"
+            android:layout_centerHorizontal="true">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Price"
+                android:textSize="20dp"
+                android:id="@+id/txtProductPriceProdAct"
+                android:layout_margin="5dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Quantity Left"
+                android:textSize="20dp"
+                android:layout_toRightOf="@+id/txtProductPriceProdAct"
+                android:layout_margin="5dp"
+                android:id="@+id/txtProductQuantityLeftProdAct"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/buttonsLayoutProdAct"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/priceAndQuantityLayoutProdAct">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Add to wishlist"
+                android:id="@+id/btnAddToWishlist"
+                android:layout_margin="5dp"/>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/btnAddToCart"
+                android:layout_toRightOf="@+id/btnAddToWishlist"
+                android:layout_margin="5dp"
+                android:text="Add to cart"/>
+
+            <Spinner
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:id="@+id/spnrQuantitySelected"
+                android:layout_toRightOf="@+id/btnAddToCart"/>
+
+
+
+
+        </RelativeLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Long Desc"
+            android:id="@+id/txtLongDescProdAct"
+            android:layout_below="@+id/buttonsLayoutProdAct"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="5dp"/>
+
+
+
+    </RelativeLayout>
+
+
+</ScrollView>
