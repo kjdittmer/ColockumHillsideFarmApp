@@ -2,13 +2,16 @@ package com.example.colockumhillsidefarmapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.media.Image;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 
@@ -16,6 +19,9 @@ import java.util.ArrayList;
 
 public class ProductActivity extends AppCompatActivity {
 
+    private Product product;
+
+    private static final String PRODUCT_ID = "productId";
     private ImageView imgProductProdAct;
     private TextView txtProductNameProdAct, txtShortDescProdAct, txtProductPriceProdAct,
             txtProductQuantityLeftProdAct, txtLongDescProdAct;
@@ -29,17 +35,38 @@ public class ProductActivity extends AppCompatActivity {
 
         initVariables();
 
-        //TODO get product data from rec view
-        Product product = new Product(1, "Pork Chop", 10, "https://atlas-content-cdn.pixelsquid.com/stock-images/pork-chop-raw-chops-ZemwxrE-600.jpg",
-                "A tasty pork chop", "Long description", 4.99);
+        Intent intent = getIntent();
+        if(getIntent() != null){
+            int productId = intent.getIntExtra(PRODUCT_ID, -1);
+            if(productId != -1){
+                product = ShoppingCart.getInstance().getProduct(productId);
+                if(product != null){
+                    setData(product);
+                }
+            }
+        }
 
-        setData(product);
+        btnAddToCart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(view.getContext(), spnrQuantitySelected.getSelectedItem().toString() + " " + product.getName() +
+                        "added to cart!", Toast.LENGTH_SHORT).show();
+
+            }
+        });
+
+        btnAddToWishlist.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(view.getContext(), product.getName() + " added to wishlist!", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     private void setData(Product product){
         txtProductNameProdAct.setText(product.getName());
         txtShortDescProdAct.setText(product.getShortDesc());
-        txtProductPriceProdAct.setText(String.valueOf(product.getPrice()));
+        txtProductPriceProdAct.setText("$" + product.getPrice());
         txtProductQuantityLeftProdAct.setText("Quantity Left: " + product.getQuantity());
         txtLongDescProdAct.setText(product.getLongDesc());
 

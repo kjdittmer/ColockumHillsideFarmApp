@@ -21,6 +21,7 @@ import org.w3c.dom.Text;
 import java.util.ArrayList;
 
 public class ProductRecViewAdapter extends RecyclerView.Adapter<ProductRecViewAdapter.ViewHolder> {
+    private static final String PRODUCT_ID = "productId";
     private static final String TAG = "ProductRecViewAdapter";
 
     private ArrayList<Product> products = new ArrayList<>();
@@ -45,7 +46,7 @@ public class ProductRecViewAdapter extends RecyclerView.Adapter<ProductRecViewAd
         if(products.get(holder.getAdapterPosition()).getName().equals("Eggs")){
             amount = "/dozen";
         }
-        holder.txtPrice.setText(products.get(holder.getAdapterPosition()).getPrice() + amount);
+        holder.txtPrice.setText("$" + products.get(holder.getAdapterPosition()).getPrice() + amount);
         Glide.with(mContext)
                 .asBitmap()
                 .load(products.get(holder.getAdapterPosition()).getImageUrl())
@@ -55,6 +56,7 @@ public class ProductRecViewAdapter extends RecyclerView.Adapter<ProductRecViewAd
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(mContext, ProductActivity.class);
+                intent.putExtra(PRODUCT_ID, products.get(holder.getAdapterPosition()).getId());
                 mContext.startActivity(intent);
             }
         });
