@@ -49,8 +49,13 @@ public class ProductActivity extends AppCompatActivity {
         btnAddToCart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(view.getContext(), spnrQuantitySelected.getSelectedItem().toString() + " " + product.getName() +
-                        "added to cart!", Toast.LENGTH_SHORT).show();
+                int quantitySelected = (int)spnrQuantitySelected.getSelectedItem();
+                String plurality = "";
+                if (quantitySelected > 1) {
+                    plurality = "s";
+                }
+                Toast.makeText(view.getContext(), quantitySelected + " " + product.getName() + plurality +
+                        " added to cart!", Toast.LENGTH_SHORT).show();
 
             }
         });
@@ -58,7 +63,13 @@ public class ProductActivity extends AppCompatActivity {
         btnAddToWishlist.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(view.getContext(), product.getName() + " added to wishlist!", Toast.LENGTH_SHORT).show();
+                int quantitySelected = (int)spnrQuantitySelected.getSelectedItem();
+                String plurality = "";
+                if (quantitySelected > 1) {
+                    plurality = "s";
+                }
+                Toast.makeText(view.getContext(), quantitySelected + " " + product.getName() + plurality +
+                        " added to wishlist!", Toast.LENGTH_SHORT).show();
             }
         });
     }
