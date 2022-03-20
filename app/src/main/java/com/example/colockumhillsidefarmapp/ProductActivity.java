@@ -16,6 +16,7 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class ProductActivity extends AppCompatActivity {
 
@@ -50,6 +51,9 @@ public class ProductActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 int quantitySelected = (int)spnrQuantitySelected.getSelectedItem();
+
+                ShoppingCart.getInstance().addProductToCart(product, quantitySelected);
+
                 String plurality = "";
                 if (quantitySelected > 1) {
                     plurality = "s";
@@ -57,19 +61,26 @@ public class ProductActivity extends AppCompatActivity {
                 Toast.makeText(view.getContext(), quantitySelected + " " + product.getName() + plurality +
                         " added to cart!", Toast.LENGTH_SHORT).show();
 
+                System.out.println(ShoppingCart.getInstance().getCart());
+
             }
         });
 
         btnAddToWishlist.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                int quantitySelected = (int)spnrQuantitySelected.getSelectedItem();
+                int quantitySelected = (int) spnrQuantitySelected.getSelectedItem();
+
+                ShoppingCart.getInstance().addProductToWishlist(product, quantitySelected);
+
                 String plurality = "";
                 if (quantitySelected > 1) {
                     plurality = "s";
                 }
                 Toast.makeText(view.getContext(), quantitySelected + " " + product.getName() + plurality +
                         " added to wishlist!", Toast.LENGTH_SHORT).show();
+
+                System.out.println(ShoppingCart.getInstance().getWishlist());
             }
         });
     }

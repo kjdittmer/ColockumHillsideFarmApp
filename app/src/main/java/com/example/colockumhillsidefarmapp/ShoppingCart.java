@@ -7,6 +7,7 @@ public class ShoppingCart {
     private static ShoppingCart instance;
     private ArrayList<Product> allProducts;
     private HashMap<Product, Integer> cart;
+    private HashMap<Product, Integer> wishlist;
 
     private ShoppingCart() {
         if(allProducts == null) {
@@ -14,6 +15,10 @@ public class ShoppingCart {
         }
         if(cart == null) {
             cart = new HashMap<>();
+        }
+
+        if(wishlist == null) {
+            wishlist = new HashMap<>();
         }
 
         initData();
@@ -66,6 +71,10 @@ public class ShoppingCart {
         return cart;
     }
 
+    public HashMap<Product, Integer> getWishlist() {
+        return wishlist;
+    }
+
     public Product getProduct(int productId) {
         for(Product product : allProducts){
             if (product.getId() == productId){
@@ -75,4 +84,21 @@ public class ShoppingCart {
 
         return null;
     }
+
+    public void addProductToCart(Product product, int quantity) {
+        if(!cart.containsKey(product)) {
+            cart.put(product, quantity);
+        } else {
+            cart.put(product, quantity + cart.get(product));
+        }
+    }
+
+    public void addProductToWishlist(Product product, int quantity) {
+        if(!wishlist.containsKey(product)) {
+            wishlist.put(product, quantity);
+        } else {
+            wishlist.put(product, quantity + wishlist.get(product));
+        }
+    }
+
 }
