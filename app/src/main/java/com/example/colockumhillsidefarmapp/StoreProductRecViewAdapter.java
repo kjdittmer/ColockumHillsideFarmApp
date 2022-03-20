@@ -37,7 +37,6 @@ public class StoreProductRecViewAdapter extends RecyclerView.Adapter<StoreProduc
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        //TODO create local Product variable
         Product product = products.get(holder.getAdapterPosition());
         holder.txtProductName.setText(product.getName());
         String amount = "/lb";
