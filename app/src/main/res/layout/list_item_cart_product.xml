@@ -57,7 +57,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Subtotal"
-            android:textSize="12sp"
+            android:textSize="16sp"
             android:layout_below="@+id/txtPriceCartItem"
             android:layout_centerHorizontal="true"
             android:layout_margin="5dp"

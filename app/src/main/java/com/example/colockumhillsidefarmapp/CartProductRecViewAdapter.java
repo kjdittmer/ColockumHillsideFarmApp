@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -60,10 +61,13 @@ public class CartProductRecViewAdapter extends RecyclerView.Adapter<CartProductR
         if(product.getName().equals("Eggs")){
             amount = "/dozen";
         }
-        holder.txtPriceCartItem.setText("$" + product.getPrice() + amount);
 
-        double subtotal = quantityInCart * product.getPrice();
-        holder.txtSubtotalCartItem.setText("Subtotal: &" + subtotal);
+        DecimalFormat df = new DecimalFormat("0.00");
+        String price = df.format(product.getPrice());
+        holder.txtPriceCartItem.setText("$" + price + amount);
+
+        String subtotal = df.format(quantityInCart * product.getPrice());
+        holder.txtSubtotalCartItem.setText("Subtotal: $" + subtotal);
 
         holder.parentCartItem.setOnClickListener(new View.OnClickListener() {
             @Override
