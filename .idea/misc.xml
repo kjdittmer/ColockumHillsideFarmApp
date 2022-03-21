@@ -32,15 +32,20 @@
         <entry key="..\:/Users/emily/AndroidStudioProjects/ColockumHillsideFarmApp/app/src/main/res/menu/activity_main_drawer.xml" value="0.17552083333333332" />
         <entry key="..\:/Users/emily/AndroidStudioProjects/ColockumHillsideFarmApp/app/src/main/res/menu/main.xml" value="0.17552083333333332" />
         <entry key="..\:/Users/emily/AndroidStudioProjects/ColockumHillsideFarmApp/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.1785" />
+        <entry key="app/src/main/res/drawable-anydpi/ic_menu_store.xml" value="0.1455" />
         <entry key="app/src/main/res/layout/activity_analytics.xml" value="0.21822916666666667" />
         <entry key="app/src/main/res/layout/activity_product.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_shopping_cart.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_update_store.xml" value="0.28055555555555556" />
+        <entry key="app/src/main/res/layout/app_bar_main.xml" value="0.2171875" />
         <entry key="app/src/main/res/layout/farm_info.xml" value="0.3802083333333333" />
         <entry key="app/src/main/res/layout/fragment_store.xml" value="0.23680456490727533" />
         <entry key="app/src/main/res/layout/list_item_cart_product.xml" value="0.335" />
         <entry key="app/src/main/res/layout/list_item_product.xml" value="0.3802083333333333" />
         <entry key="app/src/main/res/layout/list_item_store_product.xml" value="0.21822916666666667" />
+        <entry key="app/src/main/res/layout/nav_header_main.xml" value="0.2171875" />
+        <entry key="app/src/main/res/menu/activity_main_drawer.xml" value="0.2171875" />
+        <entry key="app/src/main/res/menu/main.xml" value="0.2171875" />
       </map>
     </option>
   </component>
