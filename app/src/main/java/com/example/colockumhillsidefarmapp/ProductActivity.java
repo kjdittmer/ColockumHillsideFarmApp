@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -95,7 +96,11 @@ public class ProductActivity extends AppCompatActivity {
         if(product.getName().equals("Eggs")){
             amount = "/dozen";
         }
-        txtProductPriceProdAct.setText("$" + product.getPrice() + amount);
+
+        String price;
+        DecimalFormat df = new DecimalFormat("0.00");
+        price = df.format(product.getPrice());
+        txtProductPriceProdAct.setText("$" + price + amount);
         txtProductQuantityLeftProdAct.setText("Quantity Left: " + product.getQuantity());
         txtLongDescProdAct.setText(product.getLongDesc());
 

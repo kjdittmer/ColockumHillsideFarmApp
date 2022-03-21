@@ -80,6 +80,14 @@ public class CartProductRecViewAdapter extends RecyclerView.Adapter<CartProductR
         return cart.keySet().size();
     }
 
+    public double getTotalCost(){
+        double totalCost = 0;
+        for(Product productInCart : cart.keySet()) {
+            totalCost += productInCart.getPrice() * cart.get(productInCart);
+        }
+        return totalCost;
+    }
+
     public class ViewHolder extends RecyclerView.ViewHolder {
         private CardView parentCartItem;
         private ImageView imgProductCartItem;

@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 public class StoreProductRecViewAdapter extends RecyclerView.Adapter<StoreProductRecViewAdapter.ViewHolder> {
@@ -43,7 +44,10 @@ public class StoreProductRecViewAdapter extends RecyclerView.Adapter<StoreProduc
         if(product.getName().equals("Eggs")){
             amount = "/dozen";
         }
-        holder.txtPrice.setText("$" + product.getPrice() + amount);
+        String price;
+        DecimalFormat df = new DecimalFormat("0.00");
+        price = df.format(product.getPrice());
+        holder.txtPrice.setText("$" + price + amount);
         Glide.with(mContext)
                 .asBitmap()
                 .load(product.getImageUrl())
