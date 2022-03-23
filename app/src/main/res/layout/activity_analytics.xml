@@ -7,11 +7,146 @@
     tools:context=".ui.vendor.AnalyticsActivity">
 
     <TextView
+        android:id="@+id/txtGraph"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="analytics"
-        android:layout_centerInParent="true"/>
+        android:text="Sales"
+        android:layout_centerHorizontal="false"
+        android:textSize="30sp"
+        android:padding="10dp"
+        android:textStyle="bold"/>
+
+    <ImageView
+        android:id="@+id/imgGraph"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:src="@drawable/ic_baseline_auto_graph_24"
+        android:layout_below="@+id/txtGraph"
+        android:layout_centerHorizontal="false"
+        android:padding="10dp"/>
+
+    <TextView
+        android:id="@+id/txtTotalSales"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sales - Total: "
+        android:textStyle="bold"
+        android:layout_below="@+id/imgGraph"
+        android:padding="10dp"
+        android:textSize="20dp"/>
 
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="$5,560,123"
+        android:layout_below="@+id/imgGraph"
+        android:layout_toRightOf="@+id/txtTotalSales"
+        android:padding="10dp"
+        android:textSize="20dp"/>
 
+    <TextView
+        android:id="@+id/txtSalesYTD"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sales - YTD: "
+        android:textStyle="bold"
+        android:layout_below="@+id/txtTotalSales"
+        android:padding="10dp"
+        android:textSize="20dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="$1,435,689"
+        android:layout_below="@+id/txtTotalSales"
+        android:layout_toRightOf="@+id/txtSalesYTD"
+        android:padding="10dp"
+        android:textSize="20dp"/>
+
+    <TextView
+        android:id="@+id/txtSalesMonth"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sales - This Month: "
+        android:textStyle="bold"
+        android:layout_below="@+id/txtSalesYTD"
+        android:padding="10dp"
+        android:textSize="20dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="$335,689"
+        android:layout_below="@+id/txtSalesYTD"
+        android:layout_toRightOf="@+id/txtSalesMonth"
+        android:padding="10dp"
+        android:textSize="20dp"/>
+
+    <TextView
+        android:id="@+id/txtPorkSalesTotal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Pork Sales - Total: "
+        android:textStyle="bold"
+        android:layout_below="@+id/txtSalesMonth"
+        android:padding="10dp"
+        android:textSize="20dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="$3,335,684"
+        android:layout_below="@+id/txtSalesMonth"
+        android:layout_toRightOf="@+id/txtPorkSalesTotal"
+        android:padding="10dp"
+        android:textSize="20dp"/>
+
+    <TextView
+        android:id="@+id/txtPorkSalesYTD"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Pork Sales - YTD: "
+        android:textStyle="bold"
+        android:layout_below="@+id/txtPorkSalesTotal"
+        android:padding="10dp"
+        android:textSize="20dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="$935,656"
+        android:layout_below="@+id/txtPorkSalesTotal"
+        android:layout_toRightOf="@+id/txtPorkSalesYTD"
+        android:padding="10dp"
+        android:textSize="20dp"/>
+
+    <TextView
+        android:id="@+id/txtPorkSalesMonth"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Pork Sales - This Month: "
+        android:textStyle="bold"
+        android:layout_below="@+id/txtPorkSalesYTD"
+        android:padding="10dp"
+        android:textSize="20dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="$348,963"
+        android:layout_below="@+id/txtPorkSalesYTD"
+        android:layout_toRightOf="@+id/txtPorkSalesMonth"
+        android:padding="10dp"
+        android:textSize="20dp"/>
+
+    <TextView
+        android:id="@+id/elipses"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="... "
+        android:textStyle="bold"
+        android:layout_below="@+id/txtPorkSalesMonth"
+        android:padding="10dp"
+        android:textSize="40dp"/>
 </RelativeLayout>

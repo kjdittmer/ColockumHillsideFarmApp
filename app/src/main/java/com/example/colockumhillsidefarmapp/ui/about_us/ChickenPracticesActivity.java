@@ -19,7 +19,7 @@ public class ChickenPracticesActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.chicken_practices_activity);
+        setContentView(R.layout.activity_chicken_practices);
 
         back = findViewById(R.id.back4);
         meatChickens = findViewById(R.id.meatChicken);

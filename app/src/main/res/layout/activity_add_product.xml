@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.vendor.AddProductActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/txtTitleAddProdAct"
+            android:text="Add Product"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="15dp"
+            android:textSize="30sp"
+            android:textStyle="bold"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txtTitleAddProdAct"
+            android:hint="Name"
+            android:layout_margin="5dp"
+            android:id="@+id/txtNameAddProdAct"
+            android:inputType="text"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txtNameAddProdAct"
+            android:hint="Quantity"
+            android:layout_margin="5dp"
+            android:id="@+id/txtQuantityAddProdAct"
+            android:inputType="number"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txtQuantityAddProdAct"
+            android:hint="Image URL"
+            android:layout_margin="5dp"
+            android:id="@+id/txtImageUrlProdAct"
+            android:inputType="text"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txtImageUrlProdAct"
+            android:hint="Short Description"
+            android:layout_margin="5dp"
+            android:id="@+id/txtShortDescAddProdAct"
+            android:inputType="text"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txtShortDescAddProdAct"
+            android:hint="Long Description"
+            android:layout_margin="5dp"
+            android:id="@+id/txtLongDescAddProdAct"
+            android:inputType="text"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txtLongDescAddProdAct"
+            android:hint="Price"
+            android:layout_margin="5dp"
+            android:id="@+id/txtPriceAddProdAct"
+            android:inputType="numberDecimal"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txtPriceAddProdAct"
+            android:hint="Package Quantity (eg lb, dozen)"
+            android:layout_margin="5dp"
+            android:id="@+id/txtPackageQuantityAddProdAct"
+            android:inputType="text"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txtPackageQuantityAddProdAct"
+            android:layout_centerHorizontal="true"
+            android:text="Add Product"
+            android:layout_margin="5dp"
+            android:id="@+id/btnAddProductAddProdAct"/>
+
+
+    </RelativeLayout>
+
+</ScrollView>

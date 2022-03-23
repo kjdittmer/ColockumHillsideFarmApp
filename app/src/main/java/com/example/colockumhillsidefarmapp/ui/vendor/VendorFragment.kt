@@ -51,15 +51,18 @@ class VendorFragment : Fragment() {
         }
 
         btnLogin.setOnClickListener {
-            if(txtUsername.text.toString().equals("nicobradley") && txtUserID.text.toString().equals("1234")){
-                Toast.makeText(activity, "Welcome nicobradley", Toast.LENGTH_LONG).show()
+            val intent = Intent(activity, VendorChoiceActivity::class.java)
+            startActivity(intent)
 
-                val intent = Intent(activity, VendorChoiceActivity::class.java)
-                startActivity(intent)
-
-            } else {
-                Toast.makeText(activity, "Your credentials are INCORRECT", Toast.LENGTH_LONG).show()
-            }
+//            if(txtUsername.text.toString().equals("nicobradley") && txtUserID.text.toString().equals("1234")){
+//                Toast.makeText(activity, "Welcome nicobradley", Toast.LENGTH_LONG).show()
+//
+//                val intent = Intent(activity, VendorChoiceActivity::class.java)
+//                startActivity(intent)
+//
+//            } else {
+//                Toast.makeText(activity, "Your credentials are INCORRECT", Toast.LENGTH_LONG).show()
+//            }
         }
 
 

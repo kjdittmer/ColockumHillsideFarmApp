@@ -28,24 +28,24 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:id="@+id/btnAddItem"
-            android:text="Add item"/>
+            android:id="@+id/btnAddProduct"
+            android:text="Add product"/>
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:id="@+id/btnEditItem"
-            android:text="Edit item"
-            android:layout_below="@+id/btnAddItem"/>
+            android:id="@+id/btnEditProduct"
+            android:text="Edit product"
+            android:layout_below="@+id/btnAddProduct"/>
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:id="@+id/btnRemoveItem"
-            android:text="Remove item"
-            android:layout_below="@+id/btnEditItem"/>
+            android:id="@+id/btnRemoveProduct"
+            android:text="Remove product"
+            android:layout_below="@+id/btnEditProduct"/>
 
         <Button
             android:layout_width="wrap_content"
@@ -53,7 +53,7 @@
             android:layout_centerHorizontal="true"
             android:id="@+id/btnBackFromUpdateStore"
             android:text="Back"
-            android:layout_below="@+id/btnRemoveItem"/>
+            android:layout_below="@+id/btnRemoveProduct"/>
     </RelativeLayout>
 
 

@@ -22,7 +22,7 @@ public class VegetableActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.vegetable_activity);
+        setContentView(R.layout.activity_vegetable);
 
         back = findViewById(R.id.back3);
         veggies = findViewById(R.id.veggies);

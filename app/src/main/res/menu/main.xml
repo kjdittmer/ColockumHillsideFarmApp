@@ -6,4 +6,10 @@
         android:orderInCategory="100"
         android:title="@string/action_settings"
         app:showAsAction="never" />
+    <item
+        android:id="@+id/action_shopping_cart"
+        android:orderInCategory="100"
+        android:title="Shopping Cart"
+        android:icon="@drawable/ic_baseline_shopping_cart_"
+        app:showAsAction="always"/>
 </menu>
