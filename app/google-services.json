@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "475392122527",
+    "project_id": "colockum-hillside-farm",
+    "storage_bucket": "colockum-hillside-farm.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:475392122527:android:40e4dba7b10d6dfbe04caa",
+        "android_client_info": {
+          "package_name": "com.example.colockumhillsidefarmapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "475392122527-j5v974o3u9rutcmcr2mr6gibjl1mu20i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCBV39opanwyiI-9XghBfXGpDBCjScQsd0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "475392122527-j5v974o3u9rutcmcr2mr6gibjl1mu20i.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
