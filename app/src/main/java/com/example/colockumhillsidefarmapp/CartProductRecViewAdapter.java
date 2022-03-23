@@ -1,6 +1,7 @@
 package com.example.colockumhillsidefarmapp;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -8,8 +9,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -78,9 +81,25 @@ public class CartProductRecViewAdapter extends RecyclerView.Adapter<CartProductR
         holder.imgDeleteCartItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ShoppingCart.getInstance().removeProductFromCart(product);
-                //notifyDataSetChanged();
-                currentActivity.reload();
+                AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
+                builder.setMessage("Are you sure you want to remove " + product.getName() + " from your cart?");
+                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        ShoppingCart.getInstance().removeProductFromCart(product);
+                        currentActivity.reload();
+                        Toast.makeText(mContext, product.getName() + " Removed", Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+                builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+
+                    }
+                });
+
+                builder.create().show();
             }
         });
     }

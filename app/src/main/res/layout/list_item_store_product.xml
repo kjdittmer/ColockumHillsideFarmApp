@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/parent"
     app:cardCornerRadius="10dp"
     app:cardElevation="10dp"
-    android:layout_margin="5dp">
+    android:layout_margin="5dp"
+    android:layout_centerHorizontal="true">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -16,7 +17,8 @@
             android:layout_width="150dp"
             android:layout_height="150dp"
             android:id="@+id/imgProduct"
-            android:src="@mipmap/ic_launcher_tractor"/>
+            android:src="@mipmap/ic_launcher_tractor"
+            android:layout_centerHorizontal="true"/>
 
         <TextView
             android:layout_width="wrap_content"
