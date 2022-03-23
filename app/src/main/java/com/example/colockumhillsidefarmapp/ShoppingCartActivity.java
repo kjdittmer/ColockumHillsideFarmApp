@@ -40,7 +40,7 @@ public class ShoppingCartActivity extends AppCompatActivity {
     }
 
     private void setData() {
-        adapter = new CartProductRecViewAdapter(this);
+        adapter = new CartProductRecViewAdapter(this, this);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
@@ -70,5 +70,12 @@ public class ShoppingCartActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+
+    public void reload() {
+        finish();
+        overridePendingTransition(0, 0);
+        startActivity(getIntent());
+        overridePendingTransition(0, 0);
     }
 }

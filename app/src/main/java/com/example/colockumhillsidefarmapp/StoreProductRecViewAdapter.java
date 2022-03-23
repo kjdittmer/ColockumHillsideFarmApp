@@ -40,14 +40,10 @@ public class StoreProductRecViewAdapter extends RecyclerView.Adapter<StoreProduc
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Product product = products.get(holder.getAdapterPosition());
         holder.txtProductName.setText(product.getName());
-        String amount = "/lb";
-        if(product.getName().equals("Eggs")){
-            amount = "/dozen";
-        }
         String price;
         DecimalFormat df = new DecimalFormat("0.00");
         price = df.format(product.getPrice());
-        holder.txtPrice.setText("$" + price + amount);
+        holder.txtPrice.setText("$" + price + "/" + product.getPackageQuantity());
         Glide.with(mContext)
                 .asBitmap()
                 .load(product.getImageUrl())

@@ -8,8 +8,9 @@ public class Product {
     private String shortDesc;
     private String longDesc;
     private double price;
+    private String packageQuantity;
 
-    public Product(int id, String name, int quantity, String imageUrl, String shortDesc, String longDesc, double price) {
+    public Product(int id, String name, int quantity, String imageUrl, String shortDesc, String longDesc, double price, String packageQuantity) {
         this.id = id;
         this.name = name;
         this.quantity = quantity;
@@ -17,6 +18,7 @@ public class Product {
         this.shortDesc = shortDesc;
         this.longDesc = longDesc;
         this.price = price;
+        this.packageQuantity = packageQuantity;
     }
 
     public int getId() {
@@ -75,6 +77,14 @@ public class Product {
         this.price = price;
     }
 
+    public String getPackageQuantity() {
+        return packageQuantity;
+    }
+
+    public void setPackageQuantity(String packageQuantity) {
+        this.packageQuantity = packageQuantity;
+    }
+
     @Override
     public String toString() {
         return "Product{" +
@@ -85,6 +95,7 @@ public class Product {
                 ", shortDesc='" + shortDesc + '\'' +
                 ", longDesc='" + longDesc + '\'' +
                 ", price=" + price +
+                ", packageQuantity='" + packageQuantity + '\'' +
                 '}';
     }
 }

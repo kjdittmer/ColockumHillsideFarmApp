@@ -26,10 +26,12 @@ public class CartProductRecViewAdapter extends RecyclerView.Adapter<CartProductR
     private ArrayList<Product> productsInCart;
     private HashMap<Product, Integer> cart;
     private Context mContext;
+    private ShoppingCartActivity currentActivity;
 
-    public CartProductRecViewAdapter(Context mContext) {
+    public CartProductRecViewAdapter(Context mContext, ShoppingCartActivity currentActivity) {
         this.mContext = mContext;
         cart = ShoppingCart.getInstance().getCart();
+        this.currentActivity = currentActivity;
     }
 
     public void setProductsInCart(ArrayList<Product> productsInCart) {
@@ -57,14 +59,9 @@ public class CartProductRecViewAdapter extends RecyclerView.Adapter<CartProductR
 
         holder.txtQuantityCartItem.setText("Quantity: " + quantityInCart);
 
-        String amount = "/lb";
-        if(product.getName().equals("Eggs")){
-            amount = "/dozen";
-        }
-
         DecimalFormat df = new DecimalFormat("0.00");
         String price = df.format(product.getPrice());
-        holder.txtPriceCartItem.setText("$" + price + amount);
+        holder.txtPriceCartItem.setText("$" + price + "/" + product.getPackageQuantity());
 
         String subtotal = df.format(quantityInCart * product.getPrice());
         holder.txtSubtotalCartItem.setText("Subtotal: $" + subtotal);
@@ -75,6 +72,15 @@ public class CartProductRecViewAdapter extends RecyclerView.Adapter<CartProductR
                 Intent intent = new Intent(mContext, ProductActivity.class);
                 intent.putExtra(PRODUCT_ID, productsInCart.get(holder.getAdapterPosition()).getId());
                 mContext.startActivity(intent);
+            }
+        });
+
+        holder.imgDeleteCartItem.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ShoppingCart.getInstance().removeProductFromCart(product);
+                //notifyDataSetChanged();
+                currentActivity.reload();
             }
         });
     }
@@ -92,9 +98,10 @@ public class CartProductRecViewAdapter extends RecyclerView.Adapter<CartProductR
         return totalCost;
     }
 
+
     public class ViewHolder extends RecyclerView.ViewHolder {
         private CardView parentCartItem;
-        private ImageView imgProductCartItem;
+        private ImageView imgProductCartItem, imgDeleteCartItem;
         private TextView txtProductNameCartItem, txtQuantityCartItem, txtPriceCartItem, txtSubtotalCartItem;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -104,7 +111,7 @@ public class CartProductRecViewAdapter extends RecyclerView.Adapter<CartProductR
             txtQuantityCartItem = itemView.findViewById(R.id.txtQuantityCartItem);
             txtPriceCartItem = itemView.findViewById(R.id.txtPriceCartItem);
             txtSubtotalCartItem = itemView.findViewById(R.id.txtSubtotalCartItem);
-
+            imgDeleteCartItem = itemView.findViewById(R.id.imgDeleteCartItem);
         }
     }
 }

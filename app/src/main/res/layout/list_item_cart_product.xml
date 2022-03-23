@@ -12,14 +12,24 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:id="@+id/layoutCartItem">
 
         <ImageView
             android:layout_width="200dp"
             android:layout_height="150dp"
             android:id="@+id/imgProductCartItem"
             android:src="@mipmap/ic_launcher_tractor"
-            android:layout_margin="3dp"/>
+            />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_baseline_delete_24"
+            android:layout_margin="5dp"
+            android:id="@+id/imgDeleteCartItem"
+            android:layout_below="@+id/txtPriceCartItem"
+            />
 
         <TextView
             android:layout_width="wrap_content"

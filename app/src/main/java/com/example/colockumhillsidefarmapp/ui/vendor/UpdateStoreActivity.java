@@ -13,7 +13,7 @@ import com.example.colockumhillsidefarmapp.R;
 
 public class UpdateStoreActivity extends AppCompatActivity {
 
-    private Button btnAddItem, btnRemoveItem, btnEditItem, btnBackFromUpdateStore;
+    private Button btnAddProduct, btnRemoveProduct, btnEditProduct, btnBackFromUpdateStore;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,21 +22,22 @@ public class UpdateStoreActivity extends AppCompatActivity {
 
         initVariables();
 
-        btnAddItem.setOnClickListener(new View.OnClickListener() {
+        btnAddProduct.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(UpdateStoreActivity.this, "Adding item...", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(view.getContext(), AddProductActivity.class);
+                startActivity(intent);
             }
         });
 
-        btnEditItem.setOnClickListener(new View.OnClickListener() {
+        btnEditProduct.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Toast.makeText(UpdateStoreActivity.this, "Editing item...", Toast.LENGTH_SHORT).show();
             }
         });
 
-        btnRemoveItem.setOnClickListener(new View.OnClickListener() {
+        btnRemoveProduct.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Toast.makeText(UpdateStoreActivity.this, "Removing item...", Toast.LENGTH_SHORT).show();
@@ -54,9 +55,9 @@ public class UpdateStoreActivity extends AppCompatActivity {
     }
 
     private void initVariables() {
-        btnAddItem = findViewById(R.id.btnAddItem);
-        btnRemoveItem = findViewById(R.id.btnRemoveItem);
-        btnEditItem = findViewById(R.id.btnEditItem);
+        btnAddProduct = findViewById(R.id.btnAddProduct);
+        btnRemoveProduct = findViewById(R.id.btnRemoveProduct);
+        btnEditProduct = findViewById(R.id.btnEditProduct);
         btnBackFromUpdateStore = findViewById(R.id.btnBackFromUpdateStore);
     }
 }
