@@ -85,6 +85,18 @@ public class ShoppingCart {
         return null;
     }
 
+    public void addProductToAllProducts(Product product) {
+        allProducts.add(product);
+    }
+
+    public int getNewId(){
+        int maxId = Integer.MIN_VALUE;
+        for (Product product : allProducts) {
+            maxId = Math.max(maxId, product.getId());
+        }
+        return maxId + 1;
+    }
+
     public void addProductToCart(Product product, int quantity) {
         if(!cart.containsKey(product)) {
             cart.put(product, quantity);
