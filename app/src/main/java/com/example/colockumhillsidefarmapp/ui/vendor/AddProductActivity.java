@@ -1,7 +1,9 @@
 package com.example.colockumhillsidefarmapp.ui.vendor;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -35,10 +37,28 @@ public class AddProductActivity extends AppCompatActivity {
                 int quantity = Integer.parseInt(txtQuantityAddProdAct.getText().toString());
                 double price = Double.parseDouble(txtPriceAddProdAct.getText().toString());
                 if(validateData()) {
-                    int newProductId = ShoppingCart.getInstance().getNewId();
-                    Product productToAdd = new Product(newProductId, name, quantity, imageUrl, shortDesc, longDesc, price, packageQuantity);
-                    ShoppingCart.getInstance().addProductToAllProducts(productToAdd);
-                    Toast.makeText(view.getContext(), name + " was added to the store.", Toast.LENGTH_SHORT).show();
+
+                    AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
+                    builder.setMessage("Is the following information correct?\nName: " + name + "\nQuantity: " + quantity + "\nImage URL: " + imageUrl + "\nShort Description: " + shortDesc + "\nLong Description: " + longDesc + "\nPrice: " + price + "\nPackage Quantity: " + packageQuantity);
+                    builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            int newProductId = ShoppingCart.getInstance().getNewId();
+                            Product productToAdd = new Product(newProductId, name, quantity, imageUrl, shortDesc, longDesc, price, packageQuantity);
+                            ShoppingCart.getInstance().addProductToAllProducts(productToAdd);
+                            Toast.makeText(view.getContext(), name + " was added to the store.", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+
+                    builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+
+                        }
+                    });
+
+                    builder.create().show();
+
                 } else {
                     Toast.makeText(view.getContext(), "Please enter valid data.", Toast.LENGTH_SHORT).show();
                 }
@@ -49,8 +69,6 @@ public class AddProductActivity extends AppCompatActivity {
     }
 
     private boolean validateData() {
-
-
         return true;
     }
 
