@@ -14,6 +14,7 @@ import com.example.colockumhillsidefarmapp.R
 import com.example.colockumhillsidefarmapp.ShoppingCart
 import com.example.colockumhillsidefarmapp.databinding.FragmentStoreBinding
 
+
 class StoreFragment : Fragment() {
 
     private var _binding: FragmentStoreBinding? = null
