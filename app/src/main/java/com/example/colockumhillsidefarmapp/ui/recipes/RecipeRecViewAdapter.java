@@ -20,7 +20,7 @@ import com.example.colockumhillsidefarmapp.R;
 import java.util.ArrayList;
 
 public class RecipeRecViewAdapter extends RecyclerView.Adapter<RecipeRecViewAdapter.ViewHolder>{
-    private static final String TAG = "RecipeRecViewAdapter"
+    private static final String TAG = "RecipeRecViewAdapter";
 
     private ArrayList<RecipeView> recipes = new ArrayList<>();
     private Context mContext;
@@ -71,7 +71,7 @@ public class RecipeRecViewAdapter extends RecyclerView.Adapter<RecipeRecViewAdap
             super(itemView);
             parent = itemView.findViewById(R.id.parent);
             imgRecipe = itemView.findViewById(R.id.imgRecipe);
-            txtName = itemView.findViewById(R.id.txtRecipeName);
+            //txtName = itemView.findViewById(R.id.txtRecipeName);
 
         }
     }
