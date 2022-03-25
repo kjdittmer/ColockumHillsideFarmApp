@@ -3,6 +3,20 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/dutch_dpse3eu/AndroidStudioProjects/ColockumHillsideFarmApp/app/src/main/res/layout/activity_add_product.xml" value="0.24895833333333334" />
+        <entry key="..\:/Users/dutch_dpse3eu/AndroidStudioProjects/ColockumHillsideFarmApp/app/src/main/res/layout/activity_update_about_us.xml" value="0.234375" />
+        <entry key="..\:/Users/dutch_dpse3eu/AndroidStudioProjects/ColockumHillsideFarmApp/app/src/main/res/layout/activity_update_store.xml" value="0.24895833333333334" />
+        <entry key="..\:/Users/dutch_dpse3eu/AndroidStudioProjects/ColockumHillsideFarmApp/app/src/main/res/layout/activity_vegetable.xml" value="0.16875" />
+        <entry key="..\:/Users/dutch_dpse3eu/AndroidStudioProjects/ColockumHillsideFarmApp/app/src/main/res/layout/activity_vendor_choice.xml" value="0.24895833333333334" />
+        <entry key="..\:/Users/dutch_dpse3eu/AndroidStudioProjects/ColockumHillsideFarmApp/app/src/main/res/layout/chicken_practices_activity.xml" value="0.19635416666666666" />
+        <entry key="..\:/Users/dutch_dpse3eu/AndroidStudioProjects/ColockumHillsideFarmApp/app/src/main/res/layout/content_main.xml" value="0.12129629629629629" />
+        <entry key="..\:/Users/dutch_dpse3eu/AndroidStudioProjects/ColockumHillsideFarmApp/app/src/main/res/layout/farm_info.xml" value="0.2" />
+        <entry key="..\:/Users/dutch_dpse3eu/AndroidStudioProjects/ColockumHillsideFarmApp/app/src/main/res/layout/fragment_about_us.xml" value="0.12129629629629629" />
+        <entry key="..\:/Users/dutch_dpse3eu/AndroidStudioProjects/ColockumHillsideFarmApp/app/src/main/res/layout/fragment_contact_us.xml" value="0.1" />
+        <entry key="..\:/Users/dutch_dpse3eu/AndroidStudioProjects/ColockumHillsideFarmApp/app/src/main/res/layout/pork_activity.xml" value="0.24322916666666666" />
+        <entry key="..\:/Users/dutch_dpse3eu/AndroidStudioProjects/ColockumHillsideFarmApp/app/src/main/res/layout/poultry_activity.xml" value="0.19635416666666666" />
+        <entry key="..\:/Users/dutch_dpse3eu/AndroidStudioProjects/ColockumHillsideFarmApp/app/src/main/res/layout/vegetable_activity.xml" value="0.234375" />
+        <entry key="..\:/Users/dutch_dpse3eu/AndroidStudioProjects/ColockumHillsideFarmApp/app/src/main/res/layout/vegtable_practices_activity.xml" value="0.2" />
         <entry key="..\:/Users/emily/AndroidStudioProjects/ColockumHillsideFarmApp/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1785" />
         <entry key="..\:/Users/emily/AndroidStudioProjects/ColockumHillsideFarmApp/app/src/main/res/drawable/carrotpic.xml" value="0.169" />
         <entry key="..\:/Users/emily/AndroidStudioProjects/ColockumHillsideFarmApp/app/src/main/res/drawable/chickenpic.xml" value="0.169" />
@@ -11,11 +25,8 @@
         <entry key="..\:/Users/emily/AndroidStudioProjects/ColockumHillsideFarmApp/app/src/main/res/drawable/side_nav_bar.xml" value="0.1785" />
         <entry key="..\:/Users/emily/AndroidStudioProjects/ColockumHillsideFarmApp/app/src/main/res/layout/activity_about_us.xml" value="0.17552083333333332" />
         <entry key="..\:/Users/emily/AndroidStudioProjects/ColockumHillsideFarmApp/app/src/main/res/layout/activity_main.xml" value="0.17552083333333332" />
-        <entry key="..\:/Users/emily/AndroidStudioProjects/ColockumHillsideFarmApp/app/src/main/res/layout/activity_storage.xml" value="0.16757246376811594" />
-        <entry key="..\:/Users/emily/AndroidStudioProjects/ColockumHillsideFarmApp/app/src/main/res/layout/activity_test.xml" value="0.17552083333333332" />
         <entry key="..\:/Users/emily/AndroidStudioProjects/ColockumHillsideFarmApp/app/src/main/res/layout/app_bar_main.xml" value="0.17552083333333332" />
         <entry key="..\:/Users/emily/AndroidStudioProjects/ColockumHillsideFarmApp/app/src/main/res/layout/chicken_activity.xml" value="0.1308876811594203" />
-        <entry key="..\:/Users/emily/AndroidStudioProjects/ColockumHillsideFarmApp/app/src/main/res/layout/chicken_practices_activity.xml" value="0.1" />
         <entry key="..\:/Users/emily/AndroidStudioProjects/ColockumHillsideFarmApp/app/src/main/res/layout/content_main.xml" value="0.17552083333333332" />
         <entry key="..\:/Users/emily/AndroidStudioProjects/ColockumHillsideFarmApp/app/src/main/res/layout/fragment_about_us.xml" value="0.1" />
         <entry key="..\:/Users/emily/AndroidStudioProjects/ColockumHillsideFarmApp/app/src/main/res/layout/fragment_contact_us.xml" value="0.17552083333333332" />
@@ -24,12 +35,10 @@
         <entry key="..\:/Users/emily/AndroidStudioProjects/ColockumHillsideFarmApp/app/src/main/res/layout/fragment_recipes.xml" value="0.17552083333333332" />
         <entry key="..\:/Users/emily/AndroidStudioProjects/ColockumHillsideFarmApp/app/src/main/res/layout/fragment_store.xml" value="0.17552083333333332" />
         <entry key="..\:/Users/emily/AndroidStudioProjects/ColockumHillsideFarmApp/app/src/main/res/layout/fragment_vendor.xml" value="0.17552083333333332" />
-        <entry key="..\:/Users/emily/AndroidStudioProjects/ColockumHillsideFarmApp/app/src/main/res/layout/list_item_recipe.xml" value="0.15208333333333332" />
         <entry key="..\:/Users/emily/AndroidStudioProjects/ColockumHillsideFarmApp/app/src/main/res/layout/nav_header_main.xml" value="0.17552083333333332" />
         <entry key="..\:/Users/emily/AndroidStudioProjects/ColockumHillsideFarmApp/app/src/main/res/layout/pork_activity.xml" value="0.25" />
         <entry key="..\:/Users/emily/AndroidStudioProjects/ColockumHillsideFarmApp/app/src/main/res/layout/poultry_activity.xml" value="0.17552083333333332" />
         <entry key="..\:/Users/emily/AndroidStudioProjects/ColockumHillsideFarmApp/app/src/main/res/layout/vegetable_activity.xml" value="0.12916666666666668" />
-        <entry key="..\:/Users/emily/AndroidStudioProjects/ColockumHillsideFarmApp/app/src/main/res/layout/vegtable_practices_activity.xml" value="0.1" />
         <entry key="..\:/Users/emily/AndroidStudioProjects/ColockumHillsideFarmApp/app/src/main/res/menu/activity_main_drawer.xml" value="0.17552083333333332" />
         <entry key="..\:/Users/emily/AndroidStudioProjects/ColockumHillsideFarmApp/app/src/main/res/menu/main.xml" value="0.17552083333333332" />
         <entry key="..\:/Users/emily/AndroidStudioProjects/ColockumHillsideFarmApp/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.1785" />
