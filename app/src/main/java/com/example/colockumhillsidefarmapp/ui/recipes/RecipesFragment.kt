@@ -60,10 +60,13 @@ class RecipesFragment : Fragment() {
         val manager : GridLayoutManager = GridLayoutManager(activity, 2)
         recipeRecView.layoutManager = manager
 
-        //GridLayoutManager(activity, 2)
-
         val dummyRecipes : ArrayList<Recipe> = ArrayList()
         dummyRecipes.add(Recipe(1, "Chicken Soup", "short", "long", "https://www.inspiredtaste.net/wp-content/uploads/2018/09/Easy-Chicken-Noodle-Soup-Recipe-1200.jpg"))
+        dummyRecipes.add(Recipe(2, "Chicken and Rice", "short", "long", "https://www.eatwell101.com/wp-content/uploads/2018/04/chicken-and-rice-recipe.jpg"))
+        dummyRecipes.add(Recipe(3, "Scrambled Eggs", "short", "long", "https://images.media-allrecipes.com/userphotos/9175615.jpg"))
+        dummyRecipes.add(Recipe(4, "Meatloaf", "short", "long", "https://imagesvc.meredithcorp.io/v3/mm/image?q=60&c=sc&poi=face&w=2000&h=1000&url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F43%2F2022%2F02%2F18%2F16354-easy-meatloaf-mfs-76.jpg"))
+        dummyRecipes.add(Recipe(5, "Roast Beef", "short", "long", "https://hips.hearstapps.com/hmg-prod/images/delish-roast-beef-horizontal-1540505165.jpg"))
+
         adapter.setRecipes(dummyRecipes)
 
         return root

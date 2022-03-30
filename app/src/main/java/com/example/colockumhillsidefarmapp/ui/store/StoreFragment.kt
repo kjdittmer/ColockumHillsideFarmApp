@@ -50,8 +50,6 @@ class StoreFragment : Fragment() {
         val manager : GridLayoutManager = GridLayoutManager(activity, 2)
         productRecView.layoutManager = manager
 
-            //GridLayoutManager(activity, 2)
-
         adapter.setProducts(ShoppingCart.getInstance().allProducts)
 
         return root
