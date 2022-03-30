@@ -71,27 +71,31 @@
             android:layout_centerHorizontal="true"
             android:layout_below="@+id/priceAndQuantityLayoutProdAct">
 
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Add to wishlist"
-                android:id="@+id/btnAddToWishlist"
-                android:layout_margin="5dp"/>
 
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/btnAddToCart"
-                android:layout_toRightOf="@+id/btnAddToWishlist"
-                android:layout_margin="5dp"
-                android:text="Add to cart"/>
+                android:layout_margin="3dp"
+                android:text="Add to cart"
+                android:background="@drawable/round_button"/>
 
             <Spinner
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="5dp"
+                android:layout_margin="3dp"
                 android:id="@+id/spnrQuantitySelected"
                 android:layout_toRightOf="@+id/btnAddToCart"/>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Add to wishlist"
+                android:id="@+id/btnAddToWishlist"
+                android:layout_margin="3dp"
+                android:layout_below="@+id/btnAddToCart"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/round_button"/>
 
 
 
@@ -104,7 +108,8 @@
             android:id="@+id/txtLongDescProdAct"
             android:layout_below="@+id/buttonsLayoutProdAct"
             android:layout_centerHorizontal="true"
-            android:layout_margin="5dp"/>
+            android:layout_margin="5dp"
+            />
 
 
 

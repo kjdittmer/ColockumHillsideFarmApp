@@ -14,7 +14,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/imageView9"
-        app:layout_constraintTop_toBottomOf="@+id/imageView8" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView8"
+        android:background="@drawable/round_button"/>
 
     <ImageView
         android:id="@+id/imageView9"
@@ -36,7 +37,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/veggiepractices" />
+        app:layout_constraintTop_toBottomOf="@+id/veggiepractices"
+        android:background="@drawable/round_button"/>
 
     <ImageView
         android:id="@+id/imageView8"
@@ -47,7 +49,8 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/microgreens"
         app:layout_constraintTop_toBottomOf="@+id/veggies"
-        app:srcCompat="@drawable/microgreen" />
+        app:srcCompat="@drawable/microgreen"
+        />
 
     <Button
         android:id="@+id/microgreens"
@@ -58,7 +61,8 @@
         app:layout_constraintEnd_toStartOf="@+id/imageView8"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView11" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView11"
+        android:background="@drawable/round_button"/>
 
     <ImageView
         android:id="@+id/imageView10"
@@ -80,7 +84,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/imageView10"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        android:background="@drawable/round_button"/>
 
     <Button
         android:id="@+id/veggies"
@@ -91,7 +96,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/imageView11"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@drawable/round_button"/>
 
     <ImageView
         android:id="@+id/imageView11"

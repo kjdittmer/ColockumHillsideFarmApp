@@ -97,11 +97,9 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/txtPackageQuantityAddProdAct"
             android:layout_centerHorizontal="true"
-            android:layout_marginStart="5dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginEnd="5dp"
-            android:layout_marginBottom="5dp"
-            android:text="Add Product" />
+            android:layout_margin="5dp"
+            android:text="Add Product"
+            android:background="@drawable/round_button"/>
 
         <Button
             android:id="@+id/btnUploadPicture"
@@ -109,11 +107,9 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/btnAddProductAddProdAct"
             android:layout_centerHorizontal="true"
-            android:layout_marginStart="5dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginEnd="5dp"
-            android:layout_marginBottom="5dp"
-            android:text="Import Picture" />
+            android:layout_margin="5dp"
+            android:text="Import Picture"
+            android:background="@drawable/round_button"/>
 
     </RelativeLayout>
 

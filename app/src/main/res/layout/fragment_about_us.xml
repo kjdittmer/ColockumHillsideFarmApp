@@ -15,7 +15,8 @@
         app:layout_constraintEnd_toEndOf="@+id/chicken"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="@+id/chicken"
-        app:layout_constraintTop_toBottomOf="@+id/chicken" />
+        app:layout_constraintTop_toBottomOf="@+id/chicken"
+        android:background="@drawable/round_button" />
 
     <Button
         android:id="@+id/pork"
@@ -26,7 +27,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@drawable/round_button"/>
 
     <Button
         android:id="@+id/vegetables"
@@ -37,7 +39,8 @@
         app:layout_constraintEnd_toEndOf="@+id/imageView6"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="@+id/imageView6"
-        app:layout_constraintTop_toBottomOf="@+id/imageView6" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView6"
+        android:background="@drawable/round_button"/>
 
     <ImageView
         android:id="@+id/chicken"

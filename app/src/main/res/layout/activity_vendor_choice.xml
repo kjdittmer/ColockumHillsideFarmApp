@@ -29,7 +29,9 @@
             android:layout_height="wrap_content"
             android:id="@+id/btnGoToAnalytics"
             android:text="View analytics"
-            android:layout_centerHorizontal="true"/>
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/round_button"
+            android:layout_margin="5dp"/>
 
         <Button
             android:layout_width="wrap_content"
@@ -37,7 +39,9 @@
             android:id="@+id/btnGoToUpdateStore"
             android:text="Update store"
             android:layout_below="@+id/btnGoToAnalytics"
-            android:layout_centerHorizontal="true"/>
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/round_button"
+            android:layout_margin="5dp"/>
 
         <Button
             android:layout_width="wrap_content"
@@ -45,7 +49,9 @@
             android:id="@+id/btnGoToUpdateAboutUs"
             android:text="Update About us"
             android:layout_below="@+id/btnGoToUpdateStore"
-            android:layout_centerHorizontal="true"/>
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/round_button"
+            android:layout_margin="5dp"/>
 
         <Button
             android:layout_width="wrap_content"
@@ -53,7 +59,9 @@
             android:id="@+id/btnExitVendorMode"
             android:text="Exit vendor mode"
             android:layout_below="@+id/btnGoToUpdateAboutUs"
-            android:layout_centerHorizontal="true"/>
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/round_button"
+            android:layout_margin="5dp"/>
 
     </RelativeLayout>
 

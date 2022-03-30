@@ -62,7 +62,8 @@
         android:layout_centerHorizontal="true"
         android:padding="10dp"
         android:text="Sign Up!"
-        android:id="@+id/btnSignUpForNewsletter"/>
+        android:id="@+id/btnSignUpForNewsletter"
+        android:background="@drawable/round_button"/>
 
 
 

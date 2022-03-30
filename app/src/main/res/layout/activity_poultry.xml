@@ -14,7 +14,8 @@
         app:layout_constraintBottom_toTopOf="@+id/imageView4"
         app:layout_constraintEnd_toStartOf="@+id/turkey"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        android:background="@drawable/round_button"/>
 
     <Button
         android:id="@+id/turkey"
@@ -25,7 +26,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/chicken"
-        app:layout_constraintTop_toTopOf="@+id/chicken" />
+        app:layout_constraintTop_toTopOf="@+id/chicken"
+        android:background="@drawable/round_button"/>
 
     <Button
         android:id="@+id/practices"
@@ -38,7 +40,8 @@
         app:layout_constraintStart_toEndOf="@+id/eggs"
         app:layout_constraintStart_toStartOf="@+id/imageView5"
         app:layout_constraintTop_toTopOf="@+id/eggs"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.0"
+        android:background="@drawable/round_button"/>
 
     <Button
         android:id="@+id/eggs"
@@ -49,7 +52,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/practices"
         app:layout_constraintHorizontal_bias="0.515"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        android:background="@drawable/round_button"/>
 
     <Button
         android:id="@+id/backbutton"
@@ -59,7 +63,8 @@
         android:text="Back"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        android:background="@drawable/round_button"/>
 
     <ImageView
         android:id="@+id/imageView2"
