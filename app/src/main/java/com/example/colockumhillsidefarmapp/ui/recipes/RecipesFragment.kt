@@ -1,21 +1,22 @@
 package com.example.colockumhillsidefarmapp.ui.recipes
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.colockumhillsidefarmapp.R
 import com.example.colockumhillsidefarmapp.databinding.FragmentRecipesBinding
-import com.example.colockumhillsidefarmapp.ui.recipes.RecipeActivity
 
 class RecipesFragment : Fragment() {
 
     private var _binding: FragmentRecipesBinding? = null
+    private lateinit var recipeRecView: RecyclerView
+    private lateinit var adapter: RecipeRecViewAdapter
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -40,10 +41,10 @@ class RecipesFragment : Fragment() {
 //            textView.text = it
 //        }
 
-        val textView: TextView = binding.textRecipes
-        homeViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
-        }
+//        val textView: TextView = binding.textRecipes
+//        homeViewModel.text.observe(viewLifecycleOwner) {
+//            textView.text = it
+//        }
 
 //        recipe = root.findViewById(R.id.recipeRecView);
 //        recipe.setOnClickListener {
@@ -51,6 +52,19 @@ class RecipesFragment : Fragment() {
 //            startActivity(intent)
 //
 //        }
+
+        adapter = RecipeRecViewAdapter(activity)
+        recipeRecView = root.findViewById(R.id.recipeRecView)
+
+        recipeRecView.adapter = adapter
+        val manager : GridLayoutManager = GridLayoutManager(activity, 2)
+        recipeRecView.layoutManager = manager
+
+        //GridLayoutManager(activity, 2)
+
+        val dummyRecipes : ArrayList<Recipe> = ArrayList()
+        dummyRecipes.add(Recipe(1, "Chicken Soup", "short", "long", "https://www.inspiredtaste.net/wp-content/uploads/2018/09/Easy-Chicken-Noodle-Soup-Recipe-1200.jpg"))
+        adapter.setRecipes(dummyRecipes)
 
         return root
     }

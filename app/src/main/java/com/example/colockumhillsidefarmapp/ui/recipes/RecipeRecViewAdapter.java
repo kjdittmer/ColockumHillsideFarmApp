@@ -22,7 +22,7 @@ import java.util.ArrayList;
 public class RecipeRecViewAdapter extends RecyclerView.Adapter<RecipeRecViewAdapter.ViewHolder>{
     private static final String TAG = "RecipeRecViewAdapter";
 
-    private ArrayList<RecipeView> recipes = new ArrayList<>();
+    private ArrayList<Recipe> recipes = new ArrayList<>();
     private Context mContext;
 
     public RecipeRecViewAdapter(Context mContext) {
@@ -58,7 +58,7 @@ public class RecipeRecViewAdapter extends RecyclerView.Adapter<RecipeRecViewAdap
         return recipes.size();
     }
 
-    public void setRecipes(ArrayList<RecipeView> recipes) {
+    public void setRecipes(ArrayList<Recipe> recipes) {
         this.recipes = recipes;
         notifyDataSetChanged();
     }
@@ -71,7 +71,7 @@ public class RecipeRecViewAdapter extends RecyclerView.Adapter<RecipeRecViewAdap
             super(itemView);
             parent = itemView.findViewById(R.id.parent);
             imgRecipe = itemView.findViewById(R.id.imgRecipe);
-            //txtName = itemView.findViewById(R.id.txtRecipeName);
+            txtName = itemView.findViewById(R.id.txtRecipeName);
 
         }
     }

@@ -23,7 +23,8 @@
             android:textSize="16sp"
             android:layout_below="@+id/imgRecipe"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="7dp">
+            android:layout_marginTop="7dp"
+            android:id="@+id/txtRecipeName">
 
         </TextView>
     </RelativeLayout>
