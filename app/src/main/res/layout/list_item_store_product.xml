@@ -25,9 +25,10 @@
             android:layout_height="wrap_content"
             android:text="Product Name"
             android:textStyle="bold"
-            android:textSize="16sp"
+            android:textSize="20sp"
             android:layout_below="@+id/imgProduct"
             android:layout_centerHorizontal="true"
+            android:gravity="center"
             android:layout_margin="5dp"
             android:id="@+id/txtProductName"/>
 

@@ -14,7 +14,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView13" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView13"
+        android:background="@drawable/round_button"/>
 
     <Button
         android:id="@+id/button_pest"
@@ -25,7 +26,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView12" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView12"
+        android:background="@drawable/round_button"/>
 
     <Button
         android:id="@+id/button_water"
@@ -36,7 +38,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView14" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView14"
+        android:background="@drawable/round_button"/>
 
     <ImageView
         android:id="@+id/imageView12"
@@ -47,7 +50,8 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button_fert"
-        app:srcCompat="@drawable/mouse_picture" />
+        app:srcCompat="@drawable/mouse_picture"
+        />
 
     <ImageView
         android:id="@+id/imageView13"
@@ -80,5 +84,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button_water" />
+        app:layout_constraintTop_toBottomOf="@+id/button_water"
+        android:background="@drawable/round_button"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

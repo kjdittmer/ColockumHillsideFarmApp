@@ -6,14 +6,14 @@ import androidx.appcompat.view.menu.MenuView;
 
 import com.example.colockumhillsidefarmapp.R;
 
-public class RecipeView {
+public class Recipe {
     private int id;
     private String name;
     private String shortDesc;
     private String longDesc;
     private String imageUrl;
 
-    public RecipeView(int id, String name, String shortDesc, String longDesc){
+    public Recipe(int id, String name, String shortDesc, String longDesc, String imageUrl){
         this.id = id;
         this.name = name;
         this.shortDesc = shortDesc;
