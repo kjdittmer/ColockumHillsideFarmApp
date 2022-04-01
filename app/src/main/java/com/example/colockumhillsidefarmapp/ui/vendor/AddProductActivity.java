@@ -14,6 +14,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -23,19 +24,24 @@ import android.widget.Toast;
 import com.example.colockumhillsidefarmapp.Product;
 import com.example.colockumhillsidefarmapp.R;
 import com.example.colockumhillsidefarmapp.ShoppingCart;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.HashMap;
+import java.util.Map;
 
 
 public class AddProductActivity extends AppCompatActivity {
-    private FirebaseDatabase firebaseDatabase;
-    private DatabaseReference databaseReference;
+    private FirebaseDatabase rootNode;
+    private DatabaseReference reference;
     private static final int PERMISSION_REQUEST = 0;
     private static final int RESULT_LOAD_IMAGE = 1;
-    StoreItem storeItem;
     EditText txtNameAddProdAct, txtQuantityAddProdAct, txtImageUrlProdAct, txtShortDescAddProdAct, txtLongDescAddProdAct, txtPriceAddProdAct, txtPackageQuantityAddProdAct;
     ImageView imageView;
     Button btnAddProductAddProdAct, btnUploadPicture;
@@ -44,9 +50,6 @@ public class AddProductActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(com.example.colockumhillsidefarmapp.R.layout.activity_add_product);
-        firebaseDatabase = FirebaseDatabase.getInstance();
-        databaseReference= firebaseDatabase.getReference("storeItems");
-        storeItem = new StoreItem();
         initVariables();
 
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE)
@@ -80,10 +83,12 @@ public class AddProductActivity extends AppCompatActivity {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
 
-                            addDataToFirebase(name, imageUrl, shortDesc, longDesc, packageQuantity, quantity, price);
-
                             int newProductId = ShoppingCart.getInstance().getNewId();
                             Product productToAdd = new Product(newProductId, name, quantity, imageUrl, shortDesc, longDesc, price, packageQuantity);
+
+                            rootNode = FirebaseDatabase.getInstance();
+                            reference = rootNode.getReference("product");
+                            reference.child(String.valueOf(newProductId)).setValue(productToAdd);
                             ShoppingCart.getInstance().addProductToAllProducts(productToAdd);
                             Toast.makeText(view.getContext(), name + " was added to the store.", Toast.LENGTH_SHORT).show();
                         }
@@ -106,26 +111,6 @@ public class AddProductActivity extends AppCompatActivity {
 
     }
 
-    private void addDataToFirebase(String name, String imageUrl, String shortDesc, String longDesc, String packageQuantity, int quantity, double price) {
-        storeItem.setName(name);
-        storeItem.setImageUrl(imageUrl);
-        storeItem.setShortDesc(shortDesc);
-        storeItem.setLongDesc(longDesc);
-        storeItem.setPackageQuantity(packageQuantity);
-        storeItem.setQuantity(quantity);
-        storeItem.setPrice(price);
-        databaseReference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                databaseReference.setValue(storeItem);
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-    }
 
     private boolean validateData() {
         return true;
