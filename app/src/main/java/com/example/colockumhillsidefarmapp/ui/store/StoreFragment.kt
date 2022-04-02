@@ -7,13 +7,11 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.colockumhillsidefarmapp.StoreProductRecViewAdapter
 import com.example.colockumhillsidefarmapp.R
-import com.example.colockumhillsidefarmapp.ShoppingCart
 import com.example.colockumhillsidefarmapp.databinding.FragmentStoreBinding
-import com.example.colockumhillsidefarmapp.ui.Storage
+import com.example.colockumhillsidefarmapp.ui.GlobalStorage
 
 
 class StoreFragment : Fragment() {
@@ -51,7 +49,7 @@ class StoreFragment : Fragment() {
         val manager : GridLayoutManager = GridLayoutManager(activity, 2)
         productRecView.layoutManager = manager
 
-        adapter.setProducts(Storage.getInstance().allProducts)
+        adapter.setProducts(GlobalStorage.getInstance().allProducts)
 
         return root
     }

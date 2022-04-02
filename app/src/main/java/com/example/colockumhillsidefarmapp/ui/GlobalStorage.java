@@ -1,28 +1,22 @@
 package com.example.colockumhillsidefarmapp.ui;
 
 import com.example.colockumhillsidefarmapp.Product;
-import com.example.colockumhillsidefarmapp.ShoppingCart;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
-public class Storage {
+public class GlobalStorage {
 
     private FirebaseDatabase rootNode;
     private DatabaseReference reference;
 
-    private static Storage instance;
+    private static GlobalStorage instance;
     private ArrayList<Product> allProducts;
-    private HashMap<Product, Integer> wishlist;
 
-    private Storage() {
+    private GlobalStorage() {
         if(allProducts == null) {
             allProducts = new ArrayList<>();
-        }
-        if(wishlist == null) {
-            wishlist = new HashMap<>();
         }
 
         initData();
@@ -60,9 +54,9 @@ public class Storage {
         );
     }
 
-    public static Storage getInstance() {
+    public static GlobalStorage getInstance() {
         if(instance == null){
-            instance = new Storage();
+            instance = new GlobalStorage();
         }
         return instance;
     }
@@ -71,12 +65,6 @@ public class Storage {
         //TODO: get allProducts from DB
 
         return allProducts;
-    }
-
-    public HashMap<Product, Integer> getWishlist() {
-        //TODO: get wishlist from DB
-
-        return wishlist;
     }
 
     public Product getProduct(int productId) {
@@ -103,14 +91,5 @@ public class Storage {
         }
         return maxId + 1;
     }
-
-    public void addProductToWishlist(Product product, int quantity) {
-        if(!wishlist.containsKey(product)) {
-            wishlist.put(product, quantity);
-        } else {
-            wishlist.put(product, quantity + wishlist.get(product));
-        }
-    }
-
 
 }

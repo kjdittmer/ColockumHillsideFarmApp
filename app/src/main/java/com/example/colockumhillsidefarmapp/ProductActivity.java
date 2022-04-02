@@ -3,7 +3,6 @@ package com.example.colockumhillsidefarmapp;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.media.Image;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -14,11 +13,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
-import com.example.colockumhillsidefarmapp.ui.Storage;
+import com.example.colockumhillsidefarmapp.ui.GlobalStorage;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class ProductActivity extends AppCompatActivity {
 
@@ -42,7 +40,7 @@ public class ProductActivity extends AppCompatActivity {
         if(getIntent() != null){
             int productId = intent.getIntExtra(PRODUCT_ID, -1);
             if(productId != -1){
-                product = Storage.getInstance().getProduct(productId);
+                product = GlobalStorage.getInstance().getProduct(productId);
                 if(product != null){
                     setData(product);
                 }
@@ -76,7 +74,7 @@ public class ProductActivity extends AppCompatActivity {
             public void onClick(View view) {
                 int quantitySelected = (int) spnrQuantitySelected.getSelectedItem();
 
-                Storage.getInstance().addProductToWishlist(product, quantitySelected);
+                Wishlist.getInstance().addProductToWishlist(product, quantitySelected);
 
                 String plurality = "";
                 if (quantitySelected > 1) {
@@ -85,7 +83,7 @@ public class ProductActivity extends AppCompatActivity {
                 Toast.makeText(view.getContext(), quantitySelected + " " + product.getName() + plurality +
                         " added to wishlist!", Toast.LENGTH_SHORT).show();
 
-                System.out.println(Storage.getInstance().getWishlist());
+                System.out.println(Wishlist.getInstance().getWishlist());
             }
         });
     }
