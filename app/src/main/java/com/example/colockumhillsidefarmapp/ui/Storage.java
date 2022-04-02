@@ -2,11 +2,16 @@ package com.example.colockumhillsidefarmapp.ui;
 
 import com.example.colockumhillsidefarmapp.Product;
 import com.example.colockumhillsidefarmapp.ShoppingCart;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Storage {
+
+    private FirebaseDatabase rootNode;
+    private DatabaseReference reference;
 
     private static Storage instance;
     private ArrayList<Product> allProducts;
@@ -81,6 +86,9 @@ public class Storage {
     }
 
     public void addProductToAllProducts(Product product) {
+        rootNode = FirebaseDatabase.getInstance();
+        reference = rootNode.getReference("product");
+        reference.child(String.valueOf(product.getId())).setValue(product);
         allProducts.add(product);
     }
 
