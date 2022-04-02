@@ -68,10 +68,14 @@ public class Storage {
     }
 
     public ArrayList<Product> getAllProducts() {
+        //TODO: get allProducts from DB
+
         return allProducts;
     }
 
     public HashMap<Product, Integer> getWishlist() {
+        //TODO: get wishlist from DB
+
         return wishlist;
     }
 

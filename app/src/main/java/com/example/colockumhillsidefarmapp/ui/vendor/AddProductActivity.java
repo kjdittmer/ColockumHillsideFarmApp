@@ -41,8 +41,6 @@ import java.util.Map;
 
 
 public class AddProductActivity extends AppCompatActivity {
-//    private FirebaseDatabase rootNode;
-//    private DatabaseReference reference;
     private static final int PERMISSION_REQUEST = 0;
     private static final int RESULT_LOAD_IMAGE = 1;
     EditText txtNameAddProdAct, txtQuantityAddProdAct, txtImageUrlProdAct, txtShortDescAddProdAct, txtLongDescAddProdAct, txtPriceAddProdAct, txtPackageQuantityAddProdAct;
@@ -88,11 +86,6 @@ public class AddProductActivity extends AppCompatActivity {
 
                             int newProductId = Storage.getInstance().getNewId();
                             Product productToAdd = new Product(newProductId, name, quantity, imageUrl, shortDesc, longDesc, price, packageQuantity);
-
-//                            rootNode = FirebaseDatabase.getInstance();
-//                            reference = rootNode.getReference("product");
-//                            reference.child(String.valueOf(newProductId)).setValue(productToAdd);
-
                             Storage.getInstance().addProductToAllProducts(productToAdd);
                             Toast.makeText(view.getContext(), name + " was added to the store.", Toast.LENGTH_SHORT).show();
                         }
