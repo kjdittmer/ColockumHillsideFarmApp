@@ -22,7 +22,7 @@ import android.widget.Toast;
 
 import com.example.colockumhillsidefarmapp.Product;
 import com.example.colockumhillsidefarmapp.R;
-import com.example.colockumhillsidefarmapp.ui.GlobalStorage;
+import com.example.colockumhillsidefarmapp.GlobalStorage;
 
 //having problems with these
 //import com.google.firebase.firestore.DocumentReference;

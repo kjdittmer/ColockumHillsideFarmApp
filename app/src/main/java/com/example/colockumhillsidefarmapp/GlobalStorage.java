@@ -1,9 +1,10 @@
-package com.example.colockumhillsidefarmapp.ui;
+package com.example.colockumhillsidefarmapp;
 
-import com.example.colockumhillsidefarmapp.Product;
+import com.example.colockumhillsidefarmapp.ui.recipes.Recipe;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class GlobalStorage {
@@ -13,10 +14,14 @@ public class GlobalStorage {
 
     private static GlobalStorage instance;
     private ArrayList<Product> allProducts;
+    private ArrayList<Recipe> recipes;
 
     private GlobalStorage() {
         if(allProducts == null) {
             allProducts = new ArrayList<>();
+        }
+        if(recipes == null) {
+            recipes = new ArrayList<>();
         }
 
         initData();
@@ -67,7 +72,13 @@ public class GlobalStorage {
         return allProducts;
     }
 
-    public Product getProduct(int productId) {
+    public ArrayList<Recipe> getRecipes() {
+        //TODO: get recipeList
+
+        return recipes;
+    }
+
+    public Product getProductFromProductId(int productId) {
         for(Product product : allProducts){
             if (product.getId() == productId){
                 return product;
@@ -82,6 +93,10 @@ public class GlobalStorage {
         reference = rootNode.getReference("product");
         reference.child(String.valueOf(product.getId())).setValue(product);
         allProducts.add(product);
+    }
+
+    public void addRecipeToRecipes(Recipe recipe) {
+        recipes.add(recipe);
     }
 
     public int getNewId(){

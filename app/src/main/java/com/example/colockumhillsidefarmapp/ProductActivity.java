@@ -13,7 +13,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
-import com.example.colockumhillsidefarmapp.ui.GlobalStorage;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -40,7 +39,7 @@ public class ProductActivity extends AppCompatActivity {
         if(getIntent() != null){
             int productId = intent.getIntExtra(PRODUCT_ID, -1);
             if(productId != -1){
-                product = GlobalStorage.getInstance().getProduct(productId);
+                product = GlobalStorage.getInstance().getProductFromProductId(productId);
                 if(product != null){
                     setData(product);
                 }

@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.colockumhillsidefarmapp.StoreProductRecViewAdapter
 import com.example.colockumhillsidefarmapp.R
 import com.example.colockumhillsidefarmapp.databinding.FragmentStoreBinding
-import com.example.colockumhillsidefarmapp.ui.GlobalStorage
+import com.example.colockumhillsidefarmapp.GlobalStorage
 
 
 class StoreFragment : Fragment() {
