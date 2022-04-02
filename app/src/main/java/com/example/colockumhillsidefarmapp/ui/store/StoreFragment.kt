@@ -13,6 +13,7 @@ import com.example.colockumhillsidefarmapp.StoreProductRecViewAdapter
 import com.example.colockumhillsidefarmapp.R
 import com.example.colockumhillsidefarmapp.ShoppingCart
 import com.example.colockumhillsidefarmapp.databinding.FragmentStoreBinding
+import com.example.colockumhillsidefarmapp.ui.Storage
 
 
 class StoreFragment : Fragment() {
@@ -50,7 +51,7 @@ class StoreFragment : Fragment() {
         val manager : GridLayoutManager = GridLayoutManager(activity, 2)
         productRecView.layoutManager = manager
 
-        adapter.setProducts(ShoppingCart.getInstance().allProducts)
+        adapter.setProducts(Storage.getInstance().allProducts)
 
         return root
     }

@@ -14,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.example.colockumhillsidefarmapp.ui.Storage;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -41,7 +42,7 @@ public class ProductActivity extends AppCompatActivity {
         if(getIntent() != null){
             int productId = intent.getIntExtra(PRODUCT_ID, -1);
             if(productId != -1){
-                product = ShoppingCart.getInstance().getProduct(productId);
+                product = Storage.getInstance().getProduct(productId);
                 if(product != null){
                     setData(product);
                 }
@@ -75,7 +76,7 @@ public class ProductActivity extends AppCompatActivity {
             public void onClick(View view) {
                 int quantitySelected = (int) spnrQuantitySelected.getSelectedItem();
 
-                ShoppingCart.getInstance().addProductToWishlist(product, quantitySelected);
+                Storage.getInstance().addProductToWishlist(product, quantitySelected);
 
                 String plurality = "";
                 if (quantitySelected > 1) {
@@ -84,7 +85,7 @@ public class ProductActivity extends AppCompatActivity {
                 Toast.makeText(view.getContext(), quantitySelected + " " + product.getName() + plurality +
                         " added to wishlist!", Toast.LENGTH_SHORT).show();
 
-                System.out.println(ShoppingCart.getInstance().getWishlist());
+                System.out.println(Storage.getInstance().getWishlist());
             }
         });
     }

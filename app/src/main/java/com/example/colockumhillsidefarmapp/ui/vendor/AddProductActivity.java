@@ -24,14 +24,17 @@ import android.widget.Toast;
 import com.example.colockumhillsidefarmapp.Product;
 import com.example.colockumhillsidefarmapp.R;
 import com.example.colockumhillsidefarmapp.ShoppingCart;
+import com.example.colockumhillsidefarmapp.ui.Storage;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.FirebaseFirestore;
+
+//having problems with these
+//import com.google.firebase.firestore.DocumentReference;
+//import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -83,13 +86,14 @@ public class AddProductActivity extends AppCompatActivity {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
 
-                            int newProductId = ShoppingCart.getInstance().getNewId();
+                            int newProductId = Storage.getInstance().getNewId();
                             Product productToAdd = new Product(newProductId, name, quantity, imageUrl, shortDesc, longDesc, price, packageQuantity);
 
                             rootNode = FirebaseDatabase.getInstance();
                             reference = rootNode.getReference("product");
                             reference.child(String.valueOf(newProductId)).setValue(productToAdd);
-                            ShoppingCart.getInstance().addProductToAllProducts(productToAdd);
+
+                            Storage.getInstance().addProductToAllProducts(productToAdd);
                             Toast.makeText(view.getContext(), name + " was added to the store.", Toast.LENGTH_SHORT).show();
                         }
                     });
