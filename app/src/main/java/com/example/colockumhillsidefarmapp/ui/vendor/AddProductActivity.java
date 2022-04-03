@@ -14,6 +14,8 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.provider.Settings;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -72,10 +74,7 @@ public class AddProductActivity extends AppCompatActivity {
                     builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
-
-                            int newProductId = GlobalStorage.getInstance().getNewId();
-                            Product productToAdd = new Product(newProductId, name, quantity, imageUrl, shortDesc, longDesc, price, packageQuantity);
-                            GlobalStorage.getInstance().addProductToAllProducts(productToAdd);
+                            GlobalStorage.getInstance().addProductToAllProducts(new Product(0, name, quantity, imageUrl, shortDesc, longDesc, price, packageQuantity));
                             Toast.makeText(view.getContext(), name + " was added to the store.", Toast.LENGTH_SHORT).show();
                         }
                     });
