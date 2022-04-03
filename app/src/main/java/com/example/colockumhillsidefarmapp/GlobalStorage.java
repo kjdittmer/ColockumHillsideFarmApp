@@ -153,23 +153,22 @@ public class GlobalStorage {
         nextProductToAdd = product;
         int newId = 0;
         readData(new GetIdCallback(newId));
-
     }
 
     private void readData(FirebaseCallback firebaseCallback) {
         FirebaseDatabase rootNode = FirebaseDatabase.getInstance();
         DatabaseReference reference = rootNode.getReference("product");
-        reference.addValueEventListener(new ValueEventListener() {
+        reference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 ArrayList<Product> allProducts = new ArrayList<>();
                 for (DataSnapshot currentSnapshot : snapshot.getChildren()) {
                     Product newProduct = currentSnapshot.getValue(Product.class);
                     allProducts.add(newProduct);
-                    Log.d("product fb callback", newProduct.toString());
                 }
 
                 firebaseCallback.onCallBack(allProducts);
+                Log.d("calling callback", "yes");
             }
 
             @Override
@@ -197,19 +196,23 @@ public class GlobalStorage {
             for (Product currentProduct : allProducts) {
                 productIds.add(currentProduct.getId());
             }
+            Log.d("product ids", productIds.toString());
             while (true) {
+                Log.d("while loop", "yes");
                 if(productIds.contains(newId)) {
+                    Log.d("new id", "incremented");
                     newId++;
                 } else {
-                    Log.d("newId", String.valueOf(newId));
                     nextProductToAdd.setId(newId);
+                    Log.d("else", "yes");
+                    Log.d("newId", String.valueOf(newId));
                     break;
                 }
-                break;
             }
 
             rootNode = FirebaseDatabase.getInstance();
             reference = rootNode.getReference("product");
+            Log.d("adding a product", "now");
             reference.child(String.valueOf(nextProductToAdd.getId())).setValue(nextProductToAdd);
         }
     }
