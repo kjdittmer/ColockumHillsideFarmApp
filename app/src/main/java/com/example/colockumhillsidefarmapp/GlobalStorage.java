@@ -27,7 +27,6 @@ public class GlobalStorage {
     private static GlobalStorage instance;
     private ArrayList<Recipe> recipes;
 
-    private int newId;
     private Product nextProductToAdd;
 
     private GlobalStorage() {
@@ -146,43 +145,14 @@ public class GlobalStorage {
         return null;
     }
 
-//    public void addProductToAllProducts(Product product) {
-//        Log.d("adding product", product.toString());
-//        rootNode = FirebaseDatabase.getInstance();
-//        reference = rootNode.getReference("product");
-//        reference.child(String.valueOf(product.getId())).setValue(product);
-//    }
-
     public void addRecipeToRecipes(Recipe recipe) {
         recipes.add(recipe);
     }
 
     public void addProductToAllProducts(Product product){
         nextProductToAdd = product;
-        newId = 0;
-        readData(new FirebaseCallback() {
-            @Override
-            public void onCallBack(ArrayList<Product> allProducts) {
-                ArrayList<Integer> productIds = new ArrayList<>();
-                for (Product currentProduct : allProducts) {
-                    productIds.add(currentProduct.getId());
-                }
-                while (true) {
-                    if(productIds.contains(newId)) {
-                        newId++;
-                    } else {
-                        Log.d("newId", String.valueOf(newId));
-                        nextProductToAdd.setId(newId);
-                        break;
-                    }
-                    break;
-                }
-
-                rootNode = FirebaseDatabase.getInstance();
-                reference = rootNode.getReference("product");
-                reference.child(String.valueOf(nextProductToAdd.getId())).setValue(nextProductToAdd);
-            }
-        });
+        int newId = 0;
+        readData(new GetIdCallback(newId));
 
     }
 
@@ -211,6 +181,37 @@ public class GlobalStorage {
 
     private interface FirebaseCallback {
         void onCallBack(ArrayList<Product> allProducts);
+    }
+
+    private class GetIdCallback implements FirebaseCallback {
+
+        private int newId;
+
+        public GetIdCallback(int newId) {
+            this.newId = newId;
+        }
+
+        @Override
+        public void onCallBack(ArrayList<Product> allProducts) {
+            ArrayList<Integer> productIds = new ArrayList<>();
+            for (Product currentProduct : allProducts) {
+                productIds.add(currentProduct.getId());
+            }
+            while (true) {
+                if(productIds.contains(newId)) {
+                    newId++;
+                } else {
+                    Log.d("newId", String.valueOf(newId));
+                    nextProductToAdd.setId(newId);
+                    break;
+                }
+                break;
+            }
+
+            rootNode = FirebaseDatabase.getInstance();
+            reference = rootNode.getReference("product");
+            reference.child(String.valueOf(nextProductToAdd.getId())).setValue(nextProductToAdd);
+        }
     }
 
 }
