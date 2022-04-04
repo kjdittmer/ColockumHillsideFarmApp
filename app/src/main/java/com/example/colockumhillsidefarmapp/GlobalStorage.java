@@ -65,7 +65,6 @@ public class GlobalStorage {
         });
     }
 
-
     public ArrayList<Product> getAllProductsForStore(StoreProductRecViewAdapter adapter) {
         updateLocalCopyOfAllProducts();
 
