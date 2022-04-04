@@ -25,49 +25,18 @@ public class GlobalStorage {
     private DatabaseReference reference;
 
     private static GlobalStorage instance;
-    private ArrayList<Recipe> recipes;
 
-    private Product nextProductToAdd;
+    private ArrayList<Recipe> recipes;
+    private ArrayList<Product> localCopyOfAllProducts;
 
     private GlobalStorage() {
         if(recipes == null) {
             recipes = new ArrayList<>();
         }
 
-        //initData();
-    }
+        updateLocalCopyOfAllProducts();
 
-//    private void initData() {
-//        allProducts.add(
-//                new Product(1, "Pork Chop", 10, "https://atlas-content-cdn.pixelsquid.com/stock-images/pork-chop-raw-chops-ZemwxrE-600.jpg",
-//                        "A tasty pork chop", "Long description", 4.99, "lb")
-//        );
-//        allProducts.add(
-//                new Product(2, "Chicken Breast", 10, "https://media01.stockfood.com/largepreviews/MzQ3NjQ3MjA2/11214426-A-Single-Raw-Chicken-Breast-on-a-White-Background.jpg",
-//                        "A yummy chicken breast", "Long description", 5.99, "lb")
-//        );
-//        allProducts.add(
-//                new Product(3, "Beef Tenderloin", 10, "https://st2.depositphotos.com/1625039/11858/i/600/depositphotos_118582494-stock-photo-raw-beef-tenderloin.jpg",
-//                        "A scrumptious beef tenderloin", "Long description", 4.99, "lb")
-//        );
-//
-//        allProducts.add(
-//                new Product(4, "Eggs", 10, "https://www.humphreysfarm.com/productcart/pc/catalog/5514-lg.jpg",
-//                        "A nourishing breakfast", "Long description", 2.99, "dozen")
-//        );
-//        allProducts.add(
-//                new Product(5, "Tomato", 10, "https://st.depositphotos.com/1642482/2529/i/600/depositphotos_25296371-stock-photo-red-tomato.jpg",
-//                        "An acidic treat", "Long description", 3.99, "lb")
-//        );
-//        allProducts.add(
-//                new Product(6, "Apple", 10, "https://cdn.britannica.com/14/77414-004-30B131EC/Apple.jpg",
-//                        "A juicy delight", "Long description", 3.50, "lb")
-//        );
-//        allProducts.add(
-//                new Product(7, "Banana", 10, "https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/Banana_%281%29.jpg/1200px-Banana_%281%29.jpg",
-//                        "An energizing snack", "Long description", 2.99, "lb")
-//        );
-//    }
+    }
 
     public static GlobalStorage getInstance() {
         if(instance == null){
@@ -76,9 +45,30 @@ public class GlobalStorage {
         return instance;
     }
 
+    public void updateLocalCopyOfAllProducts () {
+        rootNode = FirebaseDatabase.getInstance();
+        reference = rootNode.getReference("product");
+        reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                localCopyOfAllProducts = new ArrayList<>();
+                for (DataSnapshot currentSnapshot : snapshot.getChildren()) {
+                    Product newProduct = currentSnapshot.getValue(Product.class);
+                    localCopyOfAllProducts.add(newProduct);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
+
 
     public ArrayList<Product> getAllProductsForStore(StoreProductRecViewAdapter adapter) {
-        //TODO: get allProducts from DB
+        updateLocalCopyOfAllProducts();
+
         ArrayList<Product> allProducts = new ArrayList<>();
 
         rootNode = FirebaseDatabase.getInstance();
@@ -102,32 +92,6 @@ public class GlobalStorage {
         return allProducts;
     }
 
-    public ArrayList<Product> getAllProducts() {
-        //TODO: get allProducts from DB
-        ArrayList<Product> allProducts = new ArrayList<>();
-
-        rootNode = FirebaseDatabase.getInstance();
-        reference = rootNode.getReference("product");
-        reference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for (DataSnapshot currentSnapshot : snapshot.getChildren()) {
-                    Product newProduct = currentSnapshot.getValue(Product.class);
-                    allProducts.add(newProduct);
-                    Log.d("product", newProduct.toString());
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-
-        return allProducts;
-    }
-
-
     public ArrayList<Recipe> getRecipes() {
         //TODO: get recipeList
 
@@ -135,13 +99,13 @@ public class GlobalStorage {
     }
 
     public Product getProductFromProductId(int productId) {
-        ArrayList<Product> allProducts = getAllProducts();
-        for(Product product : allProducts){
+        for(Product product : localCopyOfAllProducts){
             if (product.getId() == productId){
                 return product;
             }
         }
 
+        updateLocalCopyOfAllProducts();
         return null;
     }
 
@@ -150,9 +114,8 @@ public class GlobalStorage {
     }
 
     public void addProductToAllProducts(Product product){
-        nextProductToAdd = product;
         int newId = 0;
-        readData(new GetIdCallback(newId));
+        readData(new GetIdCallback(newId, product));
     }
 
     private void readData(FirebaseCallback firebaseCallback) {
@@ -185,9 +148,11 @@ public class GlobalStorage {
     private class GetIdCallback implements FirebaseCallback {
 
         private int newId;
+        private Product productToAdd;
 
-        public GetIdCallback(int newId) {
+        public GetIdCallback(int newId, Product productToAdd) {
             this.newId = newId;
+            this.productToAdd = productToAdd;
         }
 
         @Override
@@ -203,7 +168,7 @@ public class GlobalStorage {
                     Log.d("new id", "incremented");
                     newId++;
                 } else {
-                    nextProductToAdd.setId(newId);
+                    productToAdd.setId(newId);
                     Log.d("else", "yes");
                     Log.d("newId", String.valueOf(newId));
                     break;
@@ -213,7 +178,26 @@ public class GlobalStorage {
             rootNode = FirebaseDatabase.getInstance();
             reference = rootNode.getReference("product");
             Log.d("adding a product", "now");
-            reference.child(String.valueOf(nextProductToAdd.getId())).setValue(nextProductToAdd);
+            reference.child(String.valueOf(productToAdd.getId())).setValue(productToAdd);
+        }
+    }
+
+    private class GetProductsForStoreCallback implements FirebaseCallback {
+
+        private StoreProductRecViewAdapter adapter;
+        private ArrayList<Product> allProducts;
+
+        public GetProductsForStoreCallback(StoreProductRecViewAdapter adapter, ArrayList<Product> allProducts) {
+            this.adapter = adapter;
+            this.allProducts = allProducts;
+        }
+
+        @Override
+        public void onCallBack(ArrayList<Product> allProducts) {
+            this.allProducts = allProducts;
+            Log.d("allProducts", allProducts.toString());
+            adapter.notifyDataSetChanged();
+            Log.d("data set notified", "check");
         }
     }
 
