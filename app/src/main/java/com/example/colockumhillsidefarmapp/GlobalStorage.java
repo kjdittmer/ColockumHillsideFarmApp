@@ -181,23 +181,4 @@ public class GlobalStorage {
         }
     }
 
-    private class GetProductsForStoreCallback implements FirebaseCallback {
-
-        private StoreProductRecViewAdapter adapter;
-        private ArrayList<Product> allProducts;
-
-        public GetProductsForStoreCallback(StoreProductRecViewAdapter adapter, ArrayList<Product> allProducts) {
-            this.adapter = adapter;
-            this.allProducts = allProducts;
-        }
-
-        @Override
-        public void onCallBack(ArrayList<Product> allProducts) {
-            this.allProducts = allProducts;
-            Log.d("allProducts", allProducts.toString());
-            adapter.notifyDataSetChanged();
-            Log.d("data set notified", "check");
-        }
-    }
-
 }
