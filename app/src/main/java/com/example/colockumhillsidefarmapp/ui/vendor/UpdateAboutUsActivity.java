@@ -16,7 +16,7 @@ import com.example.colockumhillsidefarmapp.R;
 
 public class UpdateAboutUsActivity extends AppCompatActivity {
 
-    private Button btnUpdateInfoAboutUs, btnUpdatePicturesAboutUs, btnBackFromUpdateUs;
+    private Button btnUpdateInfoAboutUs, btnUpdatePicturesAboutUs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,21 +40,11 @@ public class UpdateAboutUsActivity extends AppCompatActivity {
                 Toast.makeText(UpdateAboutUsActivity.this, "Updating pictures...", Toast.LENGTH_SHORT).show();
             }
         });
-
-        btnBackFromUpdateUs.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(UpdateAboutUsActivity.this, VendorChoiceActivity.class);
-                startActivity(intent);
-            }
-        });
-
     }
 
     private void initVariables() {
         btnUpdateInfoAboutUs = findViewById(R.id.btnUpdateInfoAboutUs);
         btnUpdatePicturesAboutUs = findViewById(R.id.btnUpdatePicturesAboutUs);
-        btnBackFromUpdateUs = findViewById(R.id.btnBackFromUpdateAboutUs);
     }
 
     @Override

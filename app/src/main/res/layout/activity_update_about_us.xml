@@ -44,16 +44,6 @@
             android:layout_below="@+id/btnUpdateInfoAboutUs"
             android:background="@drawable/round_button"
             android:layout_margin="5dp"/>
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:text="Back"
-            android:id="@+id/btnBackFromUpdateAboutUs"
-            android:layout_below="@+id/btnUpdatePicturesAboutUs"
-            android:background="@drawable/round_button"
-            android:layout_margin="5dp"/>
     </RelativeLayout>
 
 

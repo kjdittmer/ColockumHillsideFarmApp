@@ -15,7 +15,7 @@ import com.example.colockumhillsidefarmapp.R;
 
 public class UpdateStoreActivity extends AppCompatActivity {
 
-    private Button btnAddProduct, btnRemoveProduct, btnEditProduct, btnBackFromUpdateStore;
+    private Button btnAddProduct, btnRemoveProduct, btnEditProduct;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,21 +48,12 @@ public class UpdateStoreActivity extends AppCompatActivity {
             }
         });
 
-        btnBackFromUpdateStore.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(UpdateStoreActivity.this, VendorChoiceActivity.class);
-                startActivity(intent);
-            }
-        });
-
     }
 
     private void initVariables() {
         btnAddProduct = findViewById(R.id.btnAddProduct);
         btnRemoveProduct = findViewById(R.id.btnRemoveProduct);
         btnEditProduct = findViewById(R.id.btnEditProduct);
-        btnBackFromUpdateStore = findViewById(R.id.btnBackFromUpdateStore);
     }
 
     @Override
