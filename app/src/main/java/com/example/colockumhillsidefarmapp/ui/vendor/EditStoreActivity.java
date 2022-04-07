@@ -23,14 +23,22 @@ public class EditStoreActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_store);
 
-        adapter = new EditStoreProductRecViewAdapter(this);
+        adapter = new EditStoreProductRecViewAdapter(this, this);
         editStoreRecView = findViewById(R.id.editStoreRecView);
 
         editStoreRecView.setAdapter(adapter);
         editStoreRecView.setLayoutManager(new GridLayoutManager(this, 2));
 
         adapter.setProducts(GlobalStorage.getInstance().getEditingProducts());
+        adapter.notifyDataSetChanged();
 
+    }
+
+    public void reload() {
+        finish();
+        overridePendingTransition(0, 0);
+        startActivity(getIntent());
+        overridePendingTransition(0, 0);
     }
 
 }

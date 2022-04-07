@@ -147,6 +147,10 @@ public class GlobalStorage {
         editingProducts.add(product);
     }
 
+    public void removeProductFromEditingProducts(Product product) {
+        editingProducts.remove(product);
+    }
+
     public void addRecipeToRecipes(Recipe recipe) {
         recipes.add(recipe);
     }
