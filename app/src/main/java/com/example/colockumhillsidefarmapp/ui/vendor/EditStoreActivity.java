@@ -16,6 +16,7 @@ public class EditStoreActivity extends AppCompatActivity {
 
     private RecyclerView editStoreRecView;
     private EditStoreProductRecViewAdapter adapter;
+    private ArrayList<Product> products;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +29,7 @@ public class EditStoreActivity extends AppCompatActivity {
         editStoreRecView.setAdapter(adapter);
         editStoreRecView.setLayoutManager(new GridLayoutManager(this, 2));
 
-        ArrayList<Product> products = new ArrayList<>();
+        products = new ArrayList<>();
         products.add(new Product(10, "Fish", 12,
                 "https://i.pinimg.com/736x/59/25/60/59256023c47736ad703b7542aec8030f.jpg",
                 "short", "long", 3.99, "lb"));
@@ -37,5 +38,9 @@ public class EditStoreActivity extends AppCompatActivity {
                 "short", "long", 3.99, "lb"));
         adapter.setProducts(products);
 
+    }
+
+    public void removeProductFromEditStoreProducts(Product product) {
+        products.remove(product);
     }
 }
