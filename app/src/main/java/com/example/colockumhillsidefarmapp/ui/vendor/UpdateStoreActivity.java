@@ -37,7 +37,8 @@ public class UpdateStoreActivity extends AppCompatActivity {
         btnEditProduct.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(UpdateStoreActivity.this, "Editing item...", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(view.getContext(), EditStoreActivity.class);
+                startActivity(intent);
             }
         });
 

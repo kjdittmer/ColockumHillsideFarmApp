@@ -39,6 +39,8 @@
         <entry key="app/src/main/res/layout/activity_add_product.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_analytics.xml" value="0.21822916666666667" />
         <entry key="app/src/main/res/layout/activity_chicken_practices.xml" value="0.19166666666666668" />
+        <entry key="app/src/main/res/layout/activity_edit_product2.xml" value="0.2171875" />
+        <entry key="app/src/main/res/layout/activity_edit_store.xml" value="0.2171875" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.19166666666666668" />
         <entry key="app/src/main/res/layout/activity_pork.xml" value="0.19166666666666668" />
         <entry key="app/src/main/res/layout/activity_poultry.xml" value="0.19166666666666668" />
@@ -59,6 +61,7 @@
         <entry key="app/src/main/res/layout/fragment_store.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_vendor.xml" value="0.19166666666666668" />
         <entry key="app/src/main/res/layout/list_item_cart_product.xml" value="0.335" />
+        <entry key="app/src/main/res/layout/list_item_editstore_product.xml" value="0.1" />
         <entry key="app/src/main/res/layout/list_item_product.xml" value="0.3802083333333333" />
         <entry key="app/src/main/res/layout/list_item_recipe.xml" value="0.19166666666666668" />
         <entry key="app/src/main/res/layout/list_item_store_product.xml" value="0.335" />

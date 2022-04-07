@@ -3,8 +3,7 @@
     package="com.example.colockumhillsidefarmapp">
 
     <uses-permission android:name="android.permission.INTERNET" />
-
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -14,65 +13,68 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ColockumHillsideFarmApp">
         <activity
+            android:name=".ui.vendor.EditStoreActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.recipes.RecipeActivity"
             android:exported="false"
-            android:label="Recipe"/>
+            android:label="Recipe" />
         <activity
             android:name=".ui.vendor.AddProductActivity"
             android:exported="false"
-            android:label="Add Product"/>
+            android:label="Add Product" />
         <activity
             android:name=".ShoppingCartActivity"
             android:exported="false"
-            android:label="Shopping Cart"/>
+            android:label="Shopping Cart" />
         <activity
             android:name=".ProductActivity"
             android:exported="false"
-            android:label="Shopping Cart"/>
+            android:label="Shopping Cart" />
         <activity
             android:name=".ui.vendor.UpdateAboutUsActivity"
             android:exported="false"
-            android:label="Update About Us"/>
+            android:label="Update About Us" />
         <activity
             android:name=".ui.vendor.UpdateStoreActivity"
             android:exported="false"
-            android:label="Update Store"/>
+            android:label="Update Store" />
         <activity
             android:name=".ui.vendor.AnalyticsActivity"
             android:exported="false"
-            android:label="Analytics"/>
+            android:label="Analytics" />
         <activity
             android:name=".ui.vendor.VendorChoiceActivity"
             android:exported="false"
-            android:label="Vendor Choice"/>
+            android:label="Vendor Choice" />
         <activity
             android:name=".ui.about_us.PoultryActivity"
             android:exported="false"
-            android:label="Poultry"/>
+            android:label="Poultry" />
         <activity
             android:name=".ui.about_us.PorkActivity"
             android:exported="false"
-            android:label="Pork"/>
+            android:label="Pork" />
         <activity
             android:name=".ui.contact_us.ContactUsActivity"
             android:exported="false"
-            android:label="Contact Us"/>
+            android:label="Contact Us" />
         <activity
             android:name=".ui.about_us.VegetableActivity"
             android:exported="false"
-            android:label="Vegetable"/>
+            android:label="Vegetable" />
         <activity
             android:name=".ui.about_us.VegtablePracticesActivity"
             android:exported="false"
-            android:label="Vegetable Practices"/>
+            android:label="Vegetable Practices" />
         <activity
             android:name=".ui.contact_us.FarmInfo"
             android:exported="false"
-            android:label="Farm Info"/>
+            android:label="Farm Info" />
         <activity
             android:name=".ui.about_us.ChickenPracticesActivity"
             android:exported="false"
-            android:label="Chicken Practices"/>
+            android:label="Chicken Practices" />
         <activity
             android:name=".MainActivity"
             android:exported="true"
