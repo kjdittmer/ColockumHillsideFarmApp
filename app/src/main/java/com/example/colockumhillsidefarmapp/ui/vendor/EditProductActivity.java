@@ -48,7 +48,7 @@ public class EditProductActivity extends AppCompatActivity {
         if(getIntent() != null){
             int productId = intent.getIntExtra(PRODUCT_ID, -1);
             if(productId != -1){
-                productToEdit = GlobalStorage.getInstance().getProductFromProductIdEditProducts(productId);
+                productToEdit = GlobalStorage.getInstance().getProductFromProductId(productId);
                 if(productToEdit != null){
                     setData(productToEdit);
                 }
