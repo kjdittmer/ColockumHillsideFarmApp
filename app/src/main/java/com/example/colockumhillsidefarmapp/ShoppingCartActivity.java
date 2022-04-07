@@ -1,11 +1,13 @@
 package com.example.colockumhillsidefarmapp;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -30,6 +32,7 @@ public class ShoppingCartActivity extends AppCompatActivity {
         setContentView(R.layout.activity_shopping_cart);
         initData();
         setData();
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
     }
     private void initData() {
@@ -79,4 +82,17 @@ public class ShoppingCartActivity extends AppCompatActivity {
         startActivity(getIntent());
         overridePendingTransition(0, 0);
     }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                onBackPressed();
+                break;
+            default:
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
 }

@@ -1,9 +1,11 @@
 package com.example.colockumhillsidefarmapp.ui.vendor;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RadioGroup;
@@ -19,6 +21,8 @@ public class UpdateStoreActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(com.example.colockumhillsidefarmapp.R.layout.activity_update_store);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         initVariables();
 
@@ -60,4 +64,17 @@ public class UpdateStoreActivity extends AppCompatActivity {
         btnEditProduct = findViewById(R.id.btnEditProduct);
         btnBackFromUpdateStore = findViewById(R.id.btnBackFromUpdateStore);
     }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                onBackPressed();
+                break;
+            default:
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
 }

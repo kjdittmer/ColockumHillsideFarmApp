@@ -1,8 +1,10 @@
 package com.example.colockumhillsidefarmapp.ui.recipes;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -17,6 +19,8 @@ public class RecipeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recipe);
         initViews();
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 //        TODO: Get the data from recycler view in here
         Recipe recipe = new Recipe(1, "Chicken Soup", "short", "long", "https://www.inspiredtaste.net/wp-content/uploads/2018/09/Easy-Chicken-Noodle-Soup-Recipe-1200.jpg");
@@ -35,5 +39,17 @@ public class RecipeActivity extends AppCompatActivity {
         recipeName = findViewById(R.id.recipeName);
         shortDesc = findViewById(R.id.shortDesc);
         longDesc = findViewById(R.id.longDesc);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                onBackPressed();
+                break;
+            default:
+                break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

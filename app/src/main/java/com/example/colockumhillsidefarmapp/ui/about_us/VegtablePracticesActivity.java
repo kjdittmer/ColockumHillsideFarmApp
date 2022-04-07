@@ -2,10 +2,12 @@ package com.example.colockumhillsidefarmapp.ui.about_us;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -22,6 +24,8 @@ public class VegtablePracticesActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_vegetable_practices);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         backbutton = findViewById(R.id.backbutton5);
         water = findViewById(R.id.button_water);
@@ -64,6 +68,18 @@ public class VegtablePracticesActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                onBackPressed();
+                break;
+            default:
+                break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
 }

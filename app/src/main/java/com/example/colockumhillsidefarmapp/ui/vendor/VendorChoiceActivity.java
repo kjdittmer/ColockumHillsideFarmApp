@@ -1,9 +1,11 @@
 package com.example.colockumhillsidefarmapp.ui.vendor;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RadioGroup;
@@ -22,6 +24,8 @@ public class VendorChoiceActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_vendor_choice);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         initVariables();
 
@@ -67,6 +71,18 @@ public class VendorChoiceActivity extends AppCompatActivity {
         btnGoToUpdateStore = findViewById(R.id.btnGoToUpdateStore);
         btnGoToUpdateAboutUs = findViewById(R.id.btnGoToUpdateAboutUs);
         btnExitVendorMode = findViewById(R.id.btnExitVendorMode);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                onBackPressed();
+                break;
+            default:
+                break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
 }

@@ -3,10 +3,12 @@ package com.example.colockumhillsidefarmapp.ui.about_us;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.colockumhillsidefarmapp.R;
 import com.google.android.material.snackbar.Snackbar;
@@ -21,6 +23,8 @@ public class ChickenPracticesActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chicken_practices);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         back = findViewById(R.id.back4);
         meatChickens = findViewById(R.id.meatChicken);
@@ -75,6 +79,18 @@ public class ChickenPracticesActivity extends AppCompatActivity {
 
         });
 
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                onBackPressed();
+                break;
+            default:
+                break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
 }
