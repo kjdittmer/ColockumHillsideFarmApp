@@ -24,12 +24,14 @@ public class EditStoreActivity extends AppCompatActivity {
         setContentView(R.layout.activity_edit_store);
 
         adapter = new EditStoreProductRecViewAdapter(this, this);
+        ArrayList<Product> allProducts = GlobalStorage.getInstance().getAllProductsForEditStore(adapter);
+
         editStoreRecView = findViewById(R.id.editStoreRecView);
 
         editStoreRecView.setAdapter(adapter);
         editStoreRecView.setLayoutManager(new GridLayoutManager(this, 2));
 
-        adapter.setProducts(GlobalStorage.getInstance().getEditingProducts());
+        adapter.setProducts(allProducts);
         adapter.notifyDataSetChanged();
 
     }

@@ -6,6 +6,7 @@ import android.util.Log;
 import androidx.annotation.NonNull;
 
 import com.example.colockumhillsidefarmapp.ui.recipes.Recipe;
+import com.example.colockumhillsidefarmapp.ui.vendor.EditStoreProductRecViewAdapter;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -82,6 +83,32 @@ public class GlobalStorage {
     }
 
     public ArrayList<Product> getAllProductsForStore(StoreProductRecViewAdapter adapter) {
+        updateLocalCopyOfAllProducts();
+
+        ArrayList<Product> allProducts = new ArrayList<>();
+
+        rootNode = FirebaseDatabase.getInstance();
+        reference = rootNode.getReference("product");
+        reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot currentSnapshot : snapshot.getChildren()) {
+                    Product newProduct = currentSnapshot.getValue(Product.class);
+                    allProducts.add(newProduct);
+                }
+                adapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+        return allProducts;
+    }
+
+    public ArrayList<Product> getAllProductsForEditStore(EditStoreProductRecViewAdapter adapter) {
         updateLocalCopyOfAllProducts();
 
         ArrayList<Product> allProducts = new ArrayList<>();
