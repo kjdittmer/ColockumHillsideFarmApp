@@ -61,10 +61,9 @@ public class EditStoreProductRecViewAdapter extends RecyclerView.Adapter<EditSto
         holder.parentEditStoreProduct.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(mContext, product.getName() + "selected", Toast.LENGTH_SHORT).show();
-//                Intent intent = new Intent(mContext, ProductActivity.class);
-//                intent.putExtra(PRODUCT_ID, product.getId());
-//                mContext.startActivity(intent);
+                Intent intent = new Intent(mContext, EditProductActivity.class);
+                intent.putExtra(PRODUCT_ID, product.getId());
+                mContext.startActivity(intent);
             }
         });
 

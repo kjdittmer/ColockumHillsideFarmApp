@@ -13,8 +13,8 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/txtTitleAddProdAct"
-            android:text="Add Product"
+            android:id="@+id/txtTitleEditProdAct"
+            android:text="Edit Product"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="15dp"
             android:textSize="30sp"
@@ -23,86 +23,78 @@
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/txtTitleAddProdAct"
+            android:layout_below="@+id/txtTitleEditProdAct"
             android:hint="Name"
             android:layout_margin="5dp"
-            android:id="@+id/txtNameAddProdAct"
+            android:id="@+id/txtNameEditProdAct"
             android:inputType="text"/>
 
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/txtNameAddProdAct"
+            android:layout_below="@+id/txtNameEditProdAct"
             android:hint="Quantity"
             android:layout_margin="5dp"
-            android:id="@+id/txtQuantityAddProdAct"
+            android:id="@+id/txtQuantityEditProdAct"
             android:inputType="number"/>
 
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/txtQuantityAddProdAct"
+            android:layout_below="@+id/txtQuantityEditProdAct"
             android:hint="Image URL"
             android:layout_margin="5dp"
-            android:id="@+id/txtImageUrlProdAct"
+            android:id="@+id/txtImageUrlEditProdAct"
             android:inputType="textMultiLine"
-            android:scrollbars="vertical"/>
+            android:scrollbars="vertical"
+            android:lines="2"/>
 
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/txtImageUrlProdAct"
+            android:layout_below="@+id/txtImageUrlEditProdAct"
             android:hint="Short Description"
             android:layout_margin="5dp"
-            android:id="@+id/txtShortDescAddProdAct"
+            android:id="@+id/txtShortDescEditProdAct"
             android:inputType="textMultiLine" />
 
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/txtShortDescAddProdAct"
+            android:layout_below="@+id/txtShortDescEditProdAct"
             android:hint="Long Description"
             android:layout_margin="5dp"
-            android:id="@+id/txtLongDescAddProdAct"
+            android:id="@+id/txtLongDescEditProdAct"
             android:inputType="textMultiLine"
-            android:scrollbars="vertical"/>
+            android:scrollbars="vertical"
+            android:lines="3"/>
 
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/txtLongDescAddProdAct"
+            android:layout_below="@+id/txtLongDescEditProdAct"
             android:hint="Price"
             android:layout_margin="5dp"
-            android:id="@+id/txtPriceAddProdAct"
+            android:id="@+id/txtPriceEditProdAct"
             android:inputType="numberDecimal"/>
 
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/txtPriceAddProdAct"
+            android:layout_below="@+id/txtPriceEditProdAct"
             android:hint="Package Quantity (eg lb, dozen)"
             android:layout_margin="5dp"
-            android:id="@+id/txtPackageQuantityAddProdAct"
+            android:id="@+id/txtPackageQuantityEditProdAct"
             android:inputType="text"/>
 
         <Button
-            android:id="@+id/btnAddProductAddProdAct"
+            android:id="@+id/btnUpdateProductEditProdAct"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/txtPackageQuantityAddProdAct"
+            android:layout_below="@+id/txtPackageQuantityEditProdAct"
             android:layout_centerHorizontal="true"
             android:layout_margin="5dp"
-            android:text="Add Product"
-            android:background="@drawable/round_button"/>
-
-        <Button
-            android:id="@+id/btnUploadPicture"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/btnAddProductAddProdAct"
-            android:layout_centerHorizontal="true"
-            android:layout_margin="5dp"
-            android:text="Import Picture"
+            android:text="Update Product"
             android:background="@drawable/round_button"/>
 
     </RelativeLayout>

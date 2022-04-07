@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 
+import com.example.colockumhillsidefarmapp.GlobalStorage;
 import com.example.colockumhillsidefarmapp.Product;
 import com.example.colockumhillsidefarmapp.R;
 import com.example.colockumhillsidefarmapp.StoreProductRecViewAdapter;
@@ -16,7 +17,6 @@ public class EditStoreActivity extends AppCompatActivity {
 
     private RecyclerView editStoreRecView;
     private EditStoreProductRecViewAdapter adapter;
-    private ArrayList<Product> products;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,18 +29,8 @@ public class EditStoreActivity extends AppCompatActivity {
         editStoreRecView.setAdapter(adapter);
         editStoreRecView.setLayoutManager(new GridLayoutManager(this, 2));
 
-        products = new ArrayList<>();
-        products.add(new Product(10, "Fish", 12,
-                "https://i.pinimg.com/736x/59/25/60/59256023c47736ad703b7542aec8030f.jpg",
-                "short", "long", 3.99, "lb"));
-        products.add(new Product(11, "Fish", 12,
-                "https://i.pinimg.com/736x/59/25/60/59256023c47736ad703b7542aec8030f.jpg",
-                "short", "long", 3.99, "lb"));
-        adapter.setProducts(products);
+        adapter.setProducts(GlobalStorage.getInstance().getEditingProducts());
 
     }
 
-    public void removeProductFromEditStoreProducts(Product product) {
-        products.remove(product);
-    }
 }

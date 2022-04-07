@@ -29,9 +29,20 @@ public class GlobalStorage {
     private ArrayList<Recipe> recipes;
     private ArrayList<Product> localCopyOfAllProducts;
 
+    private ArrayList<Product> editingProducts;
+
     private GlobalStorage() {
         if(recipes == null) {
             recipes = new ArrayList<>();
+        }
+        if(editingProducts == null) {
+            editingProducts = new ArrayList<>();
+            editingProducts.add(new Product(10, "Fish", 12,
+                    "https://i.pinimg.com/736x/59/25/60/59256023c47736ad703b7542aec8030f.jpg",
+                    "short", "long", 3.99, "lb"));
+            editingProducts.add(new Product(11, "Fish", 12,
+                    "https://i.pinimg.com/736x/59/25/60/59256023c47736ad703b7542aec8030f.jpg",
+                    "short", "long", 3.99, "lb"));
         }
 
         updateLocalCopyOfAllProducts();
@@ -42,7 +53,12 @@ public class GlobalStorage {
         if(instance == null){
             instance = new GlobalStorage();
         }
+
         return instance;
+    }
+
+    public ArrayList<Product> getEditingProducts() {
+        return editingProducts;
     }
 
     public void updateLocalCopyOfAllProducts () {
@@ -99,6 +115,17 @@ public class GlobalStorage {
 
     public Product getProductFromProductId(int productId) {
         for(Product product : localCopyOfAllProducts){
+            if (product.getId() == productId){
+                return product;
+            }
+        }
+
+        updateLocalCopyOfAllProducts();
+        return null;
+    }
+
+    public Product getProductFromProductIdEditProducts(int productId) {
+        for(Product product : editingProducts){
             if (product.getId() == productId){
                 return product;
             }
