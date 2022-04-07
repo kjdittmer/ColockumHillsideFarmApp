@@ -1,6 +1,5 @@
 package com.example.colockumhillsidefarmapp;
 
-import android.os.AsyncTask;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
@@ -13,12 +12,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.TimeUnit;
 
 public class GlobalStorage {
 
@@ -151,17 +145,6 @@ public class GlobalStorage {
         return null;
     }
 
-    public Product getProductFromProductIdEditProducts(int productId) {
-        for(Product product : editingProducts){
-            if (product.getId() == productId){
-                return product;
-            }
-        }
-
-        updateLocalCopyOfAllProducts();
-        return null;
-    }
-
     public void addProductToEditingProducts(Product product) {
         Product productToRemove = product;
         for (Product currentProduct : editingProducts) {
@@ -182,9 +165,16 @@ public class GlobalStorage {
         recipes.add(recipe);
     }
 
+    public void editProduct(Product productToEdit, Product editedProduct) {
+        FirebaseDatabase rootNode = FirebaseDatabase.getInstance();
+        DatabaseReference reference = rootNode.getReference("product");
+        DatabaseReference productReference = reference.child(String.valueOf(productToEdit.getId()));
+        productReference.setValue(editedProduct);
+    }
+
     public void addProductToAllProducts(Product product){
         int newId = 0;
-        readData(new GetIdCallback(newId, product));
+        readData(new AddProductCallback(newId, product));
     }
 
     private void readData(FirebaseCallback firebaseCallback) {
@@ -214,12 +204,12 @@ public class GlobalStorage {
         void onCallBack(ArrayList<Product> allProducts);
     }
 
-    private class GetIdCallback implements FirebaseCallback {
+    private class AddProductCallback implements FirebaseCallback {
 
         private int newId;
         private Product productToAdd;
 
-        public GetIdCallback(int newId, Product productToAdd) {
+        public AddProductCallback(int newId, Product productToAdd) {
             this.newId = newId;
             this.productToAdd = productToAdd;
         }

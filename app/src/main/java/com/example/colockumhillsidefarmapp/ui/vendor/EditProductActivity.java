@@ -60,7 +60,10 @@ public class EditProductActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Product editedProduct = new Product(productToEdit.getId(), txtNameEditProdAct.getText().toString(), Integer.parseInt(txtQuantityEditProdAct.getText().toString()), txtImageUrlEditProdAct.getText().toString(),
                         txtShortDescEditProdAct.getText().toString(), txtLongDescEditProdAct.getText().toString(), Double.parseDouble(txtPriceEditProdAct.getText().toString()), txtPackageQuantityEditProdAct.getText().toString());
-                GlobalStorage.getInstance().addProductToEditingProducts(editedProduct);
+
+                GlobalStorage.getInstance().editProduct(productToEdit, editedProduct);
+
+
                 Toast.makeText(EditProductActivity.this, productToEdit.getName() + " edited", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(view.getContext(), EditStoreActivity.class);
                 startActivity(intent);
