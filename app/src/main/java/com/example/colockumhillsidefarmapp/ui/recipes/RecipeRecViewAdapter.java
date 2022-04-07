@@ -2,6 +2,7 @@ package com.example.colockumhillsidefarmapp.ui.recipes;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -48,7 +49,9 @@ public class RecipeRecViewAdapter extends RecyclerView.Adapter<RecipeRecViewAdap
         holder.parent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(mContext, recipes.get(position).getName() + " Selected", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(mContext, recipes.get(position).getName() + " Selected", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(mContext, RecipeActivity.class);
+                mContext.startActivity(intent);
             }
         });
     }

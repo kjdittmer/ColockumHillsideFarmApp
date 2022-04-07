@@ -26,9 +26,9 @@
 
     <TextView
         android:id="@+id/recipeName"
-        android:layout_width="129dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="52dp"
+        android:layout_width="154dp"
+        android:layout_height="94dp"
+        android:layout_marginTop="80dp"
         android:text="TextView"
         android:textAlignment="center"
         android:textSize="25sp"
@@ -39,35 +39,26 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/step1"
+        android:id="@+id/shortDesc"
         android:layout_width="72dp"
         android:layout_height="46dp"
-        android:layout_marginTop="252dp"
+        android:layout_marginTop="340dp"
         android:text="TextView"
         app:layout_constraintEnd_toStartOf="@+id/guideline2"
-        app:layout_constraintHorizontal_bias="0.483"
+        app:layout_constraintHorizontal_bias="0.509"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/step2"
-        android:layout_width="71dp"
-        android:layout_height="44dp"
-        android:layout_marginTop="328dp"
-        android:text="TextView"
-        app:layout_constraintEnd_toStartOf="@+id/guideline2"
-        app:layout_constraintHorizontal_bias="0.48"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/step3"
-        android:layout_width="83dp"
+        android:id="@+id/longDesc"
+        android:layout_width="85dp"
         android:layout_height="47dp"
-        android:layout_marginTop="428dp"
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="368dp"
         android:text="TextView"
-        app:layout_constraintEnd_toStartOf="@+id/guideline2"
-        app:layout_constraintHorizontal_bias="0.52"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/guideline2"
         app:layout_constraintTop_toTopOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
