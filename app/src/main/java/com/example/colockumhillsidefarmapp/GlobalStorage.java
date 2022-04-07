@@ -172,6 +172,12 @@ public class GlobalStorage {
         productReference.setValue(editedProduct);
     }
 
+    public void removeProduct(Product product) {
+        FirebaseDatabase rootNode = FirebaseDatabase.getInstance();
+        DatabaseReference reference = rootNode.getReference("product");
+        reference.child(String.valueOf(product.getId())).removeValue();
+    }
+
     public void addProductToAllProducts(Product product){
         int newId = 0;
         readData(new AddProductCallback(newId, product));

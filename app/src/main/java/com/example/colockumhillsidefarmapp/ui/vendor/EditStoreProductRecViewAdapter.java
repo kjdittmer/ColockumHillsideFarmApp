@@ -79,7 +79,7 @@ public class EditStoreProductRecViewAdapter extends RecyclerView.Adapter<EditSto
                 builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        GlobalStorage.getInstance().removeProductFromEditingProducts(product);
+                        GlobalStorage.getInstance().removeProduct(product);
                         currentActivity.reload();
                         Toast.makeText(mContext, product.getName() + " Removed", Toast.LENGTH_SHORT).show();
                     }
