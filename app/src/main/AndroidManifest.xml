@@ -14,10 +14,12 @@
         android:theme="@style/Theme.ColockumHillsideFarmApp">
         <activity
             android:name=".ui.vendor.EditProductActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:label="Edit Product"/>
         <activity
             android:name=".ui.vendor.EditStoreActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:label="Edit Store"/>
         <activity
             android:name=".ui.recipes.RecipeActivity"
             android:exported="false"

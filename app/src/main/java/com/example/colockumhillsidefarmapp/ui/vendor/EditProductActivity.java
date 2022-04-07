@@ -5,11 +5,14 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.colockumhillsidefarmapp.GlobalStorage;
@@ -51,6 +54,16 @@ public class EditProductActivity extends AppCompatActivity {
                 }
             }
         }
+
+        btnUpdateProductEditProdAct.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Product editedProduct = new Product(productToEdit.getId(), txtNameEditProdAct.getText().toString(), Integer.parseInt(txtQuantityEditProdAct.getText().toString()), txtImageUrlEditProdAct.getText().toString(),
+                        txtShortDescEditProdAct.getText().toString(), txtLongDescEditProdAct.getText().toString(), Double.parseDouble(txtPriceEditProdAct.getText().toString()), txtPackageQuantityEditProdAct.getText().toString());
+                GlobalStorage.getInstance().addProductToEditingProducts(editedProduct);
+                Toast.makeText(EditProductActivity.this, productToEdit.getName() + " edited", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     private void initVariables() {

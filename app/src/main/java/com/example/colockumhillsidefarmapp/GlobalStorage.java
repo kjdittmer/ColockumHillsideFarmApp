@@ -135,6 +135,18 @@ public class GlobalStorage {
         return null;
     }
 
+    public void addProductToEditingProducts(Product product) {
+        Product productToRemove = product;
+        for (Product currentProduct : editingProducts) {
+            if (currentProduct.getId() == product.getId()) {
+                productToRemove = currentProduct;
+                break;
+            }
+        }
+        editingProducts.remove(productToRemove);
+        editingProducts.add(product);
+    }
+
     public void addRecipeToRecipes(Recipe recipe) {
         recipes.add(recipe);
     }
