@@ -1,5 +1,7 @@
 package com.example.colockumhillsidefarmapp;
 
+import android.util.Log;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -26,11 +28,16 @@ public class ShoppingCart {
     }
 
     public void addProductToCart(Product product, int quantity) {
-        if(!cart.containsKey(product)) {
-            cart.put(product, quantity);
-        } else {
-            cart.put(product, quantity + cart.get(product));
+        Log.d("Product:", product.toString());
+        Log.d("cart", cart.toString());
+        int productId = product.getId();
+        for (Product currentProduct : cart.keySet()) {
+            if (productId == currentProduct.getId()) {
+                cart.put(currentProduct, cart.get(currentProduct) + quantity);
+                return;
+            }
         }
+        cart.put(product, quantity);
     }
 
     public void removeProductFromCart(Product product) {

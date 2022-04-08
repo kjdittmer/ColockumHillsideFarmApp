@@ -18,10 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.colockumhillsidefarmapp.GlobalStorage;
 import com.example.colockumhillsidefarmapp.Product;
-import com.example.colockumhillsidefarmapp.ProductActivity;
 import com.example.colockumhillsidefarmapp.R;
-import com.example.colockumhillsidefarmapp.ShoppingCart;
-import com.example.colockumhillsidefarmapp.ShoppingCartActivity;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -43,7 +40,7 @@ public class EditStoreProductRecViewAdapter extends RecyclerView.Adapter<EditSto
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_editstore_product, parent, false );
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_edit_store_product, parent, false );
         return new ViewHolder(view);
     }
 
