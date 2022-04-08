@@ -28,6 +28,13 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        val sdkKey = "a757a17793c83937a9151f045f75d3f9-us19"
+        val isDebugBuild = BuildConfig.DEBUG
+        val configuration = MailchimpSdkConfiguration.Builder(context, sdkKey)
+            .isDebugModeEnabled(isDebugBuild)
+            .isAutoTaggingEnabled(true)
+            .build()
+        val mailchimpSdk = Mailchimp.initialize(configuration)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
