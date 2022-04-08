@@ -23,7 +23,7 @@ import java.util.HashMap;
 public class ShoppingCartActivity extends AppCompatActivity {
     private CartProductRecViewAdapter adapter;
     private RecyclerView recyclerView;
-    private TextView txtTitleShoppingCartAct, txtTotalShoppingCartAct;
+    private TextView txtTotalShoppingCartAct;
     private Button btnContinueShoppingShoppingCartAct, btnCheckoutShoppingCartAct;
 
     @Override
@@ -37,7 +37,6 @@ public class ShoppingCartActivity extends AppCompatActivity {
     }
     private void initData() {
         recyclerView = findViewById(R.id.cartRecView);
-        txtTitleShoppingCartAct = findViewById(R.id.txtTitleShoppingCartAct);
         txtTotalShoppingCartAct = findViewById(R.id.txtTotalShoppingCartAct);
         btnContinueShoppingShoppingCartAct = findViewById(R.id.btnContinueShoppingShoppingCartAct);
         btnCheckoutShoppingCartAct = findViewById(R.id.btnCheckoutShoppingCartAct);

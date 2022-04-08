@@ -43,7 +43,7 @@
         <activity
             android:name=".ProductActivity"
             android:exported="false"
-            android:label="Shopping Cart" />
+            android:label="Product" />
         <activity
             android:name=".ui.vendor.UpdateAboutUsActivity"
             android:exported="false"
