@@ -75,15 +75,9 @@ public class ProductActivity extends AppCompatActivity {
         btnAddToWishlist.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                int quantitySelected = (int) spnrQuantitySelected.getSelectedItem();
+                Wishlist.getInstance().addProductToWishlist(product);
 
-                Wishlist.getInstance().addProductToWishlist(product, quantitySelected);
-
-                String plurality = "";
-                if (quantitySelected > 1) {
-                    plurality = "s";
-                }
-                Toast.makeText(view.getContext(), quantitySelected + " " + product.getName() + plurality +
+                Toast.makeText(view.getContext(), product.getName() +
                         " added to wishlist!", Toast.LENGTH_SHORT).show();
 
                 System.out.println(Wishlist.getInstance().getWishlist());

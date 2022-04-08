@@ -30,11 +30,11 @@ class MainActivity : AppCompatActivity() {
 
         val sdkKey = "a757a17793c83937a9151f045f75d3f9-us19"
         val isDebugBuild = BuildConfig.DEBUG
-        val configuration = MailchimpSdkConfiguration.Builder(context, sdkKey)
-            .isDebugModeEnabled(isDebugBuild)
-            .isAutoTaggingEnabled(true)
-            .build()
-        val mailchimpSdk = Mailchimp.initialize(configuration)
+//        val configuration = MailchimpSdkConfiguration.Builder(context, sdkKey)
+//            .isDebugModeEnabled(isDebugBuild)
+//            .isAutoTaggingEnabled(true)
+//            .build()
+//        val mailchimpSdk = Mailchimp.initialize(configuration)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
@@ -75,6 +75,16 @@ class MainActivity : AppCompatActivity() {
         when (item.itemId) {
             R.id.action_shopping_cart -> {
                 val intent : Intent = Intent(this, ShoppingCartActivity::class.java)
+                startActivity(intent)
+                return true
+            }
+            R.id.action_favorites -> {
+                val intent : Intent = Intent(this, FavoritesActivity::class.java)
+                startActivity(intent)
+                return true
+            }
+            R.id.action_wishlist -> {
+                val intent : Intent = Intent(this, WishlistActivity::class.java)
                 startActivity(intent)
                 return true
             }

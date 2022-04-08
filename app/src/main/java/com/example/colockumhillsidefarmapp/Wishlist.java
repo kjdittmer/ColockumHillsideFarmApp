@@ -2,16 +2,17 @@ package com.example.colockumhillsidefarmapp;
 
 //import com.example.colockumhillsidefarmapp.ui.Storage;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Wishlist {
 
     private static Wishlist instance;
-    private HashMap<Product, Integer> wishlist;
+    private ArrayList<Product> wishlist;
 
     private Wishlist() {
         if(wishlist == null) {
-            wishlist = new HashMap<>();
+            wishlist = new ArrayList<>();
         }
 
     }
@@ -23,16 +24,20 @@ public class Wishlist {
         return instance;
     }
 
-    public HashMap<Product, Integer> getWishlist() {
+    public ArrayList<Product> getWishlist() {
 
         return wishlist;
     }
 
-    public void addProductToWishlist(Product product, int quantity) {
-        if(!wishlist.containsKey(product)) {
-            wishlist.put(product, quantity);
-        } else {
-            wishlist.put(product, quantity + wishlist.get(product));
+    public void addProductToWishlist(Product product) {
+        if(!wishlist.contains(product)) {
+            wishlist.add(product);
+        }
+    }
+
+    public void removeProductFromWishList(Product product) {
+        if(!wishlist.contains(product)) {
+            wishlist.remove(product);
         }
     }
 

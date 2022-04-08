@@ -12,4 +12,18 @@
         android:title="Shopping Cart"
         android:icon="@drawable/ic_baseline_shopping_cart_"
         app:showAsAction="always"/>
+
+    <item
+        android:id="@+id/action_wishlist"
+        android:title="Wishlist"
+        android:icon="@drawable/ic_baseline_star_24"
+        app:showAsAction="always"
+        android:orderInCategory="99"/>
+
+    <item
+        android:id="@+id/action_favorites"
+        android:title="Favorites"
+        android:icon="@drawable/ic_baseline_favorite_24"
+        app:showAsAction="always"
+        android:orderInCategory="98"/>
 </menu>
