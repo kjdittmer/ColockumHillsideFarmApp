@@ -36,7 +36,7 @@ public class Wishlist {
     }
 
     public void removeProductFromWishList(Product product) {
-        if(!wishlist.contains(product)) {
+        if(wishlist.contains(product)) {
             wishlist.remove(product);
         }
     }

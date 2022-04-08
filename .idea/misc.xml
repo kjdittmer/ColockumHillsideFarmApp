@@ -56,6 +56,7 @@
         <entry key="app/src/main/res/layout/activity_vegetable.xml" value="0.19166666666666668" />
         <entry key="app/src/main/res/layout/activity_vegetable_practices.xml" value="0.19166666666666668" />
         <entry key="app/src/main/res/layout/activity_vendor_choice.xml" value="0.19166666666666668" />
+        <entry key="app/src/main/res/layout/activity_wishlist.xml" value="0.1" />
         <entry key="app/src/main/res/layout/app_bar_main.xml" value="0.2171875" />
         <entry key="app/src/main/res/layout/content_edit_product.xml" value="0.13958333333333334" />
         <entry key="app/src/main/res/layout/farm_info.xml" value="0.3802083333333333" />
@@ -70,6 +71,7 @@
         <entry key="app/src/main/res/layout/list_item_product.xml" value="0.3802083333333333" />
         <entry key="app/src/main/res/layout/list_item_recipe.xml" value="0.19166666666666668" />
         <entry key="app/src/main/res/layout/list_item_store_product.xml" value="0.335" />
+        <entry key="app/src/main/res/layout/list_item_wishlist_product.xml" value="0.335" />
         <entry key="app/src/main/res/layout/nav_header_main.xml" value="0.2171875" />
         <entry key="app/src/main/res/menu/activity_main_drawer.xml" value="0.2171875" />
         <entry key="app/src/main/res/menu/main.xml" value="0.2171875" />

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/parentWishlistItem"
+    app:cardCornerRadius="10dp"
+    app:cardElevation="7dp"
+    android:layout_margin="5dp"
+    android:layout_centerHorizontal="true"
+    >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/layoutWishlistItem">
+
+        <ImageView
+            android:layout_width="200dp"
+            android:layout_height="150dp"
+            android:id="@+id/imgProductWishlistItem"
+            android:src="@mipmap/ic_launcher_tractor"
+            android:layout_centerHorizontal="true"
+            />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_baseline_delete_24"
+            android:layout_margin="5dp"
+            android:id="@+id/imgDeleteWishlistItem"
+            android:layout_below="@+id/txtQuantityWishlistItem"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Product Name"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:layout_below="@+id/imgProductWishlistItem"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="5dp"
+            android:id="@+id/txtProductNameWishlistItem"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Quantity"
+            android:textSize="12sp"
+            android:layout_below="@+id/txtProductNameWishlistItem"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="5dp"
+            android:id="@+id/txtQuantityWishlistItem"/>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Price"
+            android:textSize="12sp"
+            android:layout_below="@+id/txtQuantityWishlistItem"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="5dp"
+            android:id="@+id/txtPriceWishlistItem"/>
+
+    </RelativeLayout>
+
+</com.google.android.material.card.MaterialCardView>
