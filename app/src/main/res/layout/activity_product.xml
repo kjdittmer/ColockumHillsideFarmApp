@@ -21,13 +21,13 @@
             android:textSize="30dp"/>
 
         <ImageView
+            android:id="@+id/imgProductProdAct"
             android:layout_width="250dp"
             android:layout_height="250dp"
+            android:layout_below="@+id/txtProductNameProdAct"
             android:layout_centerHorizontal="true"
-            android:src="@mipmap/ic_launcher_tractor"
             android:layout_marginTop="20dp"
-            android:id="@+id/imgProductProdAct"
-            android:layout_below="@+id/txtProductNameProdAct"/>
+            android:src="@mipmap/ic_launcher_tractor" />
 
         <TextView
             android:layout_width="wrap_content"
