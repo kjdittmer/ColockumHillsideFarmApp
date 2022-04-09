@@ -69,7 +69,7 @@ class RecipesFragment : Fragment() {
        // dummyRecipes.add(Recipe(5, "Roast Beef", "short", "long", "https://hips.hearstapps.com/hmg-prod/images/delish-roast-beef-horizontal-1540505165.jpg"))
 
         adapter.setRecipes(GlobalStorage.getInstance().recipes)
-
+        adapter.notifyDataSetChanged()
         return root
     }
 
