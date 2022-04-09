@@ -117,6 +117,7 @@ public class GlobalStorage {
                     allProducts.add(newProduct);
                 }
                 adapter.notifyDataSetChanged();
+                Log.d("HEREEE", allProducts.toString());
             }
 
             @Override

@@ -56,7 +56,7 @@ public class VendorChoiceActivity extends AppCompatActivity {
         btnAddRecipes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(VendorChoiceActivity.this, AddRecipeActivity.class);
+                Intent intent = new Intent(view.getContext(), AddRecipeActivity.class);
                 startActivity(intent);
             }
         });

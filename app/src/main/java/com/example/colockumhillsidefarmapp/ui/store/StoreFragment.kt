@@ -68,6 +68,7 @@ class StoreFragment : Fragment() {
         productRecView.layoutManager = manager
 
         adapter.setProducts(allProducts)
+        adapter.notifyDataSetChanged()
 
 //        val rootNode = FirebaseDatabase.getInstance()
 //        val reference = rootNode.getReference("product")
