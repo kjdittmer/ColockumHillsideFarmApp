@@ -21,7 +21,6 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.example.colockumhillsidefarmapp.Product;
 import com.example.colockumhillsidefarmapp.R;
 import com.example.colockumhillsidefarmapp.GlobalStorage;
 import com.example.colockumhillsidefarmapp.ui.recipes.Recipe;
@@ -64,19 +63,30 @@ public class AddRecipeActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String name = txtNameAddRecipeName.getText().toString();
-                String imageUrl = txtImageUrlRecAct.getText().toString();
-                String shortDesc = txtShortDescAddRecipeAct.getText().toString();
+                //String imageUrl = txtImageUrlRecAct.getText().toString();
+                //String shortDesc = txtShortDescAddRecipeAct.getText().toString();
                 String ingredients = txtIngredients.getText().toString();
                 String instructions = txtInstructions.getText().toString();
                 if(validateData()) {
 
                     AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
-                    builder.setMessage("Is the following information correct?\nName: " + name  + "\nImage URL: " + imageUrl + "\nShort Description: " + shortDesc + "\nIngredients:" + ingredients + "\nInstructions:" + instructions);
+                    builder.setMessage("Is the following information correct?\nName: " + name  + "" +
+                            //"\nImage URL: " + imageUrl +
+                            "\nShort Description: " +
+                            //shortDesc + "\nIngredients:" +
+                            ingredients + "\nInstructions:" +
+                            instructions
+                    );
                     builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
 
-                            GlobalStorage.getInstance().addRecipeToRecipes(new Recipe(0, name, imageUrl, shortDesc, ingredients, instructions));
+                            GlobalStorage.getInstance().addRecipeToAllRecipes(new Recipe(0, name,
+                                    //imageUrl,
+                                    "testing",
+                                    //shortDesc,
+                                    "testing",
+                                     ingredients, instructions));
                             Toast.makeText(view.getContext(), name + " was added to the recipe page.", Toast.LENGTH_SHORT).show();
                         }
                     });

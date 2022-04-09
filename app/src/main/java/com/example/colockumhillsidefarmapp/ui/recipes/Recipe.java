@@ -1,11 +1,5 @@
 package com.example.colockumhillsidefarmapp.ui.recipes;
 
-import android.view.View;
-
-import androidx.appcompat.view.menu.MenuView;
-
-import com.example.colockumhillsidefarmapp.R;
-
 public class Recipe {
     private int id;
     private String name;

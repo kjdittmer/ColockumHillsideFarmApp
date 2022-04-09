@@ -184,6 +184,10 @@ public class GlobalStorage {
         readData(new AddProductCallback(newId, product));
     }
 
+    public void addRecipeToAllRecipes(Recipe recipe){
+        int newId = 0;
+        readRecipeData(new AddRecipeCallback(newId, recipe));
+    }
     private void readData(FirebaseCallback firebaseCallback) {
         FirebaseDatabase rootNode = FirebaseDatabase.getInstance();
         DatabaseReference reference = rootNode.getReference("product");
@@ -207,6 +211,28 @@ public class GlobalStorage {
         });
     }
 
+    private void readRecipeData(FirebaseRecipeCallback firebaseRecipeCallback) {
+        FirebaseDatabase rootNode = FirebaseDatabase.getInstance();
+        DatabaseReference reference = rootNode.getReference("recipe");
+        reference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                ArrayList<Recipe> allRecipes = new ArrayList<>();
+                for (DataSnapshot currentSnapshot : snapshot.getChildren()) {
+                    Recipe newRecipe = currentSnapshot.getValue(Recipe.class);
+                    allRecipes.add(newRecipe);
+                }
+
+                firebaseRecipeCallback.onCallBack(allRecipes);
+                Log.d("calling callback", "yes");
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
     public Recipe getRecipeFromRecipeId(int recipeId) {
         for(Recipe recipe : recipes){
             if (recipe.getId() == recipeId){
@@ -221,7 +247,9 @@ public class GlobalStorage {
     private interface FirebaseCallback {
         void onCallBack(ArrayList<Product> allProducts);
     }
-
+    private interface FirebaseRecipeCallback{
+        void onCallBack(ArrayList<Recipe> allRecipes);
+    }
     private class AddProductCallback implements FirebaseCallback {
 
         private int newId;
@@ -256,6 +284,42 @@ public class GlobalStorage {
             reference = rootNode.getReference("product");
             Log.d("adding a product", "now");
             reference.child(String.valueOf(productToAdd.getId())).setValue(productToAdd);
+        }
+    }
+    private class AddRecipeCallback implements FirebaseRecipeCallback {
+
+        private int newId;
+        private Recipe recipeToAdd;
+
+        public AddRecipeCallback(int newId, Recipe recipeToAdd) {
+            this.newId = newId;
+            this.recipeToAdd = recipeToAdd;
+        }
+
+        @Override
+        public void onCallBack(ArrayList<Recipe> allRecipes) {
+            ArrayList<Integer> recipeIds = new ArrayList<>();
+            for (Recipe currentRecipe : allRecipes) {
+                recipeIds.add(currentRecipe.getId());
+            }
+            Log.d("recipe ids", recipeIds.toString());
+            while (true) {
+                Log.d("while loop", "yes");
+                if(recipeIds.contains(newId)) {
+                    Log.d("new id", "incremented");
+                    newId++;
+                } else {
+                    recipeToAdd.setId(newId);
+                    Log.d("else", "yes");
+                    Log.d("newId", String.valueOf(newId));
+                    break;
+                }
+            }
+
+            rootNode = FirebaseDatabase.getInstance();
+            reference = rootNode.getReference("recipe");
+            Log.d("adding a product", "now");
+            reference.child(String.valueOf(recipeToAdd.getId())).setValue(recipeToAdd);
         }
     }
 
