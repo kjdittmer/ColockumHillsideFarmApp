@@ -8,8 +8,6 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.RadioGroup;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.colockumhillsidefarmapp.MainActivity;
@@ -17,7 +15,7 @@ import com.example.colockumhillsidefarmapp.R;
 
 public class VendorChoiceActivity extends AppCompatActivity {
 
-    private Button btnGoToAnalytics, btnGoToUpdateStore, btnGoToUpdateAboutUs, btnExitVendorMode;
+    private Button btnGoToAnalytics, btnGoToUpdateStore, btnGoToUpdateAboutUs, btnAddRecipes;
 
 
     @Override
@@ -55,10 +53,10 @@ public class VendorChoiceActivity extends AppCompatActivity {
             }
         });
 
-        btnExitVendorMode.setOnClickListener(new View.OnClickListener() {
+        btnAddRecipes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(VendorChoiceActivity.this, MainActivity.class);
+                Intent intent = new Intent(VendorChoiceActivity.this, AddRecipeActivity.class);
                 startActivity(intent);
             }
         });
@@ -70,7 +68,7 @@ public class VendorChoiceActivity extends AppCompatActivity {
         btnGoToAnalytics = findViewById(R.id.btnGoToAnalytics);
         btnGoToUpdateStore = findViewById(R.id.btnGoToUpdateStore);
         btnGoToUpdateAboutUs = findViewById(R.id.btnGoToUpdateAboutUs);
-        btnExitVendorMode = findViewById(R.id.btnExitVendorMode);
+        btnAddRecipes = findViewById(R.id.btnAddRecipes);
     }
 
     @Override

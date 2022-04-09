@@ -206,6 +206,17 @@ public class GlobalStorage {
         });
     }
 
+    public Recipe getRecipeFromRecipeId(int recipeId) {
+        for(Recipe recipe : recipes){
+            if (recipe.getId() == recipeId){
+                return recipe;
+            }
+        }
+
+        updateLocalCopyOfAllProducts();
+        return null;
+    }
+
     private interface FirebaseCallback {
         void onCallBack(ArrayList<Product> allProducts);
     }

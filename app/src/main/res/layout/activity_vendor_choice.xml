@@ -54,14 +54,17 @@
             android:layout_margin="5dp"/>
 
         <Button
+            android:id="@+id/btnAddRecipes"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/btnExitVendorMode"
-            android:text="Exit vendor mode"
             android:layout_below="@+id/btnGoToUpdateAboutUs"
             android:layout_centerHorizontal="true"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="5dp"
             android:background="@drawable/round_button"
-            android:layout_margin="5dp"/>
+            android:text="Add Recipes" />
 
     </RelativeLayout>
 
