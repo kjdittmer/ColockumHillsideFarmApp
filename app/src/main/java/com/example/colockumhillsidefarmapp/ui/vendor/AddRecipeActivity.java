@@ -63,7 +63,7 @@ public class AddRecipeActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String name = txtNameAddRecipeName.getText().toString();
-                //String imageUrl = txtImageUrlRecAct.getText().toString();
+                String imageUrl = txtImageUrlRecAct.getText().toString();
                 //String shortDesc = txtShortDescAddRecipeAct.getText().toString();
                 String ingredients = txtIngredients.getText().toString();
                 String instructions = txtInstructions.getText().toString();

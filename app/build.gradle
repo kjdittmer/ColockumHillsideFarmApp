@@ -71,4 +71,7 @@ dependencies {
     implementation platform('com.google.firebase:firebase-bom:29.3.0')
     implementation 'com.google.firebase:firebase-firestore-ktx'
     implementation 'com.github.mailchimp:Mailchimp-SDK-Android:1.0.0'
+    // required to avoid crash on Android 12 API 31
+    implementation 'androidx.work:work-runtime-ktx:2.7.0'
+
 }
