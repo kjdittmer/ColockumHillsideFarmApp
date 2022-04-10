@@ -70,13 +70,5 @@ dependencies {
     implementation 'com.google.firebase:firebase-database-ktx'
     implementation platform('com.google.firebase:firebase-bom:29.3.0')
     implementation 'com.google.firebase:firebase-firestore-ktx'
-<<<<<<< Updated upstream
-
-
-
-
-
-=======
     implementation 'com.github.mailchimp:Mailchimp-SDK-Android:1.0.0'
->>>>>>> Stashed changes
 }

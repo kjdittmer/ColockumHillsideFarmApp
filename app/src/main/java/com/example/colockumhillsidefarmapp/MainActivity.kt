@@ -31,7 +31,6 @@ class MainActivity : AppCompatActivity() {
 
         val sdkKey = "a757a17793c83937a9151f045f75d3f9-us19"
         val isDebugBuild = BuildConfig.DEBUG
-<<<<<<< Updated upstream
 //        val configuration = MailchimpSdkConfiguration.Builder(context, sdkKey)
 //            .isDebugModeEnabled(isDebugBuild)
 //            .isAutoTaggingEnabled(true)
@@ -39,7 +38,6 @@ class MainActivity : AppCompatActivity() {
 //        val mailchimpSdk = Mailchimp.initialize(configuration)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-=======
         //val configuration = MailchimpSdkConfiguration.Builder(context, sdkKey)
         //    .isDebugModeEnabled(isDebugBuild)
         //    .isAutoTaggingEnabled(true)
@@ -47,7 +45,6 @@ class MainActivity : AppCompatActivity() {
         //val mailchimpSdk = Mailchimp.initialize(configuration)
         //binding = ActivityMainBinding.inflate(layoutInflater)
         //setContentView(binding.root)
->>>>>>> Stashed changes
 
         setSupportActionBar(binding.appBarMain.toolbar)
 
