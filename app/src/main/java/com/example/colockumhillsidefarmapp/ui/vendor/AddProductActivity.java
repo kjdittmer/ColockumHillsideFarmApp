@@ -27,11 +27,6 @@ import com.example.colockumhillsidefarmapp.Product;
 import com.example.colockumhillsidefarmapp.R;
 import com.example.colockumhillsidefarmapp.GlobalStorage;
 
-//having problems with these
-//import com.google.firebase.firestore.DocumentReference;
-//import com.google.firebase.firestore.FirebaseFirestore;
-
-
 public class AddProductActivity extends AppCompatActivity {
     private static final int PERMISSION_REQUEST = 0;
     private static final int RESULT_LOAD_IMAGE = 1;

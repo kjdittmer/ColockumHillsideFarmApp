@@ -25,11 +25,6 @@ import com.example.colockumhillsidefarmapp.R;
 import com.example.colockumhillsidefarmapp.GlobalStorage;
 import com.example.colockumhillsidefarmapp.ui.recipes.Recipe;
 
-//having problems with these
-//import com.google.firebase.firestore.DocumentReference;
-//import com.google.firebase.firestore.FirebaseFirestore;
-
-
 public class AddRecipeActivity extends AppCompatActivity {
     private static final int PERMISSION_REQUEST = 0;
     private static final int RESULT_LOAD_IMAGE = 1;
