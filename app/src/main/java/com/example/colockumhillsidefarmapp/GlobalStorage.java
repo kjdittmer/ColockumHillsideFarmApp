@@ -83,7 +83,7 @@ public class GlobalStorage {
 
         rootNode = FirebaseDatabase.getInstance();
         reference = rootNode.getReference("product");
-        reference.addValueEventListener(new ValueEventListener() {
+        reference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot currentSnapshot : snapshot.getChildren()) {
