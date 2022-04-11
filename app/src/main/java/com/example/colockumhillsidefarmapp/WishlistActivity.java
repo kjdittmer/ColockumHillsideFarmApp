@@ -27,7 +27,6 @@ public class WishlistActivity extends AppCompatActivity {
 
     private void initData () {
         recyclerView = findViewById(R.id.wishlistRecView);
-
     }
 
     private void setData () {
