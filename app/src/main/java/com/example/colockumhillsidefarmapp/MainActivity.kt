@@ -16,6 +16,7 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.viewbinding.BuildConfig
 import com.example.colockumhillsidefarmapp.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -37,6 +38,13 @@ class MainActivity : AppCompatActivity() {
 //        val mailchimpSdk = Mailchimp.initialize(configuration)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        //val configuration = MailchimpSdkConfiguration.Builder(context, sdkKey)
+        //    .isDebugModeEnabled(isDebugBuild)
+        //    .isAutoTaggingEnabled(true)
+        //    .build()
+        //val mailchimpSdk = Mailchimp.initialize(configuration)
+        //binding = ActivityMainBinding.inflate(layoutInflater)
+        //setContentView(binding.root)
 
         setSupportActionBar(binding.appBarMain.toolbar)
 

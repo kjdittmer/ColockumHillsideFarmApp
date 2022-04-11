@@ -14,8 +14,6 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.provider.Settings;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -23,21 +21,21 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.example.colockumhillsidefarmapp.Product;
 import com.example.colockumhillsidefarmapp.R;
 import com.example.colockumhillsidefarmapp.GlobalStorage;
+import com.example.colockumhillsidefarmapp.ui.recipes.Recipe;
 
-public class AddProductActivity extends AppCompatActivity {
+public class AddRecipeActivity extends AppCompatActivity {
     private static final int PERMISSION_REQUEST = 0;
     private static final int RESULT_LOAD_IMAGE = 1;
-    EditText txtNameAddProdAct, txtQuantityAddProdAct, txtImageUrlProdAct, txtShortDescAddProdAct, txtLongDescAddProdAct, txtPriceAddProdAct, txtPackageQuantityAddProdAct;
+    EditText txtNameAddRecipeName, txtIngredients, txtImageUrlRecAct, txtShortDescAddRecipeAct, txtInstructions;
     ImageView imageView;
-    Button btnAddProductAddProdAct, btnUploadPicture;
+    Button btnAddRecipe, btnUploadRecipePicture;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(com.example.colockumhillsidefarmapp.R.layout.activity_add_product);
+        setContentView(com.example.colockumhillsidefarmapp.R.layout.activity_add_recipe);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
@@ -48,7 +46,7 @@ public class AddProductActivity extends AppCompatActivity {
             requestPermissions(new String[] {Manifest.permission.READ_EXTERNAL_STORAGE}, PERMISSION_REQUEST);
         }
 
-        btnUploadPicture.setOnClickListener(new View.OnClickListener() {
+        btnUploadRecipePicture.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
@@ -56,32 +54,35 @@ public class AddProductActivity extends AppCompatActivity {
             }
         });
 
-        btnAddProductAddProdAct.setOnClickListener(new View.OnClickListener() {
+        btnAddRecipe.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String name = txtNameAddProdAct.getText().toString();
-                String imageUrl = txtImageUrlProdAct.getText().toString();
-                String shortDesc = txtShortDescAddProdAct.getText().toString();
-                String longDesc = txtLongDescAddProdAct.getText().toString();
-                String packageQuantity = txtPackageQuantityAddProdAct.getText().toString();
-                int quantity = Integer.parseInt(txtQuantityAddProdAct.getText().toString());
-                double price = Double.parseDouble(txtPriceAddProdAct.getText().toString());
+                String name = txtNameAddRecipeName.getText().toString();
+                //String imageUrl = txtImageUrlRecAct.getText().toString();
+                //String shortDesc = txtShortDescAddRecipeAct.getText().toString();
+                String ingredients = txtIngredients.getText().toString();
+                String instructions = txtInstructions.getText().toString();
                 if(validateData()) {
 
                     AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
-                    builder.setMessage("Is the following information correct?\nName: " + name + "\nQuantity: " + quantity + "\nImage URL: " + imageUrl + "\nShort Description: " + shortDesc + "\nLong Description: " + longDesc + "\nPrice: " + price + "\nPackage Quantity: " + packageQuantity);
+                    builder.setMessage("Is the following information correct?\nName: " + name  + "" +
+                            //"\nImage URL: " + imageUrl +
+                            "\nShort Description: " +
+                            //shortDesc + "\nIngredients:" +
+                            ingredients + "\nInstructions:" +
+                            instructions
+                    );
                     builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
-                            GlobalStorage.getInstance().addProductToAllProducts(new Product(0, name, quantity, imageUrl, shortDesc, longDesc, price, packageQuantity));
-                            Toast.makeText(view.getContext(), name + " was added to the store.", Toast.LENGTH_SHORT).show();
-                            txtNameAddProdAct.setText("");
-                            txtImageUrlProdAct.setText("");
-                            txtShortDescAddProdAct.setText("");
-                            txtLongDescAddProdAct.setText("");
-                            txtPackageQuantityAddProdAct.setText("");
-                            txtQuantityAddProdAct.setText("");
-                            txtPriceAddProdAct.setText("");
+
+                            GlobalStorage.getInstance().addRecipeToAllRecipes(new Recipe(0, name,
+                                    //imageUrl,
+                                    "testing",
+                                    //shortDesc,
+                                    "testing",
+                                     ingredients, instructions));
+                            Toast.makeText(view.getContext(), name + " was added to the recipe page.", Toast.LENGTH_SHORT).show();
                         }
                     });
 
@@ -108,15 +109,13 @@ public class AddProductActivity extends AppCompatActivity {
     }
 
     private void initVariables() {
-        btnAddProductAddProdAct = findViewById(R.id.btnAddProductAddProdAct);
-        btnUploadPicture = findViewById(R.id.btnUploadPicture);
-        txtNameAddProdAct = findViewById(R.id.txtNameAddProdAct);
-        txtQuantityAddProdAct = findViewById(R.id.txtQuantityAddProdAct);
-        txtImageUrlProdAct = findViewById(R.id.txtImageUrlProdAct);
-        txtShortDescAddProdAct = findViewById(R.id.txtShortDescAddProdAct);
-        txtLongDescAddProdAct = findViewById(R.id.txtLongDescAddProdAct);
-        txtPriceAddProdAct = findViewById(R.id.txtPriceAddProdAct);
-        txtPackageQuantityAddProdAct = findViewById(R.id.txtPackageQuantityAddProdAct);
+        btnAddRecipe = findViewById(R.id.btnAddRecipe);
+        btnUploadRecipePicture = findViewById(R.id.btnUploadRecipePicture);
+        txtNameAddRecipeName = findViewById(R.id.txtNameAddRecipeName);
+        txtImageUrlRecAct = findViewById(R.id.txtImageUrlProdAct);
+        txtShortDescAddRecipeAct = findViewById(R.id.txtShortDescAddProdAct);
+        txtIngredients = findViewById(R.id.txtIngredients);
+        txtInstructions = findViewById(R.id.txtInstructions);
         imageView = (ImageView) findViewById(R.id.imageView);
     }
 

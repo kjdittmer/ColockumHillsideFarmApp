@@ -26,7 +26,6 @@ public class EditProductActivity extends AppCompatActivity {
 
     private static final String PRODUCT_ID = "productId";
 
-    private TextView txtTitleEditProdAct;
     private EditText txtNameEditProdAct, txtQuantityEditProdAct,
             txtImageUrlEditProdAct, txtShortDescEditProdAct,
             txtLongDescEditProdAct, txtPriceEditProdAct, txtPackageQuantityEditProdAct;
@@ -72,7 +71,6 @@ public class EditProductActivity extends AppCompatActivity {
     }
 
     private void initVariables() {
-        txtTitleEditProdAct = findViewById(R.id.txtTitleEditProdAct);
         txtNameEditProdAct = findViewById(R.id.txtNameEditProdAct);
         txtQuantityEditProdAct = findViewById(R.id.txtQuantityEditProdAct);
         txtImageUrlEditProdAct = findViewById(R.id.txtImageUrlEditProdAct);
@@ -84,7 +82,6 @@ public class EditProductActivity extends AppCompatActivity {
     }
 
     private void setData(Product product){
-        txtTitleEditProdAct.setText("Edit " + product.getName());
         txtNameEditProdAct.setText(product.getName());
         txtQuantityEditProdAct.setText(String.valueOf(product.getQuantity()));
         txtImageUrlEditProdAct.setText(product.getImageUrl());

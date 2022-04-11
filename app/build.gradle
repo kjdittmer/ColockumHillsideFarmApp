@@ -1,9 +1,9 @@
 plugins {
-        id 'com.android.application'
-        id 'org.jetbrains.kotlin.android'
-        id 'kotlin-android'
-        id 'kotlin-android-extensions'
-        id 'com.google.gms.google-services'
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-android'
+    id 'kotlin-android-extensions'
+    id 'com.google.gms.google-services'
 
 }
 
@@ -74,6 +74,11 @@ dependencies {
 
 
 
+
+
+    implementation 'com.github.mailchimp:Mailchimp-SDK-Android:1.0.0'
+    // required to avoid crash on Android 12 API 31
+    implementation 'androidx.work:work-runtime-ktx:2.7.0'
 
 
 }

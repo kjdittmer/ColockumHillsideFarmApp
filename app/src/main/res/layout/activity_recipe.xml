@@ -11,54 +11,54 @@
         android:layout_width="159dp"
         android:layout_height="158dp"
         android:layout_marginTop="52dp"
-        app:layout_constraintEnd_toStartOf="@+id/guideline2"
-        app:layout_constraintHorizontal_bias="0.484"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:srcCompat="@tools:sample/avatars" />
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_begin="227dp" />
-
     <TextView
         android:id="@+id/recipeName"
         android:layout_width="154dp"
-        android:layout_height="94dp"
-        android:layout_marginTop="80dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="76dp"
+        android:layout_marginEnd="48dp"
+        android:layout_marginBottom="329dp"
         android:text="TextView"
         android:textAlignment="center"
         android:textSize="25sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/instructionsRec"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.49"
-        app:layout_constraintStart_toStartOf="@+id/guideline2"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/shortDesc"
-        android:layout_width="82dp"
-        android:layout_height="217dp"
-        android:layout_marginTop="340dp"
+        android:id="@+id/shortDescRec"
+        android:layout_width="72dp"
+        android:layout_height="46dp"
+        android:layout_marginTop="252dp"
         android:text="TextView"
-        app:layout_constraintEnd_toStartOf="@+id/guideline2"
-        app:layout_constraintHorizontal_bias="0.509"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/longDesc"
-        android:layout_width="101dp"
-        android:layout_height="206dp"
-        android:layout_marginStart="52dp"
-        android:layout_marginTop="340dp"
+        android:id="@+id/ingredientsRec"
+        android:layout_width="85dp"
+        android:layout_height="47dp"
+        android:layout_marginTop="348dp"
+        android:layout_marginEnd="292dp"
         android:text="TextView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/guideline2"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/instructionsRec"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="213dp"
+        android:text="Instructions"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/recipeName" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

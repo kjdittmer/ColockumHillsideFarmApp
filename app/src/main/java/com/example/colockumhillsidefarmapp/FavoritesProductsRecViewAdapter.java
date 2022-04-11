@@ -20,37 +20,36 @@ import com.bumptech.glide.Glide;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
-import java.util.HashMap;
 
-public class WishlistProductRecViewAdapter extends RecyclerView.Adapter<WishlistProductRecViewAdapter.ViewHolder>{
-
+public class FavoritesProductsRecViewAdapter extends RecyclerView.Adapter<FavoritesProductsRecViewAdapter.ViewHolder>{
     private static final String PRODUCT_ID = "productId";
 
 
-    private ArrayList<Product> wishlist;
+    private ArrayList<Product> favoritesProducts;
     private Context mContext;
-    private WishlistActivity currentActivity;
+    private FavoritesActivity currentActivity;
 
-    public WishlistProductRecViewAdapter(Context mContext, WishlistActivity currentActivity) {
+    public FavoritesProductsRecViewAdapter(Context mContext, FavoritesActivity currentActivity) {
         this.mContext = mContext;
-        wishlist = Wishlist.getInstance().getWishlist();
+        favoritesProducts = Favorites.getInstance().getFavoritesProducts();
         this.currentActivity = currentActivity;
     }
 
-    public void setProductsInWishlist(ArrayList<Product> wishlist) {
-        this.wishlist = wishlist;
+    public void setProductsFavoritesProducts(ArrayList<Product> favoritesProducts) {
+        this.favoritesProducts = favoritesProducts;
+        notifyDataSetChanged();
     }
 
     @NonNull
     @Override
-    public WishlistProductRecViewAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public FavoritesProductsRecViewAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_wishlist_product, parent, false);
-        return new WishlistProductRecViewAdapter.ViewHolder(view);
+        return new FavoritesProductsRecViewAdapter.ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull WishlistProductRecViewAdapter.ViewHolder holder, int position) {
-        Product product = wishlist.get(holder.getAdapterPosition());
+    public void onBindViewHolder(@NonNull FavoritesProductsRecViewAdapter.ViewHolder holder, int position) {
+        Product product = favoritesProducts.get(holder.getAdapterPosition());
 
         holder.txtProductNameWishlistItem.setText(product.getName());
 
@@ -69,7 +68,7 @@ public class WishlistProductRecViewAdapter extends RecyclerView.Adapter<Wishlist
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(mContext, ProductActivity.class);
-                intent.putExtra(PRODUCT_ID, wishlist.get(holder.getAdapterPosition()).getId());
+                intent.putExtra(PRODUCT_ID, favoritesProducts.get(holder.getAdapterPosition()).getId());
                 mContext.startActivity(intent);
             }
         });
@@ -78,12 +77,13 @@ public class WishlistProductRecViewAdapter extends RecyclerView.Adapter<Wishlist
             @Override
             public void onClick(View view) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
-                builder.setMessage("Are you sure you want to remove " + product.getName() + " from your wishlist?");
+                builder.setMessage("Are you sure you want to remove " + product.getName() + " from your favorite products?");
                 builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        Wishlist.getInstance().removeProductFromWishList(product);
+                        Favorites.getInstance().removeProductFromFavoritesProducts(product);
                         currentActivity.reload();
+                        Log.d("fav products", Favorites.getInstance().getFavoritesProducts().toString());
                         Toast.makeText(mContext, product.getName() + " removed", Toast.LENGTH_SHORT).show();
                     }
                 });
@@ -102,7 +102,7 @@ public class WishlistProductRecViewAdapter extends RecyclerView.Adapter<Wishlist
 
     @Override
     public int getItemCount() {
-        return wishlist.size();
+        return favoritesProducts.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {

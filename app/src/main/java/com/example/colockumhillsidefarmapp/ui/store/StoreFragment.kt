@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.example.colockumhillsidefarmapp.GlobalStorage
 import com.example.colockumhillsidefarmapp.Product
 import com.example.colockumhillsidefarmapp.R
@@ -27,6 +28,7 @@ class StoreFragment : Fragment() {
     private var _binding: FragmentStoreBinding? = null
     private lateinit var productRecView: RecyclerView
     private lateinit var adapter: StoreProductRecViewAdapter
+    private lateinit var layout: SwipeRefreshLayout
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -68,6 +70,15 @@ class StoreFragment : Fragment() {
         productRecView.layoutManager = manager
 
         adapter.setProducts(allProducts)
+        adapter.notifyDataSetChanged()
+
+        layout = root.findViewById(R.id.swipeRefreshLayoutStore)
+        layout.setOnRefreshListener {
+            val allProducts = GlobalStorage.getInstance().getAllProductsForStore(adapter)
+            adapter.setProducts(allProducts)
+            adapter.notifyDataSetChanged()
+            layout.isRefreshing = false;
+        }
 
 //        val rootNode = FirebaseDatabase.getInstance()
 //        val reference = rootNode.getReference("product")

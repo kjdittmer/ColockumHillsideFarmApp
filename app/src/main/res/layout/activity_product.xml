@@ -97,6 +97,16 @@
                 android:layout_centerHorizontal="true"
                 android:background="@drawable/round_button"/>
 
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Add to favorites"
+                android:id="@+id/btnAddToFavorites"
+                android:layout_margin="3dp"
+                android:layout_below="@+id/btnAddToWishlist"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/round_button"/>
+
 
 
 

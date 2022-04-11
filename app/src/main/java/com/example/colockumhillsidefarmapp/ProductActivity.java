@@ -27,7 +27,7 @@ public class ProductActivity extends AppCompatActivity {
     private ImageView imgProductProdAct;
     private TextView txtProductNameProdAct, txtShortDescProdAct, txtProductPriceProdAct,
             txtProductQuantityLeftProdAct, txtLongDescProdAct;
-    private Button btnAddToWishlist, btnAddToCart;
+    private Button btnAddToWishlist, btnAddToCart, btnAddToFavorites;
     private Spinner spnrQuantitySelected;
 
     @Override
@@ -83,6 +83,17 @@ public class ProductActivity extends AppCompatActivity {
                 System.out.println(Wishlist.getInstance().getWishlist());
             }
         });
+
+        btnAddToFavorites.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Favorites.getInstance().addProductToFavoritesProducts(product);
+
+                Toast.makeText(view.getContext(), product.getName() +
+                        " added to favorites!", Toast.LENGTH_SHORT).show();
+
+            }
+        });
     }
 
     private void setData(Product product){
@@ -123,6 +134,7 @@ public class ProductActivity extends AppCompatActivity {
         btnAddToCart = findViewById(R.id.btnAddToCart);
         spnrQuantitySelected = findViewById(R.id.spnrQuantitySelected);
         txtLongDescProdAct = findViewById(R.id.txtLongDescProdAct);
+        btnAddToFavorites = findViewById(R.id.btnAddToFavorites);
 
     }
 
