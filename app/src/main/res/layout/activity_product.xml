@@ -65,7 +65,7 @@
         </RelativeLayout>
 
         <RelativeLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/buttonsLayoutProdAct"
             android:layout_centerHorizontal="true"
@@ -73,32 +73,36 @@
 
 
             <Button
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/btnAddToCart"
                 android:layout_margin="3dp"
                 android:text="Add to cart"
-                android:background="@drawable/round_button"/>
+                android:background="@drawable/round_button"
+                android:layout_below="@+id/spnrQuantitySelected"
+                android:layout_centerHorizontal="true"/>
 
             <Spinner
+                android:id="@+id/spnrQuantitySelected"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="3dp"
-                android:id="@+id/spnrQuantitySelected"
-                android:layout_toRightOf="@+id/btnAddToCart"/>
+                android:layout_margin="10dp" />
 
             <Button
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Add to wishlist"
                 android:id="@+id/btnAddToWishlist"
-                android:layout_margin="3dp"
                 android:layout_below="@+id/btnAddToCart"
                 android:layout_centerHorizontal="true"
-                android:background="@drawable/round_button"/>
+                android:background="@drawable/round_button"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="3dp"
+                android:layout_marginLeft="3dp"
+                android:layout_marginRight="3dp"/>
 
             <Button
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Add to favorites"
                 android:id="@+id/btnAddToFavorites"
