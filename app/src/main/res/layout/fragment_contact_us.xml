@@ -1,93 +1,91 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <!-- TODO: Update blank fragment layout -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/ContactTitle"
-        android:layout_width="370dp"
-        android:layout_height="wrap_content"
-        android:text="Contact Us!"
-        android:textAlignment="center"
-        android:fontFamily="sans-serif-condensed"
-        android:textSize="50sp"
-        android:layout_centerHorizontal="true"
-        android:padding="10dp"/>
+        <TextView
+            android:id="@+id/ContactTitle"
+            android:layout_width="370dp"
+            android:layout_height="wrap_content"
+            android:text="Get in touch!"
+            android:textAlignment="center"
+            android:textSize="50sp"
+            android:layout_centerHorizontal="true"
+            android:padding="10dp"/>
 
+        <TextView
+            android:id="@+id/FarmEmail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="suzanne@colockumhillsidefarm.com"
+            android:textSize="20sp"
+            android:layout_below="@+id/ContactTitle"
+            android:layout_centerHorizontal="true"
+            android:padding="10dp"
+            android:autoLink="email" />
 
+        <TextView
+            android:id="@+id/MCTitle"
+            android:layout_width="370dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/FarmEmail"
+            android:layout_centerHorizontal="true"
+            android:padding="10dp"
+            android:text="Sign up for our newsletter!"
+            android:textAlignment="center"
+            android:textSize="50sp"
+            />
 
-    <TextView
-        android:id="@+id/FarmEmail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="suzanne@colockumhillsidefarm.com"
-        android:textSize="20sp"
-        android:layout_below="@+id/ContactTitle"
-        android:layout_centerHorizontal="true"
-        android:padding="10dp"
-        android:autoLink="email" />
+        <EditText
+            android:id="@+id/editTextTextEmailAddress"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/MCTitle"
+            android:layout_centerHorizontal="true"
+            android:ems="10"
+            android:hint="What's your email?"
+            android:inputType="textEmailAddress"
+            android:padding="10dp" />
 
-    <TextView
-        android:id="@+id/MCTitle"
-        android:layout_width="370dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/FarmEmail"
-        android:layout_centerHorizontal="true"
-        android:padding="10dp"
-        android:text="Sign up for our Newsletter!"
-        android:textAlignment="center"
-        android:fontFamily="sans-serif-condensed"
-        android:textSize="50sp"
-        />
+        <EditText
+            android:id="@+id/editTextFirstName"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/editTextTextEmailAddress"
+            android:layout_centerHorizontal="true"
+            android:ems="10"
+            android:hint="What's your first name?"
+            android:inputType="text"
+            android:padding="10dp" />
 
-    <EditText
-        android:id="@+id/editTextTextEmailAddress"
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/MCTitle"
-        android:layout_centerHorizontal="true"
-        android:ems="10"
-        android:hint="What's your email?"
-        android:inputType="textEmailAddress"
-        android:padding="10dp" />
+        <EditText
+            android:id="@+id/editTextLastName"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/editTextFirstName"
+            android:layout_centerHorizontal="true"
+            android:ems="10"
+            android:hint="What's your last name?"
+            android:inputType="text"
+            android:padding="10dp" />
 
-    <EditText
-        android:id="@+id/editTextFirstName"
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/editTextTextEmailAddress"
-        android:layout_centerHorizontal="true"
-        android:ems="10"
-        android:hint="What's your first name?"
-        android:inputType="text"
-        android:padding="10dp" />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/editTextLastName"
+            android:layout_centerHorizontal="true"
+            android:padding="10dp"
+            android:text="Sign Up!"
+            android:id="@+id/btnSignUpForNewsletter"
+            android:background="@drawable/round_button"/>
 
-    <EditText
-        android:id="@+id/editTextLastName"
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/editTextFirstName"
-        android:layout_centerHorizontal="true"
-        android:ems="10"
-        android:hint="What's your last name?"
-        android:inputType="text"
-        android:padding="10dp" />
+    </RelativeLayout>
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/editTextLastName"
-        android:layout_centerHorizontal="true"
-        android:padding="10dp"
-        android:text="Sign Up!"
-        android:id="@+id/btnSignUpForNewsletter"
-        android:background="@drawable/round_button"/>
-
-
-
-</RelativeLayout>
+</ScrollView>
 
 
