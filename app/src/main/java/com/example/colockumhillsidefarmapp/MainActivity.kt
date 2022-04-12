@@ -18,6 +18,9 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewbinding.BuildConfig
 import com.example.colockumhillsidefarmapp.databinding.ActivityMainBinding
+import com.mailchimp.sdk.core.MailchimpSdkConfiguration
+import com.mailchimp.sdk.main.Mailchimp
+import java.security.AccessController.getContext
 
 class MainActivity : AppCompatActivity() {
 
@@ -29,22 +32,19 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val sdkKey = "a757a17793c83937a9151f045f75d3f9-us19"
-        val isDebugBuild = BuildConfig.DEBUG
-//        val configuration = MailchimpSdkConfiguration.Builder(context, sdkKey)
-//            .isDebugModeEnabled(isDebugBuild)
-//            .isAutoTaggingEnabled(true)
-//            .build()
-//        val mailchimpSdk = Mailchimp.initialize(configuration)
+
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        //val configuration = MailchimpSdkConfiguration.Builder(context, sdkKey)
-        //    .isDebugModeEnabled(isDebugBuild)
-        //    .isAutoTaggingEnabled(true)
-        //    .build()
-        //val mailchimpSdk = Mailchimp.initialize(configuration)
-        //binding = ActivityMainBinding.inflate(layoutInflater)
-        //setContentView(binding.root)
+
+        val sdkKey = "389c0f6b13dc44edf3a09fb5373df74b-us19" //SDK Key from Mailchimp
+        val isDebugBuild = BuildConfig.DEBUG
+        val context = applicationContext //Not positive this is the context we want
+        val configuration = MailchimpSdkConfiguration.Builder(context, sdkKey)
+            .isDebugModeEnabled(isDebugBuild)
+            .isAutoTaggingEnabled(true)
+            .build()
+
+        val mailchimpSdk = Mailchimp.initialize(configuration)
 
         setSupportActionBar(binding.appBarMain.toolbar)
 

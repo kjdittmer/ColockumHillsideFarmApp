@@ -47,18 +47,39 @@
         android:id="@+id/editTextTextEmailAddress"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textEmailAddress"
         android:layout_below="@+id/MCTitle"
         android:layout_centerHorizontal="true"
+        android:ems="10"
         android:hint="What's your email?"
-        android:padding="10dp"
-        />
+        android:inputType="textEmailAddress"
+        android:padding="10dp" />
+
+    <EditText
+        android:id="@+id/editTextFirstName"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/editTextTextEmailAddress"
+        android:layout_centerHorizontal="true"
+        android:ems="10"
+        android:hint="What's your first name?"
+        android:inputType="text"
+        android:padding="10dp" />
+
+    <EditText
+        android:id="@+id/editTextLastName"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/editTextFirstName"
+        android:layout_centerHorizontal="true"
+        android:ems="10"
+        android:hint="What's your last name?"
+        android:inputType="text"
+        android:padding="10dp" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/editTextTextEmailAddress"
+        android:layout_below="@+id/editTextLastName"
         android:layout_centerHorizontal="true"
         android:padding="10dp"
         android:text="Sign Up!"
