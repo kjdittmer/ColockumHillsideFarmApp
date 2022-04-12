@@ -42,6 +42,52 @@
             android:layout_marginBottom="5dp"
             android:id="@+id/txtPrice"/>
 
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txtPrice"
+            android:layout_centerHorizontal="true">
+
+            <ImageButton
+                android:id="@+id/btnAddToFavoritesStoreFrag"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_margin="3dp"
+                android:background="@drawable/round_button"
+                android:src="@drawable/ic_baseline_favorite_24"
+                />
+
+            <ImageButton
+                android:id="@+id/btnAddToWishlistStoreFrag"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_toRightOf="@+id/btnAddToFavoritesStoreFrag"
+                android:layout_margin="3dp"
+                android:background="@drawable/round_button"
+                android:src="@drawable/ic_baseline_star_24"
+                />
+
+            <ImageButton
+                android:id="@+id/btnAddToCartStoreFrag"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_centerVertical="true"
+                android:layout_margin="3dp"
+                android:layout_toRightOf="@+id/btnAddToWishlistStoreFrag"
+                android:background="@drawable/round_button"
+                android:src="@drawable/ic_baseline_shopping_cart_" />
+
+            <Spinner
+                android:id="@+id/spnrQuantityStoreFrag"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/btnAddToCartStoreFrag"
+                android:layout_centerVertical="true"/>
+
+
+
+        </RelativeLayout>
+
     </RelativeLayout>
 
 

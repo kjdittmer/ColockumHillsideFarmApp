@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.example.colockumhillsidefarmapp.GlobalStorage
@@ -66,7 +67,7 @@ class StoreFragment : Fragment() {
         productRecView = root.findViewById(R.id.productRecView)
 
         productRecView.adapter = adapter
-        val manager : GridLayoutManager = GridLayoutManager(activity, 2)
+        val manager : LinearLayoutManager = LinearLayoutManager(root.context)
         productRecView.layoutManager = manager
 
         adapter.setProducts(allProducts)
