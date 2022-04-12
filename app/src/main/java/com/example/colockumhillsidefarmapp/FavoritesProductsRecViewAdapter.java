@@ -7,8 +7,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -99,6 +101,33 @@ public class FavoritesProductsRecViewAdapter extends RecyclerView.Adapter<Favori
                 builder.create().show();
             }
         });
+
+        ArrayList<Integer> quantity = new ArrayList<>();
+        for(int i = 1; i <= product.getQuantity(); i++){
+            quantity.add(i);
+        }
+        ArrayAdapter<Integer> quantityAdapter = new ArrayAdapter<Integer>(holder.txtProductNameWishlistItem.getContext(), android.R.layout.simple_spinner_dropdown_item,
+                quantity);
+        holder.spnrQuantityWishlistItem.setAdapter(quantityAdapter);
+
+        holder.btnAddToCartWishlistItem.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int quantitySelected = (int)holder.spnrQuantityWishlistItem.getSelectedItem();
+
+                ShoppingCart.getInstance().addProductToCart(product, quantitySelected);
+
+                String plurality = "";
+                if (quantitySelected > 1) {
+                    plurality = "s";
+                }
+                Toast.makeText(view.getContext(), quantitySelected + " " + product.getName() + plurality +
+                        " added to cart!", Toast.LENGTH_SHORT).show();
+
+                Intent intent = new Intent(mContext, ShoppingCartActivity.class);
+                mContext.startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -109,10 +138,13 @@ public class FavoritesProductsRecViewAdapter extends RecyclerView.Adapter<Favori
     public class ViewHolder extends RecyclerView.ViewHolder {
         private CardView parentWishlistItem;
         private ImageView imgProductWishlistItem;
-        private ImageButton imgDeleteWishlistItem;
+        private ImageButton imgDeleteWishlistItem, btnAddToCartWishlistItem;
         private TextView txtProductNameWishlistItem, txtQuantityWishlistItem, txtPriceWishlistItem;
+        private Spinner spnrQuantityWishlistItem;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
+            spnrQuantityWishlistItem = itemView.findViewById(R.id.spnrQuantityWishlistItem);
+            btnAddToCartWishlistItem = itemView.findViewById(R.id.btnAddToCartWishlistItem);
             parentWishlistItem = itemView.findViewById(R.id.parentWishlistItem);
             imgProductWishlistItem = itemView.findViewById(R.id.imgProductWishlistItem);
             imgDeleteWishlistItem = itemView.findViewById(R.id.imgDeleteWishlistItem);
