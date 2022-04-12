@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -120,7 +121,8 @@ public class CartProductRecViewAdapter extends RecyclerView.Adapter<CartProductR
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         private CardView parentCartItem;
-        private ImageView imgProductCartItem, imgDeleteCartItem;
+        private ImageView imgProductCartItem;
+        private ImageButton imgDeleteCartItem;
         private TextView txtProductNameCartItem, txtQuantityCartItem, txtPriceCartItem, txtSubtotalCartItem;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);

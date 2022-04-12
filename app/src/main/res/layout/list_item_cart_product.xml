@@ -23,13 +23,14 @@
             android:layout_centerHorizontal="true"
             />
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_baseline_delete_24"
+        <ImageButton
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/ic_baseline_delete_white"
+            android:background="@drawable/round_button"
             android:layout_margin="5dp"
             android:id="@+id/imgDeleteCartItem"
-            android:layout_below="@+id/txtPriceCartItem"
+            android:layout_below="@+id/txtQuantityCartItem"
             />
 
         <TextView

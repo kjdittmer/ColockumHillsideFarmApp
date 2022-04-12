@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -107,7 +108,8 @@ public class EditStoreProductRecViewAdapter extends RecyclerView.Adapter<EditSto
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         private CardView parentEditStoreProduct;
-        private ImageView imgProductEditStoreProduct, imgDeleteStoreItem;
+        private ImageView imgProductEditStoreProduct;
+        private ImageButton imgDeleteStoreItem;
         private TextView txtProductNameEditStoreProduct, txtPriceEditStoreProduct;
 
         public ViewHolder(@NonNull View itemView) {

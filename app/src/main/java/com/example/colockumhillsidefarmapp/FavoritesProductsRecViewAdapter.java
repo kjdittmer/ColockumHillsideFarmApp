@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -107,7 +108,8 @@ public class FavoritesProductsRecViewAdapter extends RecyclerView.Adapter<Favori
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         private CardView parentWishlistItem;
-        private ImageView imgProductWishlistItem, imgDeleteWishlistItem;
+        private ImageView imgProductWishlistItem;
+        private ImageButton imgDeleteWishlistItem;
         private TextView txtProductNameWishlistItem, txtQuantityWishlistItem, txtPriceWishlistItem;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);

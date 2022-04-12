@@ -23,13 +23,14 @@
             android:layout_centerHorizontal="true"
             />
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_baseline_delete_24"
+        <ImageButton
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/ic_baseline_delete_white"
             android:layout_margin="5dp"
             android:id="@+id/imgDeleteWishlistItem"
-            android:layout_below="@+id/txtQuantityWishlistItem"
+            android:layout_below="@+id/txtProductNameWishlistItem"
+            android:background="@drawable/round_button"
             />
 
         <TextView

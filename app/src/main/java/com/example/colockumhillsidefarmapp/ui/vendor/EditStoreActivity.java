@@ -3,6 +3,7 @@ package com.example.colockumhillsidefarmapp.ui.vendor;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
@@ -33,7 +34,7 @@ public class EditStoreActivity extends AppCompatActivity {
         editStoreRecView = findViewById(R.id.editStoreRecView);
 
         editStoreRecView.setAdapter(adapter);
-        editStoreRecView.setLayoutManager(new GridLayoutManager(this, 2));
+        editStoreRecView.setLayoutManager(new LinearLayoutManager(this));
 
         adapter.setProducts(allProducts);
         adapter.notifyDataSetChanged();

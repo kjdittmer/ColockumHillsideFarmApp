@@ -6,11 +6,18 @@
     android:layout_height="match_parent"
     tools:context=".WishlistActivity">
 
-    <androidx.recyclerview.widget.RecyclerView
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="1dp"
-        android:layout_margin="10dp"
-        android:id="@+id/wishlistRecView"/>
+        android:layout_height="match_parent">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:layout_editor_absoluteX="1dp"
+            tools:layout_editor_absoluteY="1dp"
+            android:layout_margin="10dp"
+            android:id="@+id/wishlistRecView"/>
+
+    </RelativeLayout>
+
 </ScrollView>
