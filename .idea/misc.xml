@@ -4,8 +4,6 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="../../../../layout/custom_preview.xml" value="0.3082051282051282" />
-        <entry key="..\:/ColockumHillsideFarmApp/app/src/main/res/layout/activity_pork.xml" value="0.24583333333333332" />
-        <entry key="..\:/ColockumHillsideFarmApp/app/src/main/res/layout/fragment_contact_us.xml" value="0.24583333333333332" />
         <entry key="..\:/Users/emily/AndroidStudioProjects/ColockumHillsideFarmApp/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1785" />
         <entry key="..\:/Users/emily/AndroidStudioProjects/ColockumHillsideFarmApp/app/src/main/res/drawable/carrotpic.xml" value="0.169" />
         <entry key="..\:/Users/emily/AndroidStudioProjects/ColockumHillsideFarmApp/app/src/main/res/drawable/chickenpic.xml" value="0.169" />
@@ -78,7 +76,7 @@
         <entry key="app/src/main/res/layout/list_item_editstore_product.xml" value="0.1" />
         <entry key="app/src/main/res/layout/list_item_product.xml" value="0.3802083333333333" />
         <entry key="app/src/main/res/layout/list_item_recipe.xml" value="0.19166666666666668" />
-        <entry key="app/src/main/res/layout/list_item_store_product.xml" value="0.335" />
+        <entry key="app/src/main/res/layout/list_item_store_product.xml" value="0.1" />
         <entry key="app/src/main/res/layout/list_item_wishlist_product.xml" value="0.335" />
         <entry key="app/src/main/res/layout/nav_header_main.xml" value="0.2171875" />
         <entry key="app/src/main/res/menu/activity_main_drawer.xml" value="0.2171875" />

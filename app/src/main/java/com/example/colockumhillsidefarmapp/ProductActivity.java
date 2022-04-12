@@ -64,8 +64,6 @@ public class ProductActivity extends AppCompatActivity {
                 Toast.makeText(view.getContext(), quantitySelected + " " + product.getName() + plurality +
                         " added to cart!", Toast.LENGTH_SHORT).show();
 
-                System.out.println(ShoppingCart.getInstance().getCart());
-
                 Intent intent = new Intent(view.getContext(), ShoppingCartActivity.class);
                 startActivity(intent);
 
@@ -79,8 +77,6 @@ public class ProductActivity extends AppCompatActivity {
 
                 Toast.makeText(view.getContext(), product.getName() +
                         " added to wishlist!", Toast.LENGTH_SHORT).show();
-
-                System.out.println(Wishlist.getInstance().getWishlist());
             }
         });
 

@@ -6,8 +6,12 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
@@ -57,6 +61,53 @@ public class StoreProductRecViewAdapter extends RecyclerView.Adapter<StoreProduc
                 mContext.startActivity(intent);
             }
         });
+
+        ArrayList<Integer> quantity = new ArrayList<>();
+        for(int i = 1; i <= product.getQuantity(); i++){
+            quantity.add(i);
+        }
+        ArrayAdapter<Integer> quantityAdapter = new ArrayAdapter<Integer>(holder.txtProductName.getContext(), android.R.layout.simple_spinner_dropdown_item,
+                quantity);
+        holder.spnrQuantityStoreFrag.setAdapter(quantityAdapter);
+
+        holder.btnAddToCartStoreFrag.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int quantitySelected = (int)holder.spnrQuantityStoreFrag.getSelectedItem();
+
+                ShoppingCart.getInstance().addProductToCart(product, quantitySelected);
+
+                String plurality = "";
+                if (quantitySelected > 1) {
+                    plurality = "s";
+                }
+                Toast.makeText(view.getContext(), quantitySelected + " " + product.getName() + plurality +
+                        " added to cart!", Toast.LENGTH_SHORT).show();
+
+                Intent intent = new Intent(mContext, ShoppingCartActivity.class);
+                mContext.startActivity(intent);
+            }
+        });
+
+        holder.btnAddToFavoritesStoreFrag.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Favorites.getInstance().addProductToFavoritesProducts(product);
+
+                Toast.makeText(view.getContext(), product.getName() +
+                        " added to favorites!", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        holder.btnAddToWishlistStoreFrag.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Wishlist.getInstance().addProductToWishlist(product);
+
+                Toast.makeText(view.getContext(), product.getName() +
+                        " added to wishlist!", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     @Override
@@ -74,13 +125,18 @@ public class StoreProductRecViewAdapter extends RecyclerView.Adapter<StoreProduc
         private ImageView imgProduct;
         private TextView txtProductName;
         private TextView txtPrice;
+        private ImageButton btnAddToFavoritesStoreFrag, btnAddToWishlistStoreFrag, btnAddToCartStoreFrag;
+        private Spinner spnrQuantityStoreFrag;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             parent = itemView.findViewById(R.id.parent);
             imgProduct = itemView.findViewById(R.id.imgProduct);
             txtProductName = itemView.findViewById(R.id.txtProductName);
             txtPrice = itemView.findViewById(R.id.txtPrice);
-
+            btnAddToFavoritesStoreFrag = itemView.findViewById(R.id.btnAddToFavoritesStoreFrag);
+            btnAddToWishlistStoreFrag = itemView.findViewById(R.id.btnAddToWishlistStoreFrag);
+            btnAddToCartStoreFrag = itemView.findViewById(R.id.btnAddToCartStoreFrag);
+            spnrQuantityStoreFrag = itemView.findViewById(R.id.spnrQuantityStoreFrag);
         }
     }
 }
