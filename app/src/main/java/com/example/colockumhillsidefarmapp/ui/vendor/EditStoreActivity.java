@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -20,6 +21,7 @@ public class EditStoreActivity extends AppCompatActivity {
 
     private RecyclerView editStoreRecView;
     private EditStoreProductRecViewAdapter adapter;
+    private SwipeRefreshLayout layout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +40,17 @@ public class EditStoreActivity extends AppCompatActivity {
 
         adapter.setProducts(allProducts);
         adapter.notifyDataSetChanged();
+
+        layout = findViewById(R.id.swipeRefreshLayoutEditStore);
+        layout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                ArrayList<Product> allProducts = GlobalStorage.getInstance().getAllProductsForEditStore(adapter);
+                adapter.setProducts(allProducts);
+                adapter.notifyDataSetChanged();
+                layout.setRefreshing(false);
+            }
+        });
 
     }
 

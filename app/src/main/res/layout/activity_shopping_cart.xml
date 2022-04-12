@@ -4,58 +4,57 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ShoppingCartActivity">
+    tools:context=".ShoppingCartActivity"
+    android:id="@+id/swipeRefreshLayoutCart">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/cartRecView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:layout_centerHorizontal="true"
-            />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/txtTotalShoppingCartAct"
-            android:layout_below="@id/cartRecView"
-            android:text="Total"
-            android:textSize="20sp"
-            android:layout_centerHorizontal="true"/>
         <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/layoutButtonsShoppingCartAct"
-            android:layout_below="@+id/txtTotalShoppingCartAct"
-            android:layout_centerHorizontal="true">
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-            <Button
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/cartRecView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_centerHorizontal="true"
+                />
+
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Continue Shopping"
-                android:id="@+id/btnContinueShoppingShoppingCartAct"
-                android:layout_margin="5dp"
-                android:background="@drawable/round_button"/>
-
-            <Button
+                android:id="@+id/txtTotalShoppingCartAct"
+                android:layout_below="@id/cartRecView"
+                android:text="Total"
+                android:textSize="20sp"
+                android:layout_centerHorizontal="true"/>
+            <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Checkout"
-                android:id="@+id/btnCheckoutShoppingCartAct"
-                android:layout_toRightOf="@+id/btnContinueShoppingShoppingCartAct"
-                android:layout_margin="5dp"
-                android:background="@drawable/round_button"/>
+                android:id="@+id/layoutButtonsShoppingCartAct"
+                android:layout_below="@+id/txtTotalShoppingCartAct"
+                android:layout_centerHorizontal="true">
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Continue Shopping"
+                    android:id="@+id/btnContinueShoppingShoppingCartAct"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/round_button"/>
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Checkout"
+                    android:id="@+id/btnCheckoutShoppingCartAct"
+                    android:layout_toRightOf="@+id/btnContinueShoppingShoppingCartAct"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/round_button"/>
 
 
+
+            </RelativeLayout>
 
         </RelativeLayout>
-
-    </RelativeLayout>
-
-
 
 </ScrollView>

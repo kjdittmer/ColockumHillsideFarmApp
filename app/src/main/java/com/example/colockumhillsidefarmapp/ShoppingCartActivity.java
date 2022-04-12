@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -25,6 +26,8 @@ public class ShoppingCartActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private TextView txtTotalShoppingCartAct;
     private Button btnContinueShoppingShoppingCartAct, btnCheckoutShoppingCartAct;
+    private ArrayList<Product> productsInCart;
+    private HashMap<Product, Integer> cart;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,11 +50,11 @@ public class ShoppingCartActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        ArrayList<Product> productsInCart = new ArrayList<>();
-        HashMap<Product, Integer> cart = ShoppingCart.getInstance().getCart();
-        for (Product product : cart.keySet()){
+         productsInCart = new ArrayList<>();
+         cart = ShoppingCart.getInstance().getCart();
+         for (Product product : cart.keySet()){
             productsInCart.add(product);
-        }
+         }
         adapter.setProductsInCart(productsInCart);
 
         double totalCost = adapter.getTotalCost();
