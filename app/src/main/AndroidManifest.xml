@@ -85,10 +85,6 @@
             android:exported="false"
             android:label="Vegetable Practices" />
         <activity
-            android:name=".ui.contact_us.FarmInfo"
-            android:exported="false"
-            android:label="Farm Info" />
-        <activity
             android:name=".ui.about_us.ChickenPracticesActivity"
             android:exported="false"
             android:label="Chicken Practices" />
