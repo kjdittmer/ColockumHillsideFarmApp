@@ -31,7 +31,7 @@ public class EditStoreActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         adapter = new EditStoreProductRecViewAdapter(this, this);
-        ArrayList<Product> allProducts = GlobalStorage.getInstance().getAllProductsForEditStore(adapter);
+        ArrayList<Product> allProducts = GlobalStorage.getInstance().getAllProducts(adapter);
 
         editStoreRecView = findViewById(R.id.editStoreRecView);
 
@@ -39,15 +39,13 @@ public class EditStoreActivity extends AppCompatActivity {
         editStoreRecView.setLayoutManager(new LinearLayoutManager(this));
 
         adapter.setProducts(allProducts);
-        adapter.notifyDataSetChanged();
 
         layout = findViewById(R.id.swipeRefreshLayoutEditStore);
         layout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                ArrayList<Product> allProducts = GlobalStorage.getInstance().getAllProductsForEditStore(adapter);
+                ArrayList<Product> allProducts = GlobalStorage.getInstance().getAllProducts(adapter);
                 adapter.setProducts(allProducts);
-                adapter.notifyDataSetChanged();
                 layout.setRefreshing(false);
             }
         });

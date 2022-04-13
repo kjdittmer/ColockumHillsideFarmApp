@@ -73,7 +73,7 @@ public class AddProductActivity extends AppCompatActivity {
                     builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
-                            GlobalStorage.getInstance().addProductToAllProducts(new Product(0, name, quantity, imageUrl, shortDesc, longDesc, price, packageQuantity));
+                            GlobalStorage.getInstance().addProduct(new Product(-1, name, quantity, imageUrl, shortDesc, longDesc, price, packageQuantity));
                             Toast.makeText(view.getContext(), name + " was added to the store.", Toast.LENGTH_SHORT).show();
                             txtNameAddProdAct.setText("");
                             txtImageUrlProdAct.setText("");

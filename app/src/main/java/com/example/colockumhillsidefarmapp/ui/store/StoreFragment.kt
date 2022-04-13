@@ -40,29 +40,14 @@ class StoreFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-//        val allProducts = GlobalStorage.getInstance().allProducts
-
-
         val slideshowViewModel =
             ViewModelProvider(this).get(StoreViewModel::class.java)
 
         _binding = FragmentStoreBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        //val textView: TextView = binding.textStore
-        //slideshowViewModel.text.observe(viewLifecycleOwner) {
-        //    textView.text = it
-        //}
-
-//        val mbase = FirebaseDatabase.getInstance().reference
-//        val options: FirebaseRecyclerOptions<Product> = Builder<Product>()
-//            .setQuery(mbase, Product::class.java)
-//            .build()
-
-//      val allProducts = GlobalStorage.getInstance().getAllProducts()
-
         adapter = StoreProductRecViewAdapter(activity)
-        val allProducts = GlobalStorage.getInstance().getAllProductsForStore(adapter)
+        val allProducts = GlobalStorage.getInstance().getAllProducts(adapter)
 
         productRecView = root.findViewById(R.id.productRecView)
 
@@ -71,30 +56,13 @@ class StoreFragment : Fragment() {
         productRecView.layoutManager = manager
 
         adapter.setProducts(allProducts)
-        adapter.notifyDataSetChanged()
 
         layout = root.findViewById(R.id.swipeRefreshLayoutStore)
         layout.setOnRefreshListener {
-            val allProducts = GlobalStorage.getInstance().getAllProductsForStore(adapter)
+            val allProducts = GlobalStorage.getInstance().getAllProducts(adapter)
             adapter.setProducts(allProducts)
-            adapter.notifyDataSetChanged()
             layout.isRefreshing = false;
         }
-
-//        val rootNode = FirebaseDatabase.getInstance()
-//        val reference = rootNode.getReference("product")
-//        reference.addValueEventListener(object : ValueEventListener {
-//            override fun onDataChange(snapshot: DataSnapshot) {
-//                for (currentSnapshot in snapshot.children) {
-//                    val newProduct = currentSnapshot.getValue(Product::class.java)
-//                    allProducts.add(newProduct!!)
-//                    Log.d("tag", currentSnapshot.child("id").getValue().toString())
-//                }
-//                adapter.notifyDataSetChanged()
-//            }
-//
-//            override fun onCancelled(error: DatabaseError) {}
-//        })
 
         return root
     }
