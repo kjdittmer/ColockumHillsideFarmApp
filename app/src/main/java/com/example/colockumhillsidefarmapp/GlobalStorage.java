@@ -1,13 +1,11 @@
 package com.example.colockumhillsidefarmapp;
 
-import android.app.Activity;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.colockumhillsidefarmapp.ui.recipes.Recipe;
-import com.example.colockumhillsidefarmapp.ui.vendor.EditStoreProductRecViewAdapter;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -15,8 +13,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 
 public class GlobalStorage {
 
@@ -25,12 +21,8 @@ public class GlobalStorage {
 
     private static GlobalStorage instance;
 
-    private ArrayList<Recipe> recipes;
-
     private GlobalStorage() {
-        if(recipes == null) {
-            recipes = new ArrayList<>();
-        }
+
     }
 
     public static GlobalStorage getInstance() {
@@ -41,6 +33,7 @@ public class GlobalStorage {
         return instance;
     }
 
+    /* Accessing products */
     public ArrayList<Product> getAllProducts(RecyclerView.Adapter adapter) {
         ArrayList<Product> allProducts = new ArrayList<>();
 
@@ -65,19 +58,9 @@ public class GlobalStorage {
         return allProducts;
     }
 
-    public ArrayList<Recipe> getRecipes() {
-        //TODO: get recipeList
-
-        return recipes;
-    }
-
-    public void addRecipeToRecipes(Recipe recipe) {
-        recipes.add(recipe);
-    }
-
     public void editProduct(Product productToEdit, Product editedProduct) {
-        FirebaseDatabase rootNode = FirebaseDatabase.getInstance();
-        DatabaseReference reference = rootNode.getReference("product");
+        rootNode = FirebaseDatabase.getInstance();
+        reference = rootNode.getReference("product");
         DatabaseReference productReference = reference.child(String.valueOf(productToEdit.getId()));
         productReference.setValue(editedProduct);
     }
@@ -93,7 +76,7 @@ public class GlobalStorage {
                     Product newProduct = currentSnapshot.getValue(Product.class);
                     allProducts.add(newProduct);
                 }
-                int newId = getNewId(allProducts);
+                int newId = getNewProductId(allProducts);
                 productToAdd.setId(newId);
                 reference.child(String.valueOf(newId)).setValue(productToAdd);
             }
@@ -105,7 +88,7 @@ public class GlobalStorage {
         });
     }
 
-    private int getNewId (ArrayList<Product> allProducts) {
+    private int getNewProductId(ArrayList<Product> allProducts) {
         int newId = 0;
         ArrayList<Integer> productIds = new ArrayList<>();
         for (Product currentProduct : allProducts) {
@@ -121,19 +104,39 @@ public class GlobalStorage {
     }
 
     public void removeProduct(Product product) {
-        FirebaseDatabase rootNode = FirebaseDatabase.getInstance();
-        DatabaseReference reference = rootNode.getReference("product");
+        rootNode = FirebaseDatabase.getInstance();
+        reference = rootNode.getReference("product");
         reference.child(String.valueOf(product.getId())).removeValue();
     }
 
-    public void addRecipeToAllRecipes(Recipe recipe){
-        int newId = 0;
-        readRecipeData(new AddRecipeCallback(newId, recipe));
+    /* Accessing recipes */
+    public ArrayList<Recipe> getAllRecipes(RecyclerView.Adapter adapter) {
+        ArrayList<Recipe> allRecipes = new ArrayList<>();
+
+        rootNode = FirebaseDatabase.getInstance();
+        reference = rootNode.getReference("recipe");
+        reference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot currentSnapshot : snapshot.getChildren()) {
+                    Recipe newRecipe = currentSnapshot.getValue(Recipe.class);
+                    allRecipes.add(newRecipe);
+                }
+                adapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+        return allRecipes;
     }
 
-    private void readRecipeData(FirebaseRecipeCallback firebaseRecipeCallback) {
-        FirebaseDatabase rootNode = FirebaseDatabase.getInstance();
-        DatabaseReference reference = rootNode.getReference("recipe");
+    public void addRecipe (Recipe recipeToAdd) {
+        rootNode = FirebaseDatabase.getInstance();
+        reference = rootNode.getReference("recipe");
         reference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -142,8 +145,9 @@ public class GlobalStorage {
                     Recipe newRecipe = currentSnapshot.getValue(Recipe.class);
                     allRecipes.add(newRecipe);
                 }
-
-                firebaseRecipeCallback.onCallBack(allRecipes);
+                int newId = getNewRecipeId(allRecipes);
+                recipeToAdd.setId(newId);
+                reference.child(String.valueOf(newId)).setValue(recipeToAdd);
             }
 
             @Override
@@ -152,51 +156,32 @@ public class GlobalStorage {
             }
         });
     }
-    public Recipe getRecipeFromRecipeId(int recipeId) {
-        for(Recipe recipe : recipes){
-            if (recipe.getId() == recipeId){
-                return recipe;
-            }
+
+    private int getNewRecipeId(ArrayList<Recipe> allRecipes) {
+        int newId = 0;
+        ArrayList<Integer> recipeIds = new ArrayList<>();
+        for (Recipe currentRecipe : allRecipes) {
+            recipeIds.add(currentRecipe.getId());
         }
-
-        return null;
-    }
-
-
-    private interface FirebaseRecipeCallback{
-        void onCallBack(ArrayList<Recipe> allRecipes);
-    }
-
-    private class AddRecipeCallback implements FirebaseRecipeCallback {
-
-        private int newId;
-        private Recipe recipeToAdd;
-
-        public AddRecipeCallback(int newId, Recipe recipeToAdd) {
-            this.newId = newId;
-            this.recipeToAdd = recipeToAdd;
-        }
-
-        @Override
-        public void onCallBack(ArrayList<Recipe> allRecipes) {
-            ArrayList<Integer> recipeIds = new ArrayList<>();
-            for (Recipe currentRecipe : allRecipes) {
-                recipeIds.add(currentRecipe.getId());
+        while (true) {
+            if(recipeIds.contains(newId)) {
+                newId++;
+            } else {
+                return newId;
             }
-            while (true) {
-                if(recipeIds.contains(newId)) {
-                    newId++;
-                } else {
-                    recipeToAdd.setId(newId);
-                    break;
-                }
-            }
-
-            rootNode = FirebaseDatabase.getInstance();
-            reference = rootNode.getReference("recipe");
-            Log.d("adding a product", "now");
-            reference.child(String.valueOf(recipeToAdd.getId())).setValue(recipeToAdd);
         }
     }
 
+    public void removeRecipe(Recipe recipe) {
+        rootNode = FirebaseDatabase.getInstance();
+        reference = rootNode.getReference("recipe");
+        reference.child(String.valueOf(recipe.getId())).removeValue();
+    }
+
+    public void editRecipe(Recipe recipeToEdit, Recipe editedRecipe) {
+        rootNode = FirebaseDatabase.getInstance();
+        reference = rootNode.getReference("recipe");
+        DatabaseReference productReference = reference.child(String.valueOf(recipeToEdit.getId()));
+        productReference.setValue(editedRecipe);
+    }
 }

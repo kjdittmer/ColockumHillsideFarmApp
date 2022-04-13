@@ -5,12 +5,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.LinearLayout
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.colockumhillsidefarmapp.GlobalStorage
 import com.example.colockumhillsidefarmapp.R
+import com.example.colockumhillsidefarmapp.StoreProductRecViewAdapter
 import com.example.colockumhillsidefarmapp.databinding.FragmentRecipesBinding
 
 class RecipesFragment : Fragment() {
@@ -53,13 +56,16 @@ class RecipesFragment : Fragment() {
 //            startActivity(intent)
 //
 //        }
-
         adapter = RecipeRecViewAdapter(activity)
+        val allRecipes = GlobalStorage.getInstance().getAllRecipes(adapter)
+
         recipeRecView = root.findViewById(R.id.recipeRecView)
 
         recipeRecView.adapter = adapter
-        val manager : GridLayoutManager = GridLayoutManager(activity, 2)
+        val manager : LinearLayoutManager = LinearLayoutManager(root.context)
         recipeRecView.layoutManager = manager
+
+        adapter.setRecipes(allRecipes)
 
       //  val dummyRecipes : ArrayList<Recipe> = ArrayList()
        // dummyRecipes.add(Recipe(1, "Chicken Soup", "short", "long", "https://www.inspiredtaste.net/wp-content/uploads/2018/09/Easy-Chicken-Noodle-Soup-Recipe-1200.jpg"))
@@ -67,9 +73,6 @@ class RecipesFragment : Fragment() {
        // dummyRecipes.add(Recipe(3, "Scrambled Eggs", "short", "long", "https://images.media-allrecipes.com/userphotos/9175615.jpg"))
        // dummyRecipes.add(Recipe(4, "Meatloaf", "short", "long", "https://imagesvc.meredithcorp.io/v3/mm/image?q=60&c=sc&poi=face&w=2000&h=1000&url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F43%2F2022%2F02%2F18%2F16354-easy-meatloaf-mfs-76.jpg"))
        // dummyRecipes.add(Recipe(5, "Roast Beef", "short", "long", "https://hips.hearstapps.com/hmg-prod/images/delish-roast-beef-horizontal-1540505165.jpg"))
-
-        adapter.setRecipes(GlobalStorage.getInstance().recipes)
-        adapter.notifyDataSetChanged()
         return root
     }
 

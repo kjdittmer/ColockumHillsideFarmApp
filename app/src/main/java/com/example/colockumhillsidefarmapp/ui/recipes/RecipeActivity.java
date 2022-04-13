@@ -25,7 +25,7 @@ public class RecipeActivity extends AppCompatActivity {
 
     private Recipe recipe;
 
-    private static final String RECIPE_ID = "recipeId";
+    private static final String RECIPE = "recipe";
     private ImageView recipeImage;
     private TextView recipeName, shortDescRec, ingredientsRec, instructionsRec;
 
@@ -40,12 +40,9 @@ public class RecipeActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         if (getIntent() != null) {
-            int recipeId = intent.getIntExtra(RECIPE_ID, -1);
-            if (recipeId != -1) {
-                recipe = GlobalStorage.getInstance().getRecipeFromRecipeId(recipeId);
-                if (recipe != null) {
-                    setData(recipe);
-                }
+            Recipe recipe = intent.getParcelableExtra(RECIPE);
+            if (recipe != null) {
+                setData(recipe);
             }
         }
 
@@ -64,5 +61,17 @@ public class RecipeActivity extends AppCompatActivity {
         shortDescRec = findViewById(R.id.shortDescRec);
         ingredientsRec = findViewById(R.id.ingredientsRec);
         instructionsRec = findViewById(R.id.instructionsRec);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                onBackPressed();
+                break;
+            default:
+                break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

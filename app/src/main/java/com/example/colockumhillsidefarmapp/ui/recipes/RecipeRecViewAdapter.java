@@ -22,6 +22,7 @@ import java.util.ArrayList;
 
 public class RecipeRecViewAdapter extends RecyclerView.Adapter<RecipeRecViewAdapter.ViewHolder>{
     private static final String TAG = "RecipeRecViewAdapter";
+    private static final String RECIPE = "recipe";
 
     private ArrayList<Recipe> recipes = new ArrayList<>();
     private Context mContext;
@@ -39,18 +40,18 @@ public class RecipeRecViewAdapter extends RecyclerView.Adapter<RecipeRecViewAdap
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, @SuppressLint("RecyclerView") int position) {
-        Log.d(TAG, "onBindViewHolder: Called");
-        holder.txtName.setText(recipes.get(position).getName());
+        Recipe recipe = recipes.get(holder.getAdapterPosition());
+        holder.txtName.setText(recipe.getName());
         Glide.with(mContext)
                 .asBitmap()
-                .load(recipes.get(position).getImageUrl())
+                .load(recipe.getImageUrl())
                 .into(holder.imgRecipe);
 
         holder.parent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                Toast.makeText(mContext, recipes.get(position).getName() + " Selected", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(mContext, RecipeActivity.class);
+                intent.putExtra(RECIPE, recipe);
                 mContext.startActivity(intent);
             }
         });

@@ -58,31 +58,30 @@ public class AddRecipeActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String name = txtNameAddRecipeName.getText().toString();
-                //String imageUrl = txtImageUrlRecAct.getText().toString();
-                //String shortDesc = txtShortDescAddRecipeAct.getText().toString();
+                String imageUrl = txtImageUrlRecAct.getText().toString();
+                String shortDesc = txtShortDescAddRecipeAct.getText().toString();
                 String ingredients = txtIngredients.getText().toString();
                 String instructions = txtInstructions.getText().toString();
                 if(validateData()) {
 
                     AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
                     builder.setMessage("Is the following information correct?\nName: " + name  + "" +
-                            //"\nImage URL: " + imageUrl +
+                            "\nImage URL: " + imageUrl +
                             "\nShort Description: " +
-                            //shortDesc + "\nIngredients:" +
+                            shortDesc + "\nIngredients:" +
                             ingredients + "\nInstructions:" +
                             instructions
                     );
                     builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
-
-                            GlobalStorage.getInstance().addRecipeToAllRecipes(new Recipe(0, name,
-                                    //imageUrl,
-                                    "testing",
-                                    //shortDesc,
-                                    "testing",
-                                     ingredients, instructions));
+                            GlobalStorage.getInstance().addRecipe(new Recipe(0, name, imageUrl, shortDesc, ingredients, instructions));
                             Toast.makeText(view.getContext(), name + " was added to the recipe page.", Toast.LENGTH_SHORT).show();
+                            txtNameAddRecipeName.setText("");
+                            txtImageUrlRecAct.setText("");
+                            txtShortDescAddRecipeAct.setText("");
+                            txtIngredients.setText("");
+                            txtInstructions.setText("");
                         }
                     });
 
@@ -112,8 +111,8 @@ public class AddRecipeActivity extends AppCompatActivity {
         btnAddRecipe = findViewById(R.id.btnAddRecipe);
         btnUploadRecipePicture = findViewById(R.id.btnUploadRecipePicture);
         txtNameAddRecipeName = findViewById(R.id.txtNameAddRecipeName);
-        txtImageUrlRecAct = findViewById(R.id.txtImageUrlProdAct);
-        txtShortDescAddRecipeAct = findViewById(R.id.txtShortDescAddProdAct);
+        txtImageUrlRecAct = findViewById(R.id.txtImageUrlRecAct);
+        txtShortDescAddRecipeAct = findViewById(R.id.txtShortDescAddRecipeAct);
         txtIngredients = findViewById(R.id.txtIngredients);
         txtInstructions = findViewById(R.id.txtInstructions);
         imageView = (ImageView) findViewById(R.id.imageView);

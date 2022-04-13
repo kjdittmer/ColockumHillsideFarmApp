@@ -1,6 +1,9 @@
 package com.example.colockumhillsidefarmapp.ui.recipes;
 
-public class Recipe {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class Recipe implements Parcelable {
     private int id;
     private String name;
     private String imageUrl;
@@ -18,6 +21,27 @@ public class Recipe {
         this.instructions = instructions;
 
     }
+
+    protected Recipe(Parcel in) {
+        id = in.readInt();
+        name = in.readString();
+        imageUrl = in.readString();
+        shortDesc = in.readString();
+        ingredients = in.readString();
+        instructions = in.readString();
+    }
+
+    public static final Creator<Recipe> CREATOR = new Creator<Recipe>() {
+        @Override
+        public Recipe createFromParcel(Parcel in) {
+            return new Recipe(in);
+        }
+
+        @Override
+        public Recipe[] newArray(int size) {
+            return new Recipe[size];
+        }
+    };
 
     public String getImageUrl() {
         return imageUrl;
@@ -74,4 +98,18 @@ public class Recipe {
                 '}';
     }
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeInt(id);
+        parcel.writeString(name);
+        parcel.writeString(imageUrl);
+        parcel.writeString(shortDesc);
+        parcel.writeString(ingredients);
+        parcel.writeString(instructions);
+    }
 }
