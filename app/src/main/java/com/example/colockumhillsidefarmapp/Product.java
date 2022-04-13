@@ -1,6 +1,9 @@
 package com.example.colockumhillsidefarmapp;
 
-public class Product {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class Product implements Parcelable {
     private int id;
     private String name;
     private int quantity;
@@ -22,6 +25,29 @@ public class Product {
         this.price = price;
         this.packageQuantity = packageQuantity;
     }
+
+    protected Product(Parcel in) {
+        id = in.readInt();
+        name = in.readString();
+        quantity = in.readInt();
+        imageUrl = in.readString();
+        shortDesc = in.readString();
+        longDesc = in.readString();
+        price = in.readDouble();
+        packageQuantity = in.readString();
+    }
+
+    public static final Creator<Product> CREATOR = new Creator<Product>() {
+        @Override
+        public Product createFromParcel(Parcel in) {
+            return new Product(in);
+        }
+
+        @Override
+        public Product[] newArray(int size) {
+            return new Product[size];
+        }
+    };
 
     public int getId() {
         return id;
@@ -83,9 +109,7 @@ public class Product {
         return packageQuantity;
     }
 
-    public void setPackageQuantity(String packageQuantity) {
-        this.packageQuantity = packageQuantity;
-    }
+    public void setPackageQuantity(String packageQuantity) { this.packageQuantity = packageQuantity; }
 
     @Override
     public String toString() {
@@ -99,5 +123,22 @@ public class Product {
                 ", price=" + price +
                 ", packageQuantity='" + packageQuantity + '\'' +
                 '}';
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeInt(id);
+        parcel.writeString(name);
+        parcel.writeInt(quantity);
+        parcel.writeString(imageUrl);
+        parcel.writeString(shortDesc);
+        parcel.writeString(longDesc);
+        parcel.writeDouble(price);
+        parcel.writeString(packageQuantity);
     }
 }

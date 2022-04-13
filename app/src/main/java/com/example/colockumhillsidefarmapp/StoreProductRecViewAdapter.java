@@ -23,7 +23,7 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 public class StoreProductRecViewAdapter extends RecyclerView.Adapter<StoreProductRecViewAdapter.ViewHolder> {
-    private static final String PRODUCT_ID = "productId";
+    private static final String PRODUCT = "product";
     private static final String TAG = "ProductRecViewAdapter";
 
     private ArrayList<Product> products = new ArrayList<>();
@@ -57,7 +57,7 @@ public class StoreProductRecViewAdapter extends RecyclerView.Adapter<StoreProduc
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(mContext, ProductActivity.class);
-                intent.putExtra(PRODUCT_ID, product.getId());
+                intent.putExtra(PRODUCT, product);
                 mContext.startActivity(intent);
             }
         });

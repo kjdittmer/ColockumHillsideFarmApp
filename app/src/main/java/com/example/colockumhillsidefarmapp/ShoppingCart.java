@@ -28,8 +28,6 @@ public class ShoppingCart {
     }
 
     public void addProductToCart(Product product, int quantity) {
-        Log.d("Product:", product.toString());
-        Log.d("cart", cart.toString());
         int productId = product.getId();
         for (Product currentProduct : cart.keySet()) {
             if (productId == currentProduct.getId()) {

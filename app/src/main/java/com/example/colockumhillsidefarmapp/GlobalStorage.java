@@ -26,14 +26,11 @@ public class GlobalStorage {
     private static GlobalStorage instance;
 
     private ArrayList<Recipe> recipes;
-    private ArrayList<Product> localCopyOfAllProducts;
 
     private GlobalStorage() {
         if(recipes == null) {
             recipes = new ArrayList<>();
         }
-
-        updateLocalCopyOfAllProducts();
     }
 
     public static GlobalStorage getInstance() {
@@ -44,29 +41,7 @@ public class GlobalStorage {
         return instance;
     }
 
-    public void updateLocalCopyOfAllProducts () {
-        rootNode = FirebaseDatabase.getInstance();
-        reference = rootNode.getReference("product");
-        reference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                localCopyOfAllProducts = new ArrayList<>();
-                for (DataSnapshot currentSnapshot : snapshot.getChildren()) {
-                    Product newProduct = currentSnapshot.getValue(Product.class);
-                    localCopyOfAllProducts.add(newProduct);
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-    }
-
     public ArrayList<Product> getAllProducts(RecyclerView.Adapter adapter) {
-        updateLocalCopyOfAllProducts();
-
         ArrayList<Product> allProducts = new ArrayList<>();
 
         rootNode = FirebaseDatabase.getInstance();
@@ -96,17 +71,6 @@ public class GlobalStorage {
         return recipes;
     }
 
-    public Product getProductFromProductId(int productId) {
-        for(Product product : localCopyOfAllProducts){
-            if (product.getId() == productId){
-                return product;
-            }
-        }
-
-        updateLocalCopyOfAllProducts();
-        return null;
-    }
-
     public void addRecipeToRecipes(Recipe recipe) {
         recipes.add(recipe);
     }
@@ -119,7 +83,6 @@ public class GlobalStorage {
     }
 
     public void addProduct (Product productToAdd) {
-        //get new ID
         rootNode = FirebaseDatabase.getInstance();
         reference = rootNode.getReference("product");
         reference.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -196,7 +159,6 @@ public class GlobalStorage {
             }
         }
 
-        updateLocalCopyOfAllProducts();
         return null;
     }
 
@@ -221,16 +183,11 @@ public class GlobalStorage {
             for (Recipe currentRecipe : allRecipes) {
                 recipeIds.add(currentRecipe.getId());
             }
-            Log.d("recipe ids", recipeIds.toString());
             while (true) {
-                Log.d("while loop", "yes");
                 if(recipeIds.contains(newId)) {
-                    Log.d("new id", "incremented");
                     newId++;
                 } else {
                     recipeToAdd.setId(newId);
-                    Log.d("else", "yes");
-                    Log.d("newId", String.valueOf(newId));
                     break;
                 }
             }

@@ -24,7 +24,7 @@ import java.util.ArrayList;
 
 public class EditProductActivity extends AppCompatActivity {
 
-    private static final String PRODUCT_ID = "productId";
+    private static final String PRODUCT = "product";
 
     private EditText txtNameEditProdAct, txtQuantityEditProdAct,
             txtImageUrlEditProdAct, txtShortDescEditProdAct,
@@ -45,12 +45,9 @@ public class EditProductActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         if(getIntent() != null){
-            int productId = intent.getIntExtra(PRODUCT_ID, -1);
-            if(productId != -1){
-                productToEdit = GlobalStorage.getInstance().getProductFromProductId(productId);
-                if(productToEdit != null){
-                    setData(productToEdit);
-                }
+            productToEdit = intent.getParcelableExtra(PRODUCT);
+            if(productToEdit != null){
+                setData(productToEdit);
             }
         }
 

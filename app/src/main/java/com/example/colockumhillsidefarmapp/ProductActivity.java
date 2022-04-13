@@ -23,7 +23,7 @@ public class ProductActivity extends AppCompatActivity {
 
     private Product product;
 
-    private static final String PRODUCT_ID = "productId";
+    private static final String PRODUCT = "product";
     private ImageView imgProductProdAct;
     private TextView txtProductNameProdAct, txtShortDescProdAct, txtProductPriceProdAct,
             txtProductQuantityLeftProdAct, txtLongDescProdAct;
@@ -41,12 +41,9 @@ public class ProductActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         if(getIntent() != null){
-            int productId = intent.getIntExtra(PRODUCT_ID, -1);
-            if(productId != -1){
-                product = GlobalStorage.getInstance().getProductFromProductId(productId);
-                if(product != null){
-                    setData(product);
-                }
+            product = intent.getParcelableExtra(PRODUCT);
+            if(product != null){
+                setData(product);
             }
         }
 

@@ -27,7 +27,7 @@ import java.util.ArrayList;
 
 public class EditStoreProductRecViewAdapter extends RecyclerView.Adapter<EditStoreProductRecViewAdapter.ViewHolder> {
 
-    private static final String PRODUCT_ID = "productId";
+    private static final String PRODUCT = "product";
 
     private ArrayList<Product> products = new ArrayList<>();
     private Context mContext;
@@ -64,7 +64,7 @@ public class EditStoreProductRecViewAdapter extends RecyclerView.Adapter<EditSto
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(mContext, EditProductActivity.class);
-                intent.putExtra(PRODUCT_ID, product.getId());
+                intent.putExtra(PRODUCT, product);
                 mContext.startActivity(intent);
             }
         });
