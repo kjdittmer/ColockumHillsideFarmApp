@@ -3,6 +3,8 @@ package com.example.colockumhillsidefarmapp.ui.recipes;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import java.util.ArrayList;
+
 public class Recipe implements Parcelable {
     private int id;
     private String name;

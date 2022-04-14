@@ -8,57 +8,70 @@
 
     <ImageView
         android:id="@+id/recipeImage"
-        android:layout_width="159dp"
-        android:layout_height="158dp"
-        android:layout_marginTop="52dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="49dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginBottom="44dp"
+        app:layout_constraintBottom_toTopOf="@+id/ingredientsRec2"
+        app:layout_constraintEnd_toStartOf="@+id/recipeName"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
         android:id="@+id/recipeName"
-        android:layout_width="154dp"
+        android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="76dp"
-        android:layout_marginEnd="48dp"
-        android:layout_marginBottom="329dp"
+        android:layout_marginTop="51dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="50dp"
         android:text="TextView"
         android:textAlignment="center"
         android:textSize="25sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/instructionsRec"
+        app:layout_constraintBottom_toTopOf="@+id/shortDescRec"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/recipeImage"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/shortDescRec"
-        android:layout_width="72dp"
-        android:layout_height="46dp"
-        android:layout_marginTop="252dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="97dp"
         android:text="TextView"
+        app:layout_constraintBottom_toTopOf="@+id/ingredientsRec2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toEndOf="@+id/recipeImage"
+        app:layout_constraintTop_toBottomOf="@+id/recipeName" />
 
-    <TextView
-        android:id="@+id/ingredientsRec"
-        android:layout_width="85dp"
-        android:layout_height="47dp"
-        android:layout_marginTop="348dp"
-        android:layout_marginEnd="292dp"
-        android:text="TextView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/instructionsRec"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="213dp"
-        android:text="Instructions"
+    <ListView
+        android:id="@+id/ingredientsRec2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="22dp"
+        android:layout_marginEnd="22dp"
+        android:layout_marginBottom="289dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/recipeName" />
+        app:layout_constraintTop_toBottomOf="@+id/recipeImage" />
+
+    <ListView
+        android:id="@+id/instructionsRec2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="23dp"
+        android:layout_marginEnd="27dp"
+        android:layout_marginBottom="72dp"
+        android:text="Instructions Here"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/ingredientsRec2"
+        app:layout_constraintTop_toBottomOf="@+id/ingredientsRec2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

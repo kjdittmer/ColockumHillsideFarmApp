@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -20,6 +21,7 @@ import com.example.colockumhillsidefarmapp.R;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class RecipeActivity extends AppCompatActivity {
 
@@ -27,7 +29,8 @@ public class RecipeActivity extends AppCompatActivity {
 
     private static final String RECIPE = "recipe";
     private ImageView recipeImage;
-    private TextView recipeName, shortDescRec, ingredientsRec, instructionsRec;
+    private TextView recipeName, shortDescRec;
+    private ListView ingredientsRec2, instructionsRec2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,16 +54,24 @@ public class RecipeActivity extends AppCompatActivity {
     private void setData(Recipe recipe) {
         recipeName.setText(recipe.getName());
         shortDescRec.setText(recipe.getShortDesc());
-        ingredientsRec.setText(recipe.getIngredients());
-        instructionsRec.setText(recipe.getInstructions());
-        Glide.with(this).load(recipe.getImageUrl()).into(recipeImage);    }
+        Glide.with(this).load(recipe.getImageUrl()).into(recipeImage);
+
+        ArrayList<String> ingredientsString = new ArrayList<>(Arrays.asList(recipe.getIngredients().split(",")));
+        ArrayAdapter ingredientsAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, ingredientsString);
+        ingredientsRec2.setAdapter(ingredientsAdapter);
+
+        ArrayList<String> instructionString = new ArrayList<>(Arrays.asList(recipe.getInstructions().split("/")));
+        ArrayAdapter instructionsAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, instructionString);
+        instructionsRec2.setAdapter(instructionsAdapter);
+
+    }
 
     private void initVariables() {
         recipeImage = findViewById(R.id.recipeImage);
         recipeName = findViewById(R.id.recipeName);
         shortDescRec = findViewById(R.id.shortDescRec);
-        ingredientsRec = findViewById(R.id.ingredientsRec);
-        instructionsRec = findViewById(R.id.instructionsRec);
+        ingredientsRec2 = findViewById(R.id.ingredientsRec2);
+        instructionsRec2 = findViewById(R.id.instructionsRec2);
     }
 
     @Override
@@ -74,4 +85,5 @@ public class RecipeActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
 }
