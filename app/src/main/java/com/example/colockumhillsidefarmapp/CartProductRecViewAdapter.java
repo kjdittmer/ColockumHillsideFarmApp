@@ -24,7 +24,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class CartProductRecViewAdapter extends RecyclerView.Adapter<CartProductRecViewAdapter.ViewHolder> {
-    private static final String PRODUCT_ID = "productId";
+    private static final String PRODUCT = "product";
 
 
     private ArrayList<Product> productsInCart;
@@ -74,7 +74,7 @@ public class CartProductRecViewAdapter extends RecyclerView.Adapter<CartProductR
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(mContext, ProductActivity.class);
-                intent.putExtra(PRODUCT_ID, productsInCart.get(holder.getAdapterPosition()).getId());
+                intent.putExtra(PRODUCT, product);
                 mContext.startActivity(intent);
             }
         });

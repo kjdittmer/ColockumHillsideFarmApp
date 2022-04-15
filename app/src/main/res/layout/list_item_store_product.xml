@@ -26,8 +26,8 @@
             android:text="Product Name"
             android:textStyle="bold"
             android:textSize="20sp"
-            android:layout_below="@+id/imgProduct"
             android:layout_centerHorizontal="true"
+            android:layout_below="@+id/imgProduct"
             android:gravity="center"
             android:layout_margin="5dp"
             android:id="@+id/txtProductName"/>
@@ -40,14 +40,16 @@
             android:layout_below="@+id/txtProductName"
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="5dp"
+            android:layout_marginLeft="5dp"
             android:id="@+id/txtPrice"/>
 
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/txtPrice"
-            android:layout_centerHorizontal="true">
-
+            android:layout_margin="2dp"
+            android:layout_centerHorizontal="true"
+            >
             <RelativeLayout
                 android:id="@+id/layoutButtonsStoreProduct"
                 android:layout_width="wrap_content"
@@ -89,7 +91,7 @@
             <Spinner
                 android:id="@+id/spnrQuantityStoreFrag"
                 android:layout_width="150dp"
-                android:layout_height="50dp"
+                android:layout_height="wrap_content"
                 android:layout_toRightOf="@+id/layoutButtonsStoreProduct"
                 android:layout_centerVertical="true" />
 
