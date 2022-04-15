@@ -82,6 +82,7 @@
         <entry key="app/src/main/res/layout/list_item_store_product.xml" value="0.335" />
         <entry key="app/src/main/res/layout/list_item_wishlist_product.xml" value="0.335" />
         <entry key="app/src/main/res/layout/nav_header_main.xml" value="0.2171875" />
+        <entry key="app/src/main/res/layout/spinner_text_cart_item.xml" value="0.2171875" />
         <entry key="app/src/main/res/menu/activity_main_drawer.xml" value="0.2171875" />
         <entry key="app/src/main/res/menu/edit_store.xml" value="0.1578125" />
         <entry key="app/src/main/res/menu/main.xml" value="0.2171875" />

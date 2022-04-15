@@ -30,7 +30,7 @@
             android:background="@drawable/round_button"
             android:layout_margin="5dp"
             android:id="@+id/imgDeleteCartItem"
-            android:layout_below="@+id/txtQuantityCartItem"
+            android:layout_below="@+id/layoutQuantityCartItem"
             />
 
         <TextView
@@ -44,23 +44,36 @@
             android:layout_margin="5dp"
             android:id="@+id/txtProductNameCartItem"/>
 
-        <TextView
+        <RelativeLayout
+            android:id="@+id/layoutQuantityCartItem"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Quanity"
-            android:textSize="12sp"
             android:layout_below="@+id/txtProductNameCartItem"
-            android:layout_centerHorizontal="true"
-            android:layout_margin="5dp"
-            android:id="@+id/txtQuantityCartItem"/>
+            android:layout_centerHorizontal="true">
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Quantity"
+                android:textSize="12sp"
+                android:layout_margin="5dp"
+                android:id="@+id/txtQuantityCartItem"
+                android:layout_centerVertical="true"/>
+
+            <Spinner
+                android:id="@+id/spnrQuantityCartItem"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/txtQuantityCartItem"/>
+
+        </RelativeLayout>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Price"
             android:textSize="12sp"
-            android:layout_below="@+id/txtQuantityCartItem"
+            android:layout_below="@+id/layoutQuantityCartItem"
             android:layout_centerHorizontal="true"
             android:layout_margin="5dp"
             android:id="@+id/txtPriceCartItem"/>

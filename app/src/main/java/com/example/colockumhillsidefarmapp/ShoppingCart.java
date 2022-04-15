@@ -38,6 +38,16 @@ public class ShoppingCart {
         cart.put(product, quantity);
     }
 
+    public void setProductQuantity(Product product, int quantity) {
+        int productId = product.getId();
+        for (Product currentProduct : cart.keySet()) {
+            if (productId == currentProduct.getId()) {
+                cart.put(currentProduct, quantity);
+                return;
+            }
+        }
+    }
+
     public void removeProductFromCart(Product product) {
         if(cart.containsKey(product)) {
             cart.remove(product);

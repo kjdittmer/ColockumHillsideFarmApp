@@ -7,8 +7,11 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -61,7 +64,7 @@ public class CartProductRecViewAdapter extends RecyclerView.Adapter<CartProductR
                 .load(product.getImageUrl())
                 .into(holder.imgProductCartItem);
 
-        holder.txtQuantityCartItem.setText("Quantity: " + quantityInCart);
+        holder.txtQuantityCartItem.setText("Quantity: ");
 
         DecimalFormat df = new DecimalFormat("0.00");
         String price = df.format(product.getPrice());
@@ -69,6 +72,36 @@ public class CartProductRecViewAdapter extends RecyclerView.Adapter<CartProductR
 
         String subtotal = df.format(quantityInCart * product.getPrice());
         holder.txtSubtotalCartItem.setText("Subtotal: $" + subtotal);
+
+        ArrayList<Integer> quantity = new ArrayList<>();
+        quantity.add(quantityInCart);
+        for(int i = 1; i <= product.getQuantity(); i++){
+            if (i != quantityInCart) quantity.add(i);
+        }
+        ArrayAdapter<Integer> quantityAdapter = new ArrayAdapter<Integer>(holder.txtProductNameCartItem.getContext(), R.layout.spinner_text_cart_item,
+                quantity);
+
+        holder.spnrQuantityCartItem.setAdapter(quantityAdapter);
+        holder.spnrQuantityCartItem.setSelection(0, false);
+
+        holder.spnrQuantityCartItem.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+//            boolean firstTrigger = true;
+
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+//                if (firstTrigger) {
+//                    firstTrigger = false;
+//                } else {
+                    ShoppingCart.getInstance().setProductQuantity(product, (int) quantity.get(i));
+                    currentActivity.reload();
+//                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
 
         holder.parentCartItem.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -124,8 +157,10 @@ public class CartProductRecViewAdapter extends RecyclerView.Adapter<CartProductR
         private ImageView imgProductCartItem;
         private ImageButton imgDeleteCartItem;
         private TextView txtProductNameCartItem, txtQuantityCartItem, txtPriceCartItem, txtSubtotalCartItem;
+        private Spinner spnrQuantityCartItem;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
+            spnrQuantityCartItem = itemView.findViewById(R.id.spnrQuantityCartItem);
             parentCartItem = itemView.findViewById(R.id.parentCartItem);
             imgProductCartItem = itemView.findViewById(R.id.imgProductCartItem);
             txtProductNameCartItem = itemView.findViewById(R.id.txtProductNameCartItem);
