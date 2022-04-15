@@ -11,6 +11,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.example.colockumhillsidefarmapp.GlobalStorage
 import com.example.colockumhillsidefarmapp.R
 import com.example.colockumhillsidefarmapp.StoreProductRecViewAdapter
@@ -21,6 +22,7 @@ class RecipesFragment : Fragment() {
     private var _binding: FragmentRecipesBinding? = null
     private lateinit var recipeRecView: RecyclerView
     private lateinit var adapter: RecipeRecViewAdapter
+    private lateinit var layout: SwipeRefreshLayout
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -66,6 +68,13 @@ class RecipesFragment : Fragment() {
         recipeRecView.layoutManager = manager
 
         adapter.setRecipes(allRecipes)
+
+        layout = root.findViewById(R.id.swipeRefreshLayoutRecipes)
+        layout.setOnRefreshListener {
+            val allRecipes = GlobalStorage.getInstance().getAllRecipes(adapter)
+            adapter.setRecipes(allRecipes)
+            layout.isRefreshing = false;
+        }
 
       //  val dummyRecipes : ArrayList<Recipe> = ArrayList()
        // dummyRecipes.add(Recipe(1, "Chicken Soup", "short", "long", "https://www.inspiredtaste.net/wp-content/uploads/2018/09/Easy-Chicken-Noodle-Soup-Recipe-1200.jpg"))
