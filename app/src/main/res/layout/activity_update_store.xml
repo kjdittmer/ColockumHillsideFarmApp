@@ -6,46 +6,17 @@
     android:layout_height="match_parent"
     tools:context=".ui.vendor.UpdateStoreActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/layoutUpdateStore"
-        android:text="What would you like to do?"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="20dp"
-        android:textAllCaps="true"
-        android:textStyle="bold"
-        android:textSize="20dp"
-        android:id="@+id/txtPromptUpdateStore"/>
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="10dp"
+        android:id="@+id/swipeRefreshLayoutEditStore">
 
-    <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/layoutUpdateStore"
-        android:layout_centerInParent="true">
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/editStoreRecView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:id="@+id/btnAddProduct"
-            android:text="Add product"
-            android:background="@drawable/round_button"
-            android:layout_margin="5dp"/>
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:id="@+id/btnEditProduct"
-            android:text="Edit product"
-            android:layout_below="@+id/btnAddProduct"
-            android:background="@drawable/round_button"
-            android:layout_margin="5dp"/>
-
-    </RelativeLayout>
-
-
-
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
 </RelativeLayout>

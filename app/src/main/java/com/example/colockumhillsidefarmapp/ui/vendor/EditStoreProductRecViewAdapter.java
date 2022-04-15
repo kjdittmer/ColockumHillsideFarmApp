@@ -31,9 +31,9 @@ public class EditStoreProductRecViewAdapter extends RecyclerView.Adapter<EditSto
 
     private ArrayList<Product> products = new ArrayList<>();
     private Context mContext;
-    private EditStoreActivity currentActivity;
+    private UpdateStoreActivity currentActivity;
 
-    public EditStoreProductRecViewAdapter(Context mContext, EditStoreActivity currentActivity) {
+    public EditStoreProductRecViewAdapter(Context mContext, UpdateStoreActivity currentActivity) {
         this.currentActivity = currentActivity;
         this.mContext = mContext;
     }

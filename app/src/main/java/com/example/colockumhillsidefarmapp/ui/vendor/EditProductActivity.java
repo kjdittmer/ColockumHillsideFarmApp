@@ -5,22 +5,15 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.provider.Settings;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
 import com.example.colockumhillsidefarmapp.GlobalStorage;
 import com.example.colockumhillsidefarmapp.Product;
 import com.example.colockumhillsidefarmapp.R;
-
-import java.text.DecimalFormat;
-import java.util.ArrayList;
 
 public class EditProductActivity extends AppCompatActivity {
 
@@ -61,7 +54,7 @@ public class EditProductActivity extends AppCompatActivity {
 
 
                 Toast.makeText(EditProductActivity.this, productToEdit.getName() + " edited", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(view.getContext(), EditStoreActivity.class);
+                Intent intent = new Intent(view.getContext(), UpdateStoreActivity.class);
                 startActivity(intent);
             }
         });

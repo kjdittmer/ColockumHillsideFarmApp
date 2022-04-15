@@ -2,51 +2,67 @@ package com.example.colockumhillsidefarmapp.ui.vendor;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
-import android.widget.RadioGroup;
-import android.widget.Toast;
 
+import com.example.colockumhillsidefarmapp.GlobalStorage;
+import com.example.colockumhillsidefarmapp.Product;
 import com.example.colockumhillsidefarmapp.R;
+
+import java.util.ArrayList;
 
 public class UpdateStoreActivity extends AppCompatActivity {
 
-    private Button btnAddProduct, btnEditProduct;
+    private RecyclerView editStoreRecView;
+    private EditStoreProductRecViewAdapter adapter;
+    private SwipeRefreshLayout layout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(com.example.colockumhillsidefarmapp.R.layout.activity_update_store);
+        setContentView(R.layout.activity_update_store);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        initVariables();
+        adapter = new EditStoreProductRecViewAdapter(this, this);
+        ArrayList<Product> allProducts = GlobalStorage.getInstance().getAllProducts(adapter);
 
-        btnAddProduct.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(view.getContext(), AddProductActivity.class);
-                startActivity(intent);
-            }
-        });
+        editStoreRecView = findViewById(R.id.editStoreRecView);
 
-        btnEditProduct.setOnClickListener(new View.OnClickListener() {
+        editStoreRecView.setAdapter(adapter);
+        editStoreRecView.setLayoutManager(new LinearLayoutManager(this));
+
+        adapter.setProducts(allProducts);
+
+        layout = findViewById(R.id.swipeRefreshLayoutEditStore);
+        layout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(view.getContext(), EditStoreActivity.class);
-                startActivity(intent);
+            public void onRefresh() {
+                ArrayList<Product> allProducts = GlobalStorage.getInstance().getAllProducts(adapter);
+                adapter.setProducts(allProducts);
+                layout.setRefreshing(false);
             }
         });
 
     }
 
-    private void initVariables() {
-        btnAddProduct = findViewById(R.id.btnAddProduct);
-        btnEditProduct = findViewById(R.id.btnEditProduct);
+    public void reload() {
+        finish();
+        overridePendingTransition(0, 0);
+        startActivity(getIntent());
+        overridePendingTransition(0, 0);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.edit_store, menu);
+        return true;
     }
 
     @Override
@@ -55,6 +71,9 @@ public class UpdateStoreActivity extends AppCompatActivity {
             case android.R.id.home:
                 onBackPressed();
                 break;
+            case R.id.action_add_product:
+                Intent intent = new Intent(this, AddProductActivity.class);
+                startActivity(intent);
             default:
                 break;
         }

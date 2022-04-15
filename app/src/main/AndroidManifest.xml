@@ -29,9 +29,9 @@
             android:exported="false"
             android:label="Edit Product" />
         <activity
-            android:name=".ui.vendor.EditStoreActivity"
+            android:name=".ui.vendor.UpdateStoreActivity"
             android:exported="false"
-            android:label="Edit Store" />
+            android:label="Update Store" />
         <activity
             android:name=".ui.recipes.RecipeActivity"
             android:exported="false"
@@ -52,10 +52,6 @@
             android:name=".ui.vendor.UpdateAboutUsActivity"
             android:exported="false"
             android:label="Update About Us" />
-        <activity
-            android:name=".ui.vendor.UpdateStoreActivity"
-            android:exported="false"
-            android:label="Update Store" />
         <activity
             android:name=".ui.vendor.AnalyticsActivity"
             android:exported="false"

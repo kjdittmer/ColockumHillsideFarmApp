@@ -14,8 +14,6 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.provider.Settings;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -75,13 +73,8 @@ public class AddProductActivity extends AppCompatActivity {
                         public void onClick(DialogInterface dialogInterface, int i) {
                             GlobalStorage.getInstance().addProduct(new Product(-1, name, quantity, imageUrl, shortDesc, longDesc, price, packageQuantity));
                             Toast.makeText(view.getContext(), name + " was added to the store.", Toast.LENGTH_SHORT).show();
-                            txtNameAddProdAct.setText("");
-                            txtImageUrlProdAct.setText("");
-                            txtShortDescAddProdAct.setText("");
-                            txtLongDescAddProdAct.setText("");
-                            txtPackageQuantityAddProdAct.setText("");
-                            txtQuantityAddProdAct.setText("");
-                            txtPriceAddProdAct.setText("");
+                            Intent intent = new Intent(view.getContext(), UpdateStoreActivity.class);
+                            startActivity(intent);
                         }
                     });
 
