@@ -54,7 +54,7 @@
             android:layout_margin="5dp"/>
 
         <Button
-            android:id="@+id/btnAddRecipes"
+            android:id="@+id/btnUpdateRecipes"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/btnGoToUpdateAboutUs"
@@ -64,7 +64,7 @@
             android:layout_marginEnd="5dp"
             android:layout_marginBottom="5dp"
             android:background="@drawable/round_button"
-            android:text="Add Recipes" />
+            android:text="Update Recipes" />
 
     </RelativeLayout>
 

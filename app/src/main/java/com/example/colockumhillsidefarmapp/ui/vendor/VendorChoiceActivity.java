@@ -13,7 +13,7 @@ import com.example.colockumhillsidefarmapp.R;
 
 public class VendorChoiceActivity extends AppCompatActivity {
 
-    private Button btnGoToAnalytics, btnGoToUpdateStore, btnGoToUpdateAboutUs, btnAddRecipes;
+    private Button btnGoToAnalytics, btnGoToUpdateStore, btnGoToUpdateAboutUs, btnUpdateRecipes;
 
 
     @Override
@@ -51,10 +51,10 @@ public class VendorChoiceActivity extends AppCompatActivity {
             }
         });
 
-        btnAddRecipes.setOnClickListener(new View.OnClickListener() {
+        btnUpdateRecipes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(view.getContext(), AddRecipeActivity.class);
+                Intent intent = new Intent(view.getContext(), UpdateRecipesActivity.class);
                 startActivity(intent);
             }
         });
@@ -66,7 +66,7 @@ public class VendorChoiceActivity extends AppCompatActivity {
         btnGoToAnalytics = findViewById(R.id.btnGoToAnalytics);
         btnGoToUpdateStore = findViewById(R.id.btnGoToUpdateStore);
         btnGoToUpdateAboutUs = findViewById(R.id.btnGoToUpdateAboutUs);
-        btnAddRecipes = findViewById(R.id.btnAddRecipes);
+        btnUpdateRecipes = findViewById(R.id.btnUpdateRecipes);
     }
 
     @Override

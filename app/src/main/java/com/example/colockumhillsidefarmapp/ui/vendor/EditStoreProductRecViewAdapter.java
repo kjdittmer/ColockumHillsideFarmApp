@@ -79,7 +79,7 @@ public class EditStoreProductRecViewAdapter extends RecyclerView.Adapter<EditSto
                     public void onClick(DialogInterface dialogInterface, int i) {
                         GlobalStorage.getInstance().removeProduct(product);
                         currentActivity.reload();
-                        Toast.makeText(mContext, product.getName() + " Removed", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(mContext, product.getName() + " removed.", Toast.LENGTH_SHORT).show();
                     }
                 });
 

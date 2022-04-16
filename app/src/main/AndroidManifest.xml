@@ -13,6 +13,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ColockumHillsideFarmApp">
         <activity
+            android:name=".ui.vendor.EditRecipeActivity"
+            android:exported="false"
+            android:label="Edit Recipe"/>
+        <activity
+            android:name=".ui.vendor.UpdateRecipesActivity"
+            android:exported="false"
+            android:label="Update Recipes"/>
+        <activity
             android:name=".FavoritesActivity"
             android:exported="false"
             android:label="Favorites" />

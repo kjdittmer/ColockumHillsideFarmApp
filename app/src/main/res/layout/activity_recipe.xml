@@ -1,87 +1,95 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.recipes.RecipeActivity">
 
-    <ImageView
-        android:id="@+id/recipeImage"
-        android:layout_width="0dp"
-        android:layout_height="161dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginEnd="28dp"
-        app:layout_constraintBottom_toTopOf="@+id/textView6"
-        app:layout_constraintEnd_toStartOf="@+id/recipeName"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@tools:sample/avatars" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/recipeImage"
+            android:layout_width="0dp"
+            android:layout_height="161dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="28dp"
+            app:layout_constraintBottom_toTopOf="@+id/textView6"
+            app:layout_constraintEnd_toStartOf="@+id/recipeName"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:srcCompat="@tools:sample/avatars" />
 
 
-    <TextView
-        android:id="@+id/recipeName"
-        android:layout_width="0dp"
-        android:layout_height="82dp"
-        android:layout_marginEnd="15dp"
-        android:text="TextView"
-        android:textAlignment="center"
-        android:textSize="25sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/shortDescRec"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/recipeImage"
-        app:layout_constraintTop_toTopOf="parent" />
+        <TextView
+            android:id="@+id/recipeName"
+            android:layout_width="0dp"
+            android:layout_height="82dp"
+            android:layout_marginEnd="15dp"
+            android:text="TextView"
+            android:textAlignment="center"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/shortDescRec"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/recipeImage"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/shortDescRec"
-        android:layout_width="159dp"
-        android:layout_height="84dp"
-        android:layout_marginEnd="15dp"
-        android:text="TextView"
-        app:layout_constraintBottom_toTopOf="@+id/ingredientsRec2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textView6"
-        app:layout_constraintTop_toBottomOf="@+id/recipeName" />
+        <TextView
+            android:id="@+id/shortDescRec"
+            android:layout_width="159dp"
+            android:layout_height="84dp"
+            android:layout_marginEnd="15dp"
+            android:text="TextView"
+            app:layout_constraintBottom_toTopOf="@+id/ingredientsRec2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/textView6"
+            app:layout_constraintTop_toBottomOf="@+id/recipeName" />
 
-    <ListView
-        android:id="@+id/ingredientsRec2"
-        android:layout_width="372dp"
-        android:layout_height="161dp"
-        app:layout_constraintBottom_toTopOf="@+id/textView5"
-        app:layout_constraintStart_toStartOf="@+id/instructionsRec2"
-        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+        <ListView
+            android:id="@+id/ingredientsRec2"
+            android:layout_width="372dp"
+            android:layout_height="161dp"
+            app:layout_constraintBottom_toTopOf="@+id/textView5"
+            app:layout_constraintStart_toStartOf="@+id/instructionsRec2"
+            app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
-    <ListView
-        android:id="@+id/instructionsRec2"
-        android:layout_width="384dp"
-        android:layout_height="172dp"
-        android:layout_marginEnd="3dp"
-        android:text="Instructions Here"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView5" />
+        <ListView
+            android:id="@+id/instructionsRec2"
+            android:layout_width="384dp"
+            android:layout_height="172dp"
+            android:layout_marginEnd="3dp"
+            android:text="Instructions Here"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
-    <TextView
-        android:id="@+id/textView5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="38dp"
-        android:text="Instructions"
-        app:layout_constraintBottom_toTopOf="@+id/instructionsRec2"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ingredientsRec2" />
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="38dp"
+            android:text="Instructions"
+            app:layout_constraintBottom_toTopOf="@+id/instructionsRec2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ingredientsRec2" />
 
-    <TextView
-        android:id="@+id/textView6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="41dp"
-        android:layout_marginEnd="73dp"
-        android:text="Ingredients"
-        app:layout_constraintBottom_toTopOf="@+id/ingredientsRec2"
-        app:layout_constraintEnd_toStartOf="@+id/shortDescRec"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/recipeImage" />
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="41dp"
+            android:layout_marginEnd="73dp"
+            android:text="Ingredients"
+            app:layout_constraintBottom_toTopOf="@+id/ingredientsRec2"
+            app:layout_constraintEnd_toStartOf="@+id/shortDescRec"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/recipeImage" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</ScrollView>

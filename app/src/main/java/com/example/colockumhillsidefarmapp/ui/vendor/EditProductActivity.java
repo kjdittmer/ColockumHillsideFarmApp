@@ -53,7 +53,7 @@ public class EditProductActivity extends AppCompatActivity {
                 GlobalStorage.getInstance().editProduct(productToEdit, editedProduct);
 
 
-                Toast.makeText(EditProductActivity.this, productToEdit.getName() + " edited", Toast.LENGTH_SHORT).show();
+                Toast.makeText(EditProductActivity.this, productToEdit.getName() + " edited.", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(view.getContext(), UpdateStoreActivity.class);
                 startActivity(intent);
             }
