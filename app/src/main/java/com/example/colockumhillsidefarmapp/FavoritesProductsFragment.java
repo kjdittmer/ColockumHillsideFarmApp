@@ -19,14 +19,6 @@ import java.util.ArrayList;
  */
 public class FavoritesProductsFragment extends Fragment {
 
-//    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-//    private static final String ARG_PARAM1 = "param1";
-//    private static final String ARG_PARAM2 = "param2";
-//
-//    private String mParam1;
-//    private String mParam2;
-
-    //TODO: create FavoritesProductsRecViewAdapter
     private FavoritesProductsRecViewAdapter adapter;
     private RecyclerView recyclerView;
     private FavoritesActivity currentActivity;
@@ -40,7 +32,6 @@ public class FavoritesProductsFragment extends Fragment {
      * this fragment using the provided parameters.
      * @return A new instance of fragment FavoritesProductsFragment.
      */
-    // TODO: Rename and change types and number of parameters
     public static FavoritesProductsFragment newInstance() {
         FavoritesProductsFragment fragment = new FavoritesProductsFragment();
         return fragment;
@@ -49,10 +40,7 @@ public class FavoritesProductsFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-//            mParam1 = getArguments().getString(ARG_PARAM1);
-//            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+        if (getArguments() != null) {}
     }
 
     @Override
@@ -63,7 +51,7 @@ public class FavoritesProductsFragment extends Fragment {
 
         recyclerView = root.findViewById(R.id.favoritesProductsRecView);
 
-        adapter = new FavoritesProductsRecViewAdapter(getContext(), (FavoritesActivity)getContext());
+        adapter = new FavoritesProductsRecViewAdapter(getContext());
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 

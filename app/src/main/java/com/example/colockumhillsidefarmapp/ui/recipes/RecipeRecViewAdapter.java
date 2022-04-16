@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -16,6 +17,7 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.colockumhillsidefarmapp.Favorites;
 import com.example.colockumhillsidefarmapp.R;
 
 import java.util.ArrayList;
@@ -55,6 +57,16 @@ public class RecipeRecViewAdapter extends RecyclerView.Adapter<RecipeRecViewAdap
                 mContext.startActivity(intent);
             }
         });
+
+        holder.btnAddToFavorites.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Favorites.getInstance().addRecipeToFavoritesRecipes(recipe);
+
+                Toast.makeText(view.getContext(), recipe.getName() +
+                        " added to favorites!", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     @Override
@@ -71,12 +83,13 @@ public class RecipeRecViewAdapter extends RecyclerView.Adapter<RecipeRecViewAdap
         private CardView parent;
         private ImageView imgRecipe;
         private TextView txtName;
+        private ImageButton btnAddToFavorites;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             parent = itemView.findViewById(R.id.parent);
             imgRecipe = itemView.findViewById(R.id.imgRecipe);
             txtName = itemView.findViewById(R.id.txtRecipeName);
-
+            btnAddToFavorites = itemView.findViewById(R.id.btnAddToFavoritesRecipeFrag);
         }
     }
 }

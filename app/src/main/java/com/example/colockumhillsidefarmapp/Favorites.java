@@ -43,7 +43,7 @@ public class Favorites {
         }
     }
 
-    public void addProductToFavoritesRecipes(Recipe recipe) {
+    public void addRecipeToFavoritesRecipes(Recipe recipe) {
         if(!favoritesRecipes.contains(recipe)) {
             favoritesRecipes.add(recipe);
         }
@@ -55,7 +55,7 @@ public class Favorites {
         }
     }
 
-    public void removeProductFromFavoritesRecipes(Recipe recipe) {
+    public void removeRecipeFromFavoritesRecipes(Recipe recipe) {
         if(favoritesRecipes.contains(recipe)) {
             favoritesRecipes.remove(recipe);
         }
