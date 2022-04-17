@@ -15,11 +15,13 @@
         <activity
             android:name=".ui.vendor.EditRecipeActivity"
             android:exported="false"
-            android:label="Edit Recipe"/>
+            android:label="Edit Recipe"
+            android:parentActivityName=".ui.vendor.UpdateRecipesActivity"/>
         <activity
             android:name=".ui.vendor.UpdateRecipesActivity"
             android:exported="false"
-            android:label="Update Recipes"/>
+            android:label="Update Recipes"
+            android:parentActivityName=".ui.vendor.VendorChoiceActivity"/>
         <activity
             android:name=".FavoritesActivity"
             android:exported="false"
@@ -27,7 +29,8 @@
         <activity
             android:name=".ui.vendor.AddRecipeActivity"
             android:exported="false"
-            android:label="Add Recipe" />
+            android:label="Add Recipe"
+            android:parentActivityName=".ui.vendor.UpdateRecipesActivity"/>
         <activity
             android:name=".WishlistActivity"
             android:exported="false"
@@ -35,11 +38,13 @@
         <activity
             android:name=".ui.vendor.EditProductActivity"
             android:exported="false"
-            android:label="Edit Product" />
+            android:label="Edit Product"
+            android:parentActivityName=".ui.vendor.UpdateStoreActivity"/>
         <activity
             android:name=".ui.vendor.UpdateStoreActivity"
             android:exported="false"
-            android:label="Update Store" />
+            android:label="Update Store"
+            android:parentActivityName=".ui.vendor.VendorChoiceActivity"/>
         <activity
             android:name=".ui.recipes.RecipeActivity"
             android:exported="false"
@@ -47,7 +52,8 @@
         <activity
             android:name=".ui.vendor.AddProductActivity"
             android:exported="false"
-            android:label="Add Product" />
+            android:label="Add Product"
+            android:parentActivityName=".ui.vendor.UpdateStoreActivity"/>
         <activity
             android:name=".ShoppingCartActivity"
             android:exported="false"
@@ -59,11 +65,13 @@
         <activity
             android:name=".ui.vendor.UpdateAboutUsActivity"
             android:exported="false"
-            android:label="Update About Us" />
+            android:label="Update About Us"
+            android:parentActivityName=".ui.vendor.VendorChoiceActivity"/>
         <activity
             android:name=".ui.vendor.AnalyticsActivity"
             android:exported="false"
-            android:label="Analytics" />
+            android:label="Analytics"
+            android:parentActivityName=".ui.vendor.VendorChoiceActivity"/>
         <activity
             android:name=".ui.vendor.VendorChoiceActivity"
             android:exported="false"
