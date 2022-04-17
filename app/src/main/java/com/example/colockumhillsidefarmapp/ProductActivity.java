@@ -52,7 +52,7 @@ public class ProductActivity extends AppCompatActivity {
             public void onClick(View view) {
                 int quantitySelected = (int)spnrQuantitySelected.getSelectedItem();
 
-                ShoppingCart.getInstance(ProductActivity.this).addProductToCart(product, quantitySelected);
+                ShoppingCart.getInstance().addProductToCart(product, quantitySelected);
 
                 String plurality = "";
                 if (quantitySelected > 1) {

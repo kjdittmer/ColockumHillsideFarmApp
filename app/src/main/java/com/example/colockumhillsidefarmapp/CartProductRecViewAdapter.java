@@ -37,7 +37,7 @@ public class CartProductRecViewAdapter extends RecyclerView.Adapter<CartProductR
 
     public CartProductRecViewAdapter(Context mContext, ShoppingCartActivity currentActivity) {
         this.mContext = mContext;
-        cart = ShoppingCart.getInstance(mContext).getCart();
+        cart = ShoppingCart.getInstance().getCart();
         this.currentActivity = currentActivity;
     }
 
@@ -92,7 +92,7 @@ public class CartProductRecViewAdapter extends RecyclerView.Adapter<CartProductR
 //                if (firstTrigger) {
 //                    firstTrigger = false;
 //                } else {
-                    ShoppingCart.getInstance(mContext).setProductQuantity(product, (int) quantity.get(i));
+                    ShoppingCart.getInstance().setProductQuantity(product, (int) quantity.get(i));
                     currentActivity.reload();
 //                }
             }
@@ -120,7 +120,7 @@ public class CartProductRecViewAdapter extends RecyclerView.Adapter<CartProductR
                 builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        ShoppingCart.getInstance(mContext).removeProductFromCart(product);
+                        ShoppingCart.getInstance().removeProductFromCart(product);
                         currentActivity.reload();
                         Toast.makeText(mContext, product.getName() + " Removed", Toast.LENGTH_SHORT).show();
                     }

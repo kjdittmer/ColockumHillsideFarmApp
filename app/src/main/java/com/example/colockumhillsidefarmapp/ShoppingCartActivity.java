@@ -51,7 +51,7 @@ public class ShoppingCartActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
          productsInCart = new ArrayList<>();
-         cart = ShoppingCart.getInstance(this).getCart();
+         cart = ShoppingCart.getInstance().getCart();
          for (Product product : cart.keySet()){
             productsInCart.add(product);
          }

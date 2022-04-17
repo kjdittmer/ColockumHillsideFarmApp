@@ -75,7 +75,7 @@ public class StoreProductRecViewAdapter extends RecyclerView.Adapter<StoreProduc
             public void onClick(View view) {
                 int quantitySelected = (int)holder.spnrQuantityStoreFrag.getSelectedItem();
 
-                ShoppingCart.getInstance(mContext).addProductToCart(product, quantitySelected);
+                ShoppingCart.getInstance().addProductToCart(product, quantitySelected);
 
                 String plurality = "";
                 if (quantitySelected > 1) {
