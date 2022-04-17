@@ -14,6 +14,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.text.TextUtils;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -57,14 +58,14 @@ public class AddProductActivity extends AppCompatActivity {
         btnAddProductAddProdAct.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String name = txtNameAddProdAct.getText().toString();
-                String imageUrl = txtImageUrlProdAct.getText().toString();
-                String shortDesc = txtShortDescAddProdAct.getText().toString();
-                String longDesc = txtLongDescAddProdAct.getText().toString();
-                String packageQuantity = txtPackageQuantityAddProdAct.getText().toString();
-                int quantity = Integer.parseInt(txtQuantityAddProdAct.getText().toString());
-                double price = Double.parseDouble(txtPriceAddProdAct.getText().toString());
                 if(validateData()) {
+                    String name = txtNameAddProdAct.getText().toString();
+                    String imageUrl = txtImageUrlProdAct.getText().toString();
+                    String shortDesc = txtShortDescAddProdAct.getText().toString();
+                    String longDesc = txtLongDescAddProdAct.getText().toString();
+                    String packageQuantity = txtPackageQuantityAddProdAct.getText().toString();
+                    int quantity = Integer.parseInt(txtQuantityAddProdAct.getText().toString());
+                    double price = Double.parseDouble(txtPriceAddProdAct.getText().toString());
 
                     AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
                     builder.setMessage("Is the following information correct?\nName: " + name + "\nQuantity: " + quantity + "\nImage URL: " + imageUrl + "\nShort Description: " + shortDesc + "\nLong Description: " + longDesc + "\nPrice: " + price + "\nPackage Quantity: " + packageQuantity);
@@ -87,8 +88,6 @@ public class AddProductActivity extends AppCompatActivity {
 
                     builder.create().show();
 
-                } else {
-                    Toast.makeText(view.getContext(), "Please enter valid data.", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -97,7 +96,37 @@ public class AddProductActivity extends AppCompatActivity {
 
 
     private boolean validateData() {
-        return true;
+        if (TextUtils.isEmpty(txtNameAddProdAct.getText())) {
+            Toast.makeText(this, "Please fill in the Name field.", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        else if (TextUtils.isEmpty(txtQuantityAddProdAct.getText())) {
+            Toast.makeText(this, "Please fill in the Quantity field.", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        else if (TextUtils.isEmpty(txtImageUrlProdAct.getText())) {
+            Toast.makeText(this, "Please fill in the Image URL field.", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        else if (TextUtils.isEmpty(txtShortDescAddProdAct.getText())) {
+            Toast.makeText(this, "Please fill in the Short Description field.", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        else if (TextUtils.isEmpty(txtLongDescAddProdAct.getText())) {
+            Toast.makeText(this, "Please fill in the Long Description field.", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        else if (TextUtils.isEmpty(txtPriceAddProdAct.getText())) {
+            Toast.makeText(this, "Please fill in the Price field.", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        else if (TextUtils.isEmpty(txtPackageQuantityAddProdAct.getText())) {
+            Toast.makeText(this, "Please fill in the Package Quantity field.", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        else {
+            return true;
+        }
     }
 
     private void initVariables() {

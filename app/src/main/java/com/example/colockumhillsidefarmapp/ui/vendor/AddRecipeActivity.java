@@ -14,6 +14,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.text.TextUtils;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -57,12 +58,12 @@ public class AddRecipeActivity extends AppCompatActivity {
         btnAddRecipe.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String name = txtNameAddRecipeName.getText().toString();
-                String imageUrl = txtImageUrlRecAct.getText().toString();
-                String shortDesc = txtShortDescAddRecipeAct.getText().toString();
-                String ingredients = txtIngredients.getText().toString();
-                String instructions = txtInstructions.getText().toString();
                 if(validateData()) {
+                    String name = txtNameAddRecipeName.getText().toString();
+                    String imageUrl = txtImageUrlRecAct.getText().toString();
+                    String shortDesc = txtShortDescAddRecipeAct.getText().toString();
+                    String ingredients = txtIngredients.getText().toString();
+                    String instructions = txtInstructions.getText().toString();
 
                     AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
                     builder.setMessage("Is the following information correct?\nName: " + name  + "" +
@@ -94,8 +95,6 @@ public class AddRecipeActivity extends AppCompatActivity {
 
                     builder.create().show();
 
-                } else {
-                    Toast.makeText(view.getContext(), "Please enter valid data.", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -104,8 +103,31 @@ public class AddRecipeActivity extends AppCompatActivity {
 
 
     private boolean validateData() {
-        return true;
+        if (TextUtils.isEmpty(txtNameAddRecipeName.getText())) {
+            Toast.makeText(this, "Please fill in the Name field.", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        else if (TextUtils.isEmpty(txtImageUrlRecAct.getText())) {
+            Toast.makeText(this, "Please fill in the Image URL field.", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        else if (TextUtils.isEmpty(txtShortDescAddRecipeAct.getText())) {
+            Toast.makeText(this, "Please fill in the Short Description field.", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        else if (TextUtils.isEmpty(txtIngredients.getText())) {
+            Toast.makeText(this, "Please fill in the Ingredients field.", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        else if (TextUtils.isEmpty(txtInstructions.getText())) {
+            Toast.makeText(this, "Please fill in the Instructions field.", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        else {
+            return true;
+        }
     }
+
 
     private void initVariables() {
         btnAddRecipe = findViewById(R.id.btnAddRecipe);
