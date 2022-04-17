@@ -69,7 +69,7 @@ public class FavoritesRecipesRecViewAdapter extends RecyclerView.Adapter<Favorit
                 builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        Favorites.getInstance().removeRecipeFromFavoritesRecipes(recipe);
+                        Favorites.getInstance(mContext).removeRecipeFromFavoritesRecipes(recipe);
                         //currentActivity.reload();
                         notifyDataSetChanged();
                         Toast.makeText(mContext, recipe.getName() + " removed", Toast.LENGTH_SHORT).show();

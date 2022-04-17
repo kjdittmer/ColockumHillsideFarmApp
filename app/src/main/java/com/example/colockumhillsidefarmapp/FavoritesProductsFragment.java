@@ -55,7 +55,7 @@ public class FavoritesProductsFragment extends Fragment {
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        ArrayList<Product> favoritesProducts = Favorites.getInstance().getFavoritesProducts();
+        ArrayList<Product> favoritesProducts = Favorites.getInstance(getContext()).getFavoritesProducts();
         adapter.setProductsFavoritesProducts(favoritesProducts);
 
 

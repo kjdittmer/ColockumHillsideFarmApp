@@ -36,7 +36,7 @@ public class WishlistProductRecViewAdapter extends RecyclerView.Adapter<Wishlist
 
     public WishlistProductRecViewAdapter(Context mContext, WishlistActivity currentActivity) {
         this.mContext = mContext;
-        wishlist = Wishlist.getInstance().getWishlist();
+        wishlist = Wishlist.getInstance(mContext).getWishlist();
         this.currentActivity = currentActivity;
     }
 
@@ -85,7 +85,7 @@ public class WishlistProductRecViewAdapter extends RecyclerView.Adapter<Wishlist
                 builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        Wishlist.getInstance().removeProductFromWishList(product);
+                        Wishlist.getInstance(mContext).removeProductFromWishList(product);
                         currentActivity.reload();
                         Toast.makeText(mContext, product.getName() + " removed", Toast.LENGTH_SHORT).show();
                     }
@@ -115,7 +115,7 @@ public class WishlistProductRecViewAdapter extends RecyclerView.Adapter<Wishlist
             public void onClick(View view) {
                 int quantitySelected = (int)holder.spnrQuantityWishlistItem.getSelectedItem();
 
-                ShoppingCart.getInstance().addProductToCart(product, quantitySelected);
+                ShoppingCart.getInstance(mContext).addProductToCart(product, quantitySelected);
 
                 String plurality = "";
                 if (quantitySelected > 1) {

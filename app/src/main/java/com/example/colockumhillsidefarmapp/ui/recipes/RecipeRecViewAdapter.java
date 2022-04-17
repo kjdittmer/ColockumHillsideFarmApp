@@ -61,7 +61,7 @@ public class RecipeRecViewAdapter extends RecyclerView.Adapter<RecipeRecViewAdap
         holder.btnAddToFavorites.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Favorites.getInstance().addRecipeToFavoritesRecipes(recipe);
+                Favorites.getInstance(mContext).addRecipeToFavoritesRecipes(recipe);
 
                 Toast.makeText(view.getContext(), recipe.getName() +
                         " added to favorites!", Toast.LENGTH_SHORT).show();

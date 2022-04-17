@@ -82,7 +82,7 @@ public class FavoritesProductsRecViewAdapter extends RecyclerView.Adapter<Favori
                 builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        Favorites.getInstance().removeProductFromFavoritesProducts(product);
+                        Favorites.getInstance(mContext).removeProductFromFavoritesProducts(product);
                         //currentActivity.reload();
                         notifyDataSetChanged();
                         Toast.makeText(mContext, product.getName() + " removed", Toast.LENGTH_SHORT).show();
@@ -113,7 +113,7 @@ public class FavoritesProductsRecViewAdapter extends RecyclerView.Adapter<Favori
             public void onClick(View view) {
                 int quantitySelected = (int)holder.spnrQuantityWishlistItem.getSelectedItem();
 
-                ShoppingCart.getInstance().addProductToCart(product, quantitySelected);
+                ShoppingCart.getInstance(mContext).addProductToCart(product, quantitySelected);
 
                 String plurality = "";
                 if (quantitySelected > 1) {

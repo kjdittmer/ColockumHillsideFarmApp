@@ -52,7 +52,7 @@ public class ProductActivity extends AppCompatActivity {
             public void onClick(View view) {
                 int quantitySelected = (int)spnrQuantitySelected.getSelectedItem();
 
-                ShoppingCart.getInstance().addProductToCart(product, quantitySelected);
+                ShoppingCart.getInstance(ProductActivity.this).addProductToCart(product, quantitySelected);
 
                 String plurality = "";
                 if (quantitySelected > 1) {
@@ -70,7 +70,7 @@ public class ProductActivity extends AppCompatActivity {
         btnAddToWishlist.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Wishlist.getInstance().addProductToWishlist(product);
+                Wishlist.getInstance(ProductActivity.this).addProductToWishlist(product);
 
                 Toast.makeText(view.getContext(), product.getName() +
                         " added to wishlist!", Toast.LENGTH_SHORT).show();
@@ -80,7 +80,7 @@ public class ProductActivity extends AppCompatActivity {
         btnAddToFavorites.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Favorites.getInstance().addProductToFavoritesProducts(product);
+                Favorites.getInstance(view.getContext()).addProductToFavoritesProducts(product);
 
                 Toast.makeText(view.getContext(), product.getName() +
                         " added to favorites!", Toast.LENGTH_SHORT).show();

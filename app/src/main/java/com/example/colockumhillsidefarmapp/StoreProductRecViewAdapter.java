@@ -75,7 +75,7 @@ public class StoreProductRecViewAdapter extends RecyclerView.Adapter<StoreProduc
             public void onClick(View view) {
                 int quantitySelected = (int)holder.spnrQuantityStoreFrag.getSelectedItem();
 
-                ShoppingCart.getInstance().addProductToCart(product, quantitySelected);
+                ShoppingCart.getInstance(mContext).addProductToCart(product, quantitySelected);
 
                 String plurality = "";
                 if (quantitySelected > 1) {
@@ -92,7 +92,7 @@ public class StoreProductRecViewAdapter extends RecyclerView.Adapter<StoreProduc
         holder.btnAddToFavoritesStoreFrag.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Favorites.getInstance().addProductToFavoritesProducts(product);
+                Favorites.getInstance(mContext).addProductToFavoritesProducts(product);
 
                 Toast.makeText(view.getContext(), product.getName() +
                         " added to favorites!", Toast.LENGTH_SHORT).show();
@@ -102,7 +102,7 @@ public class StoreProductRecViewAdapter extends RecyclerView.Adapter<StoreProduc
         holder.btnAddToWishlistStoreFrag.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Wishlist.getInstance().addProductToWishlist(product);
+                Wishlist.getInstance(mContext).addProductToWishlist(product);
 
                 Toast.makeText(view.getContext(), product.getName() +
                         " added to wishlist!", Toast.LENGTH_SHORT).show();

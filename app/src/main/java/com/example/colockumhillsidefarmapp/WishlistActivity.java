@@ -34,7 +34,7 @@ public class WishlistActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        ArrayList<Product> wishlistProducts = Wishlist.getInstance().getWishlist();
+        ArrayList<Product> wishlistProducts = Wishlist.getInstance(this).getWishlist();
         adapter.setProductsInWishlist(wishlistProducts);
     }
 

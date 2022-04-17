@@ -72,13 +72,11 @@ dependencies {
     implementation 'com.google.firebase:firebase-firestore-ktx'
     implementation 'com.github.mailchimp:Mailchimp-SDK-Android:1.0.0'
 
-
-
-
-
     implementation 'com.github.mailchimp:Mailchimp-SDK-Android:1.0.0'
     // required to avoid crash on Android 12 API 31
     implementation 'androidx.work:work-runtime-ktx:2.7.0'
+
+    implementation 'com.google.code.gson:gson:2.9.0'
 
 
 }

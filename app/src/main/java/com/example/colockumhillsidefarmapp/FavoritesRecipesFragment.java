@@ -60,7 +60,7 @@ public class FavoritesRecipesFragment extends Fragment {
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        ArrayList<Recipe> favoritesRecipes = Favorites.getInstance().getFavoritesRecipes();
+        ArrayList<Recipe> favoritesRecipes = Favorites.getInstance(getContext()).getFavoritesRecipes();
         adapter.setRecipesFavoritesRecipes(favoritesRecipes);
 
         return root;
