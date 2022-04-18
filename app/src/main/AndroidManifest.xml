@@ -13,15 +13,19 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ColockumHillsideFarmApp">
         <activity
+            android:name=".user.CustomerLoginActivity"
+            android:exported="false"
+            android:label="Login"/>
+        <activity
             android:name=".vendor.update_recipes.EditRecipeActivity"
             android:exported="false"
             android:label="Edit Recipe"
-            android:parentActivityName=".vendor.update_recipes.UpdateRecipesActivity"/>
+            android:parentActivityName=".vendor.update_recipes.UpdateRecipesActivity" />
         <activity
             android:name=".vendor.update_recipes.UpdateRecipesActivity"
             android:exported="false"
             android:label="Update Recipes"
-            android:parentActivityName=".vendor.VendorChoiceActivity"/>
+            android:parentActivityName=".vendor.VendorChoiceActivity" />
         <activity
             android:name=".customer.favorites.FavoritesActivity"
             android:exported="false"
@@ -30,7 +34,7 @@
             android:name=".vendor.update_recipes.AddRecipeActivity"
             android:exported="false"
             android:label="Add Recipe"
-            android:parentActivityName=".vendor.update_recipes.UpdateRecipesActivity"/>
+            android:parentActivityName=".vendor.update_recipes.UpdateRecipesActivity" />
         <activity
             android:name=".customer.wishlist.WishlistActivity"
             android:exported="false"
@@ -39,12 +43,12 @@
             android:name=".vendor.update_store.EditProductActivity"
             android:exported="false"
             android:label="Edit Product"
-            android:parentActivityName=".vendor.update_store.UpdateStoreActivity"/>
+            android:parentActivityName=".vendor.update_store.UpdateStoreActivity" />
         <activity
             android:name=".vendor.update_store.UpdateStoreActivity"
             android:exported="false"
             android:label="Update Store"
-            android:parentActivityName=".vendor.VendorChoiceActivity"/>
+            android:parentActivityName=".vendor.VendorChoiceActivity" />
         <activity
             android:name=".customer.recipes.RecipeActivity"
             android:exported="false"
@@ -53,7 +57,7 @@
             android:name=".vendor.update_store.AddProductActivity"
             android:exported="false"
             android:label="Add Product"
-            android:parentActivityName=".vendor.update_store.UpdateStoreActivity"/>
+            android:parentActivityName=".vendor.update_store.UpdateStoreActivity" />
         <activity
             android:name=".customer.shopping_cart.ShoppingCartActivity"
             android:exported="false"
@@ -66,12 +70,12 @@
             android:name=".vendor.update_about_us.UpdateAboutUsActivity"
             android:exported="false"
             android:label="Update About Us"
-            android:parentActivityName=".vendor.VendorChoiceActivity"/>
+            android:parentActivityName=".vendor.VendorChoiceActivity" />
         <activity
             android:name=".vendor.analytics.AnalyticsActivity"
             android:exported="false"
             android:label="Analytics"
-            android:parentActivityName=".vendor.VendorChoiceActivity"/>
+            android:parentActivityName=".vendor.VendorChoiceActivity" />
         <activity
             android:name=".vendor.VendorChoiceActivity"
             android:exported="false"
@@ -107,7 +111,6 @@
             android:theme="@style/Theme.ColockumHillsideFarmApp.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
