@@ -83,7 +83,7 @@
             android:layout_below="@+id/txtPackageQuantityEditProdAct"
             android:layout_centerHorizontal="true"
             android:layout_margin="5dp"
-            android:text="Update Product"
+            android:text="Update"
             android:background="@drawable/round_button"/>
 
     </RelativeLayout>
