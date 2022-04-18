@@ -7,29 +7,29 @@
 
     <fragment
         android:id="@+id/nav_contact_us"
-        android:name="com.example.colockumhillsidefarmapp.ui.contact_us.ContactUsFragment"
+        android:name="com.example.colockumhillsidefarmapp.customer.contact_us.ContactUsFragment"
         android:label="@string/menu_contact_us"
         tools:layout="@layout/fragment_contact_us" />
 
     <fragment
         android:id="@+id/nav_about_us"
-        android:name="com.example.colockumhillsidefarmapp.ui.about_us.AboutUsFragment"
+        android:name="com.example.colockumhillsidefarmapp.customer.about_us.AboutUsFragment"
         android:label="@string/menu_about_us"
         tools:layout="@layout/fragment_about_us" />
 
     <fragment
         android:id="@+id/nav_recipes"
-        android:name="com.example.colockumhillsidefarmapp.ui.recipes.RecipesFragment"
+        android:name="com.example.colockumhillsidefarmapp.customer.recipes.RecipesFragment"
         android:label="@string/menu_recipes"
         tools:layout="@layout/fragment_store" />
     <fragment
         android:id="@+id/nav_store"
-        android:name="com.example.colockumhillsidefarmapp.ui.store.StoreFragment"
+        android:name="com.example.colockumhillsidefarmapp.customer.store.StoreFragment"
         android:label="@string/menu_store"
         tools:layout="@layout/fragment_store" />
     <fragment
         android:id="@+id/nav_vendor"
-        android:name="com.example.colockumhillsidefarmapp.ui.vendor.VendorFragment"
+        android:name="com.example.colockumhillsidefarmapp.vendor.VendorFragment"
         android:label="@string/menu_vendor"
         tools:layout="@layout/fragment_vendor" />
 </navigation>

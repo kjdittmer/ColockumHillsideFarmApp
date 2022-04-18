@@ -4,8 +4,6 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.Toast
-import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.navigation.NavigationView
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -14,13 +12,13 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import androidx.viewbinding.BuildConfig
+import com.example.colockumhillsidefarmapp.customer.favorites.FavoritesActivity
+import com.example.colockumhillsidefarmapp.customer.shopping_cart.ShoppingCartActivity
+import com.example.colockumhillsidefarmapp.customer.wishlist.WishlistActivity
 import com.example.colockumhillsidefarmapp.databinding.ActivityMainBinding
 import com.mailchimp.sdk.core.MailchimpSdkConfiguration
 import com.mailchimp.sdk.main.Mailchimp
-import java.security.AccessController.getContext
 
 class MainActivity : AppCompatActivity() {
 

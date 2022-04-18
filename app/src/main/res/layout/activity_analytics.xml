@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.vendor.AnalyticsActivity">
+    tools:context=".vendor.analytics.AnalyticsActivity">
 
     <TextView
         android:id="@+id/txtGraph"
