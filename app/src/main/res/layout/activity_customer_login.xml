@@ -38,6 +38,7 @@
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
             android:layout_marginBottom="5dp"
+            android:lines="1"
             />
         <EditText
             android:layout_width="match_parent"
