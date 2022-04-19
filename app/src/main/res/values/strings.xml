@@ -43,6 +43,8 @@
     <string name="title_activity_favorites">FavoritesActivity</string>
     <string name="tab_text_1">Products</string>
     <string name="tab_text_2">Recipes</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="create_account"> <u>Create account.</u></string>
+    <string name="vendor_login"> <u>Go to vendor login.</u></string>
 </resources>

@@ -6,10 +6,29 @@
     android:layout_height="match_parent"
     tools:context=".user.CustomerLoginActivity">
 
+    <ImageView
+        android:id="@+id/imgChickenCustomerLogin"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/chickenpic"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="COLOCKUM HILLSIDE \n FARM"
+        android:gravity="center"
+        android:layout_below="@id/imgChickenCustomerLogin"
+        android:layout_centerHorizontal="true"
+        android:textSize="20sp"
+        android:textStyle="bold"/>
+
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true">
+        android:layout_centerInParent="true"
+        android:id="@+id/layoutLoginCredCustomerLogin">
 
         <EditText
             android:layout_width="match_parent"
@@ -17,26 +36,89 @@
             android:hint="Username"
             android:id="@+id/txtUsernameCustomerLogin"
             android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"/>
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="5dp"
+            />
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Password"
             android:id="@+id/txtPasswordCustomerLogin"
             android:layout_below="@+id/txtUsernameCustomerLogin"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="5dp"
             android:inputType="textPassword"
             android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"/>
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="5dp" />
 
         <Button
+            android:id="@+id/btnLoginCustomerLogin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/txtPasswordCustomerLogin"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
             android:text="login"
-            android:background="@drawable/round_button"/>
+            android:background="@drawable/round_button"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"/>
+
+    </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/layoutLoginCredCustomerLogin"
+            android:layout_centerHorizontal="true">
+
+            <TextView
+                android:id="@+id/txtNewCustomerCustomerLogin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="New customer?"
+                android:layout_marginTop="5dp"
+                android:textSize="20sp"
+                />
+
+            <TextView
+                android:id="@+id/txtCreateAccountCustomerLogin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/create_account"
+                android:layout_marginTop="5dp"
+                android:textSize="20sp"
+                android:layout_toRightOf="@+id/txtNewCustomerCustomerLogin"
+                android:textColor="@color/blue"
+                android:textStyle="bold"
+                />
+
+        </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="20dp">
+
+        <TextView
+            android:id="@+id/txtVendorCustomerLogin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Vendor?"
+            android:textSize="20dp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/txtVendorCustomerLogin"
+            android:text="@string/vendor_login"
+            android:textColor="@color/blue"
+            android:textStyle="bold"
+            android:textSize="20sp"
+
+            />
 
     </RelativeLayout>
 

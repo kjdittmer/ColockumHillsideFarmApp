@@ -14,8 +14,14 @@
         android:theme="@style/Theme.ColockumHillsideFarmApp">
         <activity
             android:name=".user.CustomerLoginActivity"
-            android:exported="false"
-            android:label="Login"/>
+            android:exported="true"
+            android:label="Customer Login"
+            android:windowSoftInputMode="adjustPan">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".vendor.update_recipes.EditRecipeActivity"
             android:exported="false"
@@ -109,10 +115,6 @@
             android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/Theme.ColockumHillsideFarmApp.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
     </application>
 

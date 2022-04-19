@@ -13,4 +13,6 @@
     <color name="gold">#FFD700</color>
     <color name="yellow">#FFFF00</color>
     <color name="goldenrod">#DAA520</color>
+    <color name="light_blue">#ADD8E6</color>
+    <color name="blue">#0000FF</color>
 </resources>
