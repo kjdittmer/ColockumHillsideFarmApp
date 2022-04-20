@@ -33,8 +33,8 @@
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Username"
-            android:id="@+id/txtUsernameCustomerLogin"
+            android:hint="Your email"
+            android:id="@+id/txtEmailCustomerLogin"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
             android:layout_marginBottom="5dp"
@@ -43,9 +43,9 @@
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Password"
+            android:hint="Your password"
             android:id="@+id/txtPasswordCustomerLogin"
-            android:layout_below="@+id/txtUsernameCustomerLogin"
+            android:layout_below="@+id/txtEmailCustomerLogin"
             android:layout_marginTop="5dp"
             android:inputType="textPassword"
             android:layout_marginLeft="20dp"
@@ -111,6 +111,7 @@
             />
 
         <TextView
+            android:id="@+id/txtVendorLoginCustomerLogin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_toRightOf="@+id/txtVendorCustomerLogin"

@@ -1,17 +1,32 @@
 package com.example.colockumhillsidefarmapp;
 
+import android.content.Context;
+import android.content.Intent;
+import android.util.Log;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.colockumhillsidefarmapp.customer.CustomerDashboardActivity;
 import com.example.colockumhillsidefarmapp.customer.recipes.Recipe;
 import com.example.colockumhillsidefarmapp.customer.store.Product;
+import com.example.colockumhillsidefarmapp.user.CustomerLoginActivity;
+import com.example.colockumhillsidefarmapp.user.User;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class GlobalStorage {
 
@@ -19,6 +34,8 @@ public class GlobalStorage {
     private DatabaseReference reference;
 
     private static GlobalStorage instance;
+
+    private FirebaseAuth mAuth;
 
     private GlobalStorage() {
 
@@ -28,7 +45,6 @@ public class GlobalStorage {
         if(instance == null){
             instance = new GlobalStorage();
         }
-
         return instance;
     }
 
@@ -182,5 +198,28 @@ public class GlobalStorage {
         reference = rootNode.getReference("recipe");
         DatabaseReference productReference = reference.child(String.valueOf(recipeToEdit.getId()));
         productReference.setValue(editedRecipe);
+    }
+
+    /* Accessing users */
+    public void signInCustomer(String email, String password, Context mContext) {
+//        mAuth = FirebaseAuth.getInstance();
+//
+//        mAuth.signInWithEmailAndPassword(email, password)
+//                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+//                    @Override
+//                    public void onComplete(@NonNull Task<AuthResult> task) {
+//                        if (task.isSuccessful()) {
+//                            // Sign in success, update UI with the signed-in user's information
+//                            FirebaseUser user = mAuth.getCurrentUser();
+//                            User.getInstance().setCustomer(user.getEmail());
+//                        } else {
+//                            // If sign in fails, display a message to the user.
+//                            Log.w(TAG, "createUserWithEmail:failure", task.getException());
+//                            Toast.makeText(EmailPasswordActivity.this, "Authentication failed.",
+//                                    Toast.LENGTH_SHORT).show();
+//                            updateUI(null);
+//                        }
+//                    }
+//                });
     }
 }

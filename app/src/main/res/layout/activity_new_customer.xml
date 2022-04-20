@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".user.NewCustomerActivity">
+
+    <ImageView
+        android:id="@+id/imgChickenNewCustomer"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/chickenpic"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        />
+    <TextView
+        android:id="@+id/txtColcokumHillsideFarmNewCustomer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="COLOCKUM HILLSIDE \n FARM"
+        android:gravity="center"
+        android:layout_below="@id/imgChickenNewCustomer"
+        android:layout_centerHorizontal="true"
+        android:textSize="20sp"
+        android:textStyle="bold"/>
+
+    <EditText
+        android:id="@+id/txtEmailNewCustomer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtColcokumHillsideFarmNewCustomer"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="5dp"
+        android:inputType="textEmailAddress"
+        android:hint="Your email"/>
+
+    <EditText
+        android:id="@+id/txtPasswordNewCustomer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtEmailNewCustomer"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="5dp"
+        android:inputType="textPassword"
+        android:hint="Your password"/>
+
+    <EditText
+        android:id="@+id/txtReenterPasswordNewCustomer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtPasswordNewCustomer"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="5dp"
+        android:inputType="textPassword"
+        android:hint="Re-enter password"/>
+
+    <Button
+        android:id="@+id/btnCreateAccountNewCustomer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="20dp"
+        android:text="create account"
+        android:background="@drawable/round_button"
+        android:layout_alignParentBottom="true"/>
+
+</RelativeLayout>
