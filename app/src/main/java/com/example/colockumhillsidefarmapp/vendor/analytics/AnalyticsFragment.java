@@ -1,4 +1,4 @@
-package com.example.colockumhillsidefarmapp;
+package com.example.colockumhillsidefarmapp.vendor.analytics;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -9,11 +9,13 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-public class CustomerAboutUsFragment extends Fragment {
+import com.example.colockumhillsidefarmapp.R;
+
+public class AnalyticsFragment extends Fragment {
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_customer_about_us, container, false);
+        return inflater.inflate(R.layout.fragment_analytics, container, false);
     }
 }

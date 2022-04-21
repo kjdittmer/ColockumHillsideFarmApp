@@ -9,11 +9,11 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.MenuItem;
 
-import com.example.colockumhillsidefarmapp.AnalyticsFragment;
+import com.example.colockumhillsidefarmapp.vendor.analytics.AnalyticsFragment;
 import com.example.colockumhillsidefarmapp.R;
-import com.example.colockumhillsidefarmapp.UpdateAboutUsFragment;
-import com.example.colockumhillsidefarmapp.UpdateRecipesFragment;
-import com.example.colockumhillsidefarmapp.UpdateStoreFragment;
+import com.example.colockumhillsidefarmapp.vendor.update_about_us.UpdateAboutUsFragment;
+import com.example.colockumhillsidefarmapp.vendor.update_recipes.UpdateRecipesFragment;
+import com.example.colockumhillsidefarmapp.vendor.update_store.UpdateStoreFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class VendorDashboardActivity extends AppCompatActivity {

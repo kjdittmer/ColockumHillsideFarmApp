@@ -1,4 +1,4 @@
-package com.example.colockumhillsidefarmapp;
+package com.example.colockumhillsidefarmapp.vendor.update_store;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -9,11 +9,13 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-public class CustomerStoreFragment extends Fragment {
+import com.example.colockumhillsidefarmapp.R;
+
+public class UpdateStoreFragment extends Fragment {
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_customer_store, container, false);
+        return inflater.inflate(R.layout.fragment_update_store, container, false);
     }
 }

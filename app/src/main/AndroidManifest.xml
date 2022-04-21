@@ -19,7 +19,8 @@
         <activity
             android:name=".customer.CustomerDashboardActivity"
             android:exported="false"
-            android:parentActivityName=".user.CustomerLoginActivity"/>
+            android:parentActivityName=".user.CustomerLoginActivity"
+            android:theme="@style/Theme.ColockumHillsideFarmApp.NoActionBar"/>
         <activity
             android:name=".user.VendorLoginActivity"
             android:exported="false"
