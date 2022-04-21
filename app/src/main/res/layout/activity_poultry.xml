@@ -55,17 +55,6 @@
         app:layout_constraintStart_toStartOf="parent"
         android:background="@drawable/round_button"/>
 
-    <Button
-        android:id="@+id/backbutton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="51dp"
-        android:text="Back"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:background="@drawable/round_button"/>
-
     <ImageView
         android:id="@+id/imageView2"
         android:layout_width="wrap_content"

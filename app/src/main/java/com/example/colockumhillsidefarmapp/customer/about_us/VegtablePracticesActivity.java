@@ -13,7 +13,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.colockumhillsidefarmapp.R;
 
 public class VegtablePracticesActivity extends AppCompatActivity {
-    private Button backbutton;
     private Button water;
     private Button pest;
     private Button fertilizer;
@@ -25,7 +24,6 @@ public class VegtablePracticesActivity extends AppCompatActivity {
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        backbutton = findViewById(R.id.backbutton5);
         water = findViewById(R.id.button_water);
         pest = findViewById(R.id.button_pest);
         fertilizer = findViewById(R.id.button_fert);
@@ -56,14 +54,6 @@ public class VegtablePracticesActivity extends AppCompatActivity {
                 builder.create().show();
            }
 
-        });
-
-        backbutton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(VegtablePracticesActivity.this, VegetableActivity.class);
-                startActivity(intent);
-            }
         });
 
     }

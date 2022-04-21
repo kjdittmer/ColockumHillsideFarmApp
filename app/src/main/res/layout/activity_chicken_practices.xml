@@ -34,7 +34,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Turkeys"
-        app:layout_constraintBottom_toTopOf="@+id/back4"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -74,15 +74,4 @@
         app:layout_constraintTop_toBottomOf="@+id/layerHens"
         app:srcCompat="@drawable/turkeypic" />
 
-    <Button
-        android:id="@+id/back4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Back"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/turkey2"
-        android:background="@drawable/round_button"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

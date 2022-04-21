@@ -23,7 +23,6 @@ class ContactUsActivity: AppCompatActivity() {
         setContentView(R.layout.activity_pork)
         binding = FragmentContactUsBinding.inflate(layoutInflater)
         val root: View = binding.root
-        back = root.findViewById(R.id.backbutton2)
         back.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)

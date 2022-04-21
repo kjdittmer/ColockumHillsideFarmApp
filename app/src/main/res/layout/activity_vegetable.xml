@@ -28,18 +28,6 @@
         app:layout_constraintTop_toBottomOf="@+id/microgreens"
         app:srcCompat="@drawable/plantstart" />
 
-    <Button
-        android:id="@+id/back3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Back"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/veggiepractices"
-        android:background="@drawable/round_button"/>
-
     <ImageView
         android:id="@+id/imageView8"
         android:layout_width="wrap_content"
@@ -71,7 +59,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/back3"
+        app:layout_constraintStart_toEndOf="@+id/veggiepractices"
         app:layout_constraintTop_toBottomOf="@+id/plantstarts"
         app:srcCompat="@drawable/plantpractices" />
 

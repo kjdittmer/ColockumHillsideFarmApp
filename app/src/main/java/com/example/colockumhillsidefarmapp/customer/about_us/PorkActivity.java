@@ -13,7 +13,6 @@ import com.example.colockumhillsidefarmapp.MainActivity;
 import com.example.colockumhillsidefarmapp.R;
 
 public class PorkActivity extends AppCompatActivity {
-    private Button backbutton;
 
 
 
@@ -24,15 +23,6 @@ public class PorkActivity extends AppCompatActivity {
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        backbutton = findViewById(R.id.backbutton2);
-
-        backbutton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(PorkActivity.this, MainActivity.class);
-                startActivity(intent);
-            }
-        });
     }
 
     @Override

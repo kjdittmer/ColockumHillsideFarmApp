@@ -14,7 +14,6 @@ import com.example.colockumhillsidefarmapp.MainActivity;
 import com.example.colockumhillsidefarmapp.R;
 
 public class PoultryActivity extends AppCompatActivity {
-    private Button backbutton;
     private Button turkey;
     private Button chicken;
     private Button practices;
@@ -27,19 +26,11 @@ public class PoultryActivity extends AppCompatActivity {
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        backbutton = findViewById(R.id.backbutton);
         turkey = findViewById(R.id.turkey);
         chicken = findViewById(R.id.chicken);
         eggs = findViewById(R.id.eggs);
         practices= findViewById(R.id.practices);
 
-        backbutton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(PoultryActivity.this, MainActivity.class);
-                startActivity(intent);
-            }
-        });
         turkey.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){

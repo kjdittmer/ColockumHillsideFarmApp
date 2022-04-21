@@ -18,7 +18,6 @@ public class VegetableActivity extends AppCompatActivity {
     private Button microgreens;
     private Button plantstarts;
     private Button practices;
-    private Button back;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,19 +26,11 @@ public class VegetableActivity extends AppCompatActivity {
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        back = findViewById(R.id.back3);
         veggies = findViewById(R.id.veggies);
         microgreens = findViewById(R.id.microgreens);
         plantstarts = findViewById(R.id.plantstarts);
         practices= findViewById(R.id.veggiepractices);
 
-        back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(VegetableActivity.this, MainActivity.class);
-                startActivity(intent);
-            }
-        });
         veggies.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){

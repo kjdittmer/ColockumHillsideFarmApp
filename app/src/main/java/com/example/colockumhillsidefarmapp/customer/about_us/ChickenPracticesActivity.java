@@ -15,7 +15,6 @@ public class ChickenPracticesActivity extends AppCompatActivity {
     private Button meatChickens;
     private Button layerHens;
     private Button turkey2;
-    private Button back;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,18 +23,10 @@ public class ChickenPracticesActivity extends AppCompatActivity {
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        back = findViewById(R.id.back4);
         meatChickens = findViewById(R.id.meatChicken);
         layerHens = findViewById(R.id.layerHens);
         turkey2 = findViewById(R.id.turkey2);
 
-        back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(ChickenPracticesActivity.this, PoultryActivity.class);
-                startActivity(intent);
-            }
-        });
         meatChickens.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
