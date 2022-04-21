@@ -52,8 +52,6 @@ public class EditProductActivity extends AppCompatActivity {
                         txtShortDescEditProdAct.getText().toString(), txtLongDescEditProdAct.getText().toString(), Double.parseDouble(txtPriceEditProdAct.getText().toString()), txtPackageQuantityEditProdAct.getText().toString());
 
                 GlobalStorage.getInstance().editProduct(productToEdit, editedProduct);
-
-
                 Toast.makeText(EditProductActivity.this, productToEdit.getName() + " edited.", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(view.getContext(), VendorDashboardActivity.class);
                 startActivity(intent);

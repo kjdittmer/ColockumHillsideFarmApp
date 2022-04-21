@@ -1,6 +1,5 @@
 package com.example.colockumhillsidefarmapp.vendor.update_store;
 
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -28,14 +27,13 @@ public class UpdateStoreFragment extends Fragment {
     private RecyclerView editStoreRecView;
     private EditStoreProductRecViewAdapter adapter;
     private SwipeRefreshLayout layout;
-    private Toolbar toolbar;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_update_store, container, false);
 
-        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        setHasOptionsMenu(true);
 
         adapter = new EditStoreProductRecViewAdapter(root.getContext(), (VendorDashboardActivity) getActivity());
         ArrayList<Product> allProducts = GlobalStorage.getInstance().getAllProducts(adapter);
@@ -62,6 +60,6 @@ public class UpdateStoreFragment extends Fragment {
 
     @Override
     public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
-        inflater.inflate(R.menu.edit_store, menu);
+        inflater.inflate(R.menu.update_store, menu);
     }
 }

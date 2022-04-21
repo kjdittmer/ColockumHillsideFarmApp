@@ -2,6 +2,8 @@ package com.example.colockumhillsidefarmapp.vendor.update_recipes;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -30,7 +32,7 @@ public class UpdateRecipesFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_update_recipes, container, false);
 
-        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        setHasOptionsMenu(true);
 
         adapter = new UpdateRecipeRecViewAdapter(getContext(), (VendorDashboardActivity) getActivity());
         ArrayList<Recipe> allRecipes = GlobalStorage.getInstance().getAllRecipes(adapter);
@@ -53,5 +55,10 @@ public class UpdateRecipesFragment extends Fragment {
         });
 
         return root;
+    }
+
+    @Override
+    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
+        inflater.inflate(R.menu.update_recipes, menu);
     }
 }

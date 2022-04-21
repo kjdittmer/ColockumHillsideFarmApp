@@ -16,6 +16,11 @@ public class UpdateAboutUsFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_update_about_us, container, false);
+        View root = inflater.inflate(R.layout.fragment_update_about_us, container, false);
+
+        setHasOptionsMenu(true);
+
+        return root;
     }
+
 }

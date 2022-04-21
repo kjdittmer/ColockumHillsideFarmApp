@@ -25,6 +25,7 @@ import android.widget.Toast;
 import com.example.colockumhillsidefarmapp.R;
 import com.example.colockumhillsidefarmapp.GlobalStorage;
 import com.example.colockumhillsidefarmapp.customer.recipes.Recipe;
+import com.example.colockumhillsidefarmapp.vendor.VendorDashboardActivity;
 
 public class AddRecipeActivity extends AppCompatActivity {
     private static final int PERMISSION_REQUEST = 0;
@@ -78,11 +79,8 @@ public class AddRecipeActivity extends AppCompatActivity {
                         public void onClick(DialogInterface dialogInterface, int i) {
                             GlobalStorage.getInstance().addRecipe(new Recipe(0, name, imageUrl, shortDesc, ingredients, instructions));
                             Toast.makeText(view.getContext(), name + " was added to the recipe page.", Toast.LENGTH_SHORT).show();
-                            txtNameAddRecipeName.setText("");
-                            txtImageUrlRecAct.setText("");
-                            txtShortDescAddRecipeAct.setText("");
-                            txtIngredients.setText("");
-                            txtInstructions.setText("");
+                            Intent intent = new Intent(view.getContext(), VendorDashboardActivity.class);
+                            startActivity(intent);
                         }
                     });
 

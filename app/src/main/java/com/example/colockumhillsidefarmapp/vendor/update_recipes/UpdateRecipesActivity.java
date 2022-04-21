@@ -62,7 +62,7 @@ public class UpdateRecipesActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.edit_store, menu);
+        getMenuInflater().inflate(R.menu.update_store, menu);
         return true;
     }
 

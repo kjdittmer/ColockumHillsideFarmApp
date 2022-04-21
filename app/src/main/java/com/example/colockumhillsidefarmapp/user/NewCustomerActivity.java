@@ -54,4 +54,10 @@ public class NewCustomerActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(this, CustomerLoginActivity.class);
+        startActivity(intent);
+    }
 }

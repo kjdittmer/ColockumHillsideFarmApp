@@ -96,4 +96,8 @@ public class CustomerLoginActivity extends AppCompatActivity {
     private boolean validateLogin() {
         return true;
     }
+
+    @Override
+    public void onBackPressed() {
+    }
 }

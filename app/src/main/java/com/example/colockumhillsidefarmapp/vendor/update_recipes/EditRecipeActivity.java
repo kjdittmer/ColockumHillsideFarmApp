@@ -14,6 +14,7 @@ import android.widget.Toast;
 import com.example.colockumhillsidefarmapp.GlobalStorage;
 import com.example.colockumhillsidefarmapp.R;
 import com.example.colockumhillsidefarmapp.customer.recipes.Recipe;
+import com.example.colockumhillsidefarmapp.vendor.VendorDashboardActivity;
 
 public class EditRecipeActivity extends AppCompatActivity {
 
@@ -51,10 +52,8 @@ public class EditRecipeActivity extends AppCompatActivity {
                         txtInstructionsEditRecipe.getText().toString());
 
                 GlobalStorage.getInstance().editRecipe(recipeToEdit, editedRecipe);
-
-
                 Toast.makeText(EditRecipeActivity.this, recipeToEdit.getName() + " edited.", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(view.getContext(), UpdateRecipesActivity.class);
+                Intent intent = new Intent(view.getContext(), VendorDashboardActivity.class);
                 startActivity(intent);
             }
         });

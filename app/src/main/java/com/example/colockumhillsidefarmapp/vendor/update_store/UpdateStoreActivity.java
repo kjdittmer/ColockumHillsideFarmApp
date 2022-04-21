@@ -14,7 +14,6 @@ import android.view.MenuItem;
 import com.example.colockumhillsidefarmapp.GlobalStorage;
 import com.example.colockumhillsidefarmapp.customer.store.Product;
 import com.example.colockumhillsidefarmapp.R;
-import com.example.colockumhillsidefarmapp.vendor.VendorDashboardActivity;
 
 import java.util.ArrayList;
 
@@ -62,7 +61,7 @@ public class UpdateStoreActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.edit_store, menu);
+        getMenuInflater().inflate(R.menu.update_store, menu);
         return true;
     }
 

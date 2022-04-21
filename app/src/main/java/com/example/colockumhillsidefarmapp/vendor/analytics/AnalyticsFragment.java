@@ -18,7 +18,7 @@ public class AnalyticsFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_analytics, container, false);
 
-
+        setHasOptionsMenu(true);
 
         return root;
     }
