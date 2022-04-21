@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/nav_update_store"
+        android:icon="@drawable/ic_menu_store"
+        android:title="Update Store"
+        />
+
+    <item
+        android:id="@+id/nav_update_recipes"
+        android:icon="@drawable/ic_menu_recipes"
+        android:title="Update Recipes"
+        />
+
+    <item
+        android:id="@+id/nav_update_about_us"
+        android:icon="@drawable/ic_menu_about_us"
+        android:title="Update About Us"
+        />
+
+    <item
+        android:id="@+id/nav_analytics"
+        android:icon="@drawable/ic_vendor"
+        android:title="Analytics"
+        />
+</menu>
