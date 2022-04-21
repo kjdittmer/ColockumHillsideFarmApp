@@ -26,7 +26,8 @@ public class FavoritesRecipesFragment extends Fragment {
     private RecyclerView recyclerView;
     private FavoritesActivity currentActivity;
 
-    public FavoritesRecipesFragment() {
+    public FavoritesRecipesFragment(FavoritesActivity currentActivity) {
+        this.currentActivity = currentActivity;
         // Required empty public constructor
     }
 
@@ -34,12 +35,10 @@ public class FavoritesRecipesFragment extends Fragment {
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
      *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
      * @return A new instance of fragment FavoritesRecipesFragment.
      */
-    public static FavoritesRecipesFragment newInstance(String param1, String param2) {
-        FavoritesRecipesFragment fragment = new FavoritesRecipesFragment();
+    public static FavoritesRecipesFragment newInstance(FavoritesActivity currentActivity) {
+        FavoritesRecipesFragment fragment = new FavoritesRecipesFragment(currentActivity);
         return fragment;
     }
 
@@ -57,7 +56,7 @@ public class FavoritesRecipesFragment extends Fragment {
 
         recyclerView = root.findViewById(R.id.favoritesRecipesRecView);
 
-        adapter = new FavoritesRecipesRecViewAdapter(getContext());
+        adapter = new FavoritesRecipesRecViewAdapter(getContext(), currentActivity);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 

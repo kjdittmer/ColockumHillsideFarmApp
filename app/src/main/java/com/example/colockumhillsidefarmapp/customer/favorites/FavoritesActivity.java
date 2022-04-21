@@ -14,6 +14,8 @@ import com.google.android.material.tabs.TabLayout;
 
 public class FavoritesActivity extends AppCompatActivity {
 
+    private final static String FAVORITES_RECIPES = "favoritesRecipes";
+
     private TabLayout tabLayout;
     private ViewPager viewPager;
 
@@ -30,15 +32,17 @@ public class FavoritesActivity extends AppCompatActivity {
         tabLayout.addTab(tabLayout.newTab().setText("Products"));
         tabLayout.addTab(tabLayout.newTab().setText("Recipes"));
 
+        FavoritesActivity currentActivity = this;
+
         viewPager.setAdapter(new FragmentPagerAdapter(getSupportFragmentManager(), FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
             @NonNull
             @Override
             public Fragment getItem(int position) {
                 switch (position) {
                     case 0:
-                        return new FavoritesProductsFragment();
+                        return new FavoritesProductsFragment(currentActivity);
                     case 1:
-                        return new FavoritesRecipesFragment();
+                        return new FavoritesRecipesFragment(currentActivity);
                     default:
                         return null;
                 }
@@ -74,6 +78,7 @@ public class FavoritesActivity extends AppCompatActivity {
         startActivity(getIntent());
         overridePendingTransition(0, 0);
     }
+
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {

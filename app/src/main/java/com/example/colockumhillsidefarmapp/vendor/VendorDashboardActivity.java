@@ -25,6 +25,10 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class VendorDashboardActivity extends AppCompatActivity {
 
+    private static final String UPDATE_RECIPES = "updateRecipes";
+    private static final String UPDATE_ABOUT_US = "updateAboutUs";
+    private static final String ANALYTICS = "analytics";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,10 +68,37 @@ public class VendorDashboardActivity extends AppCompatActivity {
             }
         });
 
-        getSupportFragmentManager().beginTransaction().
-                replace(R.id.fragmentVendorDashboard, new UpdateStoreFragment()).
-                commit();
-        getSupportActionBar().setTitle("Update Store");
+        if (getIntent().hasExtra("fragmentToLoad")) {
+            String fragmentToLoad = "fragmentToLoad";
+            switch (getIntent().getExtras().getString("fragmentToLoad")) {
+                case UPDATE_RECIPES:
+                    getSupportFragmentManager().beginTransaction().
+                            replace(R.id.fragmentVendorDashboard, new UpdateRecipesFragment()).
+                            commit();
+                    getSupportActionBar().setTitle("Update Recipes");
+                    bottomNavigationView.setSelectedItemId(R.id.nav_update_recipes);
+                    break;
+                case UPDATE_ABOUT_US:
+                    getSupportFragmentManager().beginTransaction().
+                            replace(R.id.fragmentVendorDashboard, new UpdateAboutUsFragment()).
+                            commit();
+                    getSupportActionBar().setTitle("Update About Us");
+                    bottomNavigationView.setSelectedItemId(R.id.nav_update_about_us);
+                    break;
+                case ANALYTICS:
+                    getSupportFragmentManager().beginTransaction().
+                            replace(R.id.fragmentVendorDashboard, new AnalyticsFragment()).
+                            commit();
+                    getSupportActionBar().setTitle("Analytics");
+                    bottomNavigationView.setSelectedItemId(R.id.nav_analytics);
+                    break;
+            }
+        } else {
+            getSupportFragmentManager().beginTransaction().
+                    replace(R.id.fragmentVendorDashboard, new UpdateStoreFragment()).
+                    commit();
+            getSupportActionBar().setTitle("Update Store");
+        }
     }
 
 
@@ -106,10 +137,17 @@ public class VendorDashboardActivity extends AppCompatActivity {
         return true;
     }
 
-    public void reload() {
+    public void reloadStore() {
         finish();
         overridePendingTransition(0, 0);
         startActivity(getIntent());
+        overridePendingTransition(0, 0);
+    }
+
+    public void reloadRecipes() {
+        finish();
+        overridePendingTransition(0, 0);
+        startActivity(getIntent().putExtra("fragmentToLoad", UPDATE_RECIPES));
         overridePendingTransition(0, 0);
     }
 }

@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import com.example.colockumhillsidefarmapp.MainActivity;
 import com.example.colockumhillsidefarmapp.R;
+import com.example.colockumhillsidefarmapp.customer.CustomerDashboardActivity;
 import com.example.colockumhillsidefarmapp.customer.shopping_cart.CartProductRecViewAdapter;
 import com.example.colockumhillsidefarmapp.customer.shopping_cart.ShoppingCart;
 import com.example.colockumhillsidefarmapp.customer.store.Product;
@@ -74,7 +75,7 @@ public class ShoppingCartActivity extends AppCompatActivity {
         btnContinueShoppingShoppingCartAct.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(view.getContext(), MainActivity.class);
+                Intent intent = new Intent(view.getContext(), CustomerDashboardActivity.class);
                 startActivity(intent);
             }
         });

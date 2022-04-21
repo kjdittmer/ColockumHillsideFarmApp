@@ -18,6 +18,7 @@ import com.example.colockumhillsidefarmapp.vendor.VendorDashboardActivity;
 
 public class EditRecipeActivity extends AppCompatActivity {
 
+    private static final String UPDATE_RECIPES = "updateRecipes";
     private static final String RECIPE = "recipe";
 
     private EditText txtNameEditRecipe, txtIngredientsEditRecipe, txtImageUrlEditRecipe,
@@ -54,6 +55,7 @@ public class EditRecipeActivity extends AppCompatActivity {
                 GlobalStorage.getInstance().editRecipe(recipeToEdit, editedRecipe);
                 Toast.makeText(EditRecipeActivity.this, recipeToEdit.getName() + " edited.", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(view.getContext(), VendorDashboardActivity.class);
+                intent.putExtra("fragmentToLoad", UPDATE_RECIPES);
                 startActivity(intent);
             }
         });

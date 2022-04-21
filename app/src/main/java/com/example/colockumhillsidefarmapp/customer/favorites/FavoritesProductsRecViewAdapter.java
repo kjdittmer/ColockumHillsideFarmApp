@@ -34,8 +34,10 @@ public class FavoritesProductsRecViewAdapter extends RecyclerView.Adapter<Favori
 
     private ArrayList<Product> favoritesProducts;
     private Context mContext;
+    private FavoritesActivity currentActivity;
 
-    public FavoritesProductsRecViewAdapter(Context mContext) {
+    public FavoritesProductsRecViewAdapter(Context mContext, FavoritesActivity currentActivity) {
+        this.currentActivity = currentActivity;
         this.mContext = mContext;
         //favoritesProducts = Favorites.getInstance().getFavoritesProducts();
     }
@@ -87,8 +89,7 @@ public class FavoritesProductsRecViewAdapter extends RecyclerView.Adapter<Favori
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         Favorites.getInstance(mContext).removeProductFromFavoritesProducts(product);
-                        //currentActivity.reload();
-                        notifyDataSetChanged();
+                        currentActivity.reload();
                         Toast.makeText(mContext, product.getName() + " removed", Toast.LENGTH_SHORT).show();
                     }
                 });

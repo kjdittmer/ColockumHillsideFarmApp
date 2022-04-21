@@ -26,8 +26,9 @@ public class FavoritesProductsFragment extends Fragment {
     private RecyclerView recyclerView;
     private FavoritesActivity currentActivity;
 
-    public FavoritesProductsFragment() {
+    public FavoritesProductsFragment(FavoritesActivity currentActivity) {
         // Required empty public constructor
+        this.currentActivity = currentActivity;
     }
 
     /**
@@ -35,8 +36,8 @@ public class FavoritesProductsFragment extends Fragment {
      * this fragment using the provided parameters.
      * @return A new instance of fragment FavoritesProductsFragment.
      */
-    public static FavoritesProductsFragment newInstance() {
-        FavoritesProductsFragment fragment = new FavoritesProductsFragment();
+    public static FavoritesProductsFragment newInstance(FavoritesActivity currentActivity) {
+        FavoritesProductsFragment fragment = new FavoritesProductsFragment(currentActivity);
         return fragment;
     }
 
@@ -54,7 +55,7 @@ public class FavoritesProductsFragment extends Fragment {
 
         recyclerView = root.findViewById(R.id.favoritesProductsRecView);
 
-        adapter = new FavoritesProductsRecViewAdapter(getContext());
+        adapter = new FavoritesProductsRecViewAdapter(getContext(), currentActivity);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 

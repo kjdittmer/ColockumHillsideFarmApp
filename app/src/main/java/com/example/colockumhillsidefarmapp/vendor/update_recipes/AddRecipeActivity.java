@@ -30,6 +30,8 @@ import com.example.colockumhillsidefarmapp.vendor.VendorDashboardActivity;
 public class AddRecipeActivity extends AppCompatActivity {
     private static final int PERMISSION_REQUEST = 0;
     private static final int RESULT_LOAD_IMAGE = 1;
+    private static final String UPDATE_RECIPES = "updateRecipes";
+
     EditText txtNameAddRecipeName, txtIngredients, txtImageUrlRecAct, txtShortDescAddRecipeAct, txtInstructions;
     ImageView imageView;
     Button btnAddRecipe, btnUploadRecipePicture;
@@ -80,6 +82,7 @@ public class AddRecipeActivity extends AppCompatActivity {
                             GlobalStorage.getInstance().addRecipe(new Recipe(0, name, imageUrl, shortDesc, ingredients, instructions));
                             Toast.makeText(view.getContext(), name + " was added to the recipe page.", Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(view.getContext(), VendorDashboardActivity.class);
+                            intent.putExtra("fragmentToLoad", UPDATE_RECIPES);
                             startActivity(intent);
                         }
                     });

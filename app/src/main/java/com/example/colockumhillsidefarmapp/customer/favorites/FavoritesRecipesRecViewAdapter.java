@@ -27,11 +27,13 @@ import java.util.ArrayList;
 public class FavoritesRecipesRecViewAdapter extends RecyclerView.Adapter<FavoritesRecipesRecViewAdapter.ViewHolder>{
     private static final String RECIPE = "recipe";
 
+    private FavoritesActivity currentActivity;
     private ArrayList<Recipe> favoritesRecipes;
     private Context mContext;
 
-    public FavoritesRecipesRecViewAdapter(Context mContext) {
+    public FavoritesRecipesRecViewAdapter(Context mContext, FavoritesActivity currentActivity) {
         this.mContext = mContext;
+        this.currentActivity = currentActivity;
         //favoritesRecipes = Favorites.getInstance().getFavoritesRecipes();
     }
 
@@ -69,8 +71,7 @@ public class FavoritesRecipesRecViewAdapter extends RecyclerView.Adapter<Favorit
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         Favorites.getInstance(mContext).removeRecipeFromFavoritesRecipes(recipe);
-                        //currentActivity.reload();
-                        notifyDataSetChanged();
+                        currentActivity.reload();
                         Toast.makeText(mContext, recipe.getName() + " removed", Toast.LENGTH_SHORT).show();
                     }
                 });

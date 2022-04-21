@@ -44,7 +44,7 @@ public class CustomerLoginActivity extends AppCompatActivity {
                 String password = txtPassword.getText().toString();
                 GlobalStorage.getInstance().signInCustomer(email, password, view.getContext());
 
-                Intent intent = new Intent(view.getContext(), MainActivity.class);
+                Intent intent = new Intent(view.getContext(), CustomerDashboardActivity.class);
                 startActivity(intent);
 
 //                FirebaseAuth mAuth = FirebaseAuth.getInstance();
@@ -99,5 +99,6 @@ public class CustomerLoginActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
+        return;
     }
 }

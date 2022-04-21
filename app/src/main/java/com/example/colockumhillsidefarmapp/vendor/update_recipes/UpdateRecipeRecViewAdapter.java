@@ -75,7 +75,7 @@ public class UpdateRecipeRecViewAdapter extends RecyclerView.Adapter<UpdateRecip
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         GlobalStorage.getInstance().removeRecipe(recipe);
-                        currentActivity.reload();
+                        currentActivity.reloadRecipes();
                         Toast.makeText(mContext, recipe.getName() + " removed.", Toast.LENGTH_SHORT).show();
                     }
                 });
