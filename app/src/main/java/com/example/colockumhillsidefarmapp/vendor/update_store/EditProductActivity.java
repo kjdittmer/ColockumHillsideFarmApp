@@ -14,6 +14,7 @@ import android.widget.Toast;
 import com.example.colockumhillsidefarmapp.GlobalStorage;
 import com.example.colockumhillsidefarmapp.customer.store.Product;
 import com.example.colockumhillsidefarmapp.R;
+import com.example.colockumhillsidefarmapp.vendor.VendorDashboardActivity;
 
 public class EditProductActivity extends AppCompatActivity {
 
@@ -54,7 +55,7 @@ public class EditProductActivity extends AppCompatActivity {
 
 
                 Toast.makeText(EditProductActivity.this, productToEdit.getName() + " edited.", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(view.getContext(), UpdateStoreActivity.class);
+                Intent intent = new Intent(view.getContext(), VendorDashboardActivity.class);
                 startActivity(intent);
             }
         });

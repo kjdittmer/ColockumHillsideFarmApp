@@ -8,14 +8,50 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import com.example.colockumhillsidefarmapp.GlobalStorage;
 import com.example.colockumhillsidefarmapp.R;
+import com.example.colockumhillsidefarmapp.customer.recipes.Recipe;
+import com.example.colockumhillsidefarmapp.vendor.VendorDashboardActivity;
+
+import java.util.ArrayList;
 
 public class UpdateRecipesFragment extends Fragment {
+
+    private RecyclerView updateRecipesRecView;
+    private UpdateRecipeRecViewAdapter adapter;
+    private SwipeRefreshLayout layout;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_update_recipes, container, false);
+        View root = inflater.inflate(R.layout.fragment_update_recipes, container, false);
+
+        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        adapter = new UpdateRecipeRecViewAdapter(getContext(), (VendorDashboardActivity) getActivity());
+        ArrayList<Recipe> allRecipes = GlobalStorage.getInstance().getAllRecipes(adapter);
+
+        updateRecipesRecView = root.findViewById(R.id.updateRecipesRecView);
+
+        updateRecipesRecView.setAdapter(adapter);
+        updateRecipesRecView.setLayoutManager(new LinearLayoutManager(getContext()));
+
+        adapter.setRecipes(allRecipes);
+
+        layout = root.findViewById(R.id.swipeRefreshLayoutUpdateRecipes);
+        layout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                ArrayList<Recipe> allRecipes = GlobalStorage.getInstance().getAllRecipes(adapter);
+                adapter.setRecipes(allRecipes);
+                layout.setRefreshing(false);
+            }
+        });
+
+        return root;
     }
 }

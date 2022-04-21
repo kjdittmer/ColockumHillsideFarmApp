@@ -20,6 +20,7 @@ import com.bumptech.glide.Glide;
 import com.example.colockumhillsidefarmapp.GlobalStorage;
 import com.example.colockumhillsidefarmapp.customer.store.Product;
 import com.example.colockumhillsidefarmapp.R;
+import com.example.colockumhillsidefarmapp.vendor.VendorDashboardActivity;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -31,9 +32,9 @@ public class EditStoreProductRecViewAdapter extends RecyclerView.Adapter<EditSto
 
     private ArrayList<Product> products = new ArrayList<>();
     private Context mContext;
-    private UpdateStoreActivity currentActivity;
+    private VendorDashboardActivity currentActivity;
 
-    public EditStoreProductRecViewAdapter(Context mContext, UpdateStoreActivity currentActivity) {
+    public EditStoreProductRecViewAdapter(Context mContext, VendorDashboardActivity currentActivity) {
         this.currentActivity = currentActivity;
         this.mContext = mContext;
     }

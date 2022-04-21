@@ -15,7 +15,8 @@
         <activity
             android:name=".vendor.VendorDashboardActivity"
             android:exported="false"
-            android:parentActivityName=".user.VendorLoginActivity"/>
+            android:parentActivityName=".user.VendorLoginActivity"
+            android:theme="@style/Theme.ColockumHillsideFarmApp.NoActionBar"/>
         <activity
             android:name=".customer.CustomerDashboardActivity"
             android:exported="false"
@@ -46,7 +47,7 @@
             android:name=".vendor.update_recipes.EditRecipeActivity"
             android:exported="false"
             android:label="Edit Recipe"
-            android:parentActivityName=".vendor.update_recipes.UpdateRecipesActivity" />
+            android:parentActivityName=".vendor.VendorDashboardActivity" />
         <activity
             android:name=".vendor.update_recipes.UpdateRecipesActivity"
             android:exported="false"
@@ -60,7 +61,7 @@
             android:name=".vendor.update_recipes.AddRecipeActivity"
             android:exported="false"
             android:label="Add Recipe"
-            android:parentActivityName=".vendor.update_recipes.UpdateRecipesActivity" />
+            android:parentActivityName=".vendor.VendorDashboardActivity" />
         <activity
             android:name=".customer.wishlist.WishlistActivity"
             android:exported="false"
@@ -69,7 +70,7 @@
             android:name=".vendor.update_store.EditProductActivity"
             android:exported="false"
             android:label="Edit Product"
-            android:parentActivityName=".vendor.update_store.UpdateStoreActivity" />
+            android:parentActivityName=".vendor.VendorDashboardActivity" />
         <activity
             android:name=".vendor.update_store.UpdateStoreActivity"
             android:exported="false"
@@ -83,7 +84,7 @@
             android:name=".vendor.update_store.AddProductActivity"
             android:exported="false"
             android:label="Add Product"
-            android:parentActivityName=".vendor.update_store.UpdateStoreActivity" />
+            android:parentActivityName=".vendor.VendorDashboardActivity" />
         <activity
             android:name=".customer.shopping_cart.ShoppingCartActivity"
             android:exported="false"

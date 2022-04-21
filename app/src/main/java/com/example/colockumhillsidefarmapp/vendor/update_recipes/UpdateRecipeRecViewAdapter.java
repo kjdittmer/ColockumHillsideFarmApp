@@ -20,6 +20,7 @@ import com.bumptech.glide.Glide;
 import com.example.colockumhillsidefarmapp.GlobalStorage;
 import com.example.colockumhillsidefarmapp.R;
 import com.example.colockumhillsidefarmapp.customer.recipes.Recipe;
+import com.example.colockumhillsidefarmapp.vendor.VendorDashboardActivity;
 
 import java.util.ArrayList;
 
@@ -31,10 +32,10 @@ public class UpdateRecipeRecViewAdapter extends RecyclerView.Adapter<UpdateRecip
     private ArrayList<Recipe> recipes = new ArrayList<>();
     private Context mContext;
     private RecyclerView.Adapter thisAdapter;
-    private UpdateRecipesActivity currentActivity;
+    private VendorDashboardActivity currentActivity;
 
 
-    public UpdateRecipeRecViewAdapter(Context mContext, UpdateRecipesActivity currentActivity) {
+    public UpdateRecipeRecViewAdapter(Context mContext, VendorDashboardActivity currentActivity) {
         this.mContext = mContext;
         thisAdapter = this;
         this.currentActivity = currentActivity;

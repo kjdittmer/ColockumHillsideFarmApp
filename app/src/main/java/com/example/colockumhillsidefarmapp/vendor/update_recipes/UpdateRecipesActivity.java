@@ -31,7 +31,7 @@ public class UpdateRecipesActivity extends AppCompatActivity {
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        adapter = new UpdateRecipeRecViewAdapter(this, (UpdateRecipesActivity) this);
+        //adapter = new UpdateRecipeRecViewAdapter(this, (UpdateRecipesActivity) this);
         ArrayList<Recipe> allRecipes = GlobalStorage.getInstance().getAllRecipes(adapter);
 
         updateRecipesRecView = findViewById(R.id.updateRecipesRecView);

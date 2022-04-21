@@ -14,6 +14,7 @@ import android.view.MenuItem;
 import com.example.colockumhillsidefarmapp.GlobalStorage;
 import com.example.colockumhillsidefarmapp.customer.store.Product;
 import com.example.colockumhillsidefarmapp.R;
+import com.example.colockumhillsidefarmapp.vendor.VendorDashboardActivity;
 
 import java.util.ArrayList;
 
@@ -30,7 +31,7 @@ public class UpdateStoreActivity extends AppCompatActivity {
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        adapter = new EditStoreProductRecViewAdapter(this, this);
+        //adapter = new EditStoreProductRecViewAdapter(this, VendorDashboardActivity.class);
         ArrayList<Product> allProducts = GlobalStorage.getInstance().getAllProducts(adapter);
 
         editStoreRecView = findViewById(R.id.editStoreRecView);

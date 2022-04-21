@@ -6,8 +6,19 @@
     android:layout_height="match_parent"
     tools:context=".vendor.VendorDashboardActivity">
 
+    <include
+        android:id="@+id/toolbarUpdateStore"
+        layout="@layout/toolbar_update_store"
+        android:visibility="visible"/>
+
+    <include
+        android:id="@+id/toolbarUpdateRecipes"
+        layout="@layout/toolbar_update_recipes"
+        android:visibility="gone"/>
+
     <FrameLayout
         android:id="@+id/fragmentVendorDashboard"
+        android:layout_marginTop="?attr/actionBarSize"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@+id/bottom_navigation_vendor_dashboard"/>
