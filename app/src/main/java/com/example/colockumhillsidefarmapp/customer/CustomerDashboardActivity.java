@@ -22,6 +22,7 @@ import com.example.colockumhillsidefarmapp.customer.shopping_cart.ShoppingCart;
 import com.example.colockumhillsidefarmapp.customer.shopping_cart.ShoppingCartActivity;
 import com.example.colockumhillsidefarmapp.customer.store.CustomerStoreFragment;
 import com.example.colockumhillsidefarmapp.R;
+import com.example.colockumhillsidefarmapp.customer.transaction_history.CustomerTransactionHistoryFragment;
 import com.example.colockumhillsidefarmapp.customer.wishlist.WishlistActivity;
 import com.example.colockumhillsidefarmapp.databinding.ActivityMainBinding;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -68,6 +69,10 @@ public class CustomerDashboardActivity extends AppCompatActivity {
                     case R.id.nav_customer_contact_us:
                         selectedFragment = new CustomerContactUsFragment() ;
                         toolbar.setTitle("Contact Us");
+                        break;
+                    case R.id.nav_customer_transaction_history:
+                        selectedFragment = new CustomerTransactionHistoryFragment() ;
+                        toolbar.setTitle("History");
                         break;
                 }
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragmentCustomerDashboard,
