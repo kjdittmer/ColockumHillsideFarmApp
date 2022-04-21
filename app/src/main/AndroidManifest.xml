@@ -7,9 +7,9 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/chickenpic"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/chickenpic"
         android:supportsRtl="true"
         android:theme="@style/Theme.ColockumHillsideFarmApp">
         <activity
@@ -25,7 +25,7 @@
         <activity
             android:name=".user.VendorLoginActivity"
             android:exported="false"
-            android:label="Vendor Login"
+            android:label="Vendor"
             android:parentActivityName=".user.CustomerLoginActivity"/>
         <activity
             android:name=".user.NewCustomerActivity"
@@ -35,7 +35,7 @@
         <activity
             android:name=".user.CustomerLoginActivity"
             android:exported="true"
-            android:label="Customer Login"
+            android:label="Colockum Hillside Farm"
             android:windowSoftInputMode="adjustPan">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

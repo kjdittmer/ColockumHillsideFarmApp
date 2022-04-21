@@ -6,25 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".user.VendorLoginActivity">
 
-    <ImageView
-        android:id="@+id/imgChickenVendorLogin"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:src="@drawable/chickenpic"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
-        />
-    <TextView
-        android:id="@+id/txtColcokumHillsideFarmVendorLogin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="COLOCKUM HILLSIDE \n FARM"
-        android:gravity="center"
-        android:layout_below="@id/imgChickenVendorLogin"
-        android:layout_centerHorizontal="true"
-        android:textSize="20sp"
-        android:textStyle="bold"/>
-
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
