@@ -173,7 +173,9 @@ public class AddRecipeActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
-                onBackPressed();
+                Intent intent = new Intent(getApplicationContext(), VendorDashboardActivity.class);
+                intent.putExtra("fragmentToLoad", UPDATE_RECIPES);
+                startActivity(intent);
                 break;
             default:
                 break;
