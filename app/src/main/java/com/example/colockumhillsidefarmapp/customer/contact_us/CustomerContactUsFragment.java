@@ -4,6 +4,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Html;
 import android.text.method.LinkMovementMethod;
+import android.util.Patterns;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -46,7 +47,7 @@ public class CustomerContactUsFragment extends Fragment {
                 String firstName = txtFirstName.getText().toString();
                 String lastName = txtLastName.getText().toString();
 
-                if (validateInput()) {
+                if (validateInput(email, firstName, lastName)) {
                     Contact newContact = new Contact.Builder(email)
                             .setMergeField("FNAME", firstName)
                             .setMergeField("LNAME", lastName)
@@ -56,8 +57,9 @@ public class CustomerContactUsFragment extends Fragment {
                     Mailchimp sdk = Mailchimp.sharedInstance();
                     sdk.createOrUpdateContact(newContact);
                     Toast.makeText(view.getContext(), email + " added to our list!", Toast.LENGTH_SHORT).show();
-                } else {
-                    Toast.makeText(getContext(), "Please enter valid data.", Toast.LENGTH_SHORT).show();
+                    txtEmail.setText("");
+                    txtFirstName.setText("");
+                    txtLastName.setText("");
                 }
             }
         });
@@ -65,7 +67,30 @@ public class CustomerContactUsFragment extends Fragment {
         return root;
     }
 
-    private boolean validateInput () {
+    private boolean validateInput (String email, String firstName, String lastName) {
+        if (email.isEmpty()) {
+            txtEmail.setError("Email is required.");
+            txtEmail.requestFocus();
+            return false;
+        }
+
+        if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+            txtEmail.setError("Please enter a valid email address");
+            txtEmail.requestFocus();
+            return false;
+        }
+
+        if (firstName.isEmpty()) {
+            txtFirstName.setError("First name is required.");
+            txtFirstName.requestFocus();
+            return false;
+        }
+
+        if (lastName.isEmpty()) {
+            txtLastName.setError("Last name is required.");
+            txtLastName.requestFocus();
+            return false;
+        }
         return true;
     }
 

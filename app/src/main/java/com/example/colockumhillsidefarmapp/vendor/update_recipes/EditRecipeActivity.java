@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -48,15 +49,17 @@ public class EditRecipeActivity extends AppCompatActivity {
         btnUpdateRecipeEditRecipe.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Recipe editedRecipe = new Recipe(recipeToEdit.getId(), txtNameEditRecipe.getText().toString(), txtImageUrlEditRecipe.getText().toString(),
-                        txtShortDescEditRecipe.getText().toString(), txtIngredientsEditRecipe.getText().toString(),
-                        txtInstructionsEditRecipe.getText().toString());
+                if (validateData()) {
+                    Recipe editedRecipe = new Recipe(recipeToEdit.getId(), txtNameEditRecipe.getText().toString(), txtImageUrlEditRecipe.getText().toString(),
+                            txtShortDescEditRecipe.getText().toString(), txtIngredientsEditRecipe.getText().toString(),
+                            txtInstructionsEditRecipe.getText().toString());
 
-                GlobalStorage.getInstance().editRecipe(recipeToEdit, editedRecipe);
-                Toast.makeText(EditRecipeActivity.this, recipeToEdit.getName() + " edited.", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(view.getContext(), VendorDashboardActivity.class);
-                intent.putExtra("fragmentToLoad", UPDATE_RECIPES);
-                startActivity(intent);
+                    GlobalStorage.getInstance().editRecipe(recipeToEdit, editedRecipe);
+                    Toast.makeText(EditRecipeActivity.this, recipeToEdit.getName() + " edited.", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(view.getContext(), VendorDashboardActivity.class);
+                    intent.putExtra("fragmentToLoad", UPDATE_RECIPES);
+                    startActivity(intent);
+                }
             }
         });
     }
@@ -89,4 +92,36 @@ public class EditRecipeActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
+    private boolean validateData() {
+        if (TextUtils.isEmpty(txtNameEditRecipe.getText())) {
+            txtNameEditRecipe.setError("Please provide a name.");
+            txtNameEditRecipe.requestFocus();
+            return false;
+        }
+        else if (TextUtils.isEmpty(txtImageUrlEditRecipe.getText())) {
+            txtImageUrlEditRecipe.setError("Please provide an image url.");
+            txtImageUrlEditRecipe.requestFocus();
+            return false;
+        }
+        else if (TextUtils.isEmpty(txtShortDescEditRecipe.getText())) {
+            txtShortDescEditRecipe.setError("Please provide a short description.");
+            txtShortDescEditRecipe.requestFocus();
+            return false;
+        }
+        else if (TextUtils.isEmpty(txtIngredientsEditRecipe.getText())) {
+            txtIngredientsEditRecipe.setError("Please provide a list of ingredients.");
+            txtIngredientsEditRecipe.requestFocus();
+            return false;
+        }
+        else if (TextUtils.isEmpty(txtInstructionsEditRecipe.getText())) {
+            txtInstructionsEditRecipe.setError("Please provide a list of instructions.");
+            txtInstructionsEditRecipe.requestFocus();
+            return false;
+        }
+        else {
+            return true;
+        }
+    }
+
 }

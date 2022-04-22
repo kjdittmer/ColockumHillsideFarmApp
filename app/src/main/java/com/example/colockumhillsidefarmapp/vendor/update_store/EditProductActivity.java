@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -48,13 +49,15 @@ public class EditProductActivity extends AppCompatActivity {
         btnUpdateProductEditProdAct.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Product editedProduct = new Product(productToEdit.getId(), txtNameEditProdAct.getText().toString(), Integer.parseInt(txtQuantityEditProdAct.getText().toString()), txtImageUrlEditProdAct.getText().toString(),
-                        txtShortDescEditProdAct.getText().toString(), txtLongDescEditProdAct.getText().toString(), Double.parseDouble(txtPriceEditProdAct.getText().toString()), txtPackageQuantityEditProdAct.getText().toString());
+                if (validateData()) {
+                    Product editedProduct = new Product(productToEdit.getId(), txtNameEditProdAct.getText().toString(), Integer.parseInt(txtQuantityEditProdAct.getText().toString()), txtImageUrlEditProdAct.getText().toString(),
+                            txtShortDescEditProdAct.getText().toString(), txtLongDescEditProdAct.getText().toString(), Double.parseDouble(txtPriceEditProdAct.getText().toString()), txtPackageQuantityEditProdAct.getText().toString());
 
-                GlobalStorage.getInstance().editProduct(productToEdit, editedProduct);
-                Toast.makeText(EditProductActivity.this, productToEdit.getName() + " edited.", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(view.getContext(), VendorDashboardActivity.class);
-                startActivity(intent);
+                    GlobalStorage.getInstance().editProduct(productToEdit, editedProduct);
+                    Toast.makeText(EditProductActivity.this, productToEdit.getName() + " edited.", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(view.getContext(), VendorDashboardActivity.class);
+                    startActivity(intent);
+                }
             }
         });
     }
@@ -91,4 +94,46 @@ public class EditProductActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
+    private boolean validateData() {
+        if (TextUtils.isEmpty(txtNameEditProdAct.getText())) {
+            txtNameEditProdAct.setError("Please provide a name.");
+            txtNameEditProdAct.requestFocus();
+            return false;
+        }
+        else if (TextUtils.isEmpty(txtQuantityEditProdAct.getText())) {
+            txtQuantityEditProdAct.setError("Please provide a quantity.");
+            txtQuantityEditProdAct.requestFocus();
+            return false;
+        }
+        else if (TextUtils.isEmpty(txtImageUrlEditProdAct.getText())) {
+            txtImageUrlEditProdAct.setError("Please provide an image url.");
+            txtImageUrlEditProdAct.requestFocus();
+            return false;
+        }
+        else if (TextUtils.isEmpty(txtShortDescEditProdAct.getText())) {
+            txtShortDescEditProdAct.setError("Please provide a short description.");
+            txtShortDescEditProdAct.requestFocus();
+            return false;
+        }
+        else if (TextUtils.isEmpty(txtLongDescEditProdAct.getText())) {
+            txtLongDescEditProdAct.setError("Please provide a long description.");
+            txtLongDescEditProdAct.requestFocus();
+            return false;
+        }
+        else if (TextUtils.isEmpty(txtPriceEditProdAct.getText())) {
+            txtPriceEditProdAct.setError("Please provide a price.");
+            txtPriceEditProdAct.requestFocus();
+            return false;
+        }
+        else if (TextUtils.isEmpty(txtPackageQuantityEditProdAct.getText())) {
+            txtPackageQuantityEditProdAct.setError("Please provide a package quantity.");
+            txtPackageQuantityEditProdAct.requestFocus();
+            return false;
+        }
+        else {
+            return true;
+        }
+    }
+
 }

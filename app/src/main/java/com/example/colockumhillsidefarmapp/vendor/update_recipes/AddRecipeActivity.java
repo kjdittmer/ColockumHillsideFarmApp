@@ -105,23 +105,28 @@ public class AddRecipeActivity extends AppCompatActivity {
 
     private boolean validateData() {
         if (TextUtils.isEmpty(txtNameAddRecipeName.getText())) {
-            Toast.makeText(this, "Please fill in the Name field.", Toast.LENGTH_SHORT).show();
+            txtNameAddRecipeName.setError("Please provide a name.");
+            txtNameAddRecipeName.requestFocus();
             return false;
         }
         else if (TextUtils.isEmpty(txtImageUrlRecAct.getText())) {
-            Toast.makeText(this, "Please fill in the Image URL field.", Toast.LENGTH_SHORT).show();
+            txtNameAddRecipeName.setError("Please provide an image URL.");
+            txtNameAddRecipeName.requestFocus();
             return false;
         }
         else if (TextUtils.isEmpty(txtShortDescAddRecipeAct.getText())) {
-            Toast.makeText(this, "Please fill in the Short Description field.", Toast.LENGTH_SHORT).show();
+            txtNameAddRecipeName.setError("Please provide a short description.");
+            txtNameAddRecipeName.requestFocus();
             return false;
         }
         else if (TextUtils.isEmpty(txtIngredients.getText())) {
-            Toast.makeText(this, "Please fill in the Ingredients field.", Toast.LENGTH_SHORT).show();
+            txtNameAddRecipeName.setError("Please provide a list of ingredients.");
+            txtNameAddRecipeName.requestFocus();
             return false;
         }
         else if (TextUtils.isEmpty(txtInstructions.getText())) {
-            Toast.makeText(this, "Please fill in the Instructions field.", Toast.LENGTH_SHORT).show();
+            txtNameAddRecipeName.setError("Please provide a list of instructions.");
+            txtNameAddRecipeName.requestFocus();
             return false;
         }
         else {

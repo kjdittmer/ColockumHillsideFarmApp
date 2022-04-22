@@ -98,31 +98,38 @@ public class AddProductActivity extends AppCompatActivity {
 
     private boolean validateData() {
         if (TextUtils.isEmpty(txtNameAddProdAct.getText())) {
-            Toast.makeText(this, "Please fill in the Name field.", Toast.LENGTH_SHORT).show();
+            txtNameAddProdAct.setError("Please provide a name.");
+            txtNameAddProdAct.requestFocus();
             return false;
         }
         else if (TextUtils.isEmpty(txtQuantityAddProdAct.getText())) {
-            Toast.makeText(this, "Please fill in the Quantity field.", Toast.LENGTH_SHORT).show();
+            txtQuantityAddProdAct.setError("Please provide a quantity.");
+            txtQuantityAddProdAct.requestFocus();
             return false;
         }
         else if (TextUtils.isEmpty(txtImageUrlProdAct.getText())) {
-            Toast.makeText(this, "Please fill in the Image URL field.", Toast.LENGTH_SHORT).show();
+            txtImageUrlProdAct.setError("Please provide an image url.");
+            txtImageUrlProdAct.requestFocus();
             return false;
         }
         else if (TextUtils.isEmpty(txtShortDescAddProdAct.getText())) {
-            Toast.makeText(this, "Please fill in the Short Description field.", Toast.LENGTH_SHORT).show();
+            txtShortDescAddProdAct.setError("Please provide a short description.");
+            txtShortDescAddProdAct.requestFocus();
             return false;
         }
         else if (TextUtils.isEmpty(txtLongDescAddProdAct.getText())) {
-            Toast.makeText(this, "Please fill in the Long Description field.", Toast.LENGTH_SHORT).show();
+            txtLongDescAddProdAct.setError("Please provide a long description.");
+            txtLongDescAddProdAct.requestFocus();
             return false;
         }
         else if (TextUtils.isEmpty(txtPriceAddProdAct.getText())) {
-            Toast.makeText(this, "Please fill in the Price field.", Toast.LENGTH_SHORT).show();
+            txtPriceAddProdAct.setError("Please provide a price.");
+            txtPriceAddProdAct.requestFocus();
             return false;
         }
         else if (TextUtils.isEmpty(txtPackageQuantityAddProdAct.getText())) {
-            Toast.makeText(this, "Please fill in the Package Quantity field.", Toast.LENGTH_SHORT).show();
+            txtPackageQuantityAddProdAct.setError("Please provide a package quantity.");
+            txtPackageQuantityAddProdAct.requestFocus();
             return false;
         }
         else {
