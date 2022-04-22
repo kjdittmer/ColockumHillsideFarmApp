@@ -7,6 +7,21 @@
     tools:context=".user.VendorLoginActivity">
 
     <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/layoutLoginCredVendorLogin">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Welcome Vendor"
+            android:layout_centerInParent="true"
+            android:textSize="40sp"
+            android:textStyle="bold"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
@@ -47,5 +62,14 @@
             android:layout_marginBottom="5dp"/>
 
     </RelativeLayout>
+
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/progressBarVendorLogin"
+        android:layout_centerInParent="true"
+        style="?android:attr/progressBarStyleLarge"
+        android:visibility="gone"
+        />
 
 </RelativeLayout>
