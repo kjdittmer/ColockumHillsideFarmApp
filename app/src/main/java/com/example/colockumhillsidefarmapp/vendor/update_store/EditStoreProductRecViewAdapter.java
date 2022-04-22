@@ -58,8 +58,9 @@ public class EditStoreProductRecViewAdapter extends RecyclerView.Adapter<EditSto
                 .asBitmap()
                 .load(product.getImageUrl())
                 .into(holder.imgProductEditStoreProduct);
-
-
+        holder.txtShortDescEditStoreProduct.setText(product.getShortDesc());
+        holder.txtLongDescEditStoreProduct.setText(product.getLongDesc());
+        holder.txtQuantityEditStoreProduct.setText(String.valueOf(product.getQuantity()));
 
         holder.parentEditStoreProduct.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -111,7 +112,7 @@ public class EditStoreProductRecViewAdapter extends RecyclerView.Adapter<EditSto
         private CardView parentEditStoreProduct;
         private ImageView imgProductEditStoreProduct;
         private ImageButton imgDeleteStoreItem;
-        private TextView txtProductNameEditStoreProduct, txtPriceEditStoreProduct;
+        private TextView txtProductNameEditStoreProduct, txtPriceEditStoreProduct, txtQuantityEditStoreProduct, txtShortDescEditStoreProduct, txtLongDescEditStoreProduct;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -120,6 +121,9 @@ public class EditStoreProductRecViewAdapter extends RecyclerView.Adapter<EditSto
             imgDeleteStoreItem = itemView.findViewById(R.id.imgDeleteStoreItem);
             txtProductNameEditStoreProduct = itemView.findViewById(R.id.txtProductNameEditStoreProduct);
             txtPriceEditStoreProduct = itemView.findViewById(R.id.txtPriceEditStoreProduct);
+            txtQuantityEditStoreProduct = itemView.findViewById(R.id.txtQuantityEditStoreProduct);
+            txtShortDescEditStoreProduct = itemView.findViewById(R.id.txtShortDescEditStoreProduct);
+            txtLongDescEditStoreProduct = itemView.findViewById(R.id.txtLongDescEditStoreProduct);
         }
     }
 }

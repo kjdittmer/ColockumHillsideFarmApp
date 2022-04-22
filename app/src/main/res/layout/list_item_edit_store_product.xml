@@ -14,11 +14,12 @@
         android:layout_height="match_parent">
 
         <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             android:id="@+id/imgProductEditStoreProduct"
             android:src="@mipmap/ic_launcher_tractor"
-            android:layout_centerHorizontal="true"/>
+            />
 
         <TextView
             android:layout_width="wrap_content"
@@ -26,8 +27,7 @@
             android:text="Product Name"
             android:textStyle="bold"
             android:textSize="20sp"
-            android:layout_below="@+id/imgProductEditStoreProduct"
-            android:layout_centerHorizontal="true"
+            android:layout_toRightOf="@+id/imgProductEditStoreProduct"
             android:gravity="center"
             android:layout_margin="5dp"
             android:id="@+id/txtProductNameEditStoreProduct"/>
@@ -38,12 +38,47 @@
             android:text="Price"
             android:textSize="16sp"
             android:layout_below="@+id/txtProductNameEditStoreProduct"
-            android:layout_centerHorizontal="true"
+            android:layout_toRightOf="@+id/imgProductEditStoreProduct"
+            android:layout_marginLeft="5dp"
             android:layout_marginBottom="5dp"
             android:id="@+id/txtPriceEditStoreProduct"/>
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Quantity"
+            android:textSize="16sp"
+            android:layout_below="@+id/txtPriceEditStoreProduct"
+            android:layout_toRightOf="@+id/imgProductEditStoreProduct"
+            android:layout_marginLeft="5dp"
+            android:layout_marginBottom="5dp"
+            android:id="@+id/txtQuantityEditStoreProduct"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Short Desc"
+            android:textSize="16sp"
+            android:layout_below="@+id/txtQuantityEditStoreProduct"
+            android:layout_toRightOf="@+id/imgProductEditStoreProduct"
+            android:layout_marginLeft="5dp"
+            android:layout_marginBottom="5dp"
+            android:id="@+id/txtShortDescEditStoreProduct"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Long Desc"
+            android:maxLines="3"
+            android:textSize="16sp"
+            android:layout_below="@+id/txtShortDescEditStoreProduct"
+            android:layout_toRightOf="@+id/imgProductEditStoreProduct"
+            android:layout_marginLeft="5dp"
+            android:layout_marginBottom="5dp"
+            android:id="@+id/txtLongDescEditStoreProduct"/>
+
         <ImageButton
-            android:layout_width="50dp"
+            android:layout_width="100dp"
             android:layout_height="50dp"
             android:src="@drawable/ic_baseline_delete_white"
             android:background="@drawable/round_button"
