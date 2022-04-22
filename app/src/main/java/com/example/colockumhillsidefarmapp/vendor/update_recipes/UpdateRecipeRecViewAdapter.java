@@ -52,6 +52,7 @@ public class UpdateRecipeRecViewAdapter extends RecyclerView.Adapter<UpdateRecip
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Recipe recipe = recipes.get(holder.getAdapterPosition());
         holder.txtRecipeNameEditRecipe.setText(recipe.getName());
+        holder.txtShortDescEditRecipe.setText(recipe.getShortDesc());
         Glide.with(mContext)
                 .asBitmap()
                 .load(recipe.getImageUrl())
@@ -106,7 +107,7 @@ public class UpdateRecipeRecViewAdapter extends RecyclerView.Adapter<UpdateRecip
 
         private CardView parentEditRecipe;
         private ImageView imgRecipeEditRecipe;
-        private TextView txtRecipeNameEditRecipe;
+        private TextView txtRecipeNameEditRecipe, txtShortDescEditRecipe;
         private ImageButton btnDeleteEditRecipe;
 
         public ViewHolder(@NonNull View itemView) {
@@ -115,6 +116,7 @@ public class UpdateRecipeRecViewAdapter extends RecyclerView.Adapter<UpdateRecip
             imgRecipeEditRecipe = itemView.findViewById(R.id.imgRecipeEditRecipe);
             txtRecipeNameEditRecipe = itemView.findViewById(R.id.txtRecipeNameEditRecipe);
             btnDeleteEditRecipe = itemView.findViewById(R.id.btnDeleteEditRecipe);
+            txtShortDescEditRecipe = itemView.findViewById(R.id.txtShortDescEditRecipe);
         }
     }
 }
