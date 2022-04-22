@@ -6,12 +6,12 @@
     <string name="nav_header_subtitle">suzanne@colockumhillsidefarm.com</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
-
     <string name="menu_about_us">About Us</string>
     <string name="menu_contact_us">Contact Us</string>
     <string name="menu_recipes">Recipes</string>
     <string name="menu_store">Store</string>
     <string name="menu_vendor">Vendor</string>
+    <string name="payments_show_name">Successfully received payment data for %s!</string>
 
     <string name="turkey_string">We raise specialty “Midget White” turkeys each year for Thanksgiving. " +
                     "Midget Whites love to spend their day foraging, so on our farm they enjoy a diet of free range shrub steppe findings supplemented with locally sourced, non-GMO, corn- and soy-free feed. " +
@@ -43,8 +43,6 @@
     <string name="title_activity_favorites">FavoritesActivity</string>
     <string name="tab_text_1">Products</string>
     <string name="tab_text_2">Recipes</string>
+    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-
-    <string name="create_account"> <u>Create account.</u></string>
-    <string name="vendor_login"> <u>Go to vendor login.</u></string>
 </resources>

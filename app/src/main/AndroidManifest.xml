@@ -7,134 +7,120 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@drawable/chickenpic"
+        android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:roundIcon="@drawable/chickenpic"
+        android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ColockumHillsideFarmApp">
-        <activity
-            android:name=".vendor.VendorDashboardActivity"
-            android:exported="false"
-            android:parentActivityName=".user.VendorLoginActivity"/>
-        <activity
-            android:name=".customer.CustomerDashboardActivity"
-            android:exported="false"
-            android:parentActivityName=".user.CustomerLoginActivity"
-            android:theme="@style/Theme.ColockumHillsideFarmApp.NoActionBar"/>
-        <activity
-            android:name=".user.VendorLoginActivity"
-            android:exported="false"
-            android:label="Vendor"
-            android:parentActivityName=".user.CustomerLoginActivity"/>
-        <activity
-            android:name=".user.NewCustomerActivity"
-            android:exported="false"
-            android:label="Create Account"
-            android:parentActivityName=".user.CustomerLoginActivity"/>
-        <activity
-            android:name=".user.CustomerLoginActivity"
-            android:exported="true"
-            android:label="Colockum Hillside Farm"
-            android:windowSoftInputMode="adjustPan">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <meta-data
+            android:name="sqip.SQUARE_APPLICATION_ID"
+            android:value="sandbox-sq0idb-wyh6ezc6cDWH7N5uHdkLgQ"/>
+
+        <meta-data
+            android:name="com.google.android.gms.wallet.api.enabled"
+            android:value="true"
+            />
+
         <activity
-            android:name=".vendor.update_recipes.EditRecipeActivity"
+            android:name=".ui.vendor.EditRecipeActivity"
             android:exported="false"
             android:label="Edit Recipe"
-            android:parentActivityName=".vendor.VendorDashboardActivity" />
+            android:parentActivityName=".ui.vendor.UpdateRecipesActivity"/>
         <activity
-            android:name=".vendor.update_recipes.UpdateRecipesActivity"
+            android:name=".ui.vendor.UpdateRecipesActivity"
             android:exported="false"
             android:label="Update Recipes"
-            android:parentActivityName=".vendor.VendorChoiceActivity" />
+            android:parentActivityName=".ui.vendor.VendorChoiceActivity"/>
         <activity
-            android:name=".customer.favorites.FavoritesActivity"
+            android:name=".FavoritesActivity"
             android:exported="false"
             android:label="Favorites" />
         <activity
-            android:name=".vendor.update_recipes.AddRecipeActivity"
+            android:name=".ui.vendor.AddRecipeActivity"
             android:exported="false"
             android:label="Add Recipe"
-            android:parentActivityName=".vendor.VendorDashboardActivity" />
+            android:parentActivityName=".ui.vendor.UpdateRecipesActivity"/>
         <activity
-            android:name=".customer.wishlist.WishlistActivity"
+            android:name=".WishlistActivity"
             android:exported="false"
             android:label="Wishlist" />
         <activity
-            android:name=".vendor.update_store.EditProductActivity"
+            android:name=".ui.vendor.EditProductActivity"
             android:exported="false"
             android:label="Edit Product"
-            android:parentActivityName=".vendor.VendorDashboardActivity" />
+            android:parentActivityName=".ui.vendor.UpdateStoreActivity"/>
         <activity
-            android:name=".vendor.update_store.UpdateStoreActivity"
+            android:name=".ui.vendor.UpdateStoreActivity"
             android:exported="false"
             android:label="Update Store"
-            android:parentActivityName=".vendor.VendorChoiceActivity" />
+            android:parentActivityName=".ui.vendor.VendorChoiceActivity"/>
         <activity
-            android:name=".customer.recipes.RecipeActivity"
+            android:name=".ui.recipes.RecipeActivity"
             android:exported="false"
             android:label="Recipe" />
         <activity
-            android:name=".vendor.update_store.AddProductActivity"
+            android:name=".ui.vendor.AddProductActivity"
             android:exported="false"
             android:label="Add Product"
-            android:parentActivityName=".vendor.VendorDashboardActivity" />
+            android:parentActivityName=".ui.vendor.UpdateStoreActivity"/>
         <activity
-            android:name=".customer.shopping_cart.ShoppingCartActivity"
+            android:name=".ShoppingCartActivity"
             android:exported="false"
             android:label="Shopping Cart" />
         <activity
-            android:name=".customer.store.ProductActivity"
+            android:name=".ProductActivity"
             android:exported="false"
             android:label="Product" />
         <activity
-            android:name=".vendor.update_about_us.UpdateAboutUsActivity"
+            android:name=".ui.vendor.UpdateAboutUsActivity"
             android:exported="false"
             android:label="Update About Us"
-            android:parentActivityName=".vendor.VendorChoiceActivity" />
+            android:parentActivityName=".ui.vendor.VendorChoiceActivity"/>
         <activity
-            android:name=".vendor.analytics.AnalyticsActivity"
+            android:name=".ui.vendor.AnalyticsActivity"
             android:exported="false"
             android:label="Analytics"
-            android:parentActivityName=".vendor.VendorChoiceActivity" />
+            android:parentActivityName=".ui.vendor.VendorChoiceActivity"/>
         <activity
-            android:name=".vendor.VendorChoiceActivity"
+            android:name=".ui.vendor.VendorChoiceActivity"
             android:exported="false"
             android:label="Vendor Choice" />
         <activity
-            android:name=".customer.about_us.PoultryActivity"
+            android:name=".ui.about_us.PoultryActivity"
             android:exported="false"
             android:label="Poultry" />
         <activity
-            android:name=".customer.about_us.PorkActivity"
+            android:name=".ui.about_us.PorkActivity"
             android:exported="false"
             android:label="Pork" />
         <activity
-            android:name=".customer.contact_us.ContactUsActivity"
+            android:name=".ui.contact_us.ContactUsActivity"
             android:exported="false"
             android:label="Contact Us" />
         <activity
-            android:name=".customer.about_us.VegetableActivity"
+            android:name=".ui.about_us.VegetableActivity"
             android:exported="false"
             android:label="Vegetable" />
         <activity
-            android:name=".customer.about_us.VegtablePracticesActivity"
+            android:name=".ui.about_us.VegtablePracticesActivity"
             android:exported="false"
             android:label="Vegetable Practices" />
         <activity
-            android:name=".customer.about_us.ChickenPracticesActivity"
+            android:name=".ui.about_us.ChickenPracticesActivity"
             android:exported="false"
             android:label="Chicken Practices" />
         <activity
             android:name=".MainActivity"
             android:exported="true"
             android:label="@string/app_name"
-            android:theme="@style/Theme.ColockumHillsideFarmApp.NoActionBar"></activity>
+            android:theme="@style/Theme.ColockumHillsideFarmApp.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>
