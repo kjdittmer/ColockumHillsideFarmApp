@@ -115,7 +115,7 @@ public class NewCustomerActivity extends AppCompatActivity {
                                                 Toast.LENGTH_SHORT).show();
                                         progressBar.setVisibility(View.GONE);
 
-                                        //to complete
+                                        startActivity(new Intent(getApplicationContext(), CustomerLoginActivity.class));
                                     } else {
                                         Toast.makeText(NewCustomerActivity.this, "Failed to register! Try again.",
                                                 Toast.LENGTH_SHORT).show();

@@ -6,10 +6,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.util.Patterns;
+import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,6 +32,8 @@ public class CustomerLoginActivity extends AppCompatActivity {
     private EditText txtEmail, txtPassword;
     private Button btnLogin;
     private TextView txtCreateAccount, txtVendorLogin;
+    private ProgressBar progressBar;
+    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,39 +45,14 @@ public class CustomerLoginActivity extends AppCompatActivity {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String email = txtEmail.getText().toString();
-                String password = txtPassword.getText().toString();
-                GlobalStorage.getInstance().signInCustomer(email, password, view.getContext());
-
-                Intent intent = new Intent(view.getContext(), CustomerDashboardActivity.class);
-                startActivity(intent);
-
-//                FirebaseAuth mAuth = FirebaseAuth.getInstance();
-//
-//                mAuth.signInWithEmailAndPassword(username, password)
-//                        .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-//                            @Override
-//                            public void onComplete(@NonNull Task<AuthResult> task) {
-//                                if (task.isSuccessful()) {
-//                                    // Sign in success, update UI with the signed-in user's information
-//                                    FirebaseUser user = mAuth.getCurrentUser();
-//                                    User.getInstance().setCustomer(user.getEmail());
-//                                } else {
-//                                    // If sign in fails, display a message to the user.
-//                                    Toast.makeText(CustomerLoginActivity.this, "Authentication failed.",
-//                                            Toast.LENGTH_SHORT).show();
-//                                    updateUI(null);
-//                                }
-//                            }
-//                        });
+                login();
             }
         });
 
         txtCreateAccount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(view.getContext(), NewCustomerActivity.class);
-                startActivity(intent);
+            startActivity(new Intent(getApplicationContext(), NewCustomerActivity.class));
             }
         });
 
@@ -91,10 +71,64 @@ public class CustomerLoginActivity extends AppCompatActivity {
         btnLogin = findViewById(R.id.btnLoginCustomerLogin);
         txtCreateAccount = findViewById(R.id.txtCreateAccountCustomerLogin);
         txtVendorLogin = findViewById(R.id.txtVendorLoginCustomerLogin);
+        mAuth = FirebaseAuth.getInstance();
+        progressBar = findViewById(R.id.progressBarCustomerLogin);
     }
 
-    private boolean validateLogin() {
+    private boolean validateLogin(String email, String password) {
+        if (email.isEmpty()) {
+            txtEmail.setError("Email is required.");
+            txtEmail.requestFocus();
+            return false;
+        }
+
+        if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+            txtEmail.setError("Please provide a valid email.");
+            txtEmail.requestFocus();
+            return false;
+        }
+
+        if (password.isEmpty()) {
+            txtPassword.setError("Password is required.");
+            txtPassword.requestFocus();
+            return false;
+        }
+
+        if (password.length() < 6) {
+            txtPassword.setError("Password must be at least 6 characters");
+            txtPassword.requestFocus();
+            return false;
+        }
+
         return true;
+    }
+
+    private void login () {
+        String email = txtEmail.getText().toString();
+        String password = txtPassword.getText().toString();
+
+        if (!validateLogin(email, password)) {
+            return;
+        }
+
+        progressBar.setVisibility(View.VISIBLE);
+
+        mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+
+                if (task.isSuccessful()) {
+                    startActivity(new Intent(getApplicationContext(), CustomerDashboardActivity.class));
+                    progressBar.setVisibility(View.GONE);
+                } else {
+                    Toast.makeText(CustomerLoginActivity.this,
+                            "Failed to login!",
+                            Toast.LENGTH_SHORT)
+                            .show();
+                    progressBar.setVisibility(View.GONE);
+                }
+            }
+        });
     }
 
     @Override
