@@ -15,15 +15,36 @@
         android:layout_marginTop="20dp"
         />
 
-
     <EditText
-        android:id="@+id/txtEmailNewCustomer"
+        android:id="@+id/txtNameNewCustomer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/imgChickenNewCustomer"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:layout_marginTop="20dp"
+        android:inputType="textPersonName"
+        android:hint="Your full name"/>
+
+    <EditText
+        android:id="@+id/txtAgeNewCustomer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtNameNewCustomer"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="5dp"
+        android:inputType="number"
+        android:hint="Your age"/>
+
+    <EditText
+        android:id="@+id/txtEmailNewCustomer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtAgeNewCustomer"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="5dp"
         android:inputType="textEmailAddress"
         android:hint="Your email"/>
 
@@ -59,5 +80,14 @@
         android:text="create account"
         android:background="@drawable/round_button"
         android:layout_alignParentBottom="true"/>
+
+    <ProgressBar
+        android:id="@+id/progressBarNewCustomer"
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="gone"
+        />
 
 </RelativeLayout>

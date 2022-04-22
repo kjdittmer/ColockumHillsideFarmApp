@@ -3,7 +3,7 @@
     <style name="Theme.ColockumHillsideFarmApp" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/red</item>
-        <item name="colorPrimaryVariant">@color/tomato</item>
+        <item name="colorPrimaryVariant">@color/red</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/gold</item>
@@ -19,7 +19,7 @@
         <item name="windowNoTitle">true</item>
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/red</item>
-        <item name="colorPrimaryVariant">@color/tomato</item>
+        <item name="colorPrimaryVariant">@color/red</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/gold</item>
