@@ -1,36 +1,47 @@
 package com.example.colockumhillsidefarmapp.customer.shopping_cart;
 
+import com.example.colockumhillsidefarmapp.customer.store.Product;
+
 import java.util.Date;
-import java.util.HashMap;
 
 public class Transaction {
 
-    private HashMap<String, Integer> productsPurchased;
-    private double price;
+    private Product product;
+    private int quantity;
+    private double cost;
     private Date time;
     private String user;
 
-    public Transaction(HashMap<String, Integer> productsPurchased, double price, Date time, String user) {
-        this.productsPurchased = productsPurchased;
-        this.price = price;
+    public Transaction(Product product, int quantity, double cost, Date time, String user) {
+        this.product = product;
+        this.quantity = quantity;
+        this.cost = cost;
         this.time = time;
         this.user = user;
     }
 
-    public HashMap<String, Integer> getProductsPurchased() {
-        return productsPurchased;
+    public Product getProduct() {
+        return product;
     }
 
-    public void setProductsPurchased(HashMap<String, Integer> productsPurchased) {
-        this.productsPurchased = productsPurchased;
+    public void setProduct(Product product) {
+        this.product = product;
     }
 
-    public double getPrice() {
-        return price;
+    public int getQuantity() {
+        return quantity;
     }
 
-    public void setPrice(double price) {
-        this.price = price;
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
+    public double getCost() {
+        return cost;
+    }
+
+    public void setCost(double cost) {
+        this.cost = cost;
     }
 
     public Date getTime() {
