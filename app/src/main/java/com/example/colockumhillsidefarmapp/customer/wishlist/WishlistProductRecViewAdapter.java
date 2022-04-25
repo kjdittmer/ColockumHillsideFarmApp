@@ -20,6 +20,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.colockumhillsidefarmapp.R;
+import com.example.colockumhillsidefarmapp.DBInterface;
 import com.example.colockumhillsidefarmapp.customer.shopping_cart.ShoppingCart;
 import com.example.colockumhillsidefarmapp.customer.shopping_cart.ShoppingCartActivity;
 import com.example.colockumhillsidefarmapp.customer.store.Product;
@@ -88,7 +89,8 @@ public class WishlistProductRecViewAdapter extends RecyclerView.Adapter<Wishlist
                 builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        Wishlist.getInstance(mContext).removeProductFromWishList(product);
+//                        Wishlist.getInstance(mContext).removeProductFromWishList(product);
+                        DBInterface.getInstance().removeProductFromWishlist(product);
                         currentActivity.reload();
                         Toast.makeText(mContext, product.getName() + " removed", Toast.LENGTH_SHORT).show();
                     }
@@ -119,6 +121,7 @@ public class WishlistProductRecViewAdapter extends RecyclerView.Adapter<Wishlist
                 int quantitySelected = (int)holder.spnrQuantityWishlistItem.getSelectedItem();
 
                 ShoppingCart.getInstance().addProductToCart(product, quantitySelected);
+                DBInterface.getInstance().removeProductFromWishlist(product);
 
                 String plurality = "";
                 if (quantitySelected > 1) {

@@ -11,7 +11,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.example.colockumhillsidefarmapp.Storage;
+import com.example.colockumhillsidefarmapp.DBInterface;
 import com.example.colockumhillsidefarmapp.customer.store.Product;
 import com.example.colockumhillsidefarmapp.R;
 
@@ -31,7 +31,7 @@ public class UpdateStoreActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         //adapter = new EditStoreProductRecViewAdapter(this, VendorDashboardActivity.class);
-        ArrayList<Product> allProducts = Storage.getInstance().getAllProducts(adapter);
+        ArrayList<Product> allProducts = DBInterface.getInstance().getAllProducts(adapter);
 
         editStoreRecView = findViewById(R.id.editStoreRecView);
 
@@ -44,7 +44,7 @@ public class UpdateStoreActivity extends AppCompatActivity {
         layout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                ArrayList<Product> allProducts = Storage.getInstance().getAllProducts(adapter);
+                ArrayList<Product> allProducts = DBInterface.getInstance().getAllProducts(adapter);
                 adapter.setProducts(allProducts);
                 layout.setRefreshing(false);
             }

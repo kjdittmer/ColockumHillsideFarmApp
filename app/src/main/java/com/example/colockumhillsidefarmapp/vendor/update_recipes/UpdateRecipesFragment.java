@@ -20,7 +20,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
-import com.example.colockumhillsidefarmapp.Storage;
+import com.example.colockumhillsidefarmapp.DBInterface;
 import com.example.colockumhillsidefarmapp.R;
 import com.example.colockumhillsidefarmapp.customer.recipes.Recipe;
 import com.example.colockumhillsidefarmapp.vendor.VendorDashboardActivity;
@@ -42,7 +42,7 @@ public class UpdateRecipesFragment extends Fragment {
         setHasOptionsMenu(true);
 
         adapter = new UpdateRecipeRecViewAdapter(getContext(), (VendorDashboardActivity) getActivity());
-        recipeList = Storage.getInstance().getAllRecipes(adapter);
+        recipeList = DBInterface.getInstance().getAllRecipes(adapter);
 
         updateRecipesRecView = root.findViewById(R.id.updateRecipesRecView);
 
@@ -55,7 +55,7 @@ public class UpdateRecipesFragment extends Fragment {
         layout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                recipeList = Storage.getInstance().getAllRecipes(adapter);
+                recipeList = DBInterface.getInstance().getAllRecipes(adapter);
                 adapter.setRecipes(recipeList);
                 layout.setRefreshing(false);
             }

@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -16,12 +17,14 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 
 import com.example.colockumhillsidefarmapp.R;
+import com.example.colockumhillsidefarmapp.DBInterface;
 import com.example.colockumhillsidefarmapp.customer.store.Product;
 
 import java.util.ArrayList;
 
 public class WishlistActivity extends AppCompatActivity {
     private WishlistProductRecViewAdapter adapter;
+    private SwipeRefreshLayout layout;
     private RecyclerView recyclerView;
     private ArrayList<Product> productList;
 
@@ -34,6 +37,16 @@ public class WishlistActivity extends AppCompatActivity {
 
         initData();
         setData();
+
+        layout = findViewById(R.id.swipeRefreshLayoutWishlist);
+        layout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                productList = DBInterface.getInstance().getWishlist(adapter);
+                adapter.setProductsInWishlist(productList);
+                layout.setRefreshing(false);
+            }
+        });
 
         EditText txtSearch = findViewById(R.id.txtSearchWishlist);
         txtSearch.addTextChangedListener(new TextWatcher() {
@@ -73,10 +86,12 @@ public class WishlistActivity extends AppCompatActivity {
 
     private void setData () {
         adapter = new WishlistProductRecViewAdapter(this, this);
+        productList = DBInterface.getInstance().getWishlist(adapter);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        productList = Wishlist.getInstance(this).getWishlist();
+        //productList = Wishlist.getInstance(this).getWishlist();
+        productList = DBInterface.getInstance().getWishlist(adapter);
         adapter.setProductsInWishlist(productList);
     }
 

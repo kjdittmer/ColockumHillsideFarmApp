@@ -1,18 +1,15 @@
 package com.example.colockumhillsidefarmapp.customer.shopping_cart;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
-import android.text.Html;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
@@ -20,14 +17,9 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.colockumhillsidefarmapp.MainActivity;
 import com.example.colockumhillsidefarmapp.R;
-import com.example.colockumhillsidefarmapp.Storage;
+import com.example.colockumhillsidefarmapp.DBInterface;
 import com.example.colockumhillsidefarmapp.customer.CustomerDashboardActivity;
-import com.example.colockumhillsidefarmapp.customer.shopping_cart.CartProductRecViewAdapter;
-import com.example.colockumhillsidefarmapp.customer.shopping_cart.Constants;
-import com.example.colockumhillsidefarmapp.customer.shopping_cart.PaymentsUtil;
-import com.example.colockumhillsidefarmapp.customer.shopping_cart.ShoppingCart;
 import com.example.colockumhillsidefarmapp.customer.store.Product;
 import com.google.android.gms.common.api.Status;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -39,9 +31,6 @@ import com.google.android.gms.wallet.PaymentDataRequest;
 import com.google.android.gms.wallet.PaymentsClient;
 import com.google.android.gms.wallet.Wallet;
 import com.google.android.gms.wallet.WalletConstants;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.gson.JsonObject;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -51,7 +40,6 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Optional;
-import java.util.Locale;
 
 import org.json.JSONException;
 
@@ -59,10 +47,6 @@ import com.paypal.android.sdk.payments.PayPalConfiguration;
 import com.paypal.android.sdk.payments.PayPalPayment;
 import com.paypal.android.sdk.payments.PayPalService;
 import com.paypal.android.sdk.payments.PaymentActivity;
-import com.paypal.android.sdk.payments.PaymentConfirmation;
-
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.math.BigDecimal;
 
@@ -145,7 +129,7 @@ ShoppingCartActivity extends AppCompatActivity {
                 requestPayment(view);
                 //getPayment();   /* this is for the paypal */
                 for (Product product : cart.keySet()) {
-                    Storage.getInstance().addTransaction(product, cart.get(product), product.getPrice(), Calendar.getInstance().getTime());
+                    DBInterface.getInstance().addTransaction(product, cart.get(product), product.getPrice(), Calendar.getInstance().getTime());
                 }
                 Toast.makeText(view.getContext(), "Please set up Google Pay", Toast.LENGTH_SHORT);
             }

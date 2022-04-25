@@ -23,7 +23,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.colockumhillsidefarmapp.R;
-import com.example.colockumhillsidefarmapp.Storage;
+import com.example.colockumhillsidefarmapp.DBInterface;
 import com.example.colockumhillsidefarmapp.customer.recipes.Recipe;
 import com.example.colockumhillsidefarmapp.vendor.VendorDashboardActivity;
 
@@ -79,7 +79,7 @@ public class AddRecipeActivity extends AppCompatActivity {
                     builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
-                            Storage.getInstance().addRecipe(new Recipe(0, name, imageUrl, shortDesc, ingredients, instructions));
+                            DBInterface.getInstance().addRecipe(new Recipe(0, name, imageUrl, shortDesc, ingredients, instructions));
                             Toast.makeText(view.getContext(), name + " was added to the recipe page.", Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(view.getContext(), VendorDashboardActivity.class);
                             intent.putExtra("fragmentToLoad", UPDATE_RECIPES);

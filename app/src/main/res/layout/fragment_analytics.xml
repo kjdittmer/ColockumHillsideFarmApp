@@ -15,9 +15,33 @@
         android:layout_margin="10dp"
         android:lines="1"/>
 
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/layoutTopBarAnalytics"
+        android:layout_below="@+id/txtSearchUpdateAnalytics">
+
+        <TextView
+            android:id="@+id/txtSearchByAnalytics"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Search by: "
+            android:layout_margin="10dp"
+            android:textSize="18sp"
+            android:layout_centerVertical="true"/>
+
+        <Spinner
+            android:id="@+id/spnrSearchCriteriaAnalytics"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/txtSearchByAnalytics"
+            android:layout_margin="10dp"
+            android:layout_centerVertical="true"/>
+
+    </RelativeLayout>
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-        android:layout_below="@+id/txtSearchUpdateAnalytics"
+        android:layout_below="@+id/layoutTopBarAnalytics"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="10dp"

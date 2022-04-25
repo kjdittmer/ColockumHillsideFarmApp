@@ -16,7 +16,8 @@
         android:lines="1"/>
 
 
-    <ScrollView
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipeRefreshLayoutWishlist"
         android:layout_below="@id/txtSearchWishlist"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -30,6 +31,6 @@
             android:layout_margin="10dp"
             android:id="@+id/wishlistRecView"/>
 
-    </ScrollView>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
 </RelativeLayout>

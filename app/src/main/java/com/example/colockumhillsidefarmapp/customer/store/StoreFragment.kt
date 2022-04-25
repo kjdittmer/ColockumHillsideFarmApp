@@ -9,7 +9,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-import com.example.colockumhillsidefarmapp.Storage
+import com.example.colockumhillsidefarmapp.DBInterface
 import com.example.colockumhillsidefarmapp.R
 import com.example.colockumhillsidefarmapp.databinding.FragmentStoreBinding
 
@@ -40,7 +40,7 @@ class StoreFragment : Fragment() {
             StoreProductRecViewAdapter(
                 activity
             )
-        val allProducts = Storage.getInstance().getAllProducts(adapter)
+        val allProducts = DBInterface.getInstance().getAllProducts(adapter)
 
         productRecView = root.findViewById(R.id.productRecView)
 
@@ -52,7 +52,7 @@ class StoreFragment : Fragment() {
 
         layout = root.findViewById(R.id.swipeRefreshLayoutStore)
         layout.setOnRefreshListener {
-            val allProducts = Storage.getInstance().getAllProducts(adapter)
+            val allProducts = DBInterface.getInstance().getAllProducts(adapter)
             adapter.setProducts(allProducts)
             layout.isRefreshing = false;
         }

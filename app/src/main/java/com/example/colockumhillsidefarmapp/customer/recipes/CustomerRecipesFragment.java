@@ -18,7 +18,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
-import com.example.colockumhillsidefarmapp.Storage;
+import com.example.colockumhillsidefarmapp.DBInterface;
 import com.example.colockumhillsidefarmapp.R;
 
 import java.util.ArrayList;
@@ -36,7 +36,7 @@ public class CustomerRecipesFragment extends Fragment {
         View root = inflater.inflate(R.layout.fragment_customer_recipes, container, false);
 
         adapter = new RecipeRecViewAdapter(root.getContext());
-        recipeList = Storage.getInstance().getAllRecipes(adapter);
+        recipeList = DBInterface.getInstance().getAllRecipes(adapter);
         recipesRecView = root.findViewById(R.id.recipeRecView);
 
         recipesRecView.setAdapter(adapter);
@@ -49,7 +49,7 @@ public class CustomerRecipesFragment extends Fragment {
         layout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                recipeList = Storage.getInstance().getAllRecipes(adapter);
+                recipeList = DBInterface.getInstance().getAllRecipes(adapter);
                 adapter.setRecipes(recipeList);
                 layout.setRefreshing(false);
             }

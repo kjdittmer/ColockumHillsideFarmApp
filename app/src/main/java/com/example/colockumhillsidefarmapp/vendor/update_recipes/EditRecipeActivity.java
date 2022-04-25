@@ -12,7 +12,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.colockumhillsidefarmapp.Storage;
+import com.example.colockumhillsidefarmapp.DBInterface;
 import com.example.colockumhillsidefarmapp.R;
 import com.example.colockumhillsidefarmapp.customer.recipes.Recipe;
 import com.example.colockumhillsidefarmapp.vendor.VendorDashboardActivity;
@@ -54,7 +54,7 @@ public class EditRecipeActivity extends AppCompatActivity {
                             txtShortDescEditRecipe.getText().toString(), txtIngredientsEditRecipe.getText().toString(),
                             txtInstructionsEditRecipe.getText().toString());
 
-                    Storage.getInstance().editRecipe(recipeToEdit, editedRecipe);
+                    DBInterface.getInstance().editRecipe(recipeToEdit, editedRecipe);
                     Toast.makeText(EditRecipeActivity.this, recipeToEdit.getName() + " edited.", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(view.getContext(), VendorDashboardActivity.class);
                     intent.putExtra("fragmentToLoad", UPDATE_RECIPES);

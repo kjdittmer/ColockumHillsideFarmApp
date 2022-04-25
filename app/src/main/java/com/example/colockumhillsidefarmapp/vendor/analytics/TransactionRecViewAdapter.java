@@ -56,7 +56,7 @@ public class TransactionRecViewAdapter extends RecyclerView.Adapter<TransactionR
         DecimalFormat df = new DecimalFormat("0.00");
         price = df.format(transaction.getProduct().getPrice());
         holder.txtPriceTransaction.setText("$" + price + "/" + transaction.getProduct().getPackageQuantity());
-        holder.txtQuantityTransaction.setText(String.valueOf(transaction.getQuantity()));
+        holder.txtQuantityTransaction.setText("Quantity: " + String.valueOf(transaction.getQuantity()));
         String totalCost;
         totalCost = df.format(transaction.getCost());
         holder.txtTotalCostTransaction.setText(totalCost);

@@ -1,8 +1,5 @@
 package com.example.colockumhillsidefarmapp;
 
-import android.content.Context;
-import android.util.Log;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -17,26 +14,24 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
-import java.util.HashMap;
 
-public class Storage {
+public class DBInterface {
 
     private FirebaseDatabase rootNode;
     private DatabaseReference reference;
 
-    private static Storage instance;
+    private static DBInterface instance;
 
     private FirebaseAuth mAuth;
 
-    private Storage() {
+    private DBInterface() {
 
     }
 
-    public static Storage getInstance() {
+    public static DBInterface getInstance() {
         if(instance == null){
-            instance = new Storage();
+            instance = new DBInterface();
         }
         return instance;
     }
@@ -196,7 +191,8 @@ public class Storage {
     /* Accessing transactions */
     public void addTransaction (Product product, int quantity, double cost, Date date) {
         //first get current user id
-        DatabaseReference userReference = FirebaseDatabase.getInstance().getReference("user").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("email");
+        String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        DatabaseReference userReference = FirebaseDatabase.getInstance().getReference("user").child(userId).child("email");
         userReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -209,7 +205,7 @@ public class Storage {
                         .child(transactionId).setValue(transactionToAdd);
 
                 //add transaction to specific user's transactions
-                String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                //String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
                 FirebaseDatabase.getInstance().getReference("user")
                         .child(userId).child("transactions").child(transactionId).setValue(transactionToAdd);
 
@@ -256,7 +252,6 @@ public class Storage {
                     Transaction newTransaction = currentSnapshot.getValue(Transaction.class);
                     allTransactions.add(newTransaction);
                 }
-                Log.d("transactions", allTransactions.toString());
                 adapter.notifyDataSetChanged();
             }
 
@@ -266,5 +261,45 @@ public class Storage {
             }
         });
         return allTransactions;
+    }
+
+    /* Accessing wishlist*/
+    public ArrayList<Product> getWishlist(RecyclerView.Adapter adapter) {
+        ArrayList<Product> allProducts = new ArrayList<>();
+
+        rootNode = FirebaseDatabase.getInstance();
+        reference = rootNode.getReference("user").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("wishlist");
+        reference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot currentSnapshot : snapshot.getChildren()) {
+                    Product newProduct = currentSnapshot.getValue(Product.class);
+                    allProducts.add(newProduct);
+                }
+                adapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+        return allProducts;
+    }
+
+    public void addProductToWishlist (Product product) {
+        //first get current user id
+        String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+
+        //add transaction to specific user's transactions
+        FirebaseDatabase.getInstance().getReference("user")
+                .child(userId).child("wishlist").child(String.valueOf(product.getId())).setValue(product);
+    }
+
+    public void removeProductFromWishlist (Product product) {
+        String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        rootNode = FirebaseDatabase.getInstance();
+        reference = rootNode.getReference("user").child(userId).child("wishlist");
+        reference.child(String.valueOf(product.getId())).removeValue();
     }
 }

@@ -18,7 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.colockumhillsidefarmapp.R;
-import com.example.colockumhillsidefarmapp.customer.wishlist.Wishlist;
+import com.example.colockumhillsidefarmapp.DBInterface;
 import com.example.colockumhillsidefarmapp.customer.favorites.Favorites;
 import com.example.colockumhillsidefarmapp.customer.shopping_cart.ShoppingCart;
 import com.example.colockumhillsidefarmapp.customer.shopping_cart.ShoppingCartActivity;
@@ -106,7 +106,8 @@ public class StoreProductRecViewAdapter extends RecyclerView.Adapter<StoreProduc
         holder.btnAddToWishlistStoreFrag.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Wishlist.getInstance(mContext).addProductToWishlist(product);
+                DBInterface.getInstance().addProductToWishlist(product);
+                //Wishlist.getInstance(mContext).addProductToWishlist(product);
 
                 Toast.makeText(view.getContext(), product.getName() +
                         " added to wishlist!", Toast.LENGTH_SHORT).show();

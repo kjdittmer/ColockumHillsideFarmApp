@@ -11,7 +11,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.example.colockumhillsidefarmapp.Storage;
+import com.example.colockumhillsidefarmapp.DBInterface;
 
 import com.example.colockumhillsidefarmapp.R;
 import com.example.colockumhillsidefarmapp.customer.recipes.Recipe;
@@ -32,7 +32,7 @@ public class UpdateRecipesActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         //adapter = new UpdateRecipeRecViewAdapter(this, (UpdateRecipesActivity) this);
-        ArrayList<Recipe> allRecipes = Storage.getInstance().getAllRecipes(adapter);
+        ArrayList<Recipe> allRecipes = DBInterface.getInstance().getAllRecipes(adapter);
 
         updateRecipesRecView = findViewById(R.id.updateRecipesRecView);
 
@@ -45,7 +45,7 @@ public class UpdateRecipesActivity extends AppCompatActivity {
         layout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                ArrayList<Recipe> allRecipes = Storage.getInstance().getAllRecipes(adapter);
+                ArrayList<Recipe> allRecipes = DBInterface.getInstance().getAllRecipes(adapter);
                 adapter.setRecipes(allRecipes);
                 layout.setRefreshing(false);
             }

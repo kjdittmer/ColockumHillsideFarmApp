@@ -9,7 +9,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.Spinner;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -19,10 +21,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.example.colockumhillsidefarmapp.R;
-import com.example.colockumhillsidefarmapp.Storage;
+import com.example.colockumhillsidefarmapp.DBInterface;
 import com.example.colockumhillsidefarmapp.customer.shopping_cart.Transaction;
-import com.example.colockumhillsidefarmapp.customer.store.Product;
-import com.example.colockumhillsidefarmapp.customer.store.StoreProductRecViewAdapter;
 
 import java.util.ArrayList;
 
@@ -41,7 +41,7 @@ public class AnalyticsFragment extends Fragment {
         setHasOptionsMenu(true);
 
         adapter = new TransactionRecViewAdapter(root.getContext());
-        transactionList = Storage.getInstance().getAllTransactions(adapter);
+        transactionList = DBInterface.getInstance().getAllTransactions(adapter);
         transactionRecView = root.findViewById(R.id.analyticsRecView);
 
         transactionRecView.setAdapter(adapter);
@@ -54,11 +54,20 @@ public class AnalyticsFragment extends Fragment {
         layout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                transactionList = Storage.getInstance().getAllTransactions(adapter);
+                transactionList = DBInterface.getInstance().getAllTransactions(adapter);
                 adapter.setTransactions(transactionList);
                 layout.setRefreshing(false);
             }
         });
+
+        Spinner spnrSearchCriteria = root.findViewById(R.id.spnrSearchCriteriaAnalytics);
+        ArrayList<String> searchCriteria = new ArrayList<>();
+        searchCriteria.add("Product Name");
+        searchCriteria.add("Date");
+        searchCriteria.add("User");
+        ArrayAdapter<String> searchCriteriaAdapter = new ArrayAdapter<String>(getContext(), R.layout.spinner_search_criteria,
+                searchCriteria);
+        spnrSearchCriteria.setAdapter(searchCriteriaAdapter);
 
         EditText txtSearch = root.findViewById(R.id.txtSearchUpdateAnalytics);
         txtSearch.addTextChangedListener(new TextWatcher() {

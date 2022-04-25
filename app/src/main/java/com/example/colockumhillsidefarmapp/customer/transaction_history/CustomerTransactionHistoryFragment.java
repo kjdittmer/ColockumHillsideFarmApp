@@ -19,7 +19,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.example.colockumhillsidefarmapp.R;
-import com.example.colockumhillsidefarmapp.Storage;
+import com.example.colockumhillsidefarmapp.DBInterface;
 import com.example.colockumhillsidefarmapp.customer.shopping_cart.Transaction;
 import com.example.colockumhillsidefarmapp.vendor.analytics.TransactionRecViewAdapter;
 
@@ -39,7 +39,7 @@ public class CustomerTransactionHistoryFragment extends Fragment {
 
         adapter = new TransactionRecViewAdapter(root.getContext());
 
-        transactionList = Storage.getInstance().getCustomerTransactions(adapter);
+        transactionList = DBInterface.getInstance().getCustomerTransactions(adapter);
 
         transactionRecView = root.findViewById(R.id.customerTransactionHistoryRecView);
 
@@ -53,7 +53,7 @@ public class CustomerTransactionHistoryFragment extends Fragment {
         layout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                transactionList = Storage.getInstance().getCustomerTransactions(adapter);
+                transactionList = DBInterface.getInstance().getCustomerTransactions(adapter);
                 adapter.setTransactions(transactionList);
                 layout.setRefreshing(false);
             }
