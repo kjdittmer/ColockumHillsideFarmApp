@@ -80,23 +80,23 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
-            R.id.action_shopping_cart -> {
-                val intent : Intent = Intent(this, ShoppingCartActivity::class.java)
-                startActivity(intent)
-                return true
-            }
-            R.id.action_favorites -> {
-                val intent : Intent = Intent(this, FavoritesActivity::class.java)
-                startActivity(intent)
-                return true
-            }
-            R.id.action_wishlist -> {
-                val intent : Intent = Intent(this, WishlistActivity::class.java)
-                startActivity(intent)
-                return true
-            }
-        }
+//        when (item.itemId) {
+//            R.id.action_shopping_cart -> {
+//                val intent : Intent = Intent(this, ShoppingCartActivity::class.java)
+//                startActivity(intent)
+//                return true
+//            }
+//            R.id.action_favorites -> {
+//                val intent : Intent = Intent(this, FavoritesActivity::class.java)
+//                startActivity(intent)
+//                return true
+//            }
+//            R.id.action_wishlist -> {
+//                val intent : Intent = Intent(this, WishlistActivity::class.java)
+//                startActivity(intent)
+//                return true
+//            }
+//        }
         return super.onOptionsItemSelected(item)
     }
 
