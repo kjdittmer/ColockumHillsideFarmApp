@@ -1,6 +1,7 @@
 package com.example.colockumhillsidefarmapp;
 
 import android.content.Context;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -218,5 +219,29 @@ public class Storage {
             public void onCancelled(@NonNull DatabaseError error) {
             }
         });
+    }
+
+    public ArrayList<Transaction> getAllTransactions(RecyclerView.Adapter adapter) {
+        ArrayList<Transaction> allTransactions = new ArrayList<>();
+
+        rootNode = FirebaseDatabase.getInstance();
+        reference = rootNode.getReference("transaction");
+        reference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot currentSnapshot : snapshot.getChildren()) {
+                    Transaction newTransaction = currentSnapshot.getValue(Transaction.class);
+                    allTransactions.add(newTransaction);
+                }
+                Log.d("transactions", allTransactions.toString());
+                adapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+        return allTransactions;
     }
 }

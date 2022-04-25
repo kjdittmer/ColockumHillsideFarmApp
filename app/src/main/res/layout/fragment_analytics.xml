@@ -9,7 +9,7 @@
     <EditText
         android:id="@+id/txtSearchUpdateAnalytics"
         android:inputType="text"
-        android:hint="Search for a product ..."
+        android:hint="Search for a transaction ..."
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"

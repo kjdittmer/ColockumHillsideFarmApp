@@ -21,6 +21,8 @@ import android.widget.Toast;
 
 import com.example.colockumhillsidefarmapp.MainActivity;
 import com.example.colockumhillsidefarmapp.R;
+import com.example.colockumhillsidefarmapp.Storage;
+import com.example.colockumhillsidefarmapp.customer.CustomerDashboardActivity;
 import com.example.colockumhillsidefarmapp.customer.shopping_cart.CartProductRecViewAdapter;
 import com.example.colockumhillsidefarmapp.customer.shopping_cart.Constants;
 import com.example.colockumhillsidefarmapp.customer.shopping_cart.PaymentsUtil;
@@ -45,6 +47,7 @@ import org.json.JSONObject;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Optional;
 import java.util.Locale;
@@ -113,6 +116,9 @@ ShoppingCartActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 requestPayment(view);
+                for (Product product : cart.keySet()) {
+                    Storage.getInstance().addTransaction(product, cart.get(product), product.getPrice(), Calendar.getInstance().getTime());
+                }
                 Toast.makeText(view.getContext(), "Please set up Google Pay", Toast.LENGTH_SHORT);
             }
         });
@@ -120,7 +126,7 @@ ShoppingCartActivity extends AppCompatActivity {
         btnContinueShoppingShoppingCartAct.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(view.getContext(), MainActivity.class);
+                Intent intent = new Intent(view.getContext(), CustomerDashboardActivity.class);
                 startActivity(intent);
             }
         });

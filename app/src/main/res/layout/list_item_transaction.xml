@@ -8,13 +8,88 @@
     app:cardElevation="10dp"
     android:layout_margin="10dp"
     android:layout_centerHorizontal="true">
-    <LinearLayout
+
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
 
+        <ImageView
+            android:layout_margin="5dp"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:id="@+id/imgProductTransaction"
+            android:src="@mipmap/ic_launcher_tractor"
+            android:layout_centerVertical="true"
+            />
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Product Name"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:layout_toRightOf="@+id/imgProductTransaction"
+            android:gravity="center"
+            android:layout_margin="5dp"
+            android:id="@+id/txtProductNameTransaction"/>
 
-    </LinearLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Price"
+            android:textSize="16sp"
+            android:layout_below="@+id/txtProductNameTransaction"
+            android:layout_toRightOf="@+id/imgProductTransaction"
+            android:layout_marginLeft="5dp"
+            android:layout_marginBottom="5dp"
+            android:id="@+id/txtPriceTransaction"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Quantity"
+            android:textSize="16sp"
+            android:layout_below="@+id/txtPriceTransaction"
+            android:layout_toRightOf="@+id/imgProductTransaction"
+            android:layout_marginLeft="5dp"
+            android:layout_marginBottom="5dp"
+            android:id="@+id/txtQuantityTransaction"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Total Cost"
+            android:textSize="16sp"
+            android:layout_below="@+id/txtQuantityTransaction"
+            android:layout_toRightOf="@+id/imgProductTransaction"
+            android:layout_marginLeft="5dp"
+            android:layout_marginBottom="5dp"
+            android:id="@+id/txtTotalCostTransaction"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Date"
+            android:maxLines="3"
+            android:textSize="16sp"
+            android:layout_below="@+id/txtTotalCostTransaction"
+            android:layout_toRightOf="@+id/imgProductTransaction"
+            android:layout_marginLeft="5dp"
+            android:layout_marginBottom="5dp"
+            android:id="@+id/txtDateTransaction"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="User"
+            android:maxLines="3"
+            android:textSize="16sp"
+            android:layout_below="@+id/txtDateTransaction"
+            android:layout_toRightOf="@+id/imgProductTransaction"
+            android:layout_marginLeft="5dp"
+            android:layout_marginBottom="5dp"
+            android:id="@+id/txtUserTransaction"/>
+
+    </RelativeLayout>
 
 </com.google.android.material.card.MaterialCardView>

@@ -12,6 +12,9 @@ public class Transaction {
     private Date time;
     private String user;
 
+    public Transaction () {
+    }
+
     public Transaction(Product product, int quantity, double cost, Date time, String user) {
         this.product = product;
         this.quantity = quantity;
