@@ -19,21 +19,21 @@
             android:padding="10dp"/>
 
         <TextView
-            android:id="@+id/FarmEmailLink"
+            android:id="@+id/FarmEmail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="suzanne@colockumhillsidefarm.com"
-            android:textSize="20sp"
             android:layout_below="@+id/ContactTitle"
             android:layout_centerHorizontal="true"
+            android:autoLink="email"
             android:padding="10dp"
-            android:autoLink="email" />
+            android:text="suzanne@colockumhillsidefarm.com"
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/MCTitle"
             android:layout_width="370dp"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/FarmEmailLink"
+            android:layout_below="@+id/FarmEmail"
             android:layout_centerHorizontal="true"
             android:padding="10dp"
             android:text="Sign up for our newsletter!"
@@ -83,6 +83,29 @@
             android:text="Sign Up!"
             android:id="@+id/btnSignUpForNewsletter"
             android:background="@drawable/round_button"/>
+
+        <EditText
+            android:id="@+id/hintText"
+            android:layout_width="420dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/btnSignUpForNewsletter"
+            android:layout_marginTop="10dp"
+            android:autoLink="web"
+            android:padding="10dp"
+            android:text="Click below to navigate to the Colockum Hillside Farm's website to sign up for the newsletter there instead, just enter your name and email"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/FarmMailChimp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/hintText"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:autoLink="web"
+            android:padding="10dp"
+            android:text="http://eepurl.com/gZJRdb"
+            android:textSize="20sp" />
 
     </RelativeLayout>
 

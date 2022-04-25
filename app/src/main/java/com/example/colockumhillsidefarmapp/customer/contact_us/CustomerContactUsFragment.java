@@ -35,7 +35,7 @@ public class CustomerContactUsFragment extends Fragment {
 
         initVariables(root);
 
-        TextView feedback = root.findViewById(R.id.FarmEmailLink);
+        TextView feedback = root.findViewById(R.id.FarmEmail);
         feedback.setText(Html.fromHtml("<a href=\"mailto:suzanne@colockumhillsidefarm.com\">Email Us!</a>"));
         feedback.setMovementMethod(LinkMovementMethod.getInstance());
         feedback.setLinkTextColor(Color.BLUE);
