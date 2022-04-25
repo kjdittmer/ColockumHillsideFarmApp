@@ -6,4 +6,28 @@
     android:layout_height="match_parent"
     tools:context=".customer.store.StoreFragment">
 
+    <EditText
+        android:id="@+id/txtSearchCustomerTransactionHisotry"
+        android:inputType="text"
+        android:hint="Search for a transaction ..."
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:lines="1"/>
+
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:layout_below="@+id/txtSearchCustomerTransactionHisotry"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="10dp"
+        android:id="@+id/swipeRefreshLayoutCustomerTransactionHistory">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/customerTransactionHistoryRecView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
 </RelativeLayout>

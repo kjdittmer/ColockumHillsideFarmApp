@@ -233,6 +233,29 @@ public class Storage {
                     Transaction newTransaction = currentSnapshot.getValue(Transaction.class);
                     allTransactions.add(newTransaction);
                 }
+                adapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+        return allTransactions;
+    }
+
+    public ArrayList<Transaction> getCustomerTransactions(RecyclerView.Adapter adapter) {
+        ArrayList<Transaction> allTransactions = new ArrayList<>();
+
+        rootNode = FirebaseDatabase.getInstance();
+        reference = rootNode.getReference("user").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("transactions");
+        reference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot currentSnapshot : snapshot.getChildren()) {
+                    Transaction newTransaction = currentSnapshot.getValue(Transaction.class);
+                    allTransactions.add(newTransaction);
+                }
                 Log.d("transactions", allTransactions.toString());
                 adapter.notifyDataSetChanged();
             }

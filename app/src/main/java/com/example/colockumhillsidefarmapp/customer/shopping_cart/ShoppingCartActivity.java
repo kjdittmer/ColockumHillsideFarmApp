@@ -142,8 +142,8 @@ ShoppingCartActivity extends AppCompatActivity {
             @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
             public void onClick(View view) {
-                //requestPayment(view);
-                getPayment();
+                requestPayment(view);
+                //getPayment();   /* this is for the paypal */
                 for (Product product : cart.keySet()) {
                     Storage.getInstance().addTransaction(product, cart.get(product), product.getPrice(), Calendar.getInstance().getTime());
                 }
@@ -221,33 +221,33 @@ ShoppingCartActivity extends AppCompatActivity {
 
     }
 
-//    @Override
-//    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-//        super.onActivityResult(requestCode, resultCode, data);
-//        switch (requestCode) {
-//            // value passed in AutoResolveHelper
-//            case LOAD_PAYMENT_DATA_REQUEST_CODE:
-//                switch (resultCode) {
-//
-//                    case Activity.RESULT_OK:
-//                        PaymentData paymentData = PaymentData.getFromIntent(data);
-//                        handlePaymentSuccess(paymentData);
-//                        break;
-//
-//                    case Activity.RESULT_CANCELED:
-//                        // The user cancelled the payment attempt
-//                        break;
-//
-//                    case AutoResolveHelper.RESULT_ERROR:
-//                        Status status = AutoResolveHelper.getStatusFromIntent(data);
-//                        handleError(status.getStatusCode());
-//                        break;
-//                }
-//
-//                // Re-enables the Google Pay payment button.
-//                btnCheckoutShoppingCartAct.setClickable(true);
-//        }
-//    }
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        switch (requestCode) {
+            // value passed in AutoResolveHelper
+            case LOAD_PAYMENT_DATA_REQUEST_CODE:
+                switch (resultCode) {
+
+                    case Activity.RESULT_OK:
+                        PaymentData paymentData = PaymentData.getFromIntent(data);
+                        handlePaymentSuccess(paymentData);
+                        break;
+
+                    case Activity.RESULT_CANCELED:
+                        // The user cancelled the payment attempt
+                        break;
+
+                    case AutoResolveHelper.RESULT_ERROR:
+                        Status status = AutoResolveHelper.getStatusFromIntent(data);
+                        handleError(status.getStatusCode());
+                        break;
+                }
+
+                // Re-enables the Google Pay payment button.
+                btnCheckoutShoppingCartAct.setClickable(true);
+        }
+    }
 
     private static JSONArray getAllowedCardNetworks() {
         return new JSONArray()
@@ -437,43 +437,43 @@ ShoppingCartActivity extends AppCompatActivity {
         startActivityForResult(intent, PAYPAL_REQUEST_CODE);
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        // If the result is from paypal
-        if (requestCode == PAYPAL_REQUEST_CODE) {
-
-            // If the result is OK i.e. user has not canceled the payment
-            if (resultCode == Activity.RESULT_OK) {
-
-                // Getting the payment confirmation
-                PaymentConfirmation confirm = data.getParcelableExtra(PaymentActivity.EXTRA_RESULT_CONFIRMATION);
-
-                // if confirmation is not null
-                if (confirm != null) {
-                    try {
-                        // Getting the payment details
-                        String paymentDetails = confirm.toJSONObject().toString(4);
-                        // on below line we are extracting json response and displaying it in a text view.
-                        JSONObject payObj = new JSONObject(paymentDetails);
-                        String payID = payObj.getJSONObject("response").getString("id");
-                        String state = payObj.getJSONObject("response").getString("state");
-                        //paymentTV.setText("Payment " + state + "\n with payment id is " + payID);
-                    } catch (JSONException e) {
-                        // handling json exception on below line
-                        Log.e("Error", "an extremely unlikely failure occurred: ", e);
-                    }
-                }
-            } else if (resultCode == Activity.RESULT_CANCELED) {
-                // on below line we are checking the payment status.
-                Log.i("paymentExample", "The user canceled.");
-            } else if (resultCode == PaymentActivity.RESULT_EXTRAS_INVALID) {
-                // on below line when the invalid paypal config is submitted.
-                Log.i("paymentExample", "An invalid Payment or PayPalConfiguration was submitted. Please see the docs.");
-            }
-        }
-    }
+//    @Override
+//    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+//        super.onActivityResult(requestCode, resultCode, data);
+//
+//        // If the result is from paypal
+//        if (requestCode == PAYPAL_REQUEST_CODE) {
+//
+//            // If the result is OK i.e. user has not canceled the payment
+//            if (resultCode == Activity.RESULT_OK) {
+//
+//                // Getting the payment confirmation
+//                PaymentConfirmation confirm = data.getParcelableExtra(PaymentActivity.EXTRA_RESULT_CONFIRMATION);
+//
+//                // if confirmation is not null
+//                if (confirm != null) {
+//                    try {
+//                        // Getting the payment details
+//                        String paymentDetails = confirm.toJSONObject().toString(4);
+//                        // on below line we are extracting json response and displaying it in a text view.
+//                        JSONObject payObj = new JSONObject(paymentDetails);
+//                        String payID = payObj.getJSONObject("response").getString("id");
+//                        String state = payObj.getJSONObject("response").getString("state");
+//                        //paymentTV.setText("Payment " + state + "\n with payment id is " + payID);
+//                    } catch (JSONException e) {
+//                        // handling json exception on below line
+//                        Log.e("Error", "an extremely unlikely failure occurred: ", e);
+//                    }
+//                }
+//            } else if (resultCode == Activity.RESULT_CANCELED) {
+//                // on below line we are checking the payment status.
+//                Log.i("paymentExample", "The user canceled.");
+//            } else if (resultCode == PaymentActivity.RESULT_EXTRAS_INVALID) {
+//                // on below line when the invalid paypal config is submitted.
+//                Log.i("paymentExample", "An invalid Payment or PayPalConfiguration was submitted. Please see the docs.");
+//            }
+//        }
+//    }
 
 
 }
