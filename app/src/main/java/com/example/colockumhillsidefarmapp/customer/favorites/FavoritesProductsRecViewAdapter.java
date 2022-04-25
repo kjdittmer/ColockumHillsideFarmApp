@@ -19,11 +19,12 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+
+import com.example.colockumhillsidefarmapp.customer.shopping_cart.ShoppingCartActivity;
 import com.example.colockumhillsidefarmapp.customer.store.Product;
 import com.example.colockumhillsidefarmapp.customer.store.ProductActivity;
 import com.example.colockumhillsidefarmapp.R;
 import com.example.colockumhillsidefarmapp.customer.shopping_cart.ShoppingCart;
-import com.example.colockumhillsidefarmapp.customer.shopping_cart.ShoppingCartActivity;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;

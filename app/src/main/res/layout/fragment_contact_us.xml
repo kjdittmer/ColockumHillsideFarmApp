@@ -12,22 +12,22 @@
             android:id="@+id/ContactTitle"
             android:layout_width="370dp"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:padding="10dp"
             android:text="Get in touch!"
             android:textAlignment="center"
-            android:textSize="50sp" />
+            android:textSize="50sp"
+            android:layout_centerHorizontal="true"
+            android:padding="10dp"/>
 
         <TextView
             android:id="@+id/FarmEmail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="suzanne@colockumhillsidefarm.com"
+            android:textSize="20sp"
             android:layout_below="@+id/ContactTitle"
             android:layout_centerHorizontal="true"
-            android:autoLink="email"
             android:padding="10dp"
-            android:text="suzanne@colockumhillsidefarm.com"
-            android:textSize="20sp" />
+            android:autoLink="email" />
 
         <TextView
             android:id="@+id/MCTitle"
@@ -38,25 +38,68 @@
             android:padding="10dp"
             android:text="Sign up for our newsletter!"
             android:textAlignment="center"
-            android:textSize="50sp" />
+            android:textSize="50sp"
+            />
 
-        <TextView
-            android:id="@+id/FarmMailChimpText"
-            android:layout_width="wrap_content"
+        <EditText
+            android:id="@+id/editTextTextEmailAddress"
+            android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:layout_below="@+id/MCTitle"
             android:layout_centerHorizontal="true"
+            android:ems="10"
+            android:hint="What's your email?"
+            android:inputType="textEmailAddress"
+            android:padding="10dp" />
+
+        <EditText
+            android:id="@+id/editTextFirstName"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/editTextTextEmailAddress"
+            android:layout_centerHorizontal="true"
+            android:ems="10"
+            android:hint="What's your first name?"
+            android:inputType="text"
+            android:padding="10dp" />
+
+        <EditText
+            android:id="@+id/editTextLastName"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/editTextFirstName"
+            android:layout_centerHorizontal="true"
+            android:ems="10"
+            android:hint="What's your last name?"
+            android:inputType="text"
+            android:padding="10dp" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/editTextLastName"
+            android:layout_centerHorizontal="true"
+            android:padding="10dp"
+            android:text="Sign Up!"
+            android:id="@+id/btnSignUpForNewsletter"
+            android:background="@drawable/round_button"/>
+
+        <EditText
+            android:id="@+id/hintText"
+            android:layout_width="420dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/btnSignUpForNewsletter"
             android:layout_marginTop="10dp"
             android:autoLink="web"
             android:padding="10dp"
-            android:text="Click below to subscribe to our newsletter through MailChimp. This will allow you to stay updated with any news regarding the farm, just input your name and email"
+            android:text="Click below to navigate to the Colockum Hillside Farm's website to sign up for the newsletter there instead, just enter your name and email"
             android:textSize="20sp" />
 
         <TextView
             android:id="@+id/FarmMailChimp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/FarmMailChimpText"
+            android:layout_below="@+id/hintText"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="10dp"
             android:autoLink="web"
@@ -67,5 +110,3 @@
     </RelativeLayout>
 
 </ScrollView>
-
-
