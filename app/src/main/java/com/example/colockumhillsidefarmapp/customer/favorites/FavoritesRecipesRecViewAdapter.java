@@ -98,6 +98,11 @@ public class FavoritesRecipesRecViewAdapter extends RecyclerView.Adapter<Favorit
         notifyDataSetChanged();
     }
 
+    public void filterList(ArrayList<Recipe> filteredRecipes) {
+        favoritesRecipes = filteredRecipes;
+        notifyDataSetChanged();
+    }
+
     public class ViewHolder extends RecyclerView.ViewHolder{
         private CardView parent;
         private ImageView imgRecipe;

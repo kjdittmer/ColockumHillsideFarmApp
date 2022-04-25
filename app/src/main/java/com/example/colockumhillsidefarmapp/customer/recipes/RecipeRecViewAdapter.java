@@ -18,6 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.colockumhillsidefarmapp.customer.favorites.Favorites;
 import com.example.colockumhillsidefarmapp.R;
+import com.example.colockumhillsidefarmapp.customer.store.Product;
 
 import java.util.ArrayList;
 
@@ -75,6 +76,11 @@ public class RecipeRecViewAdapter extends RecyclerView.Adapter<RecipeRecViewAdap
 
     public void setRecipes(ArrayList<Recipe> recipes) {
         this.recipes = recipes;
+        notifyDataSetChanged();
+    }
+
+    public void filterList(ArrayList<Recipe> filteredRecipes) {
+        recipes = filteredRecipes;
         notifyDataSetChanged();
     }
 

@@ -17,7 +17,7 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.example.colockumhillsidefarmapp.GlobalStorage;
+import com.example.colockumhillsidefarmapp.Storage;
 import com.example.colockumhillsidefarmapp.customer.store.Product;
 import com.example.colockumhillsidefarmapp.R;
 import com.example.colockumhillsidefarmapp.vendor.VendorDashboardActivity;
@@ -79,7 +79,7 @@ public class EditStoreProductRecViewAdapter extends RecyclerView.Adapter<EditSto
                 builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        GlobalStorage.getInstance().removeProduct(product);
+                        Storage.getInstance().removeProduct(product);
                         currentActivity.reloadStore();
                         Toast.makeText(mContext, product.getName() + " removed.", Toast.LENGTH_SHORT).show();
                     }
@@ -104,6 +104,11 @@ public class EditStoreProductRecViewAdapter extends RecyclerView.Adapter<EditSto
 
     public void setProducts(ArrayList<Product> products) {
         this.products = products;
+        notifyDataSetChanged();
+    }
+
+    public void filterList(ArrayList<Product> filteredProducts) {
+        products = filteredProducts;
         notifyDataSetChanged();
     }
 

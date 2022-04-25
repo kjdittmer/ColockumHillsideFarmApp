@@ -124,6 +124,11 @@ public class StoreProductRecViewAdapter extends RecyclerView.Adapter<StoreProduc
         notifyDataSetChanged();
     }
 
+    public void filterList(ArrayList<Product> filteredProducts) {
+        products = filteredProducts;
+        notifyDataSetChanged();
+    }
+
     public class ViewHolder extends RecyclerView.ViewHolder{
         private CardView parent;
         private ImageView imgProduct;

@@ -1,14 +1,20 @@
 package com.example.colockumhillsidefarmapp.customer.favorites;
 
+import android.content.Context;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
 
 import com.example.colockumhillsidefarmapp.R;
 import com.example.colockumhillsidefarmapp.customer.recipes.Recipe;
@@ -25,6 +31,7 @@ public class FavoritesRecipesFragment extends Fragment {
     private FavoritesRecipesRecViewAdapter adapter;
     private RecyclerView recyclerView;
     private FavoritesActivity currentActivity;
+    private ArrayList<Recipe> recipeList;
 
     public FavoritesRecipesFragment(FavoritesActivity currentActivity) {
         this.currentActivity = currentActivity;
@@ -60,9 +67,60 @@ public class FavoritesRecipesFragment extends Fragment {
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        ArrayList<Recipe> favoritesRecipes = Favorites.getInstance(getContext()).getFavoritesRecipes();
-        adapter.setRecipesFavoritesRecipes(favoritesRecipes);
+        recipeList = Favorites.getInstance(getContext()).getFavoritesRecipes();
+        adapter.setRecipesFavoritesRecipes(recipeList);
+
+        EditText txtSearch = root.findViewById(R.id.txtSearchFavoritesRecipes);
+        txtSearch.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                filter(editable.toString());
+            }
+        });
+
+        txtSearch.setOnKeyListener(new View.OnKeyListener() {
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                // If the event is a key-down event on the "enter" button
+                if ((event.getAction() == KeyEvent.ACTION_DOWN) &&
+                        (keyCode == KeyEvent.KEYCODE_ENTER)) {
+                    // Perform action on key press
+                    closeKeyboard();
+                    return true;
+                }
+                return false;
+            }
+        });
 
         return root;
+    }
+
+    private void closeKeyboard () {
+        View view = getActivity().getCurrentFocus();
+        if (view != null) {
+            InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+            imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+        }
+    }
+
+    private void filter(String text) {
+        ArrayList<Recipe> filteredRecipes = new ArrayList<>();
+
+        for (Recipe recipe : recipeList) {
+            if (recipe.getName().toLowerCase().contains(text.toLowerCase())) {
+                filteredRecipes.add(recipe);
+            }
+        }
+
+        adapter.filterList(filteredRecipes);
     }
 }

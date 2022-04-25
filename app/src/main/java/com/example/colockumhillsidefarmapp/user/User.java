@@ -1,7 +1,7 @@
 package com.example.colockumhillsidefarmapp.user;
 
-import com.example.colockumhillsidefarmapp.GlobalStorage;
 import com.example.colockumhillsidefarmapp.customer.recipes.Recipe;
+import com.example.colockumhillsidefarmapp.customer.shopping_cart.Transaction;
 import com.example.colockumhillsidefarmapp.customer.store.Product;
 
 import java.util.ArrayList;
@@ -13,6 +13,7 @@ public class User {
     private ArrayList<Recipe> favoriteRecipes;
     private ArrayList<Product> favoriteProducts;
     private ArrayList<Product> shoppingCart;
+    private ArrayList<Transaction> transactions;
 
     public User() {
 
@@ -24,7 +25,8 @@ public class User {
                 ArrayList<Product> wishlist,
                 ArrayList<Recipe> favoriteRecipes,
                 ArrayList<Product> favoriteProducts,
-                ArrayList<Product> shoppingCart
+                ArrayList<Product> shoppingCart,
+                ArrayList<Transaction> transactions
     ) {
         this.fullName = fullName;
         this.age = age;
@@ -33,6 +35,7 @@ public class User {
         this.favoriteProducts = favoriteProducts;
         this.favoriteRecipes = favoriteRecipes;
         this.shoppingCart = shoppingCart;
+        this.transactions = transactions;
     }
 
     public String getFullName() {
@@ -89,5 +92,13 @@ public class User {
 
     public void setShoppingCart(ArrayList<Product> shoppingCart) {
         this.shoppingCart = shoppingCart;
+    }
+
+    public ArrayList<Transaction> getTransactions() {
+        return transactions;
+    }
+
+    public void setTransactions(ArrayList<Transaction> transactions) {
+        this.transactions = transactions;
     }
 }

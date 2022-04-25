@@ -15,13 +15,22 @@ import android.widget.Toast;
 
 import com.example.colockumhillsidefarmapp.MainActivity;
 import com.example.colockumhillsidefarmapp.R;
+import com.example.colockumhillsidefarmapp.Storage;
 import com.example.colockumhillsidefarmapp.customer.CustomerDashboardActivity;
 import com.example.colockumhillsidefarmapp.customer.shopping_cart.CartProductRecViewAdapter;
 import com.example.colockumhillsidefarmapp.customer.shopping_cart.ShoppingCart;
 import com.example.colockumhillsidefarmapp.customer.store.Product;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 
 public class ShoppingCartActivity extends AppCompatActivity {
@@ -69,6 +78,13 @@ public class ShoppingCartActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Toast.makeText(view.getContext(), "You are being navigated to a secure checkout :)", Toast.LENGTH_SHORT
                 ).show();
+
+                HashMap<String, Integer> cartWithStringKeys = new HashMap<>();
+                for (Product product : cart.keySet()) {
+                    cartWithStringKeys.put(product.getName(), cart.get(product));
+                }
+
+                Storage.getInstance().addTransaction(cartWithStringKeys, totalCost, Calendar.getInstance().getTime());
             }
         });
 

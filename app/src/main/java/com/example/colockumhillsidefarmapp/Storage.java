@@ -1,49 +1,41 @@
 package com.example.colockumhillsidefarmapp;
 
 import android.content.Context;
-import android.content.Intent;
-import android.util.Log;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.colockumhillsidefarmapp.customer.CustomerDashboardActivity;
 import com.example.colockumhillsidefarmapp.customer.recipes.Recipe;
+import com.example.colockumhillsidefarmapp.customer.shopping_cart.Transaction;
 import com.example.colockumhillsidefarmapp.customer.store.Product;
-import com.example.colockumhillsidefarmapp.user.CustomerLoginActivity;
-import com.example.colockumhillsidefarmapp.user.User;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 
-public class GlobalStorage {
+public class Storage {
 
     private FirebaseDatabase rootNode;
     private DatabaseReference reference;
 
-    private static GlobalStorage instance;
+    private static Storage instance;
 
     private FirebaseAuth mAuth;
 
-    private GlobalStorage() {
+    private Storage() {
 
     }
 
-    public static GlobalStorage getInstance() {
+    public static Storage getInstance() {
         if(instance == null){
-            instance = new GlobalStorage();
+            instance = new Storage();
         }
         return instance;
     }
@@ -200,26 +192,31 @@ public class GlobalStorage {
         productReference.setValue(editedRecipe);
     }
 
-    /* Accessing users */
-    public void signInCustomer(String email, String password, Context mContext) {
-//        mAuth = FirebaseAuth.getInstance();
-//
-//        mAuth.signInWithEmailAndPassword(email, password)
-//                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-//                    @Override
-//                    public void onComplete(@NonNull Task<AuthResult> task) {
-//                        if (task.isSuccessful()) {
-//                            // Sign in success, update UI with the signed-in user's information
-//                            FirebaseUser user = mAuth.getCurrentUser();
-//                            User.getInstance().setCustomer(user.getEmail());
-//                        } else {
-//                            // If sign in fails, display a message to the user.
-//                            Log.w(TAG, "createUserWithEmail:failure", task.getException());
-//                            Toast.makeText(EmailPasswordActivity.this, "Authentication failed.",
-//                                    Toast.LENGTH_SHORT).show();
-//                            updateUI(null);
-//                        }
-//                    }
-//                });
+    /* Accessing transactions */
+    public void addTransaction (HashMap<String, Integer> cartWithStringKeys, double totalCost, Date date) {
+        //first get current user id
+        DatabaseReference userReference = FirebaseDatabase.getInstance().getReference("user").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("email");
+        userReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                String user = snapshot.getValue(String.class);
+                Transaction transactionToAdd = new Transaction(cartWithStringKeys, totalCost, Calendar.getInstance().getTime(), user);
+
+                //add transaction to all transactions
+                String transactionId = FirebaseDatabase.getInstance().getReference("transaction").push().getKey();
+                FirebaseDatabase.getInstance().getReference("transaction")
+                        .child(transactionId).setValue(transactionToAdd);
+
+                //add transaction to specific user's transactions
+                String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                FirebaseDatabase.getInstance().getReference("user")
+                        .child(userId).child("transactions").child(transactionId).setValue(transactionToAdd);
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
+        });
     }
 }

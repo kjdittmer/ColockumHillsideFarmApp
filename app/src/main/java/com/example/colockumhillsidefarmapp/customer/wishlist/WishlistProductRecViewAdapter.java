@@ -138,6 +138,12 @@ public class WishlistProductRecViewAdapter extends RecyclerView.Adapter<Wishlist
         return wishlist.size();
     }
 
+    public void filterList(ArrayList<Product> filteredProducts) {
+        wishlist = filteredProducts;
+        notifyDataSetChanged();
+    }
+
+
     public class ViewHolder extends RecyclerView.ViewHolder {
         private CardView parentWishlistItem;
         private ImageView imgProductWishlistItem;

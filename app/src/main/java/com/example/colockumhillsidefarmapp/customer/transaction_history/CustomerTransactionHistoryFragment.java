@@ -8,16 +8,10 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
-import com.example.colockumhillsidefarmapp.GlobalStorage;
 import com.example.colockumhillsidefarmapp.R;
-import com.example.colockumhillsidefarmapp.customer.store.Product;
-import com.example.colockumhillsidefarmapp.customer.store.StoreProductRecViewAdapter;
-
-import java.util.ArrayList;
 
 public class CustomerTransactionHistoryFragment extends Fragment {
 

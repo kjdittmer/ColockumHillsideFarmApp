@@ -10,7 +10,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-import com.example.colockumhillsidefarmapp.GlobalStorage
+import com.example.colockumhillsidefarmapp.Storage
 import com.example.colockumhillsidefarmapp.R
 import com.example.colockumhillsidefarmapp.databinding.FragmentRecipesBinding
 
@@ -56,7 +56,7 @@ class RecipesFragment : Fragment() {
 //
 //        }
         adapter = RecipeRecViewAdapter(activity)
-        val allRecipes = GlobalStorage.getInstance().getAllRecipes(adapter)
+        val allRecipes = Storage.getInstance().getAllRecipes(adapter)
 
         recipeRecView = root.findViewById(R.id.recipeRecView)
 
@@ -68,7 +68,7 @@ class RecipesFragment : Fragment() {
 
         layout = root.findViewById(R.id.swipeRefreshLayoutRecipes)
         layout.setOnRefreshListener {
-            val allRecipes = GlobalStorage.getInstance().getAllRecipes(adapter)
+            val allRecipes = Storage.getInstance().getAllRecipes(adapter)
             adapter.setRecipes(allRecipes)
             layout.isRefreshing = false;
         }

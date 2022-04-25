@@ -12,7 +12,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.colockumhillsidefarmapp.GlobalStorage;
+import com.example.colockumhillsidefarmapp.Storage;
 import com.example.colockumhillsidefarmapp.customer.store.Product;
 import com.example.colockumhillsidefarmapp.R;
 import com.example.colockumhillsidefarmapp.vendor.VendorDashboardActivity;
@@ -53,7 +53,7 @@ public class EditProductActivity extends AppCompatActivity {
                     Product editedProduct = new Product(productToEdit.getId(), txtNameEditProdAct.getText().toString(), Integer.parseInt(txtQuantityEditProdAct.getText().toString()), txtImageUrlEditProdAct.getText().toString(),
                             txtShortDescEditProdAct.getText().toString(), txtLongDescEditProdAct.getText().toString(), Double.parseDouble(txtPriceEditProdAct.getText().toString()), txtPackageQuantityEditProdAct.getText().toString());
 
-                    GlobalStorage.getInstance().editProduct(productToEdit, editedProduct);
+                    Storage.getInstance().editProduct(productToEdit, editedProduct);
                     Toast.makeText(EditProductActivity.this, productToEdit.getName() + " edited.", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(view.getContext(), VendorDashboardActivity.class);
                     startActivity(intent);

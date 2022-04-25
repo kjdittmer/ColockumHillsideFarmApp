@@ -24,7 +24,9 @@
         android:layout_marginRight="20dp"
         android:layout_marginTop="20dp"
         android:inputType="textPersonName"
-        android:hint="Your full name"/>
+        android:hint="Your full name"
+        android:lines="1"
+        />
 
     <EditText
         android:id="@+id/txtAgeNewCustomer"
@@ -35,7 +37,9 @@
         android:layout_marginRight="20dp"
         android:layout_marginTop="5dp"
         android:inputType="number"
-        android:hint="Your age"/>
+        android:hint="Your age"
+        android:lines="1"
+        />
 
     <EditText
         android:id="@+id/txtEmailNewCustomer"
@@ -46,7 +50,9 @@
         android:layout_marginRight="20dp"
         android:layout_marginTop="5dp"
         android:inputType="textEmailAddress"
-        android:hint="Your email"/>
+        android:hint="Your email"
+        android:lines="1"
+        />
 
     <EditText
         android:id="@+id/txtPasswordNewCustomer"
@@ -57,7 +63,9 @@
         android:layout_marginRight="20dp"
         android:layout_marginTop="5dp"
         android:inputType="textPassword"
-        android:hint="Your password"/>
+        android:hint="Your password"
+        android:lines="1"
+        />
 
     <EditText
         android:id="@+id/txtReenterPasswordNewCustomer"
@@ -68,7 +76,9 @@
         android:layout_marginRight="20dp"
         android:layout_marginTop="5dp"
         android:inputType="textPassword"
-        android:hint="Re-enter password"/>
+        android:hint="Re-enter password"
+        android:lines="1"
+        />
 
     <Button
         android:id="@+id/btnCreateAccountNewCustomer"

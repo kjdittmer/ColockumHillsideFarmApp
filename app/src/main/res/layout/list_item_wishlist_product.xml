@@ -23,33 +23,6 @@
             android:layout_centerHorizontal="true"
             />
 
-        <ImageButton
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:src="@drawable/ic_baseline_delete_white"
-            android:layout_margin="5dp"
-            android:id="@+id/imgDeleteWishlistItem"
-            android:layout_below="@+id/txtProductNameWishlistItem"
-            android:background="@drawable/round_button"
-            />
-
-        <ImageButton
-            android:id="@+id/btnAddToCartWishlistItem"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:src="@drawable/ic_baseline_shopping_cart_"
-            android:background="@drawable/round_button"
-            android:layout_margin="5dp"
-            android:layout_alignParentRight="true"
-            android:layout_below="@+id/txtProductNameWishlistItem"/>
-
-        <Spinner
-            android:id="@+id/spnrQuantityWishlistItem"
-            android:layout_width="80dp"
-            android:layout_height="50dp"
-            android:layout_toLeftOf="@+id/btnAddToCartWishlistItem"
-            android:layout_below="@+id/txtProductNameWishlistItem"/>
-
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -81,6 +54,47 @@
             android:layout_centerHorizontal="true"
             android:layout_margin="5dp"
             android:id="@+id/txtPriceWishlistItem"/>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txtPriceWishlistItem"
+            android:layout_centerHorizontal="true">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:id="@+id/layoutButtonsWishlistProduct">
+
+                <ImageButton
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/ic_baseline_delete_white"
+                    android:layout_margin="5dp"
+                    android:id="@+id/imgDeleteWishlistItem"
+                    android:background="@drawable/round_button" />
+
+                <ImageButton
+                    android:id="@+id/btnAddToCartWishlistItem"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/ic_baseline_shopping_cart_"
+                    android:background="@drawable/round_button"
+                    android:layout_toRightOf="@+id/imgDeleteWishlistItem"
+                    android:layout_margin="5dp"/>
+
+            </RelativeLayout>
+
+            <Spinner
+                android:id="@+id/spnrQuantityWishlistItem"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/layoutButtonsWishlistProduct"/>
+
+
+        </RelativeLayout>
 
     </RelativeLayout>
 

@@ -1,11 +1,17 @@
 package com.example.colockumhillsidefarmapp.vendor.update_recipes;
 
+import android.content.Context;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -14,7 +20,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
-import com.example.colockumhillsidefarmapp.GlobalStorage;
+import com.example.colockumhillsidefarmapp.Storage;
 import com.example.colockumhillsidefarmapp.R;
 import com.example.colockumhillsidefarmapp.customer.recipes.Recipe;
 import com.example.colockumhillsidefarmapp.vendor.VendorDashboardActivity;
@@ -26,6 +32,7 @@ public class UpdateRecipesFragment extends Fragment {
     private RecyclerView updateRecipesRecView;
     private UpdateRecipeRecViewAdapter adapter;
     private SwipeRefreshLayout layout;
+    private ArrayList<Recipe> recipeList;
 
     @Nullable
     @Override
@@ -35,22 +42,53 @@ public class UpdateRecipesFragment extends Fragment {
         setHasOptionsMenu(true);
 
         adapter = new UpdateRecipeRecViewAdapter(getContext(), (VendorDashboardActivity) getActivity());
-        ArrayList<Recipe> allRecipes = GlobalStorage.getInstance().getAllRecipes(adapter);
+        recipeList = Storage.getInstance().getAllRecipes(adapter);
 
         updateRecipesRecView = root.findViewById(R.id.updateRecipesRecView);
 
         updateRecipesRecView.setAdapter(adapter);
         updateRecipesRecView.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        adapter.setRecipes(allRecipes);
+        adapter.setRecipes(recipeList);
 
         layout = root.findViewById(R.id.swipeRefreshLayoutUpdateRecipes);
         layout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                ArrayList<Recipe> allRecipes = GlobalStorage.getInstance().getAllRecipes(adapter);
-                adapter.setRecipes(allRecipes);
+                recipeList = Storage.getInstance().getAllRecipes(adapter);
+                adapter.setRecipes(recipeList);
                 layout.setRefreshing(false);
+            }
+        });
+
+        EditText txtSearch = root.findViewById(R.id.txtSearchUpdateRecipes);
+        txtSearch.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                filter(editable.toString());
+            }
+        });
+
+        txtSearch.setOnKeyListener(new View.OnKeyListener() {
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                // If the event is a key-down event on the "enter" button
+                if ((event.getAction() == KeyEvent.ACTION_DOWN) &&
+                        (keyCode == KeyEvent.KEYCODE_ENTER)) {
+                    // Perform action on key press
+                    closeKeyboard();
+                    return true;
+                }
+                return false;
             }
         });
 
@@ -60,5 +98,25 @@ public class UpdateRecipesFragment extends Fragment {
     @Override
     public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
         inflater.inflate(R.menu.update_recipes, menu);
+    }
+
+    private void closeKeyboard () {
+        View view = getActivity().getCurrentFocus();
+        if (view != null) {
+            InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+            imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+        }
+    }
+
+    private void filter(String text) {
+        ArrayList<Recipe> filteredRecipes = new ArrayList<>();
+
+        for (Recipe recipe : recipeList) {
+            if (recipe.getName().toLowerCase().contains(text.toLowerCase())) {
+                filteredRecipes.add(recipe);
+            }
+        }
+
+        adapter.filterList(filteredRecipes);
     }
 }

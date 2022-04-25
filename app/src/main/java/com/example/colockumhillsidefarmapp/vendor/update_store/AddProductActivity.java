@@ -24,7 +24,7 @@ import android.widget.Toast;
 
 import com.example.colockumhillsidefarmapp.customer.store.Product;
 import com.example.colockumhillsidefarmapp.R;
-import com.example.colockumhillsidefarmapp.GlobalStorage;
+import com.example.colockumhillsidefarmapp.Storage;
 import com.example.colockumhillsidefarmapp.vendor.VendorDashboardActivity;
 
 public class AddProductActivity extends AppCompatActivity {
@@ -73,7 +73,7 @@ public class AddProductActivity extends AppCompatActivity {
                     builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
-                            GlobalStorage.getInstance().addProduct(new Product(-1, name, quantity, imageUrl, shortDesc, longDesc, price, packageQuantity));
+                            Storage.getInstance().addProduct(new Product(-1, name, quantity, imageUrl, shortDesc, longDesc, price, packageQuantity));
                             Toast.makeText(view.getContext(), name + " was added to the store.", Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(view.getContext(), VendorDashboardActivity.class);
                             startActivity(intent);

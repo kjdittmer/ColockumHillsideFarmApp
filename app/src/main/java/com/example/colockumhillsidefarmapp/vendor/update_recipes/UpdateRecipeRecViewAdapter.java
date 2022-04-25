@@ -17,7 +17,7 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.example.colockumhillsidefarmapp.GlobalStorage;
+import com.example.colockumhillsidefarmapp.Storage;
 import com.example.colockumhillsidefarmapp.R;
 import com.example.colockumhillsidefarmapp.customer.recipes.Recipe;
 import com.example.colockumhillsidefarmapp.vendor.VendorDashboardActivity;
@@ -75,7 +75,7 @@ public class UpdateRecipeRecViewAdapter extends RecyclerView.Adapter<UpdateRecip
                 builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        GlobalStorage.getInstance().removeRecipe(recipe);
+                        Storage.getInstance().removeRecipe(recipe);
                         currentActivity.reloadRecipes();
                         Toast.makeText(mContext, recipe.getName() + " removed.", Toast.LENGTH_SHORT).show();
                     }
@@ -100,6 +100,11 @@ public class UpdateRecipeRecViewAdapter extends RecyclerView.Adapter<UpdateRecip
 
     public void setRecipes(ArrayList<Recipe> recipes) {
         this.recipes = recipes;
+        notifyDataSetChanged();
+    }
+
+    public void filterList(ArrayList<Recipe> filteredRecipes) {
+        recipes = filteredRecipes;
         notifyDataSetChanged();
     }
 

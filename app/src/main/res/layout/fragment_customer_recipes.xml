@@ -6,7 +6,17 @@
     android:layout_height="match_parent"
     tools:context=".customer.recipes.RecipesFragment">
 
+    <EditText
+        android:id="@+id/txtSearchCustomerRecipes"
+        android:inputType="text"
+        android:hint="Search for a recipe ..."
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp" />
+
+
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:layout_below="@+id/txtSearchCustomerRecipes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/swipeRefreshLayoutRecipes"

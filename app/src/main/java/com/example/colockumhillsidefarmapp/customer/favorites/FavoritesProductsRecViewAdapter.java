@@ -138,6 +138,12 @@ public class FavoritesProductsRecViewAdapter extends RecyclerView.Adapter<Favori
         return favoritesProducts.size();
     }
 
+    public void filterList(ArrayList<Product> filteredProducts) {
+        favoritesProducts = filteredProducts;
+        notifyDataSetChanged();
+    }
+
+
     public class ViewHolder extends RecyclerView.ViewHolder {
         private CardView parentWishlistItem;
         private ImageView imgProductWishlistItem;
