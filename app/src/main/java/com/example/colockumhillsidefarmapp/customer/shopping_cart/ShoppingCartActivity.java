@@ -81,10 +81,10 @@ public class ShoppingCartActivity extends AppCompatActivity {
 
                 HashMap<String, Integer> cartWithStringKeys = new HashMap<>();
                 for (Product product : cart.keySet()) {
-                    cartWithStringKeys.put(product.getName(), cart.get(product));
+                    Storage.getInstance().addTransaction(product, cart.get(product), product.getPrice(), Calendar.getInstance().getTime());
                 }
 
-                Storage.getInstance().addTransaction(cartWithStringKeys, totalCost, Calendar.getInstance().getTime());
+
             }
         });
 

@@ -193,14 +193,14 @@ public class Storage {
     }
 
     /* Accessing transactions */
-    public void addTransaction (HashMap<String, Integer> cartWithStringKeys, double totalCost, Date date) {
+    public void addTransaction (Product product, int quantity, double cost, Date date) {
         //first get current user id
         DatabaseReference userReference = FirebaseDatabase.getInstance().getReference("user").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("email");
         userReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 String user = snapshot.getValue(String.class);
-                Transaction transactionToAdd = new Transaction(cartWithStringKeys, totalCost, Calendar.getInstance().getTime(), user);
+                Transaction transactionToAdd = new Transaction(product, quantity, cost*quantity, date, user);
 
                 //add transaction to all transactions
                 String transactionId = FirebaseDatabase.getInstance().getReference("transaction").push().getKey();

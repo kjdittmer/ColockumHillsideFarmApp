@@ -76,7 +76,7 @@
         <entry key="app/src/main/res/layout/farm_info.xml" value="0.3802083333333333" />
         <entry key="app/src/main/res/layout/fragement_update_store.xml" value="0.17828131680205217" />
         <entry key="app/src/main/res/layout/fragment_about_us.xml" value="0.19166666666666668" />
-        <entry key="app/src/main/res/layout/fragment_analytics.xml" value="0.17828131680205217" />
+        <entry key="app/src/main/res/layout/fragment_analytics.xml" value="0.335" />
         <entry key="app/src/main/res/layout/fragment_contact_us.xml" value="0.29635416666666664" />
         <entry key="app/src/main/res/layout/fragment_customer_about_us.xml" value="0.17828131680205217" />
         <entry key="app/src/main/res/layout/fragment_customer_contact_us.xml" value="0.17828131680205217" />
@@ -101,6 +101,7 @@
         <entry key="app/src/main/res/layout/list_item_product.xml" value="0.3802083333333333" />
         <entry key="app/src/main/res/layout/list_item_recipe.xml" value="0.19166666666666668" />
         <entry key="app/src/main/res/layout/list_item_store_product.xml" value="0.335" />
+        <entry key="app/src/main/res/layout/list_item_transaction.xml" value="0.23514322359982898" />
         <entry key="app/src/main/res/layout/list_item_wishlist_product.xml" value="0.335" />
         <entry key="app/src/main/res/layout/nav_header_main.xml" value="0.2171875" />
         <entry key="app/src/main/res/layout/spinner_text_cart_item.xml" value="0.2171875" />
