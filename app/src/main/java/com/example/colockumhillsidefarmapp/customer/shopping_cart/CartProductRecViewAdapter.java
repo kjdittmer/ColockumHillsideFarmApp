@@ -20,6 +20,7 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.colockumhillsidefarmapp.DBInterface;
 import com.example.colockumhillsidefarmapp.customer.store.Product;
 import com.example.colockumhillsidefarmapp.customer.store.ProductActivity;
 import com.example.colockumhillsidefarmapp.R;
@@ -32,19 +33,19 @@ public class CartProductRecViewAdapter extends RecyclerView.Adapter<CartProductR
     private static final String PRODUCT = "product";
 
 
-    private ArrayList<Product> productsInCart;
-    private HashMap<Product, Integer> cart;
+//    private ArrayList<Product> productsInCart;
+//    private HashMap<Product, Integer> cart;
     private Context mContext;
     private ShoppingCartActivity currentActivity;
+    private ArrayList<ShoppingCartItem> shoppingCart;
 
     public CartProductRecViewAdapter(Context mContext, ShoppingCartActivity currentActivity) {
         this.mContext = mContext;
-        cart = ShoppingCart.getInstance().getCart();
         this.currentActivity = currentActivity;
     }
 
-    public void setProductsInCart(ArrayList<Product> productsInCart) {
-        this.productsInCart = productsInCart;
+    public void setShoppingCart(ArrayList<ShoppingCartItem> shoppingCartItems) {
+        this.shoppingCart = shoppingCartItems;
     }
 
     @NonNull
@@ -56,8 +57,11 @@ public class CartProductRecViewAdapter extends RecyclerView.Adapter<CartProductR
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        int quantityInCart = cart.get(productsInCart.get(holder.getAdapterPosition()));
-        Product product = productsInCart.get(holder.getAdapterPosition());
+        ShoppingCartItem shoppingCartItem = shoppingCart.get(holder.getAdapterPosition());
+        int quantityInCart = shoppingCart.get(holder.getAdapterPosition()).getQuantity();
+        Product product = shoppingCart.get(holder.getAdapterPosition()).getProduct();
+//        int quantityInCart = cart.get(productsInCart.get(holder.getAdapterPosition()));
+//        Product product = productsInCart.get(holder.getAdapterPosition());
 
         holder.txtProductNameCartItem.setText(product.getName());
 
@@ -94,8 +98,8 @@ public class CartProductRecViewAdapter extends RecyclerView.Adapter<CartProductR
 //                if (firstTrigger) {
 //                    firstTrigger = false;
 //                } else {
-                    ShoppingCart.getInstance().setProductQuantity(product, (int) quantity.get(i));
-                    currentActivity.reload();
+                    //ShoppingCart.getInstance().setProductQuantity(product, (int) quantity.get(i));
+                    DBInterface.getInstance().updateQuantity(shoppingCartItem, (int) quantity.get(i), currentActivity);
 //                }
             }
 
@@ -122,7 +126,8 @@ public class CartProductRecViewAdapter extends RecyclerView.Adapter<CartProductR
                 builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        ShoppingCart.getInstance().removeProductFromCart(product);
+                        ShoppingCartItem shoppingCartItemToRemove = new ShoppingCartItem(product, quantityInCart);
+                        DBInterface.getInstance().removeProductFromShoppingCart(shoppingCartItemToRemove);
                         currentActivity.reload();
                         Toast.makeText(mContext, product.getName() + " Removed", Toast.LENGTH_SHORT).show();
                     }
@@ -142,13 +147,13 @@ public class CartProductRecViewAdapter extends RecyclerView.Adapter<CartProductR
 
     @Override
     public int getItemCount() {
-        return cart.keySet().size();
+        return shoppingCart.size();
     }
 
     public double getTotalCost(){
         double totalCost = 0;
-        for(Product productInCart : cart.keySet()) {
-            totalCost += productInCart.getPrice() * cart.get(productInCart);
+        for (ShoppingCartItem shoppingCartItem : shoppingCart) {
+            totalCost += shoppingCartItem.getProduct().getPrice() * shoppingCartItem.getQuantity();
         }
         return totalCost;
     }

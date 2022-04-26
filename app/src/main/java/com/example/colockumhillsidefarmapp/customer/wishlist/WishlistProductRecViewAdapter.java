@@ -23,6 +23,7 @@ import com.example.colockumhillsidefarmapp.R;
 import com.example.colockumhillsidefarmapp.DBInterface;
 import com.example.colockumhillsidefarmapp.customer.shopping_cart.ShoppingCart;
 import com.example.colockumhillsidefarmapp.customer.shopping_cart.ShoppingCartActivity;
+import com.example.colockumhillsidefarmapp.customer.shopping_cart.ShoppingCartItem;
 import com.example.colockumhillsidefarmapp.customer.store.Product;
 import com.example.colockumhillsidefarmapp.customer.store.ProductActivity;
 
@@ -31,7 +32,7 @@ import java.util.ArrayList;
 
 public class WishlistProductRecViewAdapter extends RecyclerView.Adapter<WishlistProductRecViewAdapter.ViewHolder>{
 
-    private static final String PRODUCT_ID = "productId";
+    private static final String PRODUCT = "product";
 
 
     private ArrayList<Product> wishlist;
@@ -76,7 +77,7 @@ public class WishlistProductRecViewAdapter extends RecyclerView.Adapter<Wishlist
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(mContext, ProductActivity.class);
-                intent.putExtra(PRODUCT_ID, wishlist.get(holder.getAdapterPosition()).getId());
+                intent.putExtra(PRODUCT, product);
                 mContext.startActivity(intent);
             }
         });
@@ -120,7 +121,8 @@ public class WishlistProductRecViewAdapter extends RecyclerView.Adapter<Wishlist
             public void onClick(View view) {
                 int quantitySelected = (int)holder.spnrQuantityWishlistItem.getSelectedItem();
 
-                ShoppingCart.getInstance().addProductToCart(product, quantitySelected);
+                //ShoppingCart.getInstance().addProductToCart(product, quantitySelected);
+                DBInterface.getInstance().addProductToShoppingCart(new ShoppingCartItem(product, quantitySelected));
                 DBInterface.getInstance().removeProductFromWishlist(product);
 
                 String plurality = "";

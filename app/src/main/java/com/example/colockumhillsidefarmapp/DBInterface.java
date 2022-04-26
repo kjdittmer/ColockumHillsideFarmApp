@@ -1,9 +1,15 @@
 package com.example.colockumhillsidefarmapp;
 
+import android.app.Activity;
+import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.colockumhillsidefarmapp.customer.recipes.Recipe;
+import com.example.colockumhillsidefarmapp.customer.shopping_cart.ShoppingCart;
+import com.example.colockumhillsidefarmapp.customer.shopping_cart.ShoppingCartActivity;
+import com.example.colockumhillsidefarmapp.customer.shopping_cart.ShoppingCartItem;
 import com.example.colockumhillsidefarmapp.customer.shopping_cart.Transaction;
 import com.example.colockumhillsidefarmapp.customer.store.Product;
 import com.google.firebase.auth.FirebaseAuth;
@@ -13,8 +19,10 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 
 public class DBInterface {
 
@@ -384,8 +392,8 @@ public class DBInterface {
     }
 
     /* Accessing shopping cart */
-    public ArrayList<Product> getShoppingCart(RecyclerView.Adapter adapter) {
-        ArrayList<Product> allProducts = new ArrayList<>();
+    public ArrayList<ShoppingCartItem> getShoppingCart(RecyclerView.Adapter adapter) {
+        ArrayList<ShoppingCartItem> shoppingCart = new ArrayList<>();
 
         rootNode = FirebaseDatabase.getInstance();
         reference = rootNode.getReference("user").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("shoppingCart");
@@ -393,8 +401,8 @@ public class DBInterface {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot currentSnapshot : snapshot.getChildren()) {
-                    Product newProduct = currentSnapshot.getValue(Product.class);
-                    allProducts.add(newProduct);
+                    ShoppingCartItem newShoppingCartItem = currentSnapshot.getValue(ShoppingCartItem.class);
+                    shoppingCart.add(newShoppingCartItem);
                 }
                 adapter.notifyDataSetChanged();
             }
@@ -404,23 +412,21 @@ public class DBInterface {
 
             }
         });
-        return allProducts;
+        return shoppingCart;
     }
 
-    public void addProductToShoppingCart (Product product) {
-        //first get current user id
+    public void addProductToShoppingCart (ShoppingCartItem shoppingCartItem) {
         String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
-        //add transaction to specific user's transactions
         FirebaseDatabase.getInstance().getReference("user")
-                .child(userId).child("shoppingCart").child(String.valueOf(product.getId())).setValue(product);
+                .child(userId).child("shoppingCart").child(String.valueOf(shoppingCartItem.getProduct().getId())).setValue(shoppingCartItem);
     }
 
-    public void removeProductFromShoppingCart (Product product) {
+    public void removeProductFromShoppingCart (ShoppingCartItem shoppingCartItem) {
         String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
         rootNode = FirebaseDatabase.getInstance();
         reference = rootNode.getReference("user").child(userId).child("shoppingCart");
-        reference.child(String.valueOf(product.getId())).removeValue();
+        reference.child(String.valueOf(shoppingCartItem.getProduct().getId())).removeValue();
     }
 
     public void clearShoppingCart () {
@@ -428,5 +434,34 @@ public class DBInterface {
         rootNode = FirebaseDatabase.getInstance();
         reference = rootNode.getReference("user").child(userId).child("shoppingCart");
         reference.removeValue();
+    }
+
+    public void updateQuantity (ShoppingCartItem shoppingCartItem, int newQuantity, ShoppingCartActivity currentActivity) {
+        ShoppingCartItem updatedItem = new ShoppingCartItem(shoppingCartItem.getProduct(), newQuantity);
+        addProductToShoppingCart(updatedItem);
+        currentActivity.reload();
+    }
+
+    public void setTotalCost(TextView textView) {
+        double totalCost = 0;
+        rootNode = FirebaseDatabase.getInstance();
+        reference = rootNode.getReference("user").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("shoppingCart");
+        reference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                double totalCost = 0;
+                for (DataSnapshot currentSnapshot : snapshot.getChildren()) {
+                    ShoppingCartItem newShoppingCartItem = currentSnapshot.getValue(ShoppingCartItem.class);
+                    totalCost += newShoppingCartItem.getQuantity() * newShoppingCartItem.getProduct().getPrice();
+                }
+                DecimalFormat df = new DecimalFormat("0.00");
+                textView.setText("Total: $" + df.format(totalCost));
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 }

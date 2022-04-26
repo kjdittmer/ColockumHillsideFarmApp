@@ -22,6 +22,7 @@ import com.example.colockumhillsidefarmapp.DBInterface;
 import com.example.colockumhillsidefarmapp.customer.favorites.Favorites;
 import com.example.colockumhillsidefarmapp.customer.shopping_cart.ShoppingCart;
 import com.example.colockumhillsidefarmapp.customer.shopping_cart.ShoppingCartActivity;
+import com.example.colockumhillsidefarmapp.customer.shopping_cart.ShoppingCartItem;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -79,7 +80,8 @@ public class StoreProductRecViewAdapter extends RecyclerView.Adapter<StoreProduc
             public void onClick(View view) {
                 int quantitySelected = (int)holder.spnrQuantityStoreFrag.getSelectedItem();
 
-                ShoppingCart.getInstance().addProductToCart(product, quantitySelected);
+                //ShoppingCart.getInstance().addProductToCart(product, quantitySelected);
+                DBInterface.getInstance().addProductToShoppingCart(new ShoppingCartItem(product, quantitySelected));
 
                 String plurality = "";
                 if (quantitySelected > 1) {

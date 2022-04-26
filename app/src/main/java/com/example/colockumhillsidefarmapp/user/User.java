@@ -1,6 +1,8 @@
 package com.example.colockumhillsidefarmapp.user;
 
 import com.example.colockumhillsidefarmapp.customer.recipes.Recipe;
+import com.example.colockumhillsidefarmapp.customer.shopping_cart.ShoppingCart;
+import com.example.colockumhillsidefarmapp.customer.shopping_cart.ShoppingCartItem;
 import com.example.colockumhillsidefarmapp.customer.shopping_cart.Transaction;
 import com.example.colockumhillsidefarmapp.customer.store.Product;
 
@@ -12,7 +14,7 @@ public class User {
     private ArrayList<Product> wishlist;
     private ArrayList<Recipe> favoriteRecipes;
     private ArrayList<Product> favoriteProducts;
-    private ArrayList<Product> shoppingCart;
+    private ArrayList<ShoppingCartItem> shoppingCart;
     private ArrayList<Transaction> transactions;
 
     public User() {
@@ -25,7 +27,7 @@ public class User {
                 ArrayList<Product> wishlist,
                 ArrayList<Recipe> favoriteRecipes,
                 ArrayList<Product> favoriteProducts,
-                ArrayList<Product> shoppingCart,
+                ArrayList<ShoppingCartItem> shoppingCart,
                 ArrayList<Transaction> transactions
     ) {
         this.fullName = fullName;
@@ -86,11 +88,11 @@ public class User {
         this.favoriteProducts = favoriteProducts;
     }
 
-    public ArrayList<Product> getShoppingCart() {
+    public ArrayList<ShoppingCartItem> getShoppingCart() {
         return shoppingCart;
     }
 
-    public void setShoppingCart(ArrayList<Product> shoppingCart) {
+    public void setShoppingCart(ArrayList<ShoppingCartItem> shoppingCart) {
         this.shoppingCart = shoppingCart;
     }
 

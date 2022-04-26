@@ -56,9 +56,10 @@ ShoppingCartActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private TextView txtTotalShoppingCartAct;
     private Button btnContinueShoppingShoppingCartAct, btnCheckoutShoppingCartAct;
-    private ArrayList<Product> productsInCart;
-    private HashMap<Product, Integer> cart;
+//    private ArrayList<Product> productsInCart;
+//    private HashMap<Product, Integer> cart;
     private PaymentsClient paymentsClient;
+    ArrayList<ShoppingCartItem> shoppingCart;
 
 
 
@@ -103,7 +104,11 @@ ShoppingCartActivity extends AppCompatActivity {
     }
 
     private double getTotalCost() {
-        return adapter.getTotalCost();
+        double totalCost = 0;
+        for (ShoppingCartItem shoppingCartItem : shoppingCart) {
+            totalCost += shoppingCartItem.getProduct().getPrice() * shoppingCartItem.getQuantity();
+        }
+        return totalCost;
     }
 
     private void setData() {
@@ -111,26 +116,33 @@ ShoppingCartActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        productsInCart = new ArrayList<>();
-        cart = ShoppingCart.getInstance().getCart();
-        for (Product product : cart.keySet()){
-            productsInCart.add(product);
-        }
-        adapter.setProductsInCart(productsInCart);
+        shoppingCart = DBInterface.getInstance().getShoppingCart(adapter);
 
-        double totalCost = adapter.getTotalCost();
-        DecimalFormat df = new DecimalFormat("0.00");
-        txtTotalShoppingCartAct.setText("Total: $" + df.format(totalCost));
+//        productsInCart = new ArrayList<>();
+//        cart = ShoppingCart.getInstance().getCart();
+//        for (Product product : cart.keySet()){
+//            productsInCart.add(product);
+//        }
+        adapter.setShoppingCart(shoppingCart);
+
+        DBInterface.getInstance().setTotalCost(txtTotalShoppingCartAct);
 
         btnCheckoutShoppingCartAct.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
             public void onClick(View view) {
+                //adapter.notifyDataSetChanged();
+                //reload();
                 requestPayment(view);
                 //getPayment();   /* this is for the paypal */
-                for (Product product : cart.keySet()) {
-                    DBInterface.getInstance().addTransaction(product, cart.get(product), product.getPrice(), Calendar.getInstance().getTime());
+//                for (Product product : cart.keySet()) {
+//                    DBInterface.getInstance().addTransaction(product, cart.get(product), product.getPrice(), Calendar.getInstance().getTime());
+//                }
+                for (ShoppingCartItem shoppingCartItem : shoppingCart) {
+                    DBInterface.getInstance().addTransaction(shoppingCartItem.getProduct(),
+                            shoppingCartItem.getQuantity(), shoppingCartItem.getProduct().getPrice(), Calendar.getInstance().getTime());
                 }
+                //DBInterface.getInstance().clearShoppingCart();
                 Toast.makeText(view.getContext(), "Please set up Google Pay", Toast.LENGTH_SHORT);
             }
         });

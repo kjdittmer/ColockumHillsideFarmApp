@@ -17,6 +17,7 @@ import com.example.colockumhillsidefarmapp.MainActivity;
 import com.example.colockumhillsidefarmapp.R;
 import com.example.colockumhillsidefarmapp.customer.CustomerDashboardActivity;
 import com.example.colockumhillsidefarmapp.customer.recipes.Recipe;
+import com.example.colockumhillsidefarmapp.customer.shopping_cart.ShoppingCartItem;
 import com.example.colockumhillsidefarmapp.customer.shopping_cart.Transaction;
 import com.example.colockumhillsidefarmapp.customer.store.Product;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -103,7 +104,7 @@ public class NewCustomerActivity extends AppCompatActivity {
                                     new ArrayList<Product>(),
                                     new ArrayList<Recipe>(),
                                     new ArrayList<Product>(),
-                                    new ArrayList<Product>(),
+                                    new ArrayList<ShoppingCartItem>(),
                                     new ArrayList<Transaction>()
                             );
                             FirebaseDatabase.getInstance().getReference("user")
