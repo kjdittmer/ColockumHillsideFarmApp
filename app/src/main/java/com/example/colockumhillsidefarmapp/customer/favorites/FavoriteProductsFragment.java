@@ -6,6 +6,7 @@ import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -16,36 +17,33 @@ import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 
+import com.example.colockumhillsidefarmapp.DBInterface;
+import com.example.colockumhillsidefarmapp.customer.store.Product;
 import com.example.colockumhillsidefarmapp.R;
-import com.example.colockumhillsidefarmapp.customer.recipes.Recipe;
+import com.google.android.gms.auth.api.signin.internal.Storage;
 
 import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link FavoritesRecipesFragment#newInstance} factory method to
+ * Use the {@link FavoriteProductsFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class FavoritesRecipesFragment extends Fragment {
+public class FavoriteProductsFragment extends Fragment {
 
-    private FavoritesRecipesRecViewAdapter adapter;
+    private FavoriteProductsRecViewAdapter adapter;
     private RecyclerView recyclerView;
     private FavoritesActivity currentActivity;
-    private ArrayList<Recipe> recipeList;
+    private ArrayList<Product> productList;
+    private SwipeRefreshLayout layout;
 
-    public FavoritesRecipesFragment(FavoritesActivity currentActivity) {
-        this.currentActivity = currentActivity;
+    public FavoriteProductsFragment(FavoritesActivity currentActivity) {
         // Required empty public constructor
+        this.currentActivity = currentActivity;
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @return A new instance of fragment FavoritesRecipesFragment.
-     */
-    public static FavoritesRecipesFragment newInstance(FavoritesActivity currentActivity) {
-        FavoritesRecipesFragment fragment = new FavoritesRecipesFragment(currentActivity);
+    public static FavoriteProductsFragment newInstance(FavoritesActivity currentActivity) {
+        FavoriteProductsFragment fragment = new FavoriteProductsFragment(currentActivity);
         return fragment;
     }
 
@@ -59,18 +57,28 @@ public class FavoritesRecipesFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        ViewGroup root = (ViewGroup) inflater.inflate(R.layout.fragment_favorites_recipes, container, false);
+        ViewGroup root = (ViewGroup) inflater.inflate(R.layout.fragment_favorites_products, container, false);
 
-        recyclerView = root.findViewById(R.id.favoritesRecipesRecView);
+        recyclerView = root.findViewById(R.id.favoritesProductsRecView);
 
-        adapter = new FavoritesRecipesRecViewAdapter(getContext(), currentActivity);
+        adapter = new FavoriteProductsRecViewAdapter(getContext(), currentActivity);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        recipeList = Favorites.getInstance(getContext()).getFavoritesRecipes();
-        adapter.setRecipesFavoritesRecipes(recipeList);
+        productList = DBInterface.getInstance().getFavoriteProducts(adapter);
+        adapter.setProductsFavoritesProducts(productList);
 
-        EditText txtSearch = root.findViewById(R.id.txtSearchFavoritesRecipes);
+        layout = root.findViewById(R.id.swipeRefreshLayoutFavoriteProducts);
+        layout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                productList = DBInterface.getInstance().getFavoriteProducts(adapter);
+                adapter.setProductsFavoritesProducts(productList);
+                layout.setRefreshing(false);
+            }
+        });
+
+        EditText txtSearch = root.findViewById(R.id.txtSearchFavoritesProducts);
         txtSearch.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -104,23 +112,23 @@ public class FavoritesRecipesFragment extends Fragment {
         return root;
     }
 
+    private void filter(String text) {
+        ArrayList<Product> filteredProducts = new ArrayList<>();
+
+        for (Product product : productList) {
+            if (product.getName().toLowerCase().contains(text.toLowerCase())) {
+                filteredProducts.add(product);
+            }
+        }
+
+        adapter.filterList(filteredProducts);
+    }
+
     private void closeKeyboard () {
         View view = getActivity().getCurrentFocus();
         if (view != null) {
             InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
             imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
         }
-    }
-
-    private void filter(String text) {
-        ArrayList<Recipe> filteredRecipes = new ArrayList<>();
-
-        for (Recipe recipe : recipeList) {
-            if (recipe.getName().toLowerCase().contains(text.toLowerCase())) {
-                filteredRecipes.add(recipe);
-            }
-        }
-
-        adapter.filterList(filteredRecipes);
     }
 }

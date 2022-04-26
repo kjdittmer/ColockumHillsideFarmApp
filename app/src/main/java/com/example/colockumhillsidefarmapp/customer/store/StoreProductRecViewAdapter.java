@@ -96,7 +96,7 @@ public class StoreProductRecViewAdapter extends RecyclerView.Adapter<StoreProduc
         holder.btnAddToFavoritesStoreFrag.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Favorites.getInstance(mContext).addProductToFavoritesProducts(product);
+                DBInterface.getInstance().addProductToFavoriteProducts(product);
 
                 Toast.makeText(view.getContext(), product.getName() +
                         " added to favorites!", Toast.LENGTH_SHORT).show();

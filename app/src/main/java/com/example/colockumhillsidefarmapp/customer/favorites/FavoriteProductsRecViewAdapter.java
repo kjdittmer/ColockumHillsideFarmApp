@@ -20,6 +20,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 
+import com.example.colockumhillsidefarmapp.DBInterface;
 import com.example.colockumhillsidefarmapp.customer.shopping_cart.ShoppingCartActivity;
 import com.example.colockumhillsidefarmapp.customer.store.Product;
 import com.example.colockumhillsidefarmapp.customer.store.ProductActivity;
@@ -29,7 +30,7 @@ import com.example.colockumhillsidefarmapp.customer.shopping_cart.ShoppingCart;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 
-public class FavoritesProductsRecViewAdapter extends RecyclerView.Adapter<FavoritesProductsRecViewAdapter.ViewHolder>{
+public class FavoriteProductsRecViewAdapter extends RecyclerView.Adapter<FavoriteProductsRecViewAdapter.ViewHolder>{
     private static final String PRODUCT_ID = "productId";
 
 
@@ -37,7 +38,7 @@ public class FavoritesProductsRecViewAdapter extends RecyclerView.Adapter<Favori
     private Context mContext;
     private FavoritesActivity currentActivity;
 
-    public FavoritesProductsRecViewAdapter(Context mContext, FavoritesActivity currentActivity) {
+    public FavoriteProductsRecViewAdapter(Context mContext, FavoritesActivity currentActivity) {
         this.currentActivity = currentActivity;
         this.mContext = mContext;
         //favoritesProducts = Favorites.getInstance().getFavoritesProducts();
@@ -50,13 +51,13 @@ public class FavoritesProductsRecViewAdapter extends RecyclerView.Adapter<Favori
 
     @NonNull
     @Override
-    public FavoritesProductsRecViewAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public FavoriteProductsRecViewAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_wishlist_product, parent, false);
-        return new FavoritesProductsRecViewAdapter.ViewHolder(view);
+        return new FavoriteProductsRecViewAdapter.ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull FavoritesProductsRecViewAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull FavoriteProductsRecViewAdapter.ViewHolder holder, int position) {
         Product product = favoritesProducts.get(holder.getAdapterPosition());
 
         holder.txtProductNameWishlistItem.setText(product.getName());
@@ -89,7 +90,7 @@ public class FavoritesProductsRecViewAdapter extends RecyclerView.Adapter<Favori
                 builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        Favorites.getInstance(mContext).removeProductFromFavoritesProducts(product);
+                        DBInterface.getInstance().removeProductFromFavoriteProducts(product);
                         currentActivity.reload();
                         Toast.makeText(mContext, product.getName() + " removed", Toast.LENGTH_SHORT).show();
                     }

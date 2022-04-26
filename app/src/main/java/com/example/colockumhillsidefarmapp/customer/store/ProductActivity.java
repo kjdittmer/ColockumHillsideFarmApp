@@ -15,6 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.example.colockumhillsidefarmapp.DBInterface;
 import com.example.colockumhillsidefarmapp.R;
 import com.example.colockumhillsidefarmapp.customer.shopping_cart.ShoppingCart;
 import com.example.colockumhillsidefarmapp.customer.shopping_cart.ShoppingCartActivity;
@@ -75,7 +76,7 @@ public class ProductActivity extends AppCompatActivity {
         btnAddToWishlist.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Wishlist.getInstance(ProductActivity.this).addProductToWishlist(product);
+                DBInterface.getInstance().addProductToWishlist(product);
 
                 Toast.makeText(view.getContext(), product.getName() +
                         " added to wishlist!", Toast.LENGTH_SHORT).show();
@@ -85,7 +86,7 @@ public class ProductActivity extends AppCompatActivity {
         btnAddToFavorites.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Favorites.getInstance(view.getContext()).addProductToFavoritesProducts(product);
+                DBInterface.getInstance().addProductToFavoriteProducts(product);
 
                 Toast.makeText(view.getContext(), product.getName() +
                         " added to favorites!", Toast.LENGTH_SHORT).show();

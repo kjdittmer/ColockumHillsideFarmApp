@@ -16,6 +16,7 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.colockumhillsidefarmapp.DBInterface;
 import com.example.colockumhillsidefarmapp.customer.favorites.Favorites;
 import com.example.colockumhillsidefarmapp.R;
 import com.example.colockumhillsidefarmapp.customer.store.Product;
@@ -61,7 +62,7 @@ public class RecipeRecViewAdapter extends RecyclerView.Adapter<RecipeRecViewAdap
         holder.btnAddToFavorites.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Favorites.getInstance(mContext).addRecipeToFavoritesRecipes(recipe);
+                DBInterface.getInstance().addRecipeToFavoriteRecipes(recipe);
 
                 Toast.makeText(view.getContext(), recipe.getName() +
                         " added to favorites!", Toast.LENGTH_SHORT).show();

@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".customer.favorites.FavoritesProductsFragment">
+    tools:context=".customer.favorites.FavoriteProductsFragment">
 
     <EditText
         android:id="@+id/txtSearchFavoritesProducts"
@@ -14,11 +14,21 @@
         android:layout_margin="10dp"
         android:lines="1"/>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:layout_below="@+id/txtSearchFavoritesProducts"
-        android:id="@+id/favoritesProductsRecView"
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipeRefreshLayoutFavoriteProducts"
+        android:layout_below="@id/txtSearchFavoritesProducts"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="10dp"/>
+        android:layout_margin="10dp">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_below="@+id/txtSearchFavoritesProducts"
+            android:id="@+id/favoritesProductsRecView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="10dp"/>
+
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
 
 </RelativeLayout>

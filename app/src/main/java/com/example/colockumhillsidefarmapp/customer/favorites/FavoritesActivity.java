@@ -40,9 +40,9 @@ public class FavoritesActivity extends AppCompatActivity {
             public Fragment getItem(int position) {
                 switch (position) {
                     case 0:
-                        return new FavoritesProductsFragment(currentActivity);
+                        return new FavoriteProductsFragment(currentActivity);
                     case 1:
-                        return new FavoritesRecipesFragment(currentActivity);
+                        return new FavoriteRecipesFragment(currentActivity);
                     default:
                         return null;
                 }

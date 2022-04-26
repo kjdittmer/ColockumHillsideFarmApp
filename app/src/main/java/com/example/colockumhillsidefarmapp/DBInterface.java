@@ -302,4 +302,131 @@ public class DBInterface {
         reference = rootNode.getReference("user").child(userId).child("wishlist");
         reference.child(String.valueOf(product.getId())).removeValue();
     }
+
+    /* Accessing favorite products */
+    public ArrayList<Product> getFavoriteProducts(RecyclerView.Adapter adapter) {
+        ArrayList<Product> allProducts = new ArrayList<>();
+
+        rootNode = FirebaseDatabase.getInstance();
+        reference = rootNode.getReference("user").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("favoriteProducts");
+        reference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot currentSnapshot : snapshot.getChildren()) {
+                    Product newProduct = currentSnapshot.getValue(Product.class);
+                    allProducts.add(newProduct);
+                }
+                adapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+        return allProducts;
+    }
+
+    public void addProductToFavoriteProducts (Product product) {
+        //first get current user id
+        String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+
+        //add transaction to specific user's transactions
+        FirebaseDatabase.getInstance().getReference("user")
+                .child(userId).child("favoriteProducts").child(String.valueOf(product.getId())).setValue(product);
+    }
+
+    public void removeProductFromFavoriteProducts (Product product) {
+        String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        rootNode = FirebaseDatabase.getInstance();
+        reference = rootNode.getReference("user").child(userId).child("favoriteProducts");
+        reference.child(String.valueOf(product.getId())).removeValue();
+    }
+
+    /* Accessing favorite recipes */
+    public ArrayList<Recipe> getFavoriteRecipes(RecyclerView.Adapter adapter) {
+        ArrayList<Recipe> allRecipes = new ArrayList<>();
+
+        rootNode = FirebaseDatabase.getInstance();
+        reference = rootNode.getReference("user").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("favoriteRecipes");
+        reference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot currentSnapshot : snapshot.getChildren()) {
+                    Recipe newRecipe = currentSnapshot.getValue(Recipe.class);
+                    allRecipes.add(newRecipe);
+                }
+                adapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+        return allRecipes;
+    }
+
+    public void addRecipeToFavoriteRecipes (Recipe recipe) {
+        //first get current user id
+        String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+
+        //add transaction to specific user's transactions
+        FirebaseDatabase.getInstance().getReference("user")
+                .child(userId).child("favoriteRecipes").child(String.valueOf(recipe.getId())).setValue(recipe);
+    }
+
+    public void removeRecipeFromFavoriteRecipes (Recipe recipe) {
+        String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        rootNode = FirebaseDatabase.getInstance();
+        reference = rootNode.getReference("user").child(userId).child("favoriteRecipes");
+        reference.child(String.valueOf(recipe.getId())).removeValue();
+    }
+
+    /* Accessing shopping cart */
+    public ArrayList<Product> getShoppingCart(RecyclerView.Adapter adapter) {
+        ArrayList<Product> allProducts = new ArrayList<>();
+
+        rootNode = FirebaseDatabase.getInstance();
+        reference = rootNode.getReference("user").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("shoppingCart");
+        reference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot currentSnapshot : snapshot.getChildren()) {
+                    Product newProduct = currentSnapshot.getValue(Product.class);
+                    allProducts.add(newProduct);
+                }
+                adapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+        return allProducts;
+    }
+
+    public void addProductToShoppingCart (Product product) {
+        //first get current user id
+        String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+
+        //add transaction to specific user's transactions
+        FirebaseDatabase.getInstance().getReference("user")
+                .child(userId).child("shoppingCart").child(String.valueOf(product.getId())).setValue(product);
+    }
+
+    public void removeProductFromShoppingCart (Product product) {
+        String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        rootNode = FirebaseDatabase.getInstance();
+        reference = rootNode.getReference("user").child(userId).child("shoppingCart");
+        reference.child(String.valueOf(product.getId())).removeValue();
+    }
+
+    public void clearShoppingCart () {
+        String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        rootNode = FirebaseDatabase.getInstance();
+        reference = rootNode.getReference("user").child(userId).child("shoppingCart");
+        reference.removeValue();
+    }
 }

@@ -18,20 +18,21 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.colockumhillsidefarmapp.DBInterface;
 import com.example.colockumhillsidefarmapp.R;
 import com.example.colockumhillsidefarmapp.customer.recipes.Recipe;
 import com.example.colockumhillsidefarmapp.customer.recipes.RecipeActivity;
 
 import java.util.ArrayList;
 
-public class FavoritesRecipesRecViewAdapter extends RecyclerView.Adapter<FavoritesRecipesRecViewAdapter.ViewHolder>{
+public class FavoriteRecipesRecViewAdapter extends RecyclerView.Adapter<FavoriteRecipesRecViewAdapter.ViewHolder>{
     private static final String RECIPE = "recipe";
 
     private FavoritesActivity currentActivity;
     private ArrayList<Recipe> favoritesRecipes;
     private Context mContext;
 
-    public FavoritesRecipesRecViewAdapter(Context mContext, FavoritesActivity currentActivity) {
+    public FavoriteRecipesRecViewAdapter(Context mContext, FavoritesActivity currentActivity) {
         this.mContext = mContext;
         this.currentActivity = currentActivity;
         //favoritesRecipes = Favorites.getInstance().getFavoritesRecipes();
@@ -70,7 +71,7 @@ public class FavoritesRecipesRecViewAdapter extends RecyclerView.Adapter<Favorit
                 builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        Favorites.getInstance(mContext).removeRecipeFromFavoritesRecipes(recipe);
+                        DBInterface.getInstance().removeRecipeFromFavoriteRecipes(recipe);
                         currentActivity.reload();
                         Toast.makeText(mContext, recipe.getName() + " removed", Toast.LENGTH_SHORT).show();
                     }
