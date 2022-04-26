@@ -27,13 +27,15 @@ public class CustomerContactUsFragment extends Fragment {
     private Button btnSignUpForNewsletter;
     private EditText txtEmail, txtFirstName, txtLastName;
     private TextView FarmEmailLink;
+    private TextView feedback;
+
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_customer_contact_us, container, false);
-        setUpEmail();
         initVariables(root);
+        setUpEmail();
 
 
 
@@ -96,13 +98,12 @@ public class CustomerContactUsFragment extends Fragment {
         txtEmail = root.findViewById(R.id.editTextTextEmailAddress);
         txtFirstName = root.findViewById(R.id.editTextFirstName);
         txtLastName = root.findViewById(R.id.editTextLastName);
+        feedback = root.findViewById(R.id.FarmEmailLink);
     }
 
-    private void setUpEmail()
-    {
-
-         TextView feedback = (TextView) FarmEmailLink.findViewById(R.id.FarmEmailLink);
-         feedback.setText(Html.fromHtml("<a href=\"mailto:suzanne@colockumhillsidefarm.com\">Email Us!</a>"));
+    private void setUpEmail() {
+        feedback.setText("suzanne@colockumhillsidefarm.com");
+         //feedback.setText(Html.fromHtml("<a href=\"mailto:suzanne@colockumhillsidefarm.com\">Email Us!</a>"));
          feedback.setMovementMethod(LinkMovementMethod.getInstance());
          feedback.setLinkTextColor(Color.BLUE);
     }
