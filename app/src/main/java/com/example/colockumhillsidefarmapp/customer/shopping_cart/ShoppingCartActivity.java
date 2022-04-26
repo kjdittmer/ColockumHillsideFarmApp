@@ -2,11 +2,13 @@ package com.example.colockumhillsidefarmapp.customer.shopping_cart;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Activity;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -131,19 +133,37 @@ ShoppingCartActivity extends AppCompatActivity {
             @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
             public void onClick(View view) {
-                //adapter.notifyDataSetChanged();
-                //reload();
-                requestPayment(view);
-                //getPayment();   /* this is for the paypal */
+                AlertDialog.Builder builder = new AlertDialog.Builder(ShoppingCartActivity.this);
+                builder.setMessage("Are you signed into your Google account on this device and do you have Google Pay set up?");
+                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+
+                        //adapter.notifyDataSetChanged();
+                        //reload();
+                        requestPayment(view);
+                        //getPayment();   /* this is for the paypal */
 //                for (Product product : cart.keySet()) {
 //                    DBInterface.getInstance().addTransaction(product, cart.get(product), product.getPrice(), Calendar.getInstance().getTime());
 //                }
-                for (ShoppingCartItem shoppingCartItem : shoppingCart) {
-                    DBInterface.getInstance().addTransaction(shoppingCartItem.getProduct(),
-                            shoppingCartItem.getQuantity(), shoppingCartItem.getProduct().getPrice(), Calendar.getInstance().getTime());
-                }
-                //DBInterface.getInstance().clearShoppingCart();
-                Toast.makeText(view.getContext(), "Please set up Google Pay", Toast.LENGTH_SHORT);
+                        for (ShoppingCartItem shoppingCartItem : shoppingCart) {
+                            DBInterface.getInstance().addTransaction(shoppingCartItem.getProduct(),
+                                    shoppingCartItem.getQuantity(), shoppingCartItem.getProduct().getPrice(), Calendar.getInstance().getTime());
+                        }
+                        //DBInterface.getInstance().clearShoppingCart();
+                        Toast.makeText(view.getContext(), "Please set up Google Pay", Toast.LENGTH_SHORT);
+
+                    }
+                });
+
+                builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+
+                    }
+                });
+
+                builder.create().show();
             }
         });
 

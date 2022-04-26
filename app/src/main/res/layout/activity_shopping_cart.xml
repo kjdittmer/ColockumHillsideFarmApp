@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ShoppingCartActivity"
+    tools:context=".customer.shopping_cart.ShoppingCartActivity"
     android:id="@+id/swipeRefreshLayoutCart">
 
         <RelativeLayout
@@ -59,6 +59,15 @@
 
 
             </RelativeLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/layoutButtonsShoppingCartAct"
+                android:layout_centerHorizontal="true"
+                android:layout_margin="5dp"
+                android:gravity="center_horizontal"
+                android:text="Note: before checking out, you must be signed into your Google account on this device and have Google Pay set up."/>
 
         </RelativeLayout>
 
