@@ -19,7 +19,7 @@
             android:padding="10dp"/>
 
         <TextView
-            android:id="@+id/FarmEmail"
+            android:id="@+id/FarmEmailLink"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/ContactTitle"
@@ -33,7 +33,7 @@
             android:id="@+id/MCTitle"
             android:layout_width="370dp"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/FarmEmail"
+            android:layout_below="@+id/FarmEmailLink"
             android:layout_centerHorizontal="true"
             android:padding="10dp"
             android:text="Sign up for our newsletter!"
