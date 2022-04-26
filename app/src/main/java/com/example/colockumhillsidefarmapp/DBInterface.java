@@ -429,11 +429,12 @@ public class DBInterface {
         reference.child(String.valueOf(shoppingCartItem.getProduct().getId())).removeValue();
     }
 
-    public void clearShoppingCart () {
+    public void clearShoppingCart (ShoppingCartActivity currentActivity) {
         String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
         rootNode = FirebaseDatabase.getInstance();
         reference = rootNode.getReference("user").child(userId).child("shoppingCart");
         reference.removeValue();
+        currentActivity.reload();
     }
 
     public void updateQuantity (ShoppingCartItem shoppingCartItem, int newQuantity, ShoppingCartActivity currentActivity) {

@@ -150,7 +150,8 @@ ShoppingCartActivity extends AppCompatActivity {
                             DBInterface.getInstance().addTransaction(shoppingCartItem.getProduct(),
                                     shoppingCartItem.getQuantity(), shoppingCartItem.getProduct().getPrice(), Calendar.getInstance().getTime());
                         }
-                        //DBInterface.getInstance().clearShoppingCart();
+                        //do this on success
+                        //DBInterface.getInstance().clearShoppingCart(ShoppingCartActivity.this);
                         Toast.makeText(view.getContext(), "Please set up Google Pay", Toast.LENGTH_SHORT);
 
                     }
