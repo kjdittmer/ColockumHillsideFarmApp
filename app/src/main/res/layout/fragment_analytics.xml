@@ -8,49 +8,24 @@
 
     <EditText
         android:id="@+id/txtSearchUpdateAnalytics"
-        android:inputType="text"
-        android:hint="Search for a transaction ..."
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:lines="1"/>
-
-    <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/layoutTopBarAnalytics"
-        android:layout_below="@+id/txtSearchUpdateAnalytics">
-
-        <TextView
-            android:id="@+id/txtSearchByAnalytics"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Search by: "
-            android:layout_margin="10dp"
-            android:textSize="18sp"
-            android:layout_centerVertical="true"/>
-
-        <Spinner
-            android:id="@+id/spnrSearchCriteriaAnalytics"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/txtSearchByAnalytics"
-            android:layout_margin="10dp"
-            android:layout_centerVertical="true"/>
-
-    </RelativeLayout>
+        android:hint="Search for a transaction ..."
+        android:inputType="text"
+        android:lines="1" />
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-        android:layout_below="@+id/layoutTopBarAnalytics"
+        android:id="@+id/swipeRefreshLayoutAnalytics"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="10dp"
-        android:id="@+id/swipeRefreshLayoutAnalytics">
+        android:layout_below="@+id/txtSearchUpdateAnalytics"
+        android:layout_margin="10dp">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/analyticsRecView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/analyticsRecView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
 
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 </RelativeLayout>

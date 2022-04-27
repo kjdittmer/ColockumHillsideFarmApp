@@ -62,15 +62,6 @@ public class AnalyticsFragment extends Fragment {
             }
         });
 
-        Spinner spnrSearchCriteria = root.findViewById(R.id.spnrSearchCriteriaAnalytics);
-        ArrayList<String> searchCriteria = new ArrayList<>();
-        searchCriteria.add("Product Name");
-        searchCriteria.add("Date");
-        searchCriteria.add("User");
-        ArrayAdapter<String> searchCriteriaAdapter = new ArrayAdapter<String>(getContext(), R.layout.spinner_search_criteria,
-                searchCriteria);
-        spnrSearchCriteria.setAdapter(searchCriteriaAdapter);
-
         EditText txtSearch = root.findViewById(R.id.txtSearchUpdateAnalytics);
         txtSearch.addTextChangedListener(new TextWatcher() {
             @Override
@@ -85,8 +76,7 @@ public class AnalyticsFragment extends Fragment {
 
             @Override
             public void afterTextChanged(Editable editable) {
-                String searchBy = (String) spnrSearchCriteria.getSelectedItem();
-                filter(editable.toString(), searchBy);
+                filter(editable.toString());
             }
         });
 
@@ -106,50 +96,37 @@ public class AnalyticsFragment extends Fragment {
         return root;
     }
 
-    private void filter(String text, String searchBy) {
+    private void filter(String text) {
         ArrayList<Transaction> filteredTransactions = new ArrayList<>();
 
-        switch (searchBy) {
-            case "Product Name":
-                for (Transaction transaction : transactionList) {
-                    Product product = transaction.getProduct();
-                    if (product != null) {
-                        String input = product.getName();
-                        if (input != null) {
-                            if (input.toLowerCase().contains(text.toLowerCase())) {
-                                filteredTransactions.add(transaction);
-                            }
-                        }
+        for (Transaction transaction : transactionList) {
+            Product product = transaction.getProduct();
+            if (product != null) {
+                String input = product.getName();
+                if (input != null) {
+                    if (input.toLowerCase().contains(text.toLowerCase())) {
+                        filteredTransactions.add(transaction);
                     }
                 }
-                break;
-            case "Date":
-                for (Transaction transaction : transactionList) {
-                    Date time = transaction.getTime();
-                    if (time != null) {
-                        String input = time.toString();
-                        if (input != null) {
-                            if (input.toLowerCase().contains(text.toLowerCase())) {
-                                filteredTransactions.add(transaction);
-                            }
-                        }
+            }
+            Date time = transaction.getTime();
+            if (time != null) {
+                String input = time.toString();
+                if (input != null) {
+                    if (input.toLowerCase().contains(text.toLowerCase())) {
+                        filteredTransactions.add(transaction);
                     }
                 }
-                break;
-            case "User":
-                for (Transaction transaction : transactionList) {
-                    String input = transaction.getUser();
-                    if (input != null) {
-                        if (input.toLowerCase().contains(text.toLowerCase())) {
-                            filteredTransactions.add(transaction);
-                        }
-                    }
+            }
+            String input = transaction.getUser();
+            if (input != null) {
+                if (input.toLowerCase().contains(text.toLowerCase())) {
+                    filteredTransactions.add(transaction);
                 }
-                break;
-            default:
-                break;
-        }
+            }
 
+
+        }
         adapter.filterList(filteredTransactions);
     }
 
