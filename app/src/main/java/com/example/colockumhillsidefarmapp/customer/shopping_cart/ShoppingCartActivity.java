@@ -46,6 +46,7 @@ import java.util.Optional;
 
 import org.json.JSONException;
 
+import com.google.firestore.v1.StructuredQuery;
 import com.paypal.android.sdk.payments.PayPalConfiguration;
 import com.paypal.android.sdk.payments.PayPalPayment;
 import com.paypal.android.sdk.payments.PayPalService;
@@ -59,8 +60,6 @@ ShoppingCartActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private TextView txtTotalShoppingCartAct;
     private Button btnContinueShoppingShoppingCartAct, btnCheckoutShoppingCartAct;
-//    private ArrayList<Product> productsInCart;
-//    private HashMap<Product, Integer> cart;
     private PaymentsClient paymentsClient;
     ArrayList<ShoppingCartItem> shoppingCart;
 
@@ -139,20 +138,7 @@ ShoppingCartActivity extends AppCompatActivity {
                 builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-
-                        //adapter.notifyDataSetChanged();
-                        //reload();
                         requestPayment(view);
-                        //getPayment();   /* this is for the paypal */
-//                for (Product product : cart.keySet()) {
-//                    DBInterface.getInstance().addTransaction(product, cart.get(product), product.getPrice(), Calendar.getInstance().getTime());
-//                }
-//                        for (ShoppingCartItem shoppingCartItem : shoppingCart) {
-//                            DBInterface.getInstance().addTransaction(shoppingCartItem.getProduct(),
-//                                    shoppingCartItem.getQuantity(), shoppingCartItem.getProduct().getPrice(), Calendar.getInstance().getTime());
-//                        }
-                        //do this on success
-                        //DBInterface.getInstance().clearShoppingCart(ShoppingCartActivity.this);
                         Toast.makeText(view.getContext(), "Please set up Google Pay", Toast.LENGTH_SHORT);
 
                     }
@@ -205,7 +191,8 @@ ShoppingCartActivity extends AppCompatActivity {
             Log.d("Google Pay token: ", token);
             DBInterface.getInstance().addTransaction(shoppingCart);
             DBInterface.getInstance().decreaseProductQuantity(shoppingCart);
-            //launch new activity here
+            Intent intent = new Intent(this, OrderConfirmationActivity.class);
+            startActivity(intent);
 
         } catch (JSONException e) {
             throw new RuntimeException("The selected garment cannot be parsed from the list of elements");
