@@ -29,11 +29,11 @@
                 android:id="@+id/txtRecipeNameEditRecipe"/>
 
         <TextView
-            android:id="@+id/txtShortDescEditRecipe"
+            android:id="@+id/txtIngredientsEditRecipe"
             android:layout_toRightOf="@+id/imgRecipeEditRecipe"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Short Desc"
+            android:text="Ingredients"
             android:textSize="16sp"
             android:layout_marginBottom="5dp"
             android:layout_marginLeft="5dp"

@@ -96,23 +96,23 @@ public class AddRecipeActivity extends AppCompatActivity {
             return false;
         }
         else if (TextUtils.isEmpty(txtImageUrlRecAct.getText())) {
-            txtNameAddRecipeName.setError("Please provide an image URL.");
-            txtNameAddRecipeName.requestFocus();
+            txtImageUrlRecAct.setError("Please provide an image URL.");
+            txtImageUrlRecAct.requestFocus();
             return false;
         }
         else if (TextUtils.isEmpty(txtShortDescAddRecipeAct.getText())) {
-            txtNameAddRecipeName.setError("Please provide a short description.");
-            txtNameAddRecipeName.requestFocus();
+            txtShortDescAddRecipeAct.setError("Please provide a short description.");
+            txtShortDescAddRecipeAct.requestFocus();
             return false;
         }
         else if (TextUtils.isEmpty(txtIngredients.getText())) {
-            txtNameAddRecipeName.setError("Please provide a list of ingredients.");
-            txtNameAddRecipeName.requestFocus();
+            txtIngredients.setError("Please provide a list of ingredients.");
+            txtIngredients.requestFocus();
             return false;
         }
         else if (TextUtils.isEmpty(txtInstructions.getText())) {
-            txtNameAddRecipeName.setError("Please provide a list of instructions.");
-            txtNameAddRecipeName.requestFocus();
+            txtInstructions.setError("Please provide a list of instructions.");
+            txtInstructions.requestFocus();
             return false;
         }
         else {

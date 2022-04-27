@@ -75,7 +75,7 @@ public class UpdateRecipesFragment extends Fragment {
 
             @Override
             public void afterTextChanged(Editable editable) {
-                filter(editable.toString());
+                filter(editable.toString().trim());
             }
         });
 
@@ -112,8 +112,17 @@ public class UpdateRecipesFragment extends Fragment {
         ArrayList<Recipe> filteredRecipes = new ArrayList<>();
 
         for (Recipe recipe : recipeList) {
-            if (recipe.getName().toLowerCase().contains(text.toLowerCase())) {
-                filteredRecipes.add(recipe);
+            String name = recipe.getName();
+            if (name != null) {
+                if (name.toLowerCase().contains(text.toLowerCase())) {
+                    filteredRecipes.add(recipe);
+                }
+            }
+            String ingredients = recipe.getIngredients();
+            if (ingredients != null) {
+                if (ingredients.toLowerCase().contains(text.toLowerCase())) {
+                    filteredRecipes.add(recipe);
+                }
             }
         }
 

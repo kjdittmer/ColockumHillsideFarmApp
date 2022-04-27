@@ -6,6 +6,7 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
@@ -55,6 +56,34 @@ public class CustomerRecipesFragment extends Fragment {
             }
         });
 
+//        recipesRecView.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
+//            @Override
+//            public boolean onInterceptTouchEvent(@NonNull RecyclerView rv, @NonNull MotionEvent e) {
+//                if(rv.getChildCount() > 0) {
+//                    View childView = rv.findChildViewUnder(e.getX(), e.getY());
+//                    if(rv.getChildAdapterPosition(childView) == 0) {
+//                        int action = e.getAction();
+//                        switch (action) {
+//                            case MotionEvent.ACTION_DOWN:
+//                                rv.requestDisallowInterceptTouchEvent(true);
+//                        }
+//                    }
+//                }
+//
+//                return false;
+//            }
+//
+//            @Override
+//            public void onTouchEvent(@NonNull RecyclerView rv, @NonNull MotionEvent e) {
+//
+//            }
+//
+//            @Override
+//            public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
+//
+//            }
+//        });
+
         EditText txtSearch = root.findViewById(R.id.txtSearchCustomerRecipes);
         txtSearch.addTextChangedListener(new TextWatcher() {
             @Override
@@ -69,7 +98,7 @@ public class CustomerRecipesFragment extends Fragment {
 
             @Override
             public void afterTextChanged(Editable editable) {
-                filter(editable.toString());
+                filter(editable.toString().trim());
             }
         });
 
@@ -101,8 +130,17 @@ public class CustomerRecipesFragment extends Fragment {
         ArrayList<Recipe> filteredRecipes = new ArrayList<>();
 
         for (Recipe recipe : recipeList) {
-            if (recipe.getName().toLowerCase().contains(text.toLowerCase())) {
-                filteredRecipes.add(recipe);
+            String name = recipe.getName();
+            if (name != null) {
+                if (name.toLowerCase().contains(text.toLowerCase())) {
+                    filteredRecipes.add(recipe);
+                }
+            }
+            String ingredients = recipe.getIngredients();
+            if (ingredients != null) {
+                if (ingredients.toLowerCase().contains(text.toLowerCase())) {
+                    filteredRecipes.add(recipe);
+                }
             }
         }
 
