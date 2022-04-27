@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.example.colockumhillsidefarmapp.DBInterface;
 import com.example.colockumhillsidefarmapp.R;
 import com.example.colockumhillsidefarmapp.vendor.VendorDashboardActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -24,8 +25,8 @@ public class VendorLoginActivity extends AppCompatActivity {
 
     private EditText txtEmail, txtPassword;
     private Button btnLogin;
-    private FirebaseAuth mAuth;
     private ProgressBar progressBar;
+    String email, password;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +40,9 @@ public class VendorLoginActivity extends AppCompatActivity {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                login();
+                if (validateLogin()) {
+                    DBInterface.getInstance().login(email, password, progressBar, VendorLoginActivity.this);
+                }
             }
         });
     }
@@ -48,7 +51,6 @@ public class VendorLoginActivity extends AppCompatActivity {
         txtEmail = findViewById(R.id.txtEmailVendorLogin);
         txtPassword = findViewById(R.id.txtPasswordVendorLogin);
         btnLogin = findViewById(R.id.btnLoginVendorLogin);
-        mAuth = FirebaseAuth.getInstance();
         progressBar = findViewById(R.id.progressBarVendorLogin);
     }
 
@@ -70,35 +72,38 @@ public class VendorLoginActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    private void login () {
-        String email = txtEmail.getText().toString();
-        String password = txtPassword.getText().toString();
+//    private void login () {
+//        String email = txtEmail.getText().toString();
+//        String password = txtPassword.getText().toString();
+//
+//        if (!validateLogin(email, password)) {
+//            return;
+//        }
+//
+//        progressBar.setVisibility(View.VISIBLE);
+//
+//        mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+//            @Override
+//            public void onComplete(@NonNull Task<AuthResult> task) {
+//
+//                if (task.isSuccessful()) {
+//                    startActivity(new Intent(getApplicationContext(), VendorDashboardActivity.class));
+//                    progressBar.setVisibility(View.GONE);
+//                } else {
+//                    Toast.makeText(VendorLoginActivity.this,
+//                            "Failed to login!",
+//                            Toast.LENGTH_SHORT)
+//                            .show();
+//                    progressBar.setVisibility(View.GONE);
+//                }
+//            }
+//        });
+//    }
 
-        if (!validateLogin(email, password)) {
-            return;
-        }
+    private boolean validateLogin () {
+        email = txtEmail.getText().toString();
+        password = txtPassword.getText().toString();
 
-        progressBar.setVisibility(View.VISIBLE);
-
-        mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-
-                if (task.isSuccessful()) {
-                    startActivity(new Intent(getApplicationContext(), VendorDashboardActivity.class));
-                    progressBar.setVisibility(View.GONE);
-                } else {
-                    Toast.makeText(VendorLoginActivity.this,
-                            "Failed to login!",
-                            Toast.LENGTH_SHORT)
-                            .show();
-                    progressBar.setVisibility(View.GONE);
-                }
-            }
-        });
-    }
-
-    private boolean validateLogin (String email, String password) {
         if (email.isEmpty()) {
             txtEmail.setError("Email is required.");
             txtEmail.requestFocus();

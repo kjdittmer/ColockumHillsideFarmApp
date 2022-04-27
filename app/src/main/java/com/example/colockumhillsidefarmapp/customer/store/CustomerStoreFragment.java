@@ -33,7 +33,6 @@ public class CustomerStoreFragment extends Fragment {
     private SwipeRefreshLayout layout;
     private ArrayList<Product> productList;
     private StoreProductRecViewAdapter adapter;
-    private Spinner spnrSortStore;
 
     @Nullable
     @Override
@@ -43,7 +42,6 @@ public class CustomerStoreFragment extends Fragment {
         adapter = new StoreProductRecViewAdapter(root.getContext());
         productList = DBInterface.getInstance().getAllProducts(adapter);
         productRecView = root.findViewById(R.id.productRecView);
-        spnrSortStore = root.findViewById(R.id.spnrSortStore);
 
 
         productRecView.setAdapter(adapter);
@@ -58,7 +56,6 @@ public class CustomerStoreFragment extends Fragment {
             public void onRefresh() {
                 productList = DBInterface.getInstance().getAllProducts(adapter);
                 adapter.setProducts(productList);
-                spnrSortStore.setSelection(0);
                 layout.setRefreshing(false);
             }
         });

@@ -1,17 +1,30 @@
 package com.example.colockumhillsidefarmapp;
 
 import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.util.Log;
+import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.colockumhillsidefarmapp.customer.CustomerDashboardActivity;
 import com.example.colockumhillsidefarmapp.customer.recipes.Recipe;
 import com.example.colockumhillsidefarmapp.customer.shopping_cart.ShoppingCart;
 import com.example.colockumhillsidefarmapp.customer.shopping_cart.ShoppingCartActivity;
 import com.example.colockumhillsidefarmapp.customer.shopping_cart.ShoppingCartItem;
 import com.example.colockumhillsidefarmapp.customer.shopping_cart.Transaction;
 import com.example.colockumhillsidefarmapp.customer.store.Product;
+import com.example.colockumhillsidefarmapp.user.CustomerLoginActivity;
+import com.example.colockumhillsidefarmapp.user.NewCustomerActivity;
+import com.example.colockumhillsidefarmapp.user.User;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -43,6 +56,76 @@ public class DBInterface {
             instance = new DBInterface();
         }
         return instance;
+    }
+
+    /* Accessing Users */
+    public void registerUser (String fullName, String age, String email,
+                              String password, String reenterPassword,
+                              ProgressBar progressBar, Context context) {
+        mAuth = FirebaseAuth.getInstance();
+        progressBar.setVisibility(View.VISIBLE);
+        mAuth.createUserWithEmailAndPassword(email, password)
+                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+
+                        if (task.isSuccessful()) {
+                            User user = new User(fullName, age, email,
+                                    new ArrayList<Product>(),
+                                    new ArrayList<Recipe>(),
+                                    new ArrayList<Product>(),
+                                    new ArrayList<ShoppingCartItem>(),
+                                    new ArrayList<Transaction>()
+                            );
+                            FirebaseDatabase.getInstance().getReference("user")
+                                    .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                                    .setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
+
+                                    if (task.isSuccessful()) {
+                                        Toast.makeText(context, "You have been registered!",
+                                                Toast.LENGTH_SHORT).show();
+                                        progressBar.setVisibility(View.GONE);
+
+                                        context.startActivity(new Intent(context, CustomerLoginActivity.class));
+                                    } else {
+                                        Toast.makeText(context, "Failed to register! Try again.",
+                                                Toast.LENGTH_SHORT).show();
+                                        progressBar.setVisibility(View.GONE);
+                                    }
+                                }
+                            });
+
+                        } else {
+                            Toast.makeText(context, "Failed to register! Try again.",
+                                    Toast.LENGTH_SHORT).show();
+                            progressBar.setVisibility(View.GONE);
+                        }
+                    }
+                });
+    }
+
+    public void login (String email, String password, ProgressBar progressBar, Context context) {
+        progressBar.setVisibility(View.VISIBLE);
+
+        mAuth = FirebaseAuth.getInstance();
+        mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+
+                if (task.isSuccessful()) {
+                    context.startActivity(new Intent(context, CustomerDashboardActivity.class));
+                    progressBar.setVisibility(View.GONE);
+                } else {
+                    Toast.makeText(context,
+                            "Failed to login!",
+                            Toast.LENGTH_SHORT)
+                            .show();
+                    progressBar.setVisibility(View.GONE);
+                }
+            }
+        });
     }
 
     /* Accessing products */
