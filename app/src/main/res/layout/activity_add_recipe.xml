@@ -88,20 +88,6 @@
             android:background="@drawable/round_button"
             android:text="Add Recipe" />
 
-        <Button
-            android:id="@+id/btnUploadRecipePicture"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/btnAddRecipe"
-            android:layout_centerHorizontal="true"
-            android:layout_marginStart="5dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginEnd="5dp"
-            android:layout_marginBottom="5dp"
-            android:background="@drawable/round_button"
-            android:text="Import Picture" />
-
-
     </RelativeLayout>
 
 </ScrollView>
