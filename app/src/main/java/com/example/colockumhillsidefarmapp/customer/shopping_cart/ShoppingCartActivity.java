@@ -37,6 +37,7 @@ import com.google.android.gms.wallet.WalletConstants;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.lang.reflect.Array;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -146,10 +147,10 @@ ShoppingCartActivity extends AppCompatActivity {
 //                for (Product product : cart.keySet()) {
 //                    DBInterface.getInstance().addTransaction(product, cart.get(product), product.getPrice(), Calendar.getInstance().getTime());
 //                }
-                        for (ShoppingCartItem shoppingCartItem : shoppingCart) {
-                            DBInterface.getInstance().addTransaction(shoppingCartItem.getProduct(),
-                                    shoppingCartItem.getQuantity(), shoppingCartItem.getProduct().getPrice(), Calendar.getInstance().getTime());
-                        }
+//                        for (ShoppingCartItem shoppingCartItem : shoppingCart) {
+//                            DBInterface.getInstance().addTransaction(shoppingCartItem.getProduct(),
+//                                    shoppingCartItem.getQuantity(), shoppingCartItem.getProduct().getPrice(), Calendar.getInstance().getTime());
+//                        }
                         //do this on success
                         //DBInterface.getInstance().clearShoppingCart(ShoppingCartActivity.this);
                         Toast.makeText(view.getContext(), "Please set up Google Pay", Toast.LENGTH_SHORT);
@@ -202,6 +203,9 @@ ShoppingCartActivity extends AppCompatActivity {
 
             // Logging token string.
             Log.d("Google Pay token: ", token);
+            DBInterface.getInstance().addTransaction(shoppingCart);
+            DBInterface.getInstance().decreaseProductQuantity(shoppingCart);
+            //launch new activity here
 
         } catch (JSONException e) {
             throw new RuntimeException("The selected garment cannot be parsed from the list of elements");
@@ -221,6 +225,7 @@ ShoppingCartActivity extends AppCompatActivity {
         // The price provided to the API should include taxes and shipping.
         // This price is not displayed to the user.
         double garmentPrice = getTotalCost();
+        Log.d("total cost", String.valueOf(garmentPrice));
         long garmentPriceCents = Math.round(garmentPrice * PaymentsUtil.CENTS_IN_A_UNIT.longValue());
         long priceCents = garmentPriceCents + SHIPPING_COST_CENTS;
 

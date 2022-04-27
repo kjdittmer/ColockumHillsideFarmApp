@@ -21,6 +21,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 
@@ -120,6 +121,35 @@ public class DBInterface {
         reference.child(String.valueOf(product.getId())).removeValue();
     }
 
+    public void decreaseProductQuantity(ArrayList<ShoppingCartItem> shoppingCart) {
+        for (ShoppingCartItem shoppingCartItem : shoppingCart) {
+            Product newProduct = shoppingCartItem.getProduct();
+            int quantitySold = shoppingCartItem.getQuantity();
+            //get product
+            rootNode = FirebaseDatabase.getInstance();
+            reference = rootNode.getReference("product");
+            reference.child(String.valueOf(newProduct.getId())).addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    Product oldProduct = snapshot.getValue(Product.class);
+                    int newQuantity = oldProduct.getQuantity() - quantitySold;
+                    if (newQuantity <= 0) {
+                        reference.child(String.valueOf(oldProduct.getId())).removeValue();
+                    } else {
+                        oldProduct.setQuantity(newQuantity);
+                        reference.child(String.valueOf(oldProduct.getId())).setValue(oldProduct);
+                    }
+                    clearShoppingCart();
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+
+                }
+            });
+        }
+    }
+
     /* Accessing recipes */
     public ArrayList<Recipe> getAllRecipes(RecyclerView.Adapter adapter) {
         ArrayList<Recipe> allRecipes = new ArrayList<>();
@@ -197,32 +227,37 @@ public class DBInterface {
     }
 
     /* Accessing transactions */
-    public void addTransaction (Product product, int quantity, double cost, Date date) {
-        //first get current user id
-        String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        DatabaseReference userReference = FirebaseDatabase.getInstance().getReference("user").child(userId).child("email");
-        userReference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                String user = snapshot.getValue(String.class);
-                Transaction transactionToAdd = new Transaction(product, quantity, cost*quantity, date, user);
+    public void addTransaction (ArrayList<ShoppingCartItem> shoppingCart) {
+        for (ShoppingCartItem shoppingCartItem : shoppingCart){
+            String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+            DatabaseReference userReference = FirebaseDatabase.getInstance().getReference("user").child(userId).child("email");
+            userReference.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    String user = snapshot.getValue(String.class);
+                    Transaction transactionToAdd = new Transaction(shoppingCartItem.getProduct(),
+                            shoppingCartItem.getQuantity(),
+                            shoppingCartItem.getProduct().getPrice()*shoppingCartItem.getQuantity(),
+                            Calendar.getInstance().getTime(),
+                            user);
 
-                //add transaction to all transactions
-                String transactionId = FirebaseDatabase.getInstance().getReference("transaction").push().getKey();
-                FirebaseDatabase.getInstance().getReference("transaction")
-                        .child(transactionId).setValue(transactionToAdd);
+                    //add transaction to all transactions
+                    String transactionId = FirebaseDatabase.getInstance().getReference("transaction").push().getKey();
+                    FirebaseDatabase.getInstance().getReference("transaction")
+                            .child(transactionId).setValue(transactionToAdd);
 
-                //add transaction to specific user's transactions
-                //String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
-                FirebaseDatabase.getInstance().getReference("user")
-                        .child(userId).child("transactions").child(transactionId).setValue(transactionToAdd);
+                    //add transaction to specific user's transactions
+                    //String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                    FirebaseDatabase.getInstance().getReference("user")
+                            .child(userId).child("transactions").child(transactionId).setValue(transactionToAdd);
 
-            }
+                }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-            }
-        });
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+                }
+            });
+        }
     }
 
     public ArrayList<Transaction> getAllTransactions(RecyclerView.Adapter adapter) {
@@ -429,12 +464,21 @@ public class DBInterface {
         reference.child(String.valueOf(shoppingCartItem.getProduct().getId())).removeValue();
     }
 
-    public void clearShoppingCart (ShoppingCartActivity currentActivity) {
+    public void clearShoppingCart ( ) {
         String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
         rootNode = FirebaseDatabase.getInstance();
         reference = rootNode.getReference("user").child(userId).child("shoppingCart");
-        reference.removeValue();
-        currentActivity.reload();
+        reference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                snapshot.getRef().removeValue();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 
     public void updateQuantity (ShoppingCartItem shoppingCartItem, int newQuantity, ShoppingCartActivity currentActivity) {

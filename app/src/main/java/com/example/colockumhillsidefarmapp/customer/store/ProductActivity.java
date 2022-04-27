@@ -19,6 +19,7 @@ import com.example.colockumhillsidefarmapp.DBInterface;
 import com.example.colockumhillsidefarmapp.R;
 import com.example.colockumhillsidefarmapp.customer.shopping_cart.ShoppingCart;
 import com.example.colockumhillsidefarmapp.customer.shopping_cart.ShoppingCartActivity;
+import com.example.colockumhillsidefarmapp.customer.shopping_cart.ShoppingCartItem;
 import com.example.colockumhillsidefarmapp.customer.wishlist.Wishlist;
 import com.example.colockumhillsidefarmapp.customer.favorites.Favorites;
 
@@ -58,7 +59,7 @@ public class ProductActivity extends AppCompatActivity {
             public void onClick(View view) {
                 int quantitySelected = (int)spnrQuantitySelected.getSelectedItem();
 
-                ShoppingCart.getInstance().addProductToCart(product, quantitySelected);
+                DBInterface.getInstance().addProductToShoppingCart(new ShoppingCartItem(product, quantitySelected));
 
                 String plurality = "";
                 if (quantitySelected > 1) {
