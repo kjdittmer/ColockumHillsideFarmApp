@@ -80,6 +80,7 @@
         <entry key="app/src/main/res/layout/fragment_analytics.xml" value="0.23216547066272689" />
         <entry key="app/src/main/res/layout/fragment_contact_us.xml" value="0.29635416666666664" />
         <entry key="app/src/main/res/layout/fragment_customer_recipes.xml" value="0.17828131680205217" />
+        <entry key="app/src/main/res/layout/fragment_customer_store.xml" value="0.23216547066272689" />
         <entry key="app/src/main/res/layout/fragment_customer_transaction_history.xml" value="0.17101325352714836" />
         <entry key="app/src/main/res/layout/fragment_favorites.xml" value="0.203125" />
         <entry key="app/src/main/res/layout/fragment_favorites_products.xml" value="0.2171875" />
