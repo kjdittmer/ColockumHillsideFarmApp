@@ -23,8 +23,10 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import com.example.colockumhillsidefarmapp.R;
 import com.example.colockumhillsidefarmapp.DBInterface;
 import com.example.colockumhillsidefarmapp.customer.shopping_cart.Transaction;
+import com.example.colockumhillsidefarmapp.customer.store.Product;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 public class AnalyticsFragment extends Fragment {
 
@@ -83,7 +85,8 @@ public class AnalyticsFragment extends Fragment {
 
             @Override
             public void afterTextChanged(Editable editable) {
-                filter(editable.toString());
+                String searchBy = (String) spnrSearchCriteria.getSelectedItem();
+                filter(editable.toString(), searchBy);
             }
         });
 
@@ -103,13 +106,48 @@ public class AnalyticsFragment extends Fragment {
         return root;
     }
 
-    private void filter(String text) {
+    private void filter(String text, String searchBy) {
         ArrayList<Transaction> filteredTransactions = new ArrayList<>();
 
-        for (Transaction transaction : transactionList) {
-            if (transaction.getProduct().getName().toLowerCase().contains(text.toLowerCase())) {
-                filteredTransactions.add(transaction);
-            }
+        switch (searchBy) {
+            case "Product Name":
+                for (Transaction transaction : transactionList) {
+                    Product product = transaction.getProduct();
+                    if (product != null) {
+                        String input = product.getName();
+                        if (input != null) {
+                            if (input.toLowerCase().contains(text.toLowerCase())) {
+                                filteredTransactions.add(transaction);
+                            }
+                        }
+                    }
+                }
+                break;
+            case "Date":
+                for (Transaction transaction : transactionList) {
+                    Date time = transaction.getTime();
+                    if (time != null) {
+                        String input = time.toString();
+                        if (input != null) {
+                            if (input.toLowerCase().contains(text.toLowerCase())) {
+                                filteredTransactions.add(transaction);
+                            }
+                        }
+                    }
+                }
+                break;
+            case "User":
+                for (Transaction transaction : transactionList) {
+                    String input = transaction.getUser();
+                    if (input != null) {
+                        if (input.toLowerCase().contains(text.toLowerCase())) {
+                            filteredTransactions.add(transaction);
+                        }
+                    }
+                }
+                break;
+            default:
+                break;
         }
 
         adapter.filterList(filteredTransactions);
