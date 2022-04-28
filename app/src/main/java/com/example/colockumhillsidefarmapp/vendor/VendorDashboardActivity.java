@@ -1,21 +1,18 @@
 package com.example.colockumhillsidefarmapp.vendor;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.fragment.app.Fragment;
-
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+
+import com.example.colockumhillsidefarmapp.R;
 import com.example.colockumhillsidefarmapp.user.VendorLoginActivity;
 import com.example.colockumhillsidefarmapp.vendor.analytics.AnalyticsFragment;
-import com.example.colockumhillsidefarmapp.R;
 import com.example.colockumhillsidefarmapp.vendor.update_about_us.AddAboutUsActivity;
 import com.example.colockumhillsidefarmapp.vendor.update_about_us.UpdateAboutUsFragment;
 import com.example.colockumhillsidefarmapp.vendor.update_recipes.AddRecipeActivity;

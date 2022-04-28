@@ -1,34 +1,19 @@
 package com.example.colockumhillsidefarmapp.user;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.util.Patterns;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
-import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.colockumhillsidefarmapp.DBInterface;
-import com.example.colockumhillsidefarmapp.MainActivity;
 import com.example.colockumhillsidefarmapp.R;
-import com.example.colockumhillsidefarmapp.customer.CustomerDashboardActivity;
-import com.example.colockumhillsidefarmapp.customer.recipes.Recipe;
-import com.example.colockumhillsidefarmapp.customer.shopping_cart.ShoppingCartItem;
-import com.example.colockumhillsidefarmapp.customer.shopping_cart.Transaction;
-import com.example.colockumhillsidefarmapp.customer.store.Product;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.FirebaseDatabase;
-
-import java.util.ArrayList;
 
 public class NewCustomerActivity extends AppCompatActivity {
 

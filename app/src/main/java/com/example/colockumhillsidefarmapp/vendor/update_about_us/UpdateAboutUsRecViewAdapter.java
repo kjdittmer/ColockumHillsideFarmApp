@@ -59,7 +59,7 @@ public class UpdateAboutUsRecViewAdapter extends RecyclerView.Adapter<UpdateAbou
         holder.parentEditInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(mContext, EditRecipeActivity.class);
+                Intent intent = new Intent(mContext, EditAboutUsActivity.class);
                 intent.putExtra(INFO, info);
                 mContext.startActivity(intent);
             }
