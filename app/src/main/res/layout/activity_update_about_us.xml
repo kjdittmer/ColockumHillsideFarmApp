@@ -6,45 +6,17 @@
     android:layout_height="match_parent"
     tools:context=".vendor.update_about_us.UpdateAboutUsActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/layoutAboutUs"
-        android:text="What would you like to do?"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="20dp"
-        android:textAllCaps="true"
-        android:textStyle="bold"
-        android:textSize="20dp"
-        android:id="@+id/txtPromptUpdateAboutUs"/>
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="10dp"
+        android:id="@+id/swipeRefreshLayoutUpdateInfo">
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/updateInfoRecView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
 
-    <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/layoutAboutUs"
-        android:layout_centerInParent="true">
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:text="Update info"
-            android:id="@+id/btnUpdateInfoAboutUs"
-            android:background="@drawable/round_button"
-            android:layout_margin="5dp"
-            />
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:text="Update pictures"
-            android:id="@+id/btnUpdatePicturesAboutUs"
-            android:layout_below="@+id/btnUpdateInfoAboutUs"
-            android:background="@drawable/round_button"
-            android:layout_margin="5dp"/>
-    </RelativeLayout>
-
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
 </RelativeLayout>

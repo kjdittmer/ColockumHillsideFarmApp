@@ -1,13 +1,12 @@
 package com.example.colockumhillsidefarmapp;
 
-import android.app.Activity;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.colockumhillsidefarmapp.customer.about_us.Info;
 import com.example.colockumhillsidefarmapp.customer.recipes.Recipe;
-import com.example.colockumhillsidefarmapp.customer.shopping_cart.ShoppingCart;
 import com.example.colockumhillsidefarmapp.customer.shopping_cart.ShoppingCartActivity;
 import com.example.colockumhillsidefarmapp.customer.shopping_cart.ShoppingCartItem;
 import com.example.colockumhillsidefarmapp.customer.shopping_cart.Transaction;
@@ -22,7 +21,6 @@ import com.google.firebase.database.ValueEventListener;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashMap;
 
 public class DBInterface {
 
@@ -464,5 +462,78 @@ public class DBInterface {
 
             }
         });
+    }
+
+    public ArrayList<Info> getAllInfo(RecyclerView.Adapter adapter) {
+        ArrayList<Info> allInfo = new ArrayList<>();
+
+        rootNode = FirebaseDatabase.getInstance();
+        reference = rootNode.getReference("info");
+        reference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot currentSnapshot : snapshot.getChildren()) {
+                    Info newInfo = currentSnapshot.getValue(Info.class);
+                    allInfo.add(newInfo);
+                }
+                adapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+        return allInfo;
+    }
+    public void addInfo (Info infoToAdd) {
+        rootNode = FirebaseDatabase.getInstance();
+        reference = rootNode.getReference("info");
+        reference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                ArrayList<Info> allInfo = new ArrayList<>();
+                for (DataSnapshot currentSnapshot : snapshot.getChildren()) {
+                    Info newInfo = currentSnapshot.getValue(Info.class);
+                    allInfo.add(newInfo);
+                }
+                int newId = getNewInfoId(allInfo);
+                infoToAdd.setId(newId);
+                reference.child(String.valueOf(newId)).setValue(infoToAdd);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
+
+    private int getNewInfoId(ArrayList<Info> allInfo) {
+        int newId = 0;
+        ArrayList<Integer> infoIds = new ArrayList<>();
+        for (Info currentInfo : allInfo) {
+            infoIds.add(currentInfo.getId());
+        }
+        while (true) {
+            if(infoIds.contains(newId)) {
+                newId++;
+            } else {
+                return newId;
+            }
+        }
+    }
+    public void removeInfo(Info info) {
+        rootNode = FirebaseDatabase.getInstance();
+        reference = rootNode.getReference("info");
+        reference.child(String.valueOf(info.getId())).removeValue();
+    }
+
+    public void editInfo(Info infoToEdit, Info editedInfo) {
+        rootNode = FirebaseDatabase.getInstance();
+        reference = rootNode.getReference("info");
+        DatabaseReference productReference = reference.child(String.valueOf(infoToEdit.getId()));
+        productReference.setValue(editedInfo);
     }
 }

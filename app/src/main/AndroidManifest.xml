@@ -90,6 +90,10 @@
             android:exported="false"
             android:label="Recipe" />
         <activity
+            android:name=".customer.about_us.AboutUsActivity"
+            android:exported="false"
+            android:label="AboutUs" />
+        <activity
             android:name=".vendor.update_store.AddProductActivity"
             android:exported="false"
             android:label="Add Product"
@@ -108,6 +112,16 @@
             android:label="Update About Us"
             android:parentActivityName=".vendor.VendorChoiceActivity" />
         <activity
+            android:name=".vendor.update_about_us.AddAboutUsActivity"
+            android:exported="false"
+            android:label="Add About Us"
+            android:parentActivityName=".vendor.VendorChoiceActivity" />
+        <activity
+            android:name=".vendor.update_about_us.EditAboutUsActivity"
+            android:exported="false"
+            android:label="Edit About Us"
+            android:parentActivityName=".vendor.VendorChoiceActivity" />
+        <activity
             android:name=".vendor.analytics.AnalyticsActivity"
             android:exported="false"
             android:label="Analytics"
@@ -116,30 +130,6 @@
             android:name=".vendor.VendorChoiceActivity"
             android:exported="false"
             android:label="Vendor Choice" />
-        <activity
-            android:name=".customer.about_us.PoultryActivity"
-            android:exported="false"
-            android:label="Poultry" />
-        <activity
-            android:name=".customer.about_us.PorkActivity"
-            android:exported="false"
-            android:label="Pork" />
-        <activity
-            android:name=".customer.contact_us.ContactUsActivity"
-            android:exported="false"
-            android:label="Contact Us" />
-        <activity
-            android:name=".customer.about_us.VegetableActivity"
-            android:exported="false"
-            android:label="Vegetable" />
-        <activity
-            android:name=".customer.about_us.VegtablePracticesActivity"
-            android:exported="false"
-            android:label="Vegetable Practices" />
-        <activity
-            android:name=".customer.about_us.ChickenPracticesActivity"
-            android:exported="false"
-            android:label="Chicken Practices" />
         <activity
             android:name=".MainActivity"
             android:exported="true"
