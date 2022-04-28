@@ -1,4 +1,4 @@
-package com.example.colockumhillsidefarmapp.customer.shopping_cart;
+package com.example.colockumhillsidefarmapp.customer.shopping_cart.google_pay;
 /* Copyright 2020 Google Inc.
         *
         * Licensed under the Apache License, Version 2.0 (the "License");
@@ -19,7 +19,6 @@ import android.os.Build;
 
 import androidx.annotation.RequiresApi;
 
-import com.example.colockumhillsidefarmapp.customer.shopping_cart.Constants;
 import com.google.android.gms.wallet.PaymentsClient;
 import com.google.android.gms.wallet.Wallet;
 

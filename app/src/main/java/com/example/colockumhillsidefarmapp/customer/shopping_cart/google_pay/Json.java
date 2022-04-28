@@ -1,4 +1,4 @@
-package com.example.colockumhillsidefarmapp.customer.shopping_cart;
+package com.example.colockumhillsidefarmapp.customer.shopping_cart.google_pay;
 /* Copyright 2020 Google Inc.
         *
         * Licensed under the Apache License, Version 2.0 (the "License");

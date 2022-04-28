@@ -16,6 +16,7 @@ import android.view.View;
 import com.example.colockumhillsidefarmapp.user.VendorLoginActivity;
 import com.example.colockumhillsidefarmapp.vendor.analytics.AnalyticsFragment;
 import com.example.colockumhillsidefarmapp.R;
+import com.example.colockumhillsidefarmapp.vendor.update_about_us.AddAboutUsActivity;
 import com.example.colockumhillsidefarmapp.vendor.update_about_us.UpdateAboutUsFragment;
 import com.example.colockumhillsidefarmapp.vendor.update_recipes.AddRecipeActivity;
 import com.example.colockumhillsidefarmapp.vendor.update_recipes.UpdateRecipesFragment;
@@ -129,6 +130,10 @@ public class VendorDashboardActivity extends AppCompatActivity {
                 break;
             case R.id.action_add_recipe:
                 intent = new Intent(this, AddRecipeActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.action_add_info:
+                intent = new Intent(this, AddAboutUsActivity.class);
                 startActivity(intent);
                 break;
             default:

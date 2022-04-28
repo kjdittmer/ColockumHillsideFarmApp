@@ -22,6 +22,8 @@ import android.widget.Toast;
 import com.example.colockumhillsidefarmapp.R;
 import com.example.colockumhillsidefarmapp.DBInterface;
 import com.example.colockumhillsidefarmapp.customer.CustomerDashboardActivity;
+import com.example.colockumhillsidefarmapp.customer.shopping_cart.google_pay.Constants;
+import com.example.colockumhillsidefarmapp.customer.shopping_cart.google_pay.PaymentsUtil;
 import com.example.colockumhillsidefarmapp.customer.store.Product;
 import com.google.android.gms.common.api.Status;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -37,17 +39,11 @@ import com.google.android.gms.wallet.WalletConstants;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import java.lang.reflect.Array;
-import java.text.DecimalFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.HashMap;
 import java.util.Optional;
 
 import org.json.JSONException;
 
-import com.google.firestore.v1.StructuredQuery;
 import com.paypal.android.sdk.payments.PayPalConfiguration;
 import com.paypal.android.sdk.payments.PayPalPayment;
 import com.paypal.android.sdk.payments.PayPalService;
