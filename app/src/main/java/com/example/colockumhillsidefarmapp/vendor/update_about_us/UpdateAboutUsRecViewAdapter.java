@@ -21,7 +21,6 @@ import com.example.colockumhillsidefarmapp.DBInterface;
 import com.example.colockumhillsidefarmapp.R;
 import com.example.colockumhillsidefarmapp.customer.about_us.Info;
 import com.example.colockumhillsidefarmapp.vendor.VendorDashboardActivity;
-import com.example.colockumhillsidefarmapp.vendor.update_recipes.EditRecipeActivity;
 
 import java.util.ArrayList;
 

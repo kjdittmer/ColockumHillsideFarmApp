@@ -65,6 +65,7 @@ public class EditAboutUsActivity extends AppCompatActivity {
         txtNameEditInfoHeader = findViewById(R.id.txtNameEditInfoHeader);
         txtImageUrlEditAboutUs = findViewById(R.id.txtImageUrlEditAboutUs);
         txtEditInformation = findViewById(R.id.txtEditInformation);
+        btnEditInfo=findViewById(R.id.btnEditInfo);
     }
 
     private void setData(Info info){
