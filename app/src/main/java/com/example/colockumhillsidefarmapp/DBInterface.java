@@ -47,6 +47,8 @@ public class DBInterface {
 
     private FirebaseAuth mAuth;
 
+    public static String CURRENT_USER;
+
     private DBInterface() {
 
     }
@@ -115,6 +117,7 @@ public class DBInterface {
             public void onComplete(@NonNull Task<AuthResult> task) {
 
                 if (task.isSuccessful()) {
+                    CURRENT_USER = email;
                     context.startActivity(new Intent(context, CustomerDashboardActivity.class));
                     progressBar.setVisibility(View.GONE);
                 } else {
@@ -310,19 +313,22 @@ public class DBInterface {
     }
 
     /* Accessing transactions */
-    public void addTransaction (ArrayList<ShoppingCartItem> shoppingCart) {
-        for (ShoppingCartItem shoppingCartItem : shoppingCart){
+
+    public void addTransactions (ArrayList<ShoppingCartItem> shoppingCartItems) {
+
+        for (ShoppingCartItem shoppingCartItem : shoppingCartItems){
             String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
             DatabaseReference userReference = FirebaseDatabase.getInstance().getReference("user").child(userId).child("email");
             userReference.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
                     String user = snapshot.getValue(String.class);
-                    Transaction transactionToAdd = new Transaction(shoppingCartItem.getProduct(),
-                            shoppingCartItem.getQuantity(),
-                            shoppingCartItem.getProduct().getPrice()*shoppingCartItem.getQuantity(),
-                            Calendar.getInstance().getTime(),
-                            user);
+                    Product product = shoppingCartItem.getProduct();
+                    int quantity = shoppingCartItem.getQuantity();
+                    double price = product.getPrice() * quantity;
+                    Date time = Calendar.getInstance().getTime();
+
+                    Transaction transactionToAdd = new Transaction(product, quantity, price, time, user);
 
                     //add transaction to all transactions
                     String transactionId = FirebaseDatabase.getInstance().getReference("transaction").push().getKey();

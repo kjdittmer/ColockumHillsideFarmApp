@@ -41,6 +41,7 @@ import java.lang.reflect.Array;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Optional;
 
@@ -61,8 +62,7 @@ ShoppingCartActivity extends AppCompatActivity {
     private TextView txtTotalShoppingCartAct;
     private Button btnContinueShoppingShoppingCartAct, btnCheckoutShoppingCartAct;
     private PaymentsClient paymentsClient;
-    ArrayList<ShoppingCartItem> shoppingCart;
-
+    private ArrayList<ShoppingCartItem> shoppingCart;
 
 
     public static final String clientKey = "AZdPoVE_jOqAVWmdep2onHn_rr1J5P7RJaEuMWtHwctBgSDRdiqX-OgSOiWraluAsVrhkjp02ORP2gfZ";
@@ -189,9 +189,22 @@ ShoppingCartActivity extends AppCompatActivity {
 
             // Logging token string.
             Log.d("Google Pay token: ", token);
-            DBInterface.getInstance().addTransaction(shoppingCart);
+            ArrayList<ShoppingCartItem> shoppingCartCopy = shoppingCart;
+            DBInterface.getInstance().addTransactions(shoppingCart);
             DBInterface.getInstance().decreaseProductQuantity(shoppingCart);
+
+            ArrayList<Transaction> transactionsToShow = new ArrayList<>();
+            for (ShoppingCartItem shoppingCartItem : shoppingCartCopy) {
+                Product product = shoppingCartItem.getProduct();
+                int quantity = shoppingCartItem.getQuantity();
+                double price = product.getPrice() * quantity;
+                String user = DBInterface.getInstance().CURRENT_USER;
+
+                transactionsToShow.add(new Transaction(product, quantity, price, null, user));
+            }
+            Log.d("transactions", transactionsToShow.toString());
             Intent intent = new Intent(this, OrderConfirmationActivity.class);
+            intent.putParcelableArrayListExtra("transactions", transactionsToShow);
             startActivity(intent);
 
         } catch (JSONException e) {

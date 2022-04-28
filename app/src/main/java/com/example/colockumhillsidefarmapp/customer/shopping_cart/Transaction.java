@@ -1,10 +1,13 @@
 package com.example.colockumhillsidefarmapp.customer.shopping_cart;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.example.colockumhillsidefarmapp.customer.store.Product;
 
 import java.util.Date;
 
-public class Transaction {
+public class Transaction implements Parcelable {
 
     private Product product;
     private int quantity;
@@ -22,6 +25,25 @@ public class Transaction {
         this.time = time;
         this.user = user;
     }
+
+    protected Transaction(Parcel in) {
+        product = in.readParcelable(Product.class.getClassLoader());
+        quantity = in.readInt();
+        cost = in.readDouble();
+        user = in.readString();
+    }
+
+    public static final Creator<Transaction> CREATOR = new Creator<Transaction>() {
+        @Override
+        public Transaction createFromParcel(Parcel in) {
+            return new Transaction(in);
+        }
+
+        @Override
+        public Transaction[] newArray(int size) {
+            return new Transaction[size];
+        }
+    };
 
     public Product getProduct() {
         return product;
@@ -61,5 +83,18 @@ public class Transaction {
 
     public void setUser(String user) {
         this.user = user;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeParcelable(product, i);
+        parcel.writeInt(quantity);
+        parcel.writeDouble(cost);
+        parcel.writeString(user);
     }
 }
