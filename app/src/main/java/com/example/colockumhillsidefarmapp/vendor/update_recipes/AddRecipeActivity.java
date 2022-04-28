@@ -28,8 +28,7 @@ import com.example.colockumhillsidefarmapp.customer.recipes.Recipe;
 import com.example.colockumhillsidefarmapp.vendor.VendorDashboardActivity;
 
 public class AddRecipeActivity extends AppCompatActivity {
-    private static final int PERMISSION_REQUEST = 0;
-    private static final int RESULT_LOAD_IMAGE = 1;
+
     private static final String UPDATE_RECIPES = "updateRecipes";
 
     EditText txtNameAddRecipeName, txtIngredients, txtImageUrlRecAct, txtShortDescAddRecipeAct, txtInstructions;
@@ -44,19 +43,6 @@ public class AddRecipeActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         initVariables();
-
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE)
-                != PackageManager.PERMISSION_GRANTED) {
-            requestPermissions(new String[] {Manifest.permission.READ_EXTERNAL_STORAGE}, PERMISSION_REQUEST);
-        }
-
-        btnUploadRecipePicture.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                startActivityForResult(i, RESULT_LOAD_IMAGE);
-            }
-        });
 
         btnAddRecipe.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -110,23 +96,23 @@ public class AddRecipeActivity extends AppCompatActivity {
             return false;
         }
         else if (TextUtils.isEmpty(txtImageUrlRecAct.getText())) {
-            txtNameAddRecipeName.setError("Please provide an image URL.");
-            txtNameAddRecipeName.requestFocus();
+            txtImageUrlRecAct.setError("Please provide an image URL.");
+            txtImageUrlRecAct.requestFocus();
             return false;
         }
         else if (TextUtils.isEmpty(txtShortDescAddRecipeAct.getText())) {
-            txtNameAddRecipeName.setError("Please provide a short description.");
-            txtNameAddRecipeName.requestFocus();
+            txtShortDescAddRecipeAct.setError("Please provide a short description.");
+            txtShortDescAddRecipeAct.requestFocus();
             return false;
         }
         else if (TextUtils.isEmpty(txtIngredients.getText())) {
-            txtNameAddRecipeName.setError("Please provide a list of ingredients.");
-            txtNameAddRecipeName.requestFocus();
+            txtIngredients.setError("Please provide a list of ingredients.");
+            txtIngredients.requestFocus();
             return false;
         }
         else if (TextUtils.isEmpty(txtInstructions.getText())) {
-            txtNameAddRecipeName.setError("Please provide a list of instructions.");
-            txtNameAddRecipeName.requestFocus();
+            txtInstructions.setError("Please provide a list of instructions.");
+            txtInstructions.requestFocus();
             return false;
         }
         else {
@@ -137,36 +123,12 @@ public class AddRecipeActivity extends AppCompatActivity {
 
     private void initVariables() {
         btnAddRecipe = findViewById(R.id.btnAddRecipe);
-        btnUploadRecipePicture = findViewById(R.id.btnUploadRecipePicture);
         txtNameAddRecipeName = findViewById(R.id.txtNameAddRecipeName);
         txtImageUrlRecAct = findViewById(R.id.txtImageUrlRecAct);
         txtShortDescAddRecipeAct = findViewById(R.id.txtShortDescAddRecipeAct);
         txtIngredients = findViewById(R.id.txtIngredients);
         txtInstructions = findViewById(R.id.txtInstructions);
         imageView = (ImageView) findViewById(R.id.imageView);
-    }
-
-    @Override
-    public void onRequestPermissionsResult (int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        switch (requestCode) {
-            case RESULT_LOAD_IMAGE:
-                if (resultCode == RESULT_OK) {
-                    Uri selectedImage = data.getData();
-                    String[] filePathColumn = {MediaStore.Images.Media.DATA};
-                    Cursor cursor = getContentResolver().query(selectedImage, filePathColumn, null, null, null);
-                    cursor.moveToFirst();
-                    int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
-                    String picturePath = cursor.getString(columnIndex);
-                    cursor.close();
-                    imageView.setImageBitmap(BitmapFactory.decodeFile(picturePath));
-                }
-        }
     }
 
     @Override

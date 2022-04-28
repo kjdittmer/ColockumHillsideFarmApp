@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.util.Patterns;
 import android.view.MenuItem;
 import android.view.View;
@@ -13,6 +14,7 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.example.colockumhillsidefarmapp.DBInterface;
 import com.example.colockumhillsidefarmapp.MainActivity;
 import com.example.colockumhillsidefarmapp.R;
 import com.example.colockumhillsidefarmapp.customer.CustomerDashboardActivity;
@@ -31,8 +33,8 @@ import java.util.ArrayList;
 public class NewCustomerActivity extends AppCompatActivity {
 
     private EditText txtEmail, txtPassword, txtReenterPassword, txtFullName, txtAge;
+    String email, password, reenterPassword, fullName, age;
     private Button btnCreateAccount;
-    private FirebaseAuth mAuth;
     private ProgressBar progressBar;
 
     @Override
@@ -47,7 +49,12 @@ public class NewCustomerActivity extends AppCompatActivity {
         btnCreateAccount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                registerUser();
+                if (validateData()) {
+                    //registerUser();
+                    DBInterface.getInstance().registerUser(fullName,
+                            age, email, password, reenterPassword,
+                            progressBar, NewCustomerActivity.this);
+                }
             }
         });
     }
@@ -60,7 +67,6 @@ public class NewCustomerActivity extends AppCompatActivity {
         txtFullName = findViewById(R.id.txtNameNewCustomer);
         txtAge = findViewById(R.id.txtAgeNewCustomer);
         progressBar = findViewById(R.id.progressBarNewCustomer);
-        mAuth = FirebaseAuth.getInstance();
     }
 
     @Override
@@ -81,66 +87,12 @@ public class NewCustomerActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    private void registerUser () {
-        String email = txtEmail.getText().toString().trim();
-        String fullName = txtFullName.getText().toString().trim();
-        String age = txtAge.getText().toString().trim();
-        String password = txtPassword.getText().toString().trim();
-        String reenterPassword = txtReenterPassword.getText().toString().trim();
-
-        if (!validateData(email, fullName, age, password, reenterPassword)) {
-            return;
-        }
-
-        progressBar.setVisibility(View.VISIBLE);
-
-        mAuth.createUserWithEmailAndPassword(email, password)
-                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-
-                        if (task.isSuccessful()) {
-                            User user = new User(fullName, age, email,
-                                    new ArrayList<Product>(),
-                                    new ArrayList<Recipe>(),
-                                    new ArrayList<Product>(),
-                                    new ArrayList<ShoppingCartItem>(),
-                                    new ArrayList<Transaction>()
-                            );
-                            FirebaseDatabase.getInstance().getReference("user")
-                                    .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
-                                    .setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
-                                @Override
-                                public void onComplete(@NonNull Task<Void> task) {
-
-                                    if (task.isSuccessful()) {
-                                        Toast.makeText(NewCustomerActivity.this, "You have been registered!",
-                                                Toast.LENGTH_SHORT).show();
-                                        progressBar.setVisibility(View.GONE);
-
-                                        startActivity(new Intent(getApplicationContext(), CustomerLoginActivity.class));
-                                    } else {
-                                        Toast.makeText(NewCustomerActivity.this, "Failed to register! Try again.",
-                                                Toast.LENGTH_SHORT).show();
-                                        progressBar.setVisibility(View.GONE);
-                                    }
-                                }
-                            });
-
-                        } else {
-                            Toast.makeText(NewCustomerActivity.this, "Failed to register! Try again.",
-                                    Toast.LENGTH_SHORT).show();
-                            progressBar.setVisibility(View.GONE);
-                        }
-                    }
-                });
-    }
-
-    private boolean validateData(String email,
-                                 String fullName,
-                                 String age,
-                                 String password,
-                                 String reenterPassword) {
+    private boolean validateData() {
+        email = txtEmail.getText().toString().trim();
+        fullName = txtFullName.getText().toString().trim();
+        age = txtAge.getText().toString().trim();
+        password = txtPassword.getText().toString().trim();
+        reenterPassword = txtReenterPassword.getText().toString().trim();
         if (fullName.isEmpty()) {
             txtFullName.setError("Full name is required.");
             txtFullName.requestFocus();

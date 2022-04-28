@@ -1,16 +1,30 @@
 package com.example.colockumhillsidefarmapp;
 
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.util.Log;
+import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.colockumhillsidefarmapp.customer.about_us.Info;
+import com.example.colockumhillsidefarmapp.customer.CustomerDashboardActivity;
 import com.example.colockumhillsidefarmapp.customer.recipes.Recipe;
 import com.example.colockumhillsidefarmapp.customer.shopping_cart.ShoppingCartActivity;
 import com.example.colockumhillsidefarmapp.customer.shopping_cart.ShoppingCartItem;
 import com.example.colockumhillsidefarmapp.customer.shopping_cart.Transaction;
 import com.example.colockumhillsidefarmapp.customer.store.Product;
+import com.example.colockumhillsidefarmapp.user.CustomerLoginActivity;
+import com.example.colockumhillsidefarmapp.user.NewCustomerActivity;
+import com.example.colockumhillsidefarmapp.user.User;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -20,6 +34,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 
 public class DBInterface {
@@ -31,6 +46,8 @@ public class DBInterface {
 
     private FirebaseAuth mAuth;
 
+    public static String CURRENT_USER;
+
     private DBInterface() {
 
     }
@@ -40,6 +57,77 @@ public class DBInterface {
             instance = new DBInterface();
         }
         return instance;
+    }
+
+    /* Accessing Users */
+    public void registerUser (String fullName, String age, String email,
+                              String password, String reenterPassword,
+                              ProgressBar progressBar, Context context) {
+        mAuth = FirebaseAuth.getInstance();
+        progressBar.setVisibility(View.VISIBLE);
+        mAuth.createUserWithEmailAndPassword(email, password)
+                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+
+                        if (task.isSuccessful()) {
+                            User user = new User(fullName, age, email,
+                                    new ArrayList<Product>(),
+                                    new ArrayList<Recipe>(),
+                                    new ArrayList<Product>(),
+                                    new ArrayList<ShoppingCartItem>(),
+                                    new ArrayList<Transaction>()
+                            );
+                            FirebaseDatabase.getInstance().getReference("user")
+                                    .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                                    .setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
+
+                                    if (task.isSuccessful()) {
+                                        Toast.makeText(context, "You have been registered!",
+                                                Toast.LENGTH_SHORT).show();
+                                        progressBar.setVisibility(View.GONE);
+
+                                        context.startActivity(new Intent(context, CustomerLoginActivity.class));
+                                    } else {
+                                        Toast.makeText(context, "Failed to register! Try again.",
+                                                Toast.LENGTH_SHORT).show();
+                                        progressBar.setVisibility(View.GONE);
+                                    }
+                                }
+                            });
+
+                        } else {
+                            Toast.makeText(context, "Failed to register! Try again.",
+                                    Toast.LENGTH_SHORT).show();
+                            progressBar.setVisibility(View.GONE);
+                        }
+                    }
+                });
+    }
+
+    public void login (String email, String password, ProgressBar progressBar, Context context) {
+        progressBar.setVisibility(View.VISIBLE);
+
+        mAuth = FirebaseAuth.getInstance();
+        mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+
+                if (task.isSuccessful()) {
+                    CURRENT_USER = email;
+                    context.startActivity(new Intent(context, CustomerDashboardActivity.class));
+                    progressBar.setVisibility(View.GONE);
+                } else {
+                    Toast.makeText(context,
+                            "Failed to login!",
+                            Toast.LENGTH_SHORT)
+                            .show();
+                    progressBar.setVisibility(View.GONE);
+                }
+            }
+        });
     }
 
     /* Accessing products */
@@ -116,6 +204,35 @@ public class DBInterface {
         rootNode = FirebaseDatabase.getInstance();
         reference = rootNode.getReference("product");
         reference.child(String.valueOf(product.getId())).removeValue();
+    }
+
+    public void decreaseProductQuantity(ArrayList<ShoppingCartItem> shoppingCart) {
+        for (ShoppingCartItem shoppingCartItem : shoppingCart) {
+            Product newProduct = shoppingCartItem.getProduct();
+            int quantitySold = shoppingCartItem.getQuantity();
+            //get product
+            rootNode = FirebaseDatabase.getInstance();
+            reference = rootNode.getReference("product");
+            reference.child(String.valueOf(newProduct.getId())).addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    Product oldProduct = snapshot.getValue(Product.class);
+                    int newQuantity = oldProduct.getQuantity() - quantitySold;
+                    if (newQuantity <= 0) {
+                        reference.child(String.valueOf(oldProduct.getId())).removeValue();
+                    } else {
+                        oldProduct.setQuantity(newQuantity);
+                        reference.child(String.valueOf(oldProduct.getId())).setValue(oldProduct);
+                    }
+                    clearShoppingCart();
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+
+                }
+            });
+        }
     }
 
     /* Accessing recipes */
@@ -195,32 +312,40 @@ public class DBInterface {
     }
 
     /* Accessing transactions */
-    public void addTransaction (Product product, int quantity, double cost, Date date) {
-        //first get current user id
-        String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        DatabaseReference userReference = FirebaseDatabase.getInstance().getReference("user").child(userId).child("email");
-        userReference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                String user = snapshot.getValue(String.class);
-                Transaction transactionToAdd = new Transaction(product, quantity, cost*quantity, date, user);
 
-                //add transaction to all transactions
-                String transactionId = FirebaseDatabase.getInstance().getReference("transaction").push().getKey();
-                FirebaseDatabase.getInstance().getReference("transaction")
-                        .child(transactionId).setValue(transactionToAdd);
+    public void addTransactions (ArrayList<ShoppingCartItem> shoppingCartItems) {
 
-                //add transaction to specific user's transactions
-                //String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
-                FirebaseDatabase.getInstance().getReference("user")
-                        .child(userId).child("transactions").child(transactionId).setValue(transactionToAdd);
+        for (ShoppingCartItem shoppingCartItem : shoppingCartItems){
+            String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+            DatabaseReference userReference = FirebaseDatabase.getInstance().getReference("user").child(userId).child("email");
+            userReference.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    String user = snapshot.getValue(String.class);
+                    Product product = shoppingCartItem.getProduct();
+                    int quantity = shoppingCartItem.getQuantity();
+                    double price = product.getPrice() * quantity;
+                    Date time = Calendar.getInstance().getTime();
 
-            }
+                    Transaction transactionToAdd = new Transaction(product, quantity, price, time, user);
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-            }
-        });
+                    //add transaction to all transactions
+                    String transactionId = FirebaseDatabase.getInstance().getReference("transaction").push().getKey();
+                    FirebaseDatabase.getInstance().getReference("transaction")
+                            .child(transactionId).setValue(transactionToAdd);
+
+                    //add transaction to specific user's transactions
+                    //String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                    FirebaseDatabase.getInstance().getReference("user")
+                            .child(userId).child("transactions").child(transactionId).setValue(transactionToAdd);
+
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+                }
+            });
+        }
     }
 
     public ArrayList<Transaction> getAllTransactions(RecyclerView.Adapter adapter) {
@@ -427,12 +552,21 @@ public class DBInterface {
         reference.child(String.valueOf(shoppingCartItem.getProduct().getId())).removeValue();
     }
 
-    public void clearShoppingCart (ShoppingCartActivity currentActivity) {
+    public void clearShoppingCart ( ) {
         String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
         rootNode = FirebaseDatabase.getInstance();
         reference = rootNode.getReference("user").child(userId).child("shoppingCart");
-        reference.removeValue();
-        currentActivity.reload();
+        reference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                snapshot.getRef().removeValue();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 
     public void updateQuantity (ShoppingCartItem shoppingCartItem, int newQuantity, ShoppingCartActivity currentActivity) {

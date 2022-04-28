@@ -4,6 +4,17 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="../../../../layout/custom_preview.xml" value="0.3082051282051282" />
+        <entry key="..\:/ColockumHillsideFarmApp/app/src/main/res/drawable/button_close.xml" value="0.1" />
+        <entry key="..\:/ColockumHillsideFarmApp/app/src/main/res/drawable/card_entry_button.xml" value="0.123" />
+        <entry key="..\:/ColockumHillsideFarmApp/app/src/main/res/drawable/card_entry_close.xml" value="0.1" />
+        <entry key="..\:/ColockumHillsideFarmApp/app/src/main/res/drawable/sheet_background.xml" value="0.1" />
+        <entry key="..\:/ColockumHillsideFarmApp/app/src/main/res/layout/activity_add_product.xml" value="0.16666666666666666" />
+        <entry key="..\:/ColockumHillsideFarmApp/app/src/main/res/layout/activity_customer_login.xml" value="0.103125" />
+        <entry key="..\:/ColockumHillsideFarmApp/app/src/main/res/layout/activity_pork.xml" value="0.24583333333333332" />
+        <entry key="..\:/ColockumHillsideFarmApp/app/src/main/res/layout/activity_shopping_cart.xml" value="0.264" />
+        <entry key="..\:/ColockumHillsideFarmApp/app/src/main/res/layout/charge_layout.xml" value="0.1" />
+        <entry key="..\:/ColockumHillsideFarmApp/app/src/main/res/layout/fragment_contact_us.xml" value="0.2" />
+        <entry key="..\:/ColockumHillsideFarmApp/app/src/main/res/layout/fragment_customer_contact_us.xml" value="0.1" />
         <entry key="..\:/Users/emily/AndroidStudioProjects/ColockumHillsideFarmApp/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1785" />
         <entry key="..\:/Users/emily/AndroidStudioProjects/ColockumHillsideFarmApp/app/src/main/res/drawable/carrotpic.xml" value="0.169" />
         <entry key="..\:/Users/emily/AndroidStudioProjects/ColockumHillsideFarmApp/app/src/main/res/drawable/chickenpic.xml" value="0.169" />
@@ -20,7 +31,6 @@
         <entry key="..\:/Users/emily/AndroidStudioProjects/ColockumHillsideFarmApp/app/src/main/res/layout/activity_edit_product.xml" value="0.17552083333333332" />
         <entry key="..\:/Users/emily/AndroidStudioProjects/ColockumHillsideFarmApp/app/src/main/res/layout/activity_edit_recipe.xml" value="0.17552083333333332" />
         <entry key="..\:/Users/emily/AndroidStudioProjects/ColockumHillsideFarmApp/app/src/main/res/layout/activity_main.xml" value="0.17552083333333332" />
-        <entry key="..\:/Users/emily/AndroidStudioProjects/ColockumHillsideFarmApp/app/src/main/res/layout/activity_recipe.xml" value="0.25" />
         <entry key="..\:/Users/emily/AndroidStudioProjects/ColockumHillsideFarmApp/app/src/main/res/layout/activity_test.xml" value="0.17552083333333332" />
         <entry key="..\:/Users/emily/AndroidStudioProjects/ColockumHillsideFarmApp/app/src/main/res/layout/activity_update_about_us.xml" value="0.1331521739130435" />
         <entry key="..\:/Users/emily/AndroidStudioProjects/ColockumHillsideFarmApp/app/src/main/res/layout/activity_update_recipes.xml" value="0.1331521739130435" />
@@ -69,6 +79,7 @@
         <entry key="app/src/main/res/layout/activity_edit_store.xml" value="0.2171875" />
         <entry key="app/src/main/res/layout/activity_favorites.xml" value="0.16979166666666667" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.19166666666666668" />
+        <entry key="app/src/main/res/layout/activity_order_confirmation.xml" value="0.17101325352714836" />
         <entry key="app/src/main/res/layout/activity_pork.xml" value="0.19166666666666668" />
         <entry key="app/src/main/res/layout/activity_poultry.xml" value="0.19166666666666668" />
         <entry key="app/src/main/res/layout/activity_product.xml" value="0.25" />
@@ -80,22 +91,28 @@
         <entry key="app/src/main/res/layout/activity_vegetable.xml" value="0.19166666666666668" />
         <entry key="app/src/main/res/layout/activity_vegetable_practices.xml" value="0.19166666666666668" />
         <entry key="app/src/main/res/layout/activity_vendor_choice.xml" value="0.19166666666666668" />
+        <entry key="app/src/main/res/layout/activity_vendor_login.xml" value="0.1278962001853568" />
         <entry key="app/src/main/res/layout/activity_wishlist.xml" value="0.335" />
         <entry key="app/src/main/res/layout/app_bar_main.xml" value="0.2171875" />
         <entry key="app/src/main/res/layout/content_edit_product.xml" value="0.13958333333333334" />
         <entry key="app/src/main/res/layout/content_main.xml" value="0.16979166666666667" />
         <entry key="app/src/main/res/layout/farm_info.xml" value="0.3802083333333333" />
         <entry key="app/src/main/res/layout/fragment_about_us.xml" value="0.19166666666666668" />
+        <entry key="app/src/main/res/layout/fragment_analytics.xml" value="0.23216547066272689" />
         <entry key="app/src/main/res/layout/fragment_contact_us.xml" value="0.29635416666666664" />
+        <entry key="app/src/main/res/layout/fragment_customer_recipes.xml" value="0.17828131680205217" />
+        <entry key="app/src/main/res/layout/fragment_customer_store.xml" value="0.23216547066272689" />
+        <entry key="app/src/main/res/layout/fragment_customer_transaction_history.xml" value="0.17101325352714836" />
         <entry key="app/src/main/res/layout/fragment_favorites.xml" value="0.203125" />
         <entry key="app/src/main/res/layout/fragment_favorites_products.xml" value="0.2171875" />
         <entry key="app/src/main/res/layout/fragment_favorites_recipes.xml" value="0.2171875" />
         <entry key="app/src/main/res/layout/fragment_first.xml" value="0.13958333333333334" />
         <entry key="app/src/main/res/layout/fragment_recipes.xml" value="0.15833333333333333" />
         <entry key="app/src/main/res/layout/fragment_store.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/fragment_update_recipes.xml" value="0.17101325352714836" />
         <entry key="app/src/main/res/layout/fragment_vendor.xml" value="0.19166666666666668" />
         <entry key="app/src/main/res/layout/list_item_cart_product.xml" value="0.335" />
-        <entry key="app/src/main/res/layout/list_item_edit_store_product.xml" value="0.2171875" />
+        <entry key="app/src/main/res/layout/list_item_edit_recipe.xml" value="0.17828131680205217" />
         <entry key="app/src/main/res/layout/list_item_editstore_product.xml" value="0.1" />
         <entry key="app/src/main/res/layout/list_item_product.xml" value="0.3802083333333333" />
         <entry key="app/src/main/res/layout/list_item_recipe.xml" value="0.19166666666666668" />
@@ -103,7 +120,6 @@
         <entry key="app/src/main/res/layout/list_item_wishlist_product.xml" value="0.335" />
         <entry key="app/src/main/res/layout/nav_header_main.xml" value="0.2171875" />
         <entry key="app/src/main/res/menu/activity_main_drawer.xml" value="0.2171875" />
-        <entry key="app/src/main/res/menu/edit_store.xml" value="0.1578125" />
         <entry key="app/src/main/res/menu/main.xml" value="0.2171875" />
       </map>
     </option>

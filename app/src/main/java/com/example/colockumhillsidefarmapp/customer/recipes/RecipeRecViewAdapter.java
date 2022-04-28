@@ -6,8 +6,10 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,7 +23,9 @@ import com.example.colockumhillsidefarmapp.customer.favorites.Favorites;
 import com.example.colockumhillsidefarmapp.R;
 import com.example.colockumhillsidefarmapp.customer.store.Product;
 
+import java.sql.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class RecipeRecViewAdapter extends RecyclerView.Adapter<RecipeRecViewAdapter.ViewHolder>{
     private static final String TAG = "RecipeRecViewAdapter";
@@ -49,6 +53,21 @@ public class RecipeRecViewAdapter extends RecyclerView.Adapter<RecipeRecViewAdap
                 .asBitmap()
                 .load(recipe.getImageUrl())
                 .into(holder.imgRecipe);
+
+//        ArrayList<String> ingredientsString = new ArrayList<>(Arrays.asList(recipe.getIngredients().split(",")));
+//        ArrayAdapter ingredientsAdapter = new ArrayAdapter(mContext, android.R.layout.simple_list_item_1, ingredientsString);
+//        holder.ingredientsListView.setAdapter(ingredientsAdapter);
+
+        //make this better
+        //holder.txtIngredientsList.setText(new ArrayList<>(Arrays.asList(recipe.getIngredients().split(","))).toString());
+        holder.txtIngredientsList.setText("");
+        String[] ingredients = (recipe.getIngredients().split(","));
+        for (int i = 0; i < ingredients.length; i++) {
+            holder.txtIngredientsList.append("\u2022 ");
+            holder.txtIngredientsList.append(ingredients[i].trim());
+            holder.txtIngredientsList.append("\n");
+        }
+
 
         holder.parent.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -90,12 +109,14 @@ public class RecipeRecViewAdapter extends RecyclerView.Adapter<RecipeRecViewAdap
         private ImageView imgRecipe;
         private TextView txtName;
         private ImageButton btnAddToFavorites;
+        private TextView txtIngredientsList;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             parent = itemView.findViewById(R.id.parent);
             imgRecipe = itemView.findViewById(R.id.imgRecipe);
             txtName = itemView.findViewById(R.id.txtRecipeName);
             btnAddToFavorites = itemView.findViewById(R.id.btnAddToFavoritesRecipeFrag);
+            txtIngredientsList = itemView.findViewById(R.id.txtIngredientsList);
         }
     }
 }

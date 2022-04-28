@@ -15,7 +15,6 @@
         android:layout_margin="10dp"
         android:lines="1"/>
 
-
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:layout_below="@+id/txtSearchCustomerStore"
         android:id="@+id/swipeRefreshLayoutStore"

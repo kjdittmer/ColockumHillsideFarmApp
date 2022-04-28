@@ -28,11 +28,10 @@ import com.example.colockumhillsidefarmapp.DBInterface;
 import com.example.colockumhillsidefarmapp.vendor.VendorDashboardActivity;
 
 public class AddProductActivity extends AppCompatActivity {
-    private static final int PERMISSION_REQUEST = 0;
-    private static final int RESULT_LOAD_IMAGE = 1;
+
     EditText txtNameAddProdAct, txtQuantityAddProdAct, txtImageUrlProdAct, txtShortDescAddProdAct, txtLongDescAddProdAct, txtPriceAddProdAct, txtPackageQuantityAddProdAct;
     ImageView imageView;
-    Button btnAddProductAddProdAct, btnUploadPicture;
+    Button btnAddProductAddProdAct;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,19 +41,6 @@ public class AddProductActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         initVariables();
-
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE)
-                != PackageManager.PERMISSION_GRANTED) {
-            requestPermissions(new String[] {Manifest.permission.READ_EXTERNAL_STORAGE}, PERMISSION_REQUEST);
-        }
-
-        btnUploadPicture.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                startActivityForResult(i, RESULT_LOAD_IMAGE);
-            }
-        });
 
         btnAddProductAddProdAct.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -139,7 +125,6 @@ public class AddProductActivity extends AppCompatActivity {
 
     private void initVariables() {
         btnAddProductAddProdAct = findViewById(R.id.btnAddProductAddProdAct);
-        btnUploadPicture = findViewById(R.id.btnUploadPicture);
         txtNameAddProdAct = findViewById(R.id.txtNameAddProdAct);
         txtQuantityAddProdAct = findViewById(R.id.txtQuantityAddProdAct);
         txtImageUrlProdAct = findViewById(R.id.txtImageUrlProdAct);
@@ -148,29 +133,6 @@ public class AddProductActivity extends AppCompatActivity {
         txtPriceAddProdAct = findViewById(R.id.txtPriceAddProdAct);
         txtPackageQuantityAddProdAct = findViewById(R.id.txtPackageQuantityAddProdAct);
         imageView = (ImageView) findViewById(R.id.imageView);
-    }
-
-    @Override
-    public void onRequestPermissionsResult (int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        switch (requestCode) {
-            case RESULT_LOAD_IMAGE:
-                if (resultCode == RESULT_OK) {
-                    Uri selectedImage = data.getData();
-                    String[] filePathColumn = {MediaStore.Images.Media.DATA};
-                    Cursor cursor = getContentResolver().query(selectedImage, filePathColumn, null, null, null);
-                    cursor.moveToFirst();
-                    int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
-                    String picturePath = cursor.getString(columnIndex);
-                    cursor.close();
-                    imageView.setImageBitmap(BitmapFactory.decodeFile(picturePath));
-                }
-        }
     }
 
     @Override

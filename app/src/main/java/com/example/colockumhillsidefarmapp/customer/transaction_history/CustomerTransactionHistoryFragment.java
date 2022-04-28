@@ -21,9 +21,11 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import com.example.colockumhillsidefarmapp.R;
 import com.example.colockumhillsidefarmapp.DBInterface;
 import com.example.colockumhillsidefarmapp.customer.shopping_cart.Transaction;
+import com.example.colockumhillsidefarmapp.customer.store.Product;
 import com.example.colockumhillsidefarmapp.vendor.analytics.TransactionRecViewAdapter;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 public class CustomerTransactionHistoryFragment extends Fragment {
 
@@ -73,7 +75,7 @@ public class CustomerTransactionHistoryFragment extends Fragment {
 
             @Override
             public void afterTextChanged(Editable editable) {
-                filter(editable.toString());
+                filter(editable.toString().trim());
             }
         });
 
@@ -97,8 +99,23 @@ public class CustomerTransactionHistoryFragment extends Fragment {
         ArrayList<Transaction> filteredTransactions = new ArrayList<>();
 
         for (Transaction transaction : transactionList) {
-            if (transaction.getProduct().getName().toLowerCase().contains(text.toLowerCase())) {
-                filteredTransactions.add(transaction);
+            Product product = transaction.getProduct();
+            if (product != null) {
+                String input = product.getName();
+                if (input != null) {
+                    if (input.toLowerCase().contains(text.toLowerCase())) {
+                        filteredTransactions.add(transaction);
+                    }
+                }
+            }
+            Date time = transaction.getTime();
+            if (time != null) {
+                String input = time.toString();
+                if (input != null) {
+                    if (input.toLowerCase().contains(text.toLowerCase())) {
+                        filteredTransactions.add(transaction);
+                    }
+                }
             }
         }
 

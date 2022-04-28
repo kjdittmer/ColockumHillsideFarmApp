@@ -13,6 +13,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.colockumhillsidefarmapp.DBInterface;
 import com.example.colockumhillsidefarmapp.R;
 import com.example.colockumhillsidefarmapp.customer.CustomerDashboardActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -26,7 +27,7 @@ public class CustomerLoginActivity extends AppCompatActivity {
     private Button btnLogin;
     private TextView txtCreateAccount, txtVendorLogin;
     private ProgressBar progressBar;
-    private FirebaseAuth mAuth;
+    String email, password;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +39,9 @@ public class CustomerLoginActivity extends AppCompatActivity {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                login();
+                if (validateLogin()) {
+                    DBInterface.getInstance().login(email, password, progressBar, CustomerLoginActivity.this);
+                }
             }
         });
 
@@ -64,11 +67,13 @@ public class CustomerLoginActivity extends AppCompatActivity {
         btnLogin = findViewById(R.id.btnLoginCustomerLogin);
         txtCreateAccount = findViewById(R.id.txtCreateAccountCustomerLogin);
         txtVendorLogin = findViewById(R.id.txtVendorLoginCustomerLogin);
-        mAuth = FirebaseAuth.getInstance();
         progressBar = findViewById(R.id.progressBarCustomerLogin);
     }
 
-    private boolean validateLogin(String email, String password) {
+    private boolean validateLogin() {
+        email = txtEmail.getText().toString().trim();
+        password = txtPassword.getText().toString();
+
         if (email.isEmpty()) {
             txtEmail.setError("Email is required.");
             txtEmail.requestFocus();
@@ -96,33 +101,33 @@ public class CustomerLoginActivity extends AppCompatActivity {
         return true;
     }
 
-    private void login () {
-        String email = txtEmail.getText().toString();
-        String password = txtPassword.getText().toString();
-
-        if (!validateLogin(email, password)) {
-            return;
-        }
-
-        progressBar.setVisibility(View.VISIBLE);
-
-        mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-
-                if (task.isSuccessful()) {
-                    startActivity(new Intent(getApplicationContext(), CustomerDashboardActivity.class));
-                    progressBar.setVisibility(View.GONE);
-                } else {
-                    Toast.makeText(CustomerLoginActivity.this,
-                            "Failed to login!",
-                            Toast.LENGTH_SHORT)
-                            .show();
-                    progressBar.setVisibility(View.GONE);
-                }
-            }
-        });
-    }
+//    private void login () {
+//        String email = txtEmail.getText().toString();
+//        String password = txtPassword.getText().toString();
+//
+//        if (!validateLogin()) {
+//            return;
+//        }
+//
+//        progressBar.setVisibility(View.VISIBLE);
+//
+//        mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+//            @Override
+//            public void onComplete(@NonNull Task<AuthResult> task) {
+//
+//                if (task.isSuccessful()) {
+//                    startActivity(new Intent(getApplicationContext(), CustomerDashboardActivity.class));
+//                    progressBar.setVisibility(View.GONE);
+//                } else {
+//                    Toast.makeText(CustomerLoginActivity.this,
+//                            "Failed to login!",
+//                            Toast.LENGTH_SHORT)
+//                            .show();
+//                    progressBar.setVisibility(View.GONE);
+//                }
+//            }
+//        });
+//    }
 
     @Override
     public void onBackPressed() {

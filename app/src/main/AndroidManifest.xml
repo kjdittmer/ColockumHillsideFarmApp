@@ -12,35 +12,36 @@
         android:roundIcon="@drawable/chickenpic"
         android:supportsRtl="true"
         android:theme="@style/Theme.ColockumHillsideFarmApp">
+        <activity
+            android:name=".customer.shopping_cart.OrderConfirmationActivity"
+            android:exported="false" />
 
         <meta-data
             android:name="sqip.SQUARE_APPLICATION_ID"
-            android:value="sandbox-sq0idb-wyh6ezc6cDWH7N5uHdkLgQ"/>
-
+            android:value="sandbox-sq0idb-wyh6ezc6cDWH7N5uHdkLgQ" />
         <meta-data
             android:name="com.google.android.gms.wallet.api.enabled"
-            android:value="true"
-            />
+            android:value="true" />
 
         <activity
             android:name=".vendor.VendorDashboardActivity"
             android:exported="false"
-            android:parentActivityName=".user.VendorLoginActivity"/>
+            android:parentActivityName=".user.VendorLoginActivity" />
         <activity
             android:name=".customer.CustomerDashboardActivity"
             android:exported="false"
             android:parentActivityName=".user.CustomerLoginActivity"
-            android:theme="@style/Theme.ColockumHillsideFarmApp.NoActionBar"/>
+            android:theme="@style/Theme.ColockumHillsideFarmApp.NoActionBar" />
         <activity
             android:name=".user.VendorLoginActivity"
             android:exported="false"
             android:label="Vendor"
-            android:parentActivityName=".user.CustomerLoginActivity"/>
+            android:parentActivityName=".user.CustomerLoginActivity" />
         <activity
             android:name=".user.NewCustomerActivity"
             android:exported="false"
             android:label="Create Account"
-            android:parentActivityName=".user.CustomerLoginActivity"/>
+            android:parentActivityName=".user.CustomerLoginActivity" />
         <activity
             android:name=".user.CustomerLoginActivity"
             android:exported="true"
@@ -134,7 +135,7 @@
             android:name=".MainActivity"
             android:exported="true"
             android:label="@string/app_name"
-            android:theme="@style/Theme.ColockumHillsideFarmApp.NoActionBar"></activity>
+            android:theme="@style/Theme.ColockumHillsideFarmApp.NoActionBar" />
     </application>
 
 </manifest>

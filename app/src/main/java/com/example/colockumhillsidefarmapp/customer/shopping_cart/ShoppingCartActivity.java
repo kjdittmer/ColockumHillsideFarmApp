@@ -37,14 +37,17 @@ import com.google.android.gms.wallet.WalletConstants;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.lang.reflect.Array;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Optional;
 
 import org.json.JSONException;
 
+import com.google.firestore.v1.StructuredQuery;
 import com.paypal.android.sdk.payments.PayPalConfiguration;
 import com.paypal.android.sdk.payments.PayPalPayment;
 import com.paypal.android.sdk.payments.PayPalService;
@@ -58,11 +61,8 @@ ShoppingCartActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private TextView txtTotalShoppingCartAct;
     private Button btnContinueShoppingShoppingCartAct, btnCheckoutShoppingCartAct;
-//    private ArrayList<Product> productsInCart;
-//    private HashMap<Product, Integer> cart;
     private PaymentsClient paymentsClient;
-    ArrayList<ShoppingCartItem> shoppingCart;
-
+    private ArrayList<ShoppingCartItem> shoppingCart;
 
 
     public static final String clientKey = "AZdPoVE_jOqAVWmdep2onHn_rr1J5P7RJaEuMWtHwctBgSDRdiqX-OgSOiWraluAsVrhkjp02ORP2gfZ";
@@ -138,20 +138,7 @@ ShoppingCartActivity extends AppCompatActivity {
                 builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-
-                        //adapter.notifyDataSetChanged();
-                        //reload();
                         requestPayment(view);
-                        //getPayment();   /* this is for the paypal */
-//                for (Product product : cart.keySet()) {
-//                    DBInterface.getInstance().addTransaction(product, cart.get(product), product.getPrice(), Calendar.getInstance().getTime());
-//                }
-                        for (ShoppingCartItem shoppingCartItem : shoppingCart) {
-                            DBInterface.getInstance().addTransaction(shoppingCartItem.getProduct(),
-                                    shoppingCartItem.getQuantity(), shoppingCartItem.getProduct().getPrice(), Calendar.getInstance().getTime());
-                        }
-                        //do this on success
-                        //DBInterface.getInstance().clearShoppingCart(ShoppingCartActivity.this);
                         Toast.makeText(view.getContext(), "Please set up Google Pay", Toast.LENGTH_SHORT);
 
                     }
@@ -202,6 +189,23 @@ ShoppingCartActivity extends AppCompatActivity {
 
             // Logging token string.
             Log.d("Google Pay token: ", token);
+            ArrayList<ShoppingCartItem> shoppingCartCopy = shoppingCart;
+            DBInterface.getInstance().addTransactions(shoppingCart);
+            DBInterface.getInstance().decreaseProductQuantity(shoppingCart);
+
+            ArrayList<Transaction> transactionsToShow = new ArrayList<>();
+            for (ShoppingCartItem shoppingCartItem : shoppingCartCopy) {
+                Product product = shoppingCartItem.getProduct();
+                int quantity = shoppingCartItem.getQuantity();
+                double price = product.getPrice() * quantity;
+                String user = DBInterface.getInstance().CURRENT_USER;
+
+                transactionsToShow.add(new Transaction(product, quantity, price, null, user));
+            }
+            Log.d("transactions", transactionsToShow.toString());
+            Intent intent = new Intent(this, OrderConfirmationActivity.class);
+            intent.putParcelableArrayListExtra("transactions", transactionsToShow);
+            startActivity(intent);
 
         } catch (JSONException e) {
             throw new RuntimeException("The selected garment cannot be parsed from the list of elements");
@@ -221,6 +225,7 @@ ShoppingCartActivity extends AppCompatActivity {
         // The price provided to the API should include taxes and shipping.
         // This price is not displayed to the user.
         double garmentPrice = getTotalCost();
+        Log.d("total cost", String.valueOf(garmentPrice));
         long garmentPriceCents = Math.round(garmentPrice * PaymentsUtil.CENTS_IN_A_UNIT.longValue());
         long priceCents = garmentPriceCents + SHIPPING_COST_CENTS;
 

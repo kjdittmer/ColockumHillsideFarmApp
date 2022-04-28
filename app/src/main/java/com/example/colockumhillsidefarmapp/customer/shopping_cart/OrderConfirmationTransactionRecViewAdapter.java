@@ -1,17 +1,12 @@
-package com.example.colockumhillsidefarmapp.vendor.analytics;
+package com.example.colockumhillsidefarmapp.customer.shopping_cart;
 
 import android.content.Context;
-import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
@@ -19,24 +14,17 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.colockumhillsidefarmapp.R;
-import com.example.colockumhillsidefarmapp.customer.favorites.Favorites;
-import com.example.colockumhillsidefarmapp.customer.shopping_cart.ShoppingCart;
-import com.example.colockumhillsidefarmapp.customer.shopping_cart.ShoppingCartActivity;
-import com.example.colockumhillsidefarmapp.customer.shopping_cart.Transaction;
-import com.example.colockumhillsidefarmapp.customer.store.Product;
-import com.example.colockumhillsidefarmapp.customer.store.ProductActivity;
-import com.example.colockumhillsidefarmapp.customer.wishlist.Wishlist;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
-import java.util.Locale;
+import java.util.Calendar;
 
-public class TransactionRecViewAdapter extends RecyclerView.Adapter<TransactionRecViewAdapter.ViewHolder> {
+public class OrderConfirmationTransactionRecViewAdapter extends RecyclerView.Adapter<OrderConfirmationTransactionRecViewAdapter.ViewHolder> {
 
     private ArrayList<Transaction> transactions = new ArrayList<>();
     private Context mContext;
 
-    public TransactionRecViewAdapter(Context mContext) {
+    public OrderConfirmationTransactionRecViewAdapter(Context mContext) {
         this.mContext = mContext;
     }
 
@@ -59,7 +47,7 @@ public class TransactionRecViewAdapter extends RecyclerView.Adapter<TransactionR
         String totalCost;
         totalCost = df.format(transaction.getCost());
         holder.txtTotalCostTransaction.setText(totalCost);
-        //holder.txtDateTransaction.setText(transaction.getTime().toString());
+        holder.txtDateTransaction.setText(Calendar.getInstance().getTime().toString());
         Glide.with(mContext)
                 .asBitmap()
                 .load(transaction.getProduct().getImageUrl())

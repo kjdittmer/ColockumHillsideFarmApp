@@ -52,7 +52,13 @@ public class UpdateRecipeRecViewAdapter extends RecyclerView.Adapter<UpdateRecip
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Recipe recipe = recipes.get(holder.getAdapterPosition());
         holder.txtRecipeNameEditRecipe.setText(recipe.getName());
-        holder.txtShortDescEditRecipe.setText(recipe.getShortDesc());
+        String[] ingredients = (recipe.getIngredients().split(","));
+        holder.txtIngredientsEditRecipe.setText("");
+        for (int i = 0; i < ingredients.length; i++) {
+            holder.txtIngredientsEditRecipe.append("\u2022 ");
+            holder.txtIngredientsEditRecipe.append(ingredients[i].trim());
+            holder.txtIngredientsEditRecipe.append("\n");
+        }
         Glide.with(mContext)
                 .asBitmap()
                 .load(recipe.getImageUrl())
@@ -112,7 +118,7 @@ public class UpdateRecipeRecViewAdapter extends RecyclerView.Adapter<UpdateRecip
 
         private CardView parentEditRecipe;
         private ImageView imgRecipeEditRecipe;
-        private TextView txtRecipeNameEditRecipe, txtShortDescEditRecipe;
+        private TextView txtRecipeNameEditRecipe, txtIngredientsEditRecipe;
         private ImageButton btnDeleteEditRecipe;
 
         public ViewHolder(@NonNull View itemView) {
@@ -121,7 +127,7 @@ public class UpdateRecipeRecViewAdapter extends RecyclerView.Adapter<UpdateRecip
             imgRecipeEditRecipe = itemView.findViewById(R.id.imgRecipeEditRecipe);
             txtRecipeNameEditRecipe = itemView.findViewById(R.id.txtRecipeNameEditRecipe);
             btnDeleteEditRecipe = itemView.findViewById(R.id.btnDeleteEditRecipe);
-            txtShortDescEditRecipe = itemView.findViewById(R.id.txtShortDescEditRecipe);
+            txtIngredientsEditRecipe = itemView.findViewById(R.id.txtIngredientsEditRecipe);
         }
     }
 }
