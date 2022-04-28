@@ -15,7 +15,6 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.colockumhillsidefarmapp.DBInterface;
-import com.example.colockumhillsidefarmapp.MainActivity;
 import com.example.colockumhillsidefarmapp.R;
 import com.example.colockumhillsidefarmapp.customer.CustomerDashboardActivity;
 import com.example.colockumhillsidefarmapp.customer.recipes.Recipe;

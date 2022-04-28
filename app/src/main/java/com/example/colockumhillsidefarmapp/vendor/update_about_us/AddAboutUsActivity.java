@@ -116,7 +116,6 @@ public class AddAboutUsActivity extends AppCompatActivity {
         txtNameAddInfoHeader = findViewById(R.id.txtNameAddInfoHeader);
         txtImageUrlAddAboutUs = findViewById(R.id.txtImageUrlAddAboutUs);
         txtAddInformation = findViewById(R.id.txtAddInformation);
-        imageView = (ImageView) findViewById(R.id.imageView);
     }
 
     @Override
