@@ -24,7 +24,6 @@ import com.example.colockumhillsidefarmapp.customer.store.CustomerStoreFragment;
 import com.example.colockumhillsidefarmapp.R;
 import com.example.colockumhillsidefarmapp.customer.transaction_history.CustomerTransactionHistoryFragment;
 import com.example.colockumhillsidefarmapp.customer.wishlist.WishlistActivity;
-import com.example.colockumhillsidefarmapp.databinding.ActivityMainBinding;
 import com.example.colockumhillsidefarmapp.user.CustomerLoginActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.mailchimp.sdk.core.MailchimpSdkConfiguration;

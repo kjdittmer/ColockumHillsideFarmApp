@@ -128,7 +128,6 @@ public class AddRecipeActivity extends AppCompatActivity {
         txtShortDescAddRecipeAct = findViewById(R.id.txtShortDescAddRecipeAct);
         txtIngredients = findViewById(R.id.txtIngredients);
         txtInstructions = findViewById(R.id.txtInstructions);
-        imageView = (ImageView) findViewById(R.id.imageView);
     }
 
     @Override

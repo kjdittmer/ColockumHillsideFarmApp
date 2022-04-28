@@ -112,11 +112,6 @@
             android:exported="false"
             android:label="Edit About Us"
             android:parentActivityName=".vendor.VendorDashboardActivity" />
-        <activity
-            android:name=".vendor.analytics.AnalyticsActivity"
-            android:exported="false"
-            android:label="Analytics"
-            android:parentActivityName=".vendor.VendorDashboardActivity" />
     </application>
 
 </manifest>

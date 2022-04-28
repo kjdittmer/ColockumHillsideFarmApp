@@ -132,7 +132,6 @@ public class AddProductActivity extends AppCompatActivity {
         txtLongDescAddProdAct = findViewById(R.id.txtLongDescAddProdAct);
         txtPriceAddProdAct = findViewById(R.id.txtPriceAddProdAct);
         txtPackageQuantityAddProdAct = findViewById(R.id.txtPackageQuantityAddProdAct);
-        imageView = (ImageView) findViewById(R.id.imageView);
     }
 
     @Override
