@@ -2,6 +2,7 @@ package com.example.colockumhillsidefarmapp.customer.about_us;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.method.ScrollingMovementMethod;
 import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -28,7 +29,7 @@ public class AboutUsActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         initVariables();
-
+        informationbody.setMovementMethod(new ScrollingMovementMethod());
         Intent intent = getIntent();
         if (getIntent() != null) {
             Info info = intent.getParcelableExtra(INFO);
