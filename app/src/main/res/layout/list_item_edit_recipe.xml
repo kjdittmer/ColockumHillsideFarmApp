@@ -29,7 +29,7 @@
                 android:id="@+id/txtRecipeNameEditRecipe"/>
 
         <TextView
-            android:id="@+id/txtIngredientsEditRecipe"
+            android:id="@+id/txtShortDescEditRecipe"
             android:layout_toRightOf="@+id/imgRecipeEditRecipe"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
