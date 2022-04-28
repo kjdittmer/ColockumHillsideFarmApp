@@ -33,6 +33,7 @@ public class CustomerStoreFragment extends Fragment {
     private SwipeRefreshLayout layout;
     private ArrayList<Product> productList;
     private StoreProductRecViewAdapter adapter;
+    private Spinner spnrSortStore;
 
     @Nullable
     @Override
@@ -42,6 +43,7 @@ public class CustomerStoreFragment extends Fragment {
         adapter = new StoreProductRecViewAdapter(root.getContext());
         productList = DBInterface.getInstance().getAllProducts(adapter);
         productRecView = root.findViewById(R.id.productRecView);
+        spnrSortStore = root.findViewById(R.id.spnrSortStore);
 
 
         productRecView.setAdapter(adapter);
@@ -56,6 +58,7 @@ public class CustomerStoreFragment extends Fragment {
             public void onRefresh() {
                 productList = DBInterface.getInstance().getAllProducts(adapter);
                 adapter.setProducts(productList);
+                spnrSortStore.setSelection(0);
                 layout.setRefreshing(false);
             }
         });
@@ -85,55 +88,59 @@ public class CustomerStoreFragment extends Fragment {
                         (keyCode == KeyEvent.KEYCODE_ENTER)) {
                     // Perform action on key press
                     closeKeyboard();
+                    spnrSortStore.requestFocus();
                     return true;
                 }
                 return false;
             }
         });
 
-//        ArrayList<String> sortBy = new ArrayList<>();
-//        sortBy.add("Sort");
-//        sortBy.add("A -> Z");
-//        sortBy.add("Z -> A");
-//        sortBy.add("Price: Low -> High");
-//        sortBy.add("Price: High -> Low");
-//        ArrayAdapter<String> sortByAdapter = new ArrayAdapter<String>(getContext(), R.layout.spinner_search_criteria,
-//                sortBy);
-//        spnrSortStore.setAdapter(sortByAdapter);
-//
-//        spnrSortStore.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-//            @Override
-//            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-//                String selectedSort = spnrSortStore.getSelectedItem().toString();
-//                switch (selectedSort) {
-//                    case "A -> Z":
-//                        Collections.sort(productList, Product.ProductNameAZComparator);
-//                        adapter.notifyDataSetChanged();
-//                        break;
-//                    case "Z -> A":
-//                        Collections.sort(productList, Product.ProductNameZAComparator);
-//                        adapter.notifyDataSetChanged();
-//                        break;
-//                    case "Price: Low -> High":
-//                        Collections.sort(productList, Product.ProductPriceAscendingComparator);
-//                        adapter.notifyDataSetChanged();
-//                        break;
-//                    case "Price: High -> Low":
-//                        Collections.sort(productList, Product.ProductPriceDescendingComparator);
-//                        adapter.notifyDataSetChanged();
-//                        break;
-//                    default:
-//                        break;
-//                }
-//            }
-//
-//            @Override
-//            public void onNothingSelected(AdapterView<?> adapterView) {
-//
-//            }
-//        });
+        ArrayList<String> sortBy = new ArrayList<>();
+        sortBy.add("A->Z");
+        sortBy.add("Z->A");
+        sortBy.add("$->$$");
+        sortBy.add("$$->$");
+        ArrayAdapter<String> sortByAdapter = new ArrayAdapter<String>(getContext(), R.layout.spinner_search_criteria,
+                sortBy);
+        spnrSortStore.setAdapter(sortByAdapter);
+
+        setSpinnerOnItemSelectedLister(productList);
 
         return root;
+    }
+
+    private void setSpinnerOnItemSelectedLister(ArrayList<Product> list) {
+        spnrSortStore.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                String selectedSort = spnrSortStore.getSelectedItem().toString();
+                switch (selectedSort) {
+                    case "A->Z":
+                        Collections.sort(list, Product.ProductNameAZComparator);
+                        adapter.notifyDataSetChanged();
+                        break;
+                    case "Z->A":
+                        Collections.sort(list, Product.ProductNameZAComparator);
+                        adapter.notifyDataSetChanged();
+                        break;
+                    case "$->$$":
+                        Collections.sort(list, Product.ProductPriceAscendingComparator);
+                        adapter.notifyDataSetChanged();
+                        break;
+                    case "$$->$":
+                        Collections.sort(list, Product.ProductPriceDescendingComparator);
+                        adapter.notifyDataSetChanged();
+                        break;
+                    default:
+                        break;
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
     }
 
     private void filter(String text) {
@@ -144,8 +151,8 @@ public class CustomerStoreFragment extends Fragment {
                 filteredProducts.add(product);
             }
         }
-
         adapter.filterList(filteredProducts);
+        setSpinnerOnItemSelectedLister(filteredProducts);
     }
 
     private void closeKeyboard () {

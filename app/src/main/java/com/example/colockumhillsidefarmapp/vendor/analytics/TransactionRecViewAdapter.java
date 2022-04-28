@@ -59,7 +59,7 @@ public class TransactionRecViewAdapter extends RecyclerView.Adapter<TransactionR
         String totalCost;
         totalCost = df.format(transaction.getCost());
         holder.txtTotalCostTransaction.setText(totalCost);
-        //holder.txtDateTransaction.setText(transaction.getTime().toString());
+        holder.txtDateTransaction.setText(transaction.getTime().toString());
         Glide.with(mContext)
                 .asBitmap()
                 .load(transaction.getProduct().getImageUrl())

@@ -22,6 +22,7 @@ import com.example.colockumhillsidefarmapp.customer.store.Product;
 import com.example.colockumhillsidefarmapp.user.CustomerLoginActivity;
 import com.example.colockumhillsidefarmapp.user.NewCustomerActivity;
 import com.example.colockumhillsidefarmapp.user.User;
+import com.example.colockumhillsidefarmapp.vendor.VendorDashboardActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -35,6 +36,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
 import java.util.Date;
 
 public class DBInterface {
@@ -107,7 +109,7 @@ public class DBInterface {
                 });
     }
 
-    public void login (String email, String password, ProgressBar progressBar, Context context) {
+    public void loginCustomer (String email, String password, ProgressBar progressBar, Context context) {
         progressBar.setVisibility(View.VISIBLE);
 
         mAuth = FirebaseAuth.getInstance();
@@ -118,6 +120,29 @@ public class DBInterface {
                 if (task.isSuccessful()) {
                     CURRENT_USER = email;
                     context.startActivity(new Intent(context, CustomerDashboardActivity.class));
+                    progressBar.setVisibility(View.GONE);
+                } else {
+                    Toast.makeText(context,
+                            "Failed to login!",
+                            Toast.LENGTH_SHORT)
+                            .show();
+                    progressBar.setVisibility(View.GONE);
+                }
+            }
+        });
+    }
+
+    public void loginVendor (String email, String password, ProgressBar progressBar, Context context) {
+        progressBar.setVisibility(View.VISIBLE);
+
+        mAuth = FirebaseAuth.getInstance();
+        mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+
+                if (task.isSuccessful()) {
+                    CURRENT_USER = email;
+                    context.startActivity(new Intent(context, VendorDashboardActivity.class));
                     progressBar.setVisibility(View.GONE);
                 } else {
                     Toast.makeText(context,
@@ -143,6 +168,7 @@ public class DBInterface {
                     Product newProduct = currentSnapshot.getValue(Product.class);
                     allProducts.add(newProduct);
                 }
+                Collections.sort(allProducts, Product.ProductNameAZComparator);
                 adapter.notifyDataSetChanged();
             }
 
@@ -248,6 +274,7 @@ public class DBInterface {
                     Recipe newRecipe = currentSnapshot.getValue(Recipe.class);
                     allRecipes.add(newRecipe);
                 }
+                Collections.sort(allRecipes, Recipe.RecipeNameAZComparator);
                 adapter.notifyDataSetChanged();
             }
 
@@ -360,6 +387,7 @@ public class DBInterface {
                     Transaction newTransaction = currentSnapshot.getValue(Transaction.class);
                     allTransactions.add(newTransaction);
                 }
+                Collections.sort(allTransactions, Transaction.TransactionDateDescendingComparator);
                 adapter.notifyDataSetChanged();
             }
 
@@ -383,6 +411,7 @@ public class DBInterface {
                     Transaction newTransaction = currentSnapshot.getValue(Transaction.class);
                     allTransactions.add(newTransaction);
                 }
+                Collections.sort(allTransactions, Transaction.TransactionDateDescendingComparator);
                 adapter.notifyDataSetChanged();
             }
 
@@ -407,6 +436,7 @@ public class DBInterface {
                     Product newProduct = currentSnapshot.getValue(Product.class);
                     allProducts.add(newProduct);
                 }
+                Collections.sort(allProducts, Product.ProductNameAZComparator);
                 adapter.notifyDataSetChanged();
             }
 
@@ -447,6 +477,7 @@ public class DBInterface {
                     Product newProduct = currentSnapshot.getValue(Product.class);
                     allProducts.add(newProduct);
                 }
+                Collections.sort(allProducts, Product.ProductNameAZComparator);
                 adapter.notifyDataSetChanged();
             }
 
@@ -487,6 +518,7 @@ public class DBInterface {
                     Recipe newRecipe = currentSnapshot.getValue(Recipe.class);
                     allRecipes.add(newRecipe);
                 }
+                Collections.sort(allRecipes, Recipe.RecipeNameAZComparator);
                 adapter.notifyDataSetChanged();
             }
 
@@ -527,6 +559,7 @@ public class DBInterface {
                     ShoppingCartItem newShoppingCartItem = currentSnapshot.getValue(ShoppingCartItem.class);
                     shoppingCart.add(newShoppingCartItem);
                 }
+                Collections.sort(shoppingCart, ShoppingCartItem.ShoppingCartItemNameAZComparator);
                 adapter.notifyDataSetChanged();
             }
 

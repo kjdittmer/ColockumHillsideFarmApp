@@ -41,7 +41,7 @@ public class VendorLoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (validateLogin()) {
-                    DBInterface.getInstance().login(email, password, progressBar, VendorLoginActivity.this);
+                    DBInterface.getInstance().loginVendor(email, password, progressBar, VendorLoginActivity.this);
                 }
             }
         });

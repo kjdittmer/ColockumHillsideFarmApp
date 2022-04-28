@@ -51,37 +51,37 @@ public class Product implements Parcelable {
         }
     };
 
-//    public static Comparator<Product> ProductNameAZComparator = new Comparator<Product>() {
-//        @Override
-//        public int compare(Product product, Product t1) {
-//            return product.name.compareTo(t1.name);
-//        }
-//    };
-//
-//    public static Comparator<Product> ProductNameZAComparator = new Comparator<Product>() {
-//        @Override
-//        public int compare(Product product, Product t1) {
-//            return t1.name.compareTo(product.name);
-//        }
-//    };
-//
-//    public static Comparator<Product> ProductPriceAscendingComparator = new Comparator<Product>() {
-//        @Override
-//        public int compare(Product product, Product t1) {
-//            int price1 = (product.price > 0) ? (int) Math.ceil(product.price) : (int) Math.floor(product.price);
-//            int price2 = (t1.price > 0) ? (int) Math.ceil(t1.price) : (int) Math.floor(t1.price);
-//            return price1 - price2;
-//        }
-//    };
-//
-//    public static Comparator<Product> ProductPriceDescendingComparator = new Comparator<Product>() {
-//        @Override
-//        public int compare(Product product, Product t1) {
-//            int price1 = (product.price > 0) ? (int) Math.ceil(product.price) : (int) Math.floor(product.price);
-//            int price2 = (t1.price > 0) ? (int) Math.ceil(t1.price) : (int) Math.floor(t1.price);
-//            return price2 - price1;
-//        }
-//    };
+    public static Comparator<Product> ProductNameAZComparator = new Comparator<Product>() {
+        @Override
+        public int compare(Product product, Product t1) {
+            return product.name.compareTo(t1.name);
+        }
+    };
+
+    public static Comparator<Product> ProductNameZAComparator = new Comparator<Product>() {
+        @Override
+        public int compare(Product product, Product t1) {
+            return t1.name.compareTo(product.name);
+        }
+    };
+
+    public static Comparator<Product> ProductPriceAscendingComparator = new Comparator<Product>() {
+        @Override
+        public int compare(Product product, Product t1) {
+            int price1 = (product.price > 0) ? (int) Math.ceil(product.price) : (int) Math.floor(product.price);
+            int price2 = (t1.price > 0) ? (int) Math.ceil(t1.price) : (int) Math.floor(t1.price);
+            return price1 - price2;
+        }
+    };
+
+    public static Comparator<Product> ProductPriceDescendingComparator = new Comparator<Product>() {
+        @Override
+        public int compare(Product product, Product t1) {
+            int price1 = (product.price > 0) ? (int) Math.ceil(product.price) : (int) Math.floor(product.price);
+            int price2 = (t1.price > 0) ? (int) Math.ceil(t1.price) : (int) Math.floor(t1.price);
+            return price2 - price1;
+        }
+    };
 
     public int getId() {
         return id;

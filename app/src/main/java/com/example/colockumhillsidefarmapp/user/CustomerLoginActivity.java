@@ -40,7 +40,7 @@ public class CustomerLoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (validateLogin()) {
-                    DBInterface.getInstance().login(email, password, progressBar, CustomerLoginActivity.this);
+                    DBInterface.getInstance().loginCustomer(email, password, progressBar, CustomerLoginActivity.this);
                 }
             }
         });

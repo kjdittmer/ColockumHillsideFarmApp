@@ -11,7 +11,10 @@ import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.Spinner;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -26,6 +29,7 @@ import com.example.colockumhillsidefarmapp.customer.store.Product;
 import com.example.colockumhillsidefarmapp.vendor.VendorDashboardActivity;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class UpdateStoreFragment extends Fragment {
 
@@ -33,6 +37,7 @@ public class UpdateStoreFragment extends Fragment {
     private EditStoreProductRecViewAdapter adapter;
     private SwipeRefreshLayout layout;
     private ArrayList<Product> productList;
+    private Spinner spnrSortUpdateStore;
 
     @Nullable
     @Override
@@ -43,8 +48,9 @@ public class UpdateStoreFragment extends Fragment {
 
         adapter = new EditStoreProductRecViewAdapter(root.getContext(), (VendorDashboardActivity) getActivity());
         productList = DBInterface.getInstance().getAllProducts(adapter);
-
         editStoreRecView = root.findViewById(R.id.editStoreRecView);
+        spnrSortUpdateStore = root.findViewById(R.id.spnrSortUpdateStore);
+
 
         editStoreRecView.setAdapter(adapter);
         editStoreRecView.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -57,6 +63,7 @@ public class UpdateStoreFragment extends Fragment {
             public void onRefresh() {
                 productList = DBInterface.getInstance().getAllProducts(adapter);
                 adapter.setProducts(productList);
+                spnrSortUpdateStore.setSelection(0);
                 layout.setRefreshing(false);
             }
         });
@@ -92,7 +99,52 @@ public class UpdateStoreFragment extends Fragment {
             }
         });
 
+        ArrayList<String> sortBy = new ArrayList<>();
+        sortBy.add("A->Z");
+        sortBy.add("Z->A");
+        sortBy.add("$->$$");
+        sortBy.add("$$->$");
+        ArrayAdapter<String> sortByAdapter = new ArrayAdapter<String>(getContext(), R.layout.spinner_search_criteria,
+                sortBy);
+        spnrSortUpdateStore.setAdapter(sortByAdapter);
+
+        setSpinnerOnItemSelectedLister(productList);
+
         return root;
+    }
+
+    private void setSpinnerOnItemSelectedLister(ArrayList<Product> list) {
+        spnrSortUpdateStore.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                String selectedSort = spnrSortUpdateStore.getSelectedItem().toString();
+                switch (selectedSort) {
+                    case "A->Z":
+                        Collections.sort(list, Product.ProductNameAZComparator);
+                        adapter.notifyDataSetChanged();
+                        break;
+                    case "Z->A":
+                        Collections.sort(list, Product.ProductNameZAComparator);
+                        adapter.notifyDataSetChanged();
+                        break;
+                    case "$->$$":
+                        Collections.sort(list, Product.ProductPriceAscendingComparator);
+                        adapter.notifyDataSetChanged();
+                        break;
+                    case "$$->$":
+                        Collections.sort(list, Product.ProductPriceDescendingComparator);
+                        adapter.notifyDataSetChanged();
+                        break;
+                    default:
+                        break;
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
     }
 
     @Override
@@ -108,8 +160,8 @@ public class UpdateStoreFragment extends Fragment {
                 filteredProducts.add(product);
             }
         }
-
         adapter.filterList(filteredProducts);
+        setSpinnerOnItemSelectedLister(filteredProducts);
     }
 
     private void closeKeyboard () {

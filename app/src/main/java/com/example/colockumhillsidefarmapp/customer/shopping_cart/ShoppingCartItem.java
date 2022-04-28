@@ -2,6 +2,8 @@ package com.example.colockumhillsidefarmapp.customer.shopping_cart;
 
 import com.example.colockumhillsidefarmapp.customer.store.Product;
 
+import java.util.Comparator;
+
 public class ShoppingCartItem {
 
     private Product product;
@@ -14,6 +16,13 @@ public class ShoppingCartItem {
         this.product = product;
         this.quantity = quantity;
     }
+
+    public static Comparator<ShoppingCartItem> ShoppingCartItemNameAZComparator = new Comparator<ShoppingCartItem>() {
+        @Override
+        public int compare(ShoppingCartItem shoppingCartItem, ShoppingCartItem t1) {
+            return shoppingCartItem.product.getName().compareTo(t1.product.getName());
+        }
+    };
 
     public Product getProduct() {
         return product;

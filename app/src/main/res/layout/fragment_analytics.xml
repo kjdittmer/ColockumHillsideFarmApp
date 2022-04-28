@@ -13,7 +13,15 @@
         android:layout_margin="10dp"
         android:hint="Search for a transaction ..."
         android:inputType="text"
-        android:lines="1" />
+        android:lines="1"
+        android:layout_toLeftOf="@+id/spnrSortAnalytics"/>
+
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/spnrSortAnalytics"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="19dp"/>
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/swipeRefreshLayoutAnalytics"

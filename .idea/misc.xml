@@ -110,6 +110,7 @@
         <entry key="app/src/main/res/layout/fragment_recipes.xml" value="0.15833333333333333" />
         <entry key="app/src/main/res/layout/fragment_store.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_update_recipes.xml" value="0.17101325352714836" />
+        <entry key="app/src/main/res/layout/fragment_update_store.xml" value="0.20050654284508232" />
         <entry key="app/src/main/res/layout/fragment_vendor.xml" value="0.19166666666666668" />
         <entry key="app/src/main/res/layout/list_item_cart_product.xml" value="0.335" />
         <entry key="app/src/main/res/layout/list_item_edit_recipe.xml" value="0.17828131680205217" />

@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -26,6 +27,7 @@ import com.example.colockumhillsidefarmapp.customer.shopping_cart.Transaction;
 import com.example.colockumhillsidefarmapp.customer.store.Product;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 
 public class AnalyticsFragment extends Fragment {
@@ -34,6 +36,7 @@ public class AnalyticsFragment extends Fragment {
     private SwipeRefreshLayout layout;
     private ArrayList<Transaction> transactionList;
     private TransactionRecViewAdapter adapter;
+    private Spinner spnrSortAnalytics;
 
     @Nullable
     @Override
@@ -45,6 +48,7 @@ public class AnalyticsFragment extends Fragment {
         adapter = new TransactionRecViewAdapter(root.getContext());
         transactionList = DBInterface.getInstance().getAllTransactions(adapter);
         transactionRecView = root.findViewById(R.id.analyticsRecView);
+        spnrSortAnalytics = root.findViewById(R.id.spnrSortAnalytics);
 
         transactionRecView.setAdapter(adapter);
         RecyclerView.LayoutManager manager = new LinearLayoutManager(root.getContext());
@@ -58,6 +62,7 @@ public class AnalyticsFragment extends Fragment {
             public void onRefresh() {
                 transactionList = DBInterface.getInstance().getAllTransactions(adapter);
                 adapter.setTransactions(transactionList);
+                spnrSortAnalytics.setSelection(0);
                 layout.setRefreshing(false);
             }
         });
@@ -93,8 +98,64 @@ public class AnalyticsFragment extends Fragment {
             }
         });
 
+        ArrayList<String> sortBy = new ArrayList<>();
+        sortBy.add("New->Old");
+        sortBy.add("Old->New");
+        sortBy.add("A->Z");
+        sortBy.add("Z->A");
+        sortBy.add("$->$$");
+        sortBy.add("$$->$");
+        ArrayAdapter<String> sortByAdapter = new ArrayAdapter<String>(getContext(), R.layout.spinner_search_criteria,
+                sortBy);
+        spnrSortAnalytics.setAdapter(sortByAdapter);
+
+        setSpinnerOnItemSelectedLister(transactionList);
+
         return root;
     }
+
+    private void setSpinnerOnItemSelectedLister(ArrayList<Transaction> list) {
+        spnrSortAnalytics.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                String selectedSort = spnrSortAnalytics.getSelectedItem().toString();
+                switch (selectedSort) {
+                    case "A->Z":
+                        Collections.sort(list, Transaction.TransactionNameAZComparator);
+                        adapter.notifyDataSetChanged();
+                        break;
+                    case "Z->A":
+                        Collections.sort(list, Transaction.TransactionNameZAComparator);
+                        adapter.notifyDataSetChanged();
+                        break;
+                    case "$->$$":
+                        Collections.sort(list, Transaction.TransactionPriceAscendingComparator);
+                        adapter.notifyDataSetChanged();
+                        break;
+                    case "$$->$":
+                        Collections.sort(list, Transaction.TransactionPriceDescendingComparator);
+                        adapter.notifyDataSetChanged();
+                        break;
+                    case "Old->New":
+                        Collections.sort(list, Transaction.TransactionDateAscendingComparator);
+                        adapter.notifyDataSetChanged();
+                        break;
+                    case "New->Old":
+                        Collections.sort(list, Transaction.TransactionDateDescendingComparator);
+                        adapter.notifyDataSetChanged();
+                        break;
+                    default:
+                        break;
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+    }
+
 
     private void filter(String text) {
         ArrayList<Transaction> filteredTransactions = new ArrayList<>();
@@ -128,6 +189,7 @@ public class AnalyticsFragment extends Fragment {
 
         }
         adapter.filterList(filteredTransactions);
+        setSpinnerOnItemSelectedLister(filteredTransactions);
     }
 
     private void closeKeyboard () {

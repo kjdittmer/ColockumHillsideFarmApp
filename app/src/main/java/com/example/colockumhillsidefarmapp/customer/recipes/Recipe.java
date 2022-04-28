@@ -3,6 +3,10 @@ package com.example.colockumhillsidefarmapp.customer.recipes;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import com.example.colockumhillsidefarmapp.customer.store.Product;
+
+import java.util.Comparator;
+
 public class Recipe implements Parcelable {
     private int id;
     private String name;
@@ -40,6 +44,13 @@ public class Recipe implements Parcelable {
         @Override
         public Recipe[] newArray(int size) {
             return new Recipe[size];
+        }
+    };
+
+    public static Comparator<Recipe> RecipeNameAZComparator = new Comparator<Recipe>() {
+        @Override
+        public int compare(Recipe recipe, Recipe t1) {
+            return recipe.name.compareTo(t1.name);
         }
     };
 
