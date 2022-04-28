@@ -11,7 +11,10 @@ import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.Spinner;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -23,9 +26,11 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import com.example.colockumhillsidefarmapp.DBInterface;
 import com.example.colockumhillsidefarmapp.R;
 import com.example.colockumhillsidefarmapp.customer.recipes.Recipe;
+import com.example.colockumhillsidefarmapp.customer.store.Product;
 import com.example.colockumhillsidefarmapp.vendor.VendorDashboardActivity;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class UpdateRecipesFragment extends Fragment {
 
@@ -33,6 +38,7 @@ public class UpdateRecipesFragment extends Fragment {
     private UpdateRecipeRecViewAdapter adapter;
     private SwipeRefreshLayout layout;
     private ArrayList<Recipe> recipeList;
+    private Spinner spnrSortUpdateRecipes;
 
     @Nullable
     @Override
@@ -45,6 +51,8 @@ public class UpdateRecipesFragment extends Fragment {
         recipeList = DBInterface.getInstance().getAllRecipes(adapter);
 
         updateRecipesRecView = root.findViewById(R.id.updateRecipesRecView);
+        spnrSortUpdateRecipes = root.findViewById(R.id.spnrSortUpdateRecipes);
+
 
         updateRecipesRecView.setAdapter(adapter);
         updateRecipesRecView.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -57,6 +65,7 @@ public class UpdateRecipesFragment extends Fragment {
             public void onRefresh() {
                 recipeList = DBInterface.getInstance().getAllRecipes(adapter);
                 adapter.setRecipes(recipeList);
+                spnrSortUpdateRecipes.setSelection(0);
                 layout.setRefreshing(false);
             }
         });
@@ -92,8 +101,44 @@ public class UpdateRecipesFragment extends Fragment {
             }
         });
 
+        ArrayList<String> sortBy = new ArrayList<>();
+        sortBy.add("A->Z");
+        sortBy.add("Z->A");
+        ArrayAdapter<String> sortByAdapter = new ArrayAdapter<String>(getContext(), R.layout.spinner_search_criteria,
+                sortBy);
+        spnrSortUpdateRecipes.setAdapter(sortByAdapter);
+
+        setSpinnerOnItemSelectedLister(recipeList);
+
         return root;
     }
+
+    private void setSpinnerOnItemSelectedLister(ArrayList<Recipe> list) {
+        spnrSortUpdateRecipes.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                String selectedSort = spnrSortUpdateRecipes.getSelectedItem().toString();
+                switch (selectedSort) {
+                    case "A->Z":
+                        Collections.sort(list, Recipe.RecipeNameAZComparator);
+                        adapter.notifyDataSetChanged();
+                        break;
+                    case "Z->A":
+                        Collections.sort(list, Recipe.RecipeNameZAComparator);
+                        adapter.notifyDataSetChanged();
+                        break;
+                    default:
+                        break;
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+    }
+
 
     @Override
     public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
@@ -125,7 +170,7 @@ public class UpdateRecipesFragment extends Fragment {
                 }
             }
         }
-
+        setSpinnerOnItemSelectedLister(filteredRecipes);
         adapter.filterList(filteredRecipes);
     }
 }

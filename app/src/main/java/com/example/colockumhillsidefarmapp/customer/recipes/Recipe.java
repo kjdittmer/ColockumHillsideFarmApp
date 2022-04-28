@@ -54,6 +54,13 @@ public class Recipe implements Parcelable {
         }
     };
 
+    public static Comparator<Recipe> RecipeNameZAComparator = new Comparator<Recipe>() {
+        @Override
+        public int compare(Recipe recipe, Recipe t1) {
+            return t1.name.compareTo(recipe.name);
+        }
+    };
+
     public String getImageUrl() {
         return imageUrl;
     }

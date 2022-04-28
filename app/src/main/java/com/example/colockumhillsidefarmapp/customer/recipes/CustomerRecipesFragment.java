@@ -10,7 +10,10 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.Spinner;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -23,6 +26,7 @@ import com.example.colockumhillsidefarmapp.DBInterface;
 import com.example.colockumhillsidefarmapp.R;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class CustomerRecipesFragment extends Fragment {
 
@@ -30,6 +34,7 @@ public class CustomerRecipesFragment extends Fragment {
     private SwipeRefreshLayout layout;
     private ArrayList<Recipe> recipeList;
     private RecipeRecViewAdapter adapter;
+    private Spinner spnrSortRecipes;
 
     @Nullable
     @Override
@@ -39,6 +44,7 @@ public class CustomerRecipesFragment extends Fragment {
         adapter = new RecipeRecViewAdapter(root.getContext());
         recipeList = DBInterface.getInstance().getAllRecipes(adapter);
         recipesRecView = root.findViewById(R.id.recipeRecView);
+        spnrSortRecipes = root.findViewById(R.id.spnrSortRecipes);
 
         recipesRecView.setAdapter(adapter);
         RecyclerView.LayoutManager manager = new LinearLayoutManager(root.getContext());
@@ -52,37 +58,10 @@ public class CustomerRecipesFragment extends Fragment {
             public void onRefresh() {
                 recipeList = DBInterface.getInstance().getAllRecipes(adapter);
                 adapter.setRecipes(recipeList);
+                spnrSortRecipes.setSelection(0);
                 layout.setRefreshing(false);
             }
         });
-
-//        recipesRecView.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
-//            @Override
-//            public boolean onInterceptTouchEvent(@NonNull RecyclerView rv, @NonNull MotionEvent e) {
-//                if(rv.getChildCount() > 0) {
-//                    View childView = rv.findChildViewUnder(e.getX(), e.getY());
-//                    if(rv.getChildAdapterPosition(childView) == 0) {
-//                        int action = e.getAction();
-//                        switch (action) {
-//                            case MotionEvent.ACTION_DOWN:
-//                                rv.requestDisallowInterceptTouchEvent(true);
-//                        }
-//                    }
-//                }
-//
-//                return false;
-//            }
-//
-//            @Override
-//            public void onTouchEvent(@NonNull RecyclerView rv, @NonNull MotionEvent e) {
-//
-//            }
-//
-//            @Override
-//            public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
-//
-//            }
-//        });
 
         EditText txtSearch = root.findViewById(R.id.txtSearchCustomerRecipes);
         txtSearch.addTextChangedListener(new TextWatcher() {
@@ -115,8 +94,44 @@ public class CustomerRecipesFragment extends Fragment {
             }
         });
 
+        ArrayList<String> sortBy = new ArrayList<>();
+        sortBy.add("A->Z");
+        sortBy.add("Z->A");
+        ArrayAdapter<String> sortByAdapter = new ArrayAdapter<String>(getContext(), R.layout.spinner_search_criteria,
+                sortBy);
+        spnrSortRecipes.setAdapter(sortByAdapter);
+
+        setSpinnerOnItemSelectedLister(recipeList);
+
         return root;
     }
+
+    private void setSpinnerOnItemSelectedLister(ArrayList<Recipe> list) {
+        spnrSortRecipes.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                String selectedSort = spnrSortRecipes.getSelectedItem().toString();
+                switch (selectedSort) {
+                    case "A->Z":
+                        Collections.sort(list, Recipe.RecipeNameAZComparator);
+                        adapter.notifyDataSetChanged();
+                        break;
+                    case "Z->A":
+                        Collections.sort(list, Recipe.RecipeNameZAComparator);
+                        adapter.notifyDataSetChanged();
+                        break;
+                    default:
+                        break;
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+    }
+
 
     private void closeKeyboard () {
         View view = getActivity().getCurrentFocus();
@@ -143,7 +158,7 @@ public class CustomerRecipesFragment extends Fragment {
                 }
             }
         }
-
+        setSpinnerOnItemSelectedLister(filteredRecipes);
         adapter.filterList(filteredRecipes);
     }
 
