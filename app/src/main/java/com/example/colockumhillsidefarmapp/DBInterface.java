@@ -233,7 +233,8 @@ public class DBInterface {
     }
 
     public void decreaseProductQuantity(ArrayList<ShoppingCartItem> shoppingCart) {
-        for (ShoppingCartItem shoppingCartItem : shoppingCart) {
+        ArrayList<ShoppingCartItem> shoppingCartCopy = shoppingCart;
+        for (ShoppingCartItem shoppingCartItem : shoppingCartCopy) {
             Product newProduct = shoppingCartItem.getProduct();
             int quantitySold = shoppingCartItem.getQuantity();
             //get product

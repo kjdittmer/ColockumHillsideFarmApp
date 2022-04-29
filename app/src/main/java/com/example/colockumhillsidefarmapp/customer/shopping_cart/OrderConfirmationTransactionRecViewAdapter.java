@@ -46,7 +46,7 @@ public class OrderConfirmationTransactionRecViewAdapter extends RecyclerView.Ada
         holder.txtQuantityTransaction.setText("Quantity: " + String.valueOf(transaction.getQuantity()));
         String totalCost;
         totalCost = df.format(transaction.getCost());
-        holder.txtTotalCostTransaction.setText(totalCost);
+        holder.txtTotalCostTransaction.setText("Total: $" + totalCost);
         holder.txtDateTransaction.setText(Calendar.getInstance().getTime().toString());
         Glide.with(mContext)
                 .asBitmap()
