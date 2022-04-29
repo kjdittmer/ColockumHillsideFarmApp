@@ -142,7 +142,6 @@ public class WishlistActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        //productList = Wishlist.getInstance(this).getWishlist();
         productList = DBInterface.getInstance().getWishlist(adapter);
         adapter.setProductsInWishlist(productList);
     }

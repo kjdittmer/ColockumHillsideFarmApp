@@ -101,34 +101,6 @@ public class CustomerLoginActivity extends AppCompatActivity {
         return true;
     }
 
-//    private void login () {
-//        String email = txtEmail.getText().toString();
-//        String password = txtPassword.getText().toString();
-//
-//        if (!validateLogin()) {
-//            return;
-//        }
-//
-//        progressBar.setVisibility(View.VISIBLE);
-//
-//        mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-//            @Override
-//            public void onComplete(@NonNull Task<AuthResult> task) {
-//
-//                if (task.isSuccessful()) {
-//                    startActivity(new Intent(getApplicationContext(), CustomerDashboardActivity.class));
-//                    progressBar.setVisibility(View.GONE);
-//                } else {
-//                    Toast.makeText(CustomerLoginActivity.this,
-//                            "Failed to login!",
-//                            Toast.LENGTH_SHORT)
-//                            .show();
-//                    progressBar.setVisibility(View.GONE);
-//                }
-//            }
-//        });
-//    }
-
     @Override
     public void onBackPressed() {
         return;

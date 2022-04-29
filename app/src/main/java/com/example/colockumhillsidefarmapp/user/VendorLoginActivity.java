@@ -72,34 +72,6 @@ public class VendorLoginActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-//    private void login () {
-//        String email = txtEmail.getText().toString();
-//        String password = txtPassword.getText().toString();
-//
-//        if (!validateLogin(email, password)) {
-//            return;
-//        }
-//
-//        progressBar.setVisibility(View.VISIBLE);
-//
-//        mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-//            @Override
-//            public void onComplete(@NonNull Task<AuthResult> task) {
-//
-//                if (task.isSuccessful()) {
-//                    startActivity(new Intent(getApplicationContext(), VendorDashboardActivity.class));
-//                    progressBar.setVisibility(View.GONE);
-//                } else {
-//                    Toast.makeText(VendorLoginActivity.this,
-//                            "Failed to login!",
-//                            Toast.LENGTH_SHORT)
-//                            .show();
-//                    progressBar.setVisibility(View.GONE);
-//                }
-//            }
-//        });
-//    }
-
     private boolean validateLogin () {
         email = txtEmail.getText().toString();
         password = txtPassword.getText().toString();

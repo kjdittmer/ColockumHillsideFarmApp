@@ -43,7 +43,6 @@ public class FavoriteProductsRecViewAdapter extends RecyclerView.Adapter<Favorit
     public FavoriteProductsRecViewAdapter(Context mContext, FavoritesActivity currentActivity) {
         this.currentActivity = currentActivity;
         this.mContext = mContext;
-        //favoritesProducts = Favorites.getInstance().getFavoritesProducts();
     }
 
     public void setProductsFavoritesProducts(ArrayList<Product> favoritesProducts) {

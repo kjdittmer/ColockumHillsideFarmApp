@@ -32,9 +32,6 @@ import java.util.HashMap;
 public class CartProductRecViewAdapter extends RecyclerView.Adapter<CartProductRecViewAdapter.ViewHolder> {
     private static final String PRODUCT = "product";
 
-
-//    private ArrayList<Product> productsInCart;
-//    private HashMap<Product, Integer> cart;
     private Context mContext;
     private ShoppingCartActivity currentActivity;
     private ArrayList<ShoppingCartItem> shoppingCart;
@@ -60,8 +57,6 @@ public class CartProductRecViewAdapter extends RecyclerView.Adapter<CartProductR
         ShoppingCartItem shoppingCartItem = shoppingCart.get(holder.getAdapterPosition());
         int quantityInCart = shoppingCart.get(holder.getAdapterPosition()).getQuantity();
         Product product = shoppingCart.get(holder.getAdapterPosition()).getProduct();
-//        int quantityInCart = cart.get(productsInCart.get(holder.getAdapterPosition()));
-//        Product product = productsInCart.get(holder.getAdapterPosition());
 
         holder.txtProductNameCartItem.setText(product.getName());
 
@@ -91,16 +86,10 @@ public class CartProductRecViewAdapter extends RecyclerView.Adapter<CartProductR
         holder.spnrQuantityCartItem.setSelection(0, false);
 
         holder.spnrQuantityCartItem.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-//            boolean firstTrigger = true;
 
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-//                if (firstTrigger) {
-//                    firstTrigger = false;
-//                } else {
-                    //ShoppingCart.getInstance().setProductQuantity(product, (int) quantity.get(i));
                     DBInterface.getInstance().updateQuantity(shoppingCartItem, (int) quantity.get(i), currentActivity);
-//                }
             }
 
             @Override

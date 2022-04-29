@@ -35,7 +35,6 @@ public class NewCustomerActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (validateData()) {
-                    //registerUser();
                     DBInterface.getInstance().registerUser(fullName,
                             age, email, password, reenterPassword,
                             progressBar, NewCustomerActivity.this);

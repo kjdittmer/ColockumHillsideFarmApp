@@ -55,12 +55,6 @@ public class UpdateRecipeRecViewAdapter extends RecyclerView.Adapter<UpdateRecip
         String[] ingredients = (recipe.getIngredients().split(","));
         holder.txtShortDescEditRecipe.setText("");
         holder.txtShortDescEditRecipe.setText(recipe.getShortDesc());
-        /**for (int i = 0; i < ingredients.length; i++) {
-            holder.txtIngredientsEditRecipe.append("\u2022 ");
-            holder.txtIngredientsEditRecipe.append(ingredients[i].trim());
-            holder.txtIngredientsEditRecipe.append("\n");
-        }
-         **/
         Glide.with(mContext)
                 .asBitmap()
                 .load(recipe.getImageUrl())

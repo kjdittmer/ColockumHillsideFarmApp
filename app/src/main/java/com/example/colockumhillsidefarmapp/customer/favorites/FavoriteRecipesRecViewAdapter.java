@@ -35,7 +35,6 @@ public class FavoriteRecipesRecViewAdapter extends RecyclerView.Adapter<Favorite
     public FavoriteRecipesRecViewAdapter(Context mContext, FavoritesActivity currentActivity) {
         this.mContext = mContext;
         this.currentActivity = currentActivity;
-        //favoritesRecipes = Favorites.getInstance().getFavoritesRecipes();
     }
 
     @NonNull

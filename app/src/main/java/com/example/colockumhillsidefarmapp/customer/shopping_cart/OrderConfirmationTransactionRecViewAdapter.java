@@ -53,15 +53,6 @@ public class OrderConfirmationTransactionRecViewAdapter extends RecyclerView.Ada
                 .load(transaction.getProduct().getImageUrl())
                 .into(holder.imgProductTransaction);
         holder.txtUserTransaction.setText(transaction.getUser());
-
-//        holder.parent.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent intent = new Intent(mContext, ProductActivity.class);
-//                intent.putExtra(PRODUCT, product);
-//                mContext.startActivity(intent);
-//            }
-//        });
     }
 
     @Override

@@ -43,8 +43,6 @@ public class CustomerDashboardActivity extends AppCompatActivity {
         toolbar.setTitle("Store");
         setSupportActionBar(toolbar);
 
-        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
         toolbar.setNavigationIcon(R.drawable.ic_logout_24);
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation_customer_dashboard);

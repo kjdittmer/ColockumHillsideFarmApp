@@ -28,11 +28,6 @@ import com.google.android.gms.auth.api.signin.internal.Storage;
 import java.util.ArrayList;
 import java.util.Collections;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link FavoriteProductsFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class FavoriteProductsFragment extends Fragment {
 
     private FavoriteProductsRecViewAdapter adapter;

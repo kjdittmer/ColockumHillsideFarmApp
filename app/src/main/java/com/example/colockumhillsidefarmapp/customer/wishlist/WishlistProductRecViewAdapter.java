@@ -90,7 +90,6 @@ public class WishlistProductRecViewAdapter extends RecyclerView.Adapter<Wishlist
                 builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-//                        Wishlist.getInstance(mContext).removeProductFromWishList(product);
                         DBInterface.getInstance().removeProductFromWishlist(product);
                         currentActivity.reload();
                         Toast.makeText(mContext, product.getName() + " removed", Toast.LENGTH_SHORT).show();
@@ -121,7 +120,6 @@ public class WishlistProductRecViewAdapter extends RecyclerView.Adapter<Wishlist
             public void onClick(View view) {
                 int quantitySelected = (int)holder.spnrQuantityWishlistItem.getSelectedItem();
 
-                //ShoppingCart.getInstance().addProductToCart(product, quantitySelected);
                 DBInterface.getInstance().addProductToShoppingCart(new ShoppingCartItem(product, quantitySelected));
                 DBInterface.getInstance().removeProductFromWishlist(product);
 

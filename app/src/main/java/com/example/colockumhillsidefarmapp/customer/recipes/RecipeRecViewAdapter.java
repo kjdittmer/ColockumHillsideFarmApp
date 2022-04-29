@@ -48,21 +48,7 @@ public class RecipeRecViewAdapter extends RecyclerView.Adapter<RecipeRecViewAdap
                 .load(recipe.getImageUrl())
                 .into(holder.imgRecipe);
 
-//        ArrayList<String> ingredientsString = new ArrayList<>(Arrays.asList(recipe.getIngredients().split(",")));
-//        ArrayAdapter ingredientsAdapter = new ArrayAdapter(mContext, android.R.layout.simple_list_item_1, ingredientsString);
-//        holder.ingredientsListView.setAdapter(ingredientsAdapter);
-
-        //make this better
-        //holder.txtIngredientsList.setText(new ArrayList<>(Arrays.asList(recipe.getIngredients().split(","))).toString());
         holder.txtShortDesc.setText(recipe.getShortDesc());
-        /**holder.txtIngredientsList.setText("");
-        String[] ingredients = (recipe.getIngredients().split(","));
-        for (int i = 0; i < ingredients.length; i++) {
-            holder.txtIngredientsList.append("\u2022 ");
-            holder.txtIngredientsList.append(ingredients[i].trim());
-            holder.txtIngredientsList.append("\n");
-        }
-**/
 
         holder.parent.setOnClickListener(new View.OnClickListener() {
             @Override
