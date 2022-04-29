@@ -83,7 +83,7 @@
         <activity
             android:name=".customer.about_us.AboutUsActivity"
             android:exported="false"
-            android:label="AboutUs" />
+            android:label="About Us" />
         <activity
             android:name=".vendor.update_store.AddProductActivity"
             android:exported="false"
